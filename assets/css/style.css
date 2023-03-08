@@ -34,3 +34,25 @@ body {
     justify-content: space-around;
     align-items: center;
 }
+
+/* menu navegação home */
+
+.home_body {
+    background-image: url(assets/images/onda-menu.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.logo_branco {
+    position: relative;
+    margin-top: 1%;
+    left: 3%;
+    max-width: 10%;
+}
+
+.home_nav_ul {
+    display: flex;
+    justify-content:space-evenly;
+    list-style: none;
+    font-family: "Open Sans";
+}
