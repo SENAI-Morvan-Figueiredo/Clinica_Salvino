@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Kumbh-regular';
+    src: url(/assets/fonts/Kumbh_Sans/static/KumbhSans-Regular.ttf);
+}
+@font-face {
+    font-family: 'Kumbh-light';
+    src: url(/assets/fonts/Kumbh_Sans/static/KumbhSans-Light.ttf);
+}
+h1 {
+    font-family: 'Kumbh-light', Arial, Helvetica, sans-serif;
+}
+body {
+    font-family: 'Kumbh-regular', Arial, Helvetica, sans-serif;
+}
+#banner-principal {
+    background-color: #03A678;
+    color: white;
+}
+#banner-principal h1 {
+    font-size: 43px;
+    max-width: 500px;
+    font-weight: 100;
+    line-height: 53.33px;
+    margin-bottom: 20px;
+}
+#banner {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
