@@ -6,11 +6,11 @@
 
 @font-face {
     font-family: 'Kumbh-regular';
-    src: url(/assets/fonts/Kumbh_Sans/static/KumbhSans-Regular.ttf);
+    src: url(assets/fonts/Kumbh_Sans/static/KumbhSans-Regular.ttf);
 }
 @font-face {
     font-family: 'Kumbh-light';
-    src: url(/assets/fonts/Kumbh_Sans/static/KumbhSans-Light.ttf);
+    src: url(assets/fonts/Kumbh_Sans/static/KumbhSans-Light.ttf);
 }
 
 
