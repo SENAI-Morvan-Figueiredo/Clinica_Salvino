@@ -25,7 +25,7 @@ body {
 
 /* Background Cores */
 .bg-gray {
-    background-color: #eaeaea;
+    background-color: #6F5BE3;
     /* opacity: 0.78; */
 }
 .bg-white {
@@ -206,5 +206,21 @@ section {
     display: flex;
     justify-content:space-evenly;
     list-style: none;
-    font-family: "Open Sans";
+    align-items: center;
+    color: white;
+}
+
+.li_border {
+    display: flex;
+    border-style: solid;
+    border: 4px solid white;
+    border-radius: 25px;
+}
+
+.home_nav_ul :hover {
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    color: #6F5BE3; 
+    border-radius: 25px;
+    border: 4px solid white;
 }
