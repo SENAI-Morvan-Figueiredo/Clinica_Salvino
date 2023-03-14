@@ -1,3 +1,4 @@
+
 * {
     margin: 0;
     padding: 0;
@@ -160,6 +161,9 @@ body {
 #espec-home img{
     max-height: 350px;
 }
+.espec-item:hover {
+    filter: brightness(0.5);
+}
 .titulo-espec {
     background-color: #6F5BE3;
     color: white;
@@ -170,9 +174,34 @@ body {
     font-size: 26px;
     min-width: 324px;
 }
-section {
-    display: flex;
+.logo-home {
+    max-width: 100px;
 }
+#banner-principal a{
+    color: white;
+    padding-top: 20px;
+    font-size: 12px;
+}
+.bg-onda-top {
+    background-image: url(/assets/images/onda-top-dr.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 314px;
+}
+.sec-dr-home {
+    position: relative;
+    top: -35vh;
+    max-height: 314px;
+}
+#dr-salvino {
+    color: white;
+}
+#dr-salvino h2{
+    font-size: 32px;
+    font-weight: 100;
+}
+
 
 @media (max-width: 575.98px) { 
     .row {
@@ -196,19 +225,39 @@ section {
 }
 
 .logo_branco {
-    position: relative;
-    margin-top: 1%;
-    left: 3%;
-    max-width: 10%;
+    max-width: 100%;
 }
 
 .home_nav_ul {
     display: flex;
     justify-content:space-evenly;
-    list-style: none;
     align-items: center;
+    list-style: none;
+    font-family: "Open Sans";
+}
+.nav-home {
+    background-image: url(/assets/images/onda-menu.png);
+    background-size: cover;
+    background-color: #03A678;
+    color: white;
+    min-height: 244px;
+    width: 100%;
+    margin: 0;
+}
+.nav-home-items {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1em 0;
+}
+.nav-home a{
     color: white;
 }
+.nav-home li {
+    padding: 0 5px;
+}
+
+
 
 .li_border {
     display: flex;
@@ -224,3 +273,4 @@ section {
     border-radius: 25px;
     border: 4px solid white;
 }
+

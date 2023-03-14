@@ -1,0 +1,34 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Kumbh-regular';
+    src: url(/assets/fonts/Kumbh_Sans/static/KumbhSans-Regular.ttf);
+}
+@font-face {
+    font-family: 'Kumbh-light';
+    src: url(/assets/fonts/Kumbh_Sans/static/KumbhSans-Light.ttf);
+}
+@font-face {
+    font-family: 'OpenSans-regular';
+    src: url(/assets/fonts/OpenSans/OpenSans-Regular.ttf);
+}
+
+
+/*Classes globais*/
+h1,h2,h3 {
+    font-family: 'Kumbh-light', Arial, Helvetica, sans-serif;
+}
+body, a {
+    font-family:  'OpenSans-regular', Arial, Helvetica, sans-serif;
+}
+a {
+    text-decoration: none;
+}
+button {
+    font-family: 'Kumbh-regular', Arial, Helvetica, sans-serif;
+
+}
