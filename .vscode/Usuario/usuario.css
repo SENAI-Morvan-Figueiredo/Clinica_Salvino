@@ -1,0 +1,23 @@
+body {
+background-color: #6F5BE3;
+}
+
+.dash_menu {
+    display: flex;
+    background-color: #333333;
+    color: #ffffff;
+    font-family: 'Kumbh-medium', Arial, Helvetica, sans-serif;
+    align-items:flex-start;
+    flex-direction: column;
+    width: 300px;
+    height: 715px;
+}
+
+.ul_dash_menu {
+    list-style: none;
+}
+
+p {
+    
+    border-bottom: 2px solid #ffffff;
+}
