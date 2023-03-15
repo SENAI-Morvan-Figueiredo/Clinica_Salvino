@@ -54,6 +54,7 @@ ul{
     flex-direction: column;
     flex-wrap: wrap;
     align-content: center;
+    align-items: center;
     height: 596px;
     width: 838px;
     border-radius: 15px;
@@ -90,4 +91,6 @@ ul{
     border-radius: 0px;
     border: none;
     background-color: #FFFFFF;
+    padding-left: 37px;
+    margin-top: 36px;
 }
