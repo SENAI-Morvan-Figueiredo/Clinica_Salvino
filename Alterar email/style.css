@@ -27,6 +27,7 @@ header{
 #menu-button{
     height: 39.056617736816406px;
     width: 46px;
+    cursor: pointer;
 }
 
 main{
