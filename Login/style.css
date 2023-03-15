@@ -1,15 +1,152 @@
-body
-{
-    background: rgb(202, 238, 215);
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Kumbh Sans', sans-serif;
+}
+
+header{
+    background-color: #6F5BE3;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-top: 7px;
+    padding-bottom: 10px;
+    padding-right: 500px;
+}
+
+#Agendamento {
+    height: 36px;
+    width: 200px;
+    border-radius: 30px;
+    border: 2px solid #FFFFFF;
+    background-color: #6F5BE3;
+    color: #FFFFFF;
+    margin-left: 400px;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: #2BAE89;
     font-size: large;
     text-align: center;
     border: 1px;
+    justify-content: center;
+    align-content: center;
 }
 
-ul{
-    justify-content: space-between;
-    list-style-type: none;
+.container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
     align-items: center;
-    padding: 30px;
+    height: 383px;
+    width: 838px;
+    border-radius: 15px;
+    border-radius: 15px;
+    background-color: #F2F2F2;
+    box-shadow: 0px 6px 5px 0px #00000040;
+    margin-top: 107px;
+    margin-bottom: 107px;
+    padding-bottom: 24px;
+    padding-left: 61px;
 }
 
+#Copyright{
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    letter-spacing: 0em;
+    text-align: center;
+    margin-top: 47px;
+    margin-bottom: 53px;
+}
+
+#Login-Box{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 68px;
+    padding-top: 41px;
+}
+
+#robot{
+    margin-left: 19px ;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+#input-box {
+    height: 48px;
+    width: 466px;
+    border-radius: 0px;
+    padding-left: 37px;
+    border: none;
+    margin-top: 28px;
+}
+
+#captcha-box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    height: 67.83636474609375px;
+    width: 273px;
+    border-radius: 0px;
+    border: none;
+    background-color: #FFFFFF;
+    padding-left: 37px;
+}
+
+#options-box {
+    display: flex;
+    flex-direction: row;
+    margin-top: 36px;
+}
+
+#options{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    margin-left: 49px;
+}
+
+#text-options{
+    font-family: Kumbh Sans;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0em;
+    color:  #333333;
+    cursor: pointer;
+}
+
+#button-box{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-top: 20.16px;
+    margin-left: 20px;
+}
+
+#enter {
+    height: 38px;
+    width: 143px;
+    border-radius: 15px;
+    border: none;
+    background-color: #6F5BE3;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #FFFFFF;
+}

@@ -6,48 +6,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap');
+    </style>
 </head>
 <body>
     <header>
-        <H1>LOGIN</H1>
+        <img src="./img/Logo Branco 1.png">
+        <button id="Agendamento">Agendamento Online</button>
     </header>
-
-    <div class="container">
-
-        <ul>
-            <form action="/action_page.php"></form>
-
+    <main>
+        <div class="container">
             <div>
-                <input type="Email" id="E-mail" name="E-mail" placeholder="E-mail">
+                <img src="./img/Logotipo Salvino.png">
             </div>
-
-            <div>
-                <input type="password" id="Senha" name="Senha" placeholder="Senha">
+            <div id="Login-Box">
+                <H1>LOGIN</H1>
+                <ul>
+                    <form action="/action_page.php"></form>
+        
+                    <div>
+                        <input type="Email" id="input-box" name="E-mail" placeholder="E-mail">
+                    </div>
+        
+                    <div>
+                        <input type="password" id="input-box" name="Senha" placeholder="Senha">
+                    </div>
+                    <div id="options-box">
+                        <div id="captcha-box">
+                            <input type="checkbox" name="Eu não sou um robô" value="Eu não sou um robô"><a id="robot">Não sou robô</a>
+                        </div>
+                        
+                        <div id="options">
+                            <div>
+                                <p id="text-options"><a>Esqueci minha senha</a></p>
+                            </div>
+                
+                            <div>
+                                <p id="text-options"><a>Cadastrar</a></p>
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div id="button-box">
+                        <input type="submit" id="enter" value="Entrar">
+                    </div>
+        
+                    
+        
+                </ul>
             </div>
-
-            <div>
-                <input type="checkbox" name="Eu não sou um robô" value="Eu não sou um robô"><a>Não sou robô</a>
-            </div>
-
-            <div>
-                <input type="checkbox" name="Esqueci minha senha" value="Esqueci minha senha"><a>Esqueci minha senha</a>
-            </div>
-
-            <div>
-                <input type="checkbox" name="Cadastrar" value="Cadastrar"><a>Cadastrar</a>
-            </div>
-
-
-
-
-            <div>
-                <input type="submit" value="Entrar">
-            </div>
-
-            
-
-        </ul>
-    </div>
-
+        </div>
+    </main>
+    <footer>
+        <p id="Copyright">Copyright 2023 - Desenvolvido por DEV Nutri - Todos os direitos reservados.</p>
+    </footer>
 </body>
 </html>
