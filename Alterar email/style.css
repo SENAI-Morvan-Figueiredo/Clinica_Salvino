@@ -29,8 +29,7 @@ header{
     width: 46px;
 }
 
-main
-{
+main{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -100,6 +99,11 @@ ul{
 
 #robot{
     margin-left: 19px ;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: left;
 }
 
 #page-buttons{
