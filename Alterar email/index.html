@@ -6,44 +6,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alterar Email</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap');
+    </style>
 </head>
 <body>
-     <header>
-        <H1>ALTERAR EMAIL</H1>
+    <header>
+        <img src="./img/Logo Branco 1.png">
+        <button id="Agendamento">Agendamento Online</button>
+        <img id="menu-button" src="./img/Menu.png">
     </header>
-
-    <div class="container">
-
-        <ul>
-            <form action="/action_page.php"></form> 
-
-             <div>
-                <input type="Email " id="E-mail Anterior" name="E-mail Anterior" placeholder="E-mail Anterior">
-            </div>
-
-            <div>
-                <input type="Email" id="Novo E-mail" name="Novo E-mail" placeholder="Novo E-mail">
-            </div>
-
-            <div>
-                <input type="Email" id="Confirmar E-mail" name="Confirmar E-mail" placeholder="Confirmar E-mail">
-            </div>
-            
-            <div>
-                <input type="checkbox" name="Eu não sou um robô" value="Eu não sou um robô"><a>Não sou robô</a>
-            </div>
-
-            <div>
-                <input type="submit" value="Voltar">
-            </div>
-
-            <div>
-                <input type="submit" value="Salvar">
-            </div>
-
-        </ul>
-        
-    </div>
+    <main>
+        <div class="container">
+            <h1 id="page-title">Alterar E-mail</h1>
+            <ul>
+                <form action="/action_page.php"></form> 
+    
+                 <div>
+                    <input type="Email " id="email" name="E-mail Anterior" placeholder="E-mail Anterior">
+                </div>
+    
+                <div>
+                    <input type="Email" id="email" name="Novo E-mail" placeholder="Novo E-mail">
+                </div>
+    
+                <div>
+                    <input type="Email" id="email" name="Confirmar E-mail" placeholder="Confirmar E-mail">
+                </div>
+                
+                <div id="captcha-box">
+                    <input type="checkbox" name="Eu não sou um robô" value="Eu não sou um robô"><a>Não sou robô</a>
+                </div>
+    
+                <div>
+                    <input type="submit" value="Voltar">
+                </div>
+    
+                <div>
+                    <input type="submit" value="Salvar">
+                </div>
+            </ul>
+        </div>
+    </main>
+   
     
 </body>
 </html>
