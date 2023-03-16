@@ -38,11 +38,11 @@
                 <div id="container-middle-cpf">
                     <input type="text" maxlength="11" minlength="11" inputmode="numeric" id="middle-input-left-cpf" name="CPF" placeholder="CPF">
                     <div id="dependence">
-                        <div>
+                        <div id="option-dependence">
                             <input type="checkbox" name="Independente" value="Independente"><a id="robot">Independente</a>
                         </div>
             
-                        <div>
+                        <div id="option-dependence">
                             <input type="checkbox" name="Dependente" value="Dependente"><a id="robot">Dependente</a>
                         </div>
                     </div>
@@ -65,7 +65,7 @@
     
                 <div id="container-middle">
                     <input type="text" id="address-input-left" name="Endereço" placeholder="Endereço">
-                    <input type="text" inputmode="numeric" id="address-input-middle" name="Numero" placeholder="Numero">
+                    <input type="text" inputmode="numeric" id="address-input-middle" name="Numero" placeholder="N°">
                     <input type="text" name="Complemento" id="address-input-right" placeholder="Complemento">
                 </div>
     
@@ -78,12 +78,11 @@
                     <input type="password" id="middle-input-left" name="Senha" placeholder="Senha">
                     <input type="password" id="middle-input-right" name="confirmar Senha" placeholder="Confirmar Senha">
                 </div>
-
-                <div id="captcha-box">
-                    <input type="checkbox" name="Eu não sou um robô" value="Eu não sou um robô"><a id="robot">Não sou robô</a>
-                </div>
     
             </ul>
+            <div id="captcha-box">
+                <input type="checkbox" name="Eu não sou um robô" value="Eu não sou um robô"><a id="robot">Não sou robô</a>
+            </div>
             <div id="button-box">
                 <input type="submit" id="back" value="Voltar">
                 <input type="submit" id="account" value="Criar conta">
