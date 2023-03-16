@@ -1,0 +1,37 @@
+.navbar-toggler {
+    color: #fff;
+}
+
+
+@media (max-width: 768px) {
+    .logo_branco {
+        max-width: 150px;
+    }
+    #banner-principal h1 {
+        font-size: 32px;
+        line-height: normal;
+        margin-top: 20px;
+    }
+    #banner-principal img {
+        max-width: 360px;
+    }
+    .titulo-espec {
+        margin: 0;
+    }
+    .bg-onda-top {
+        min-height: 94px;
+    }
+    .sec-dr-home {
+        max-height: none;
+        top: 0;
+    }
+    #dr-salvino img {
+        max-width: 380px;
+    }
+    #convenios img {
+        max-width: 50px;
+    }
+    .fs-small {
+        font-size: 12px;
+    }
+}
