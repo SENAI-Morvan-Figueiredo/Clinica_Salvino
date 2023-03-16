@@ -6,105 +6,96 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap');
+    </style>
 </head>
 <body>
     <header>
-        <H1>CADASTRO</H1>
+        <img src="./img/Logo Branco 1.png">
+        <button id="Agendamento">Agendamento Online</button>
+        <button id="Login">Fazer Login</button>
     </header>
 
-    <div class="container">
-
-        <ul>
-            <form action="/action_page.php"></form>
-
-            <div>
-                <input type="text" id="Nome completo" name="Nome completo" placeholder="Nome completo">
-            </div>
-
-            <div>
-                <input type="date" id="Data de nascimento" name="Data de nascimento">
-            </div>
-
-           <div>
-                <input type="number" id="RG" name="RG" placeholder="RG">
-           </div>
-
-            <div>
-                <input type="number" id="CPF" name="CPF" placeholder="CPF">
-            </div>
-
-            <div>
-                <input type="checkbox" name="Independente" value="Independente"><a>Independente</a>
-            </div>
-
-            <div>
-                <input type="checkbox" name="Dependente" value="Dependente"><a>Dependente</a>
-            </div>
-
-            <div>
-                <input type="text" id="Nome Responsavel" name="Nome Responsavel" placeholder="Nome Responsavel">
-            </div>
-
-            <div>
-                <input type="number" id="RG" name="RG" placeholder="RG">
-            </div>
-
-            <div>
-                <input type="number" id="CPF" name="CPF" placeholder="CPF">
-            </div>
-            
-            <div>
-                <input type="tel" id="phone" name="phone" placeholder="(ddd) 99999-9999">
-            </div>
-
-            <div>
-                <input type="number" id="CEP" name="CEP" placeholder="CEP">
-            </div>
-
-            <div>
-                <input type="text" id="Endereço" name="Endereço" placeholder="Endereço">
-            </div>
-
-            <div>
-                <input type="number" id="Numero" name="Numero" placeholder="Numero">
-            </div>
-
-            <div>
-                <input type="number" id="Complemento" name="Complemento" placeholder="Complemento">
-            </div>
-
-            <div>
-                <input type="Email" id="E-mail" name="E-mail" placeholder="E-mail">
-            </div>
-
-            <div>
-                <input type="Confirmar Email" id="Confirmar E-mail" name="Confirmar E-mail" placeholder="Confirmar E-mail">
-            </div>
-
-            <div>
-                <input type="password" id="Senha" name="Senha" placeholder="Senha">
-            </div>
-
-            <div>
-                <input type="password" id="confirmar Senha" name="confirmar Senha" placeholder="confirmar Senha">
-            </div>
-
-            <div>
-                <input type="checkbox" name="Eu não sou um robô" value="Eu não sou um robô"><a>Não sou robô</a>
-            </div>
-
-            <div>
-                <input type="submit" value="Voltar">
-            </div>
-
-            <div>
-                <input type="submit" value="Criar conta">
-            </div>
-
-        </ul>
-
-
-        </div>
+    <main>
+        <div class="container">
+            <h1 id="title">CADASTRO</h1>
+            <ul>
+                <form action="/action_page.php"></form>
     
+                <div>
+                    <input type="text" id="Name" name="Nome completo" placeholder="Nome completo">
+                </div>
+    
+                <div>
+                    <input type="date" id="middle-input-left" name="Data de nascimento">
+                    <input type="text" maxlength="10" minlength="10" inputmode="numeric" id="middle-input-right" name="RG" placeholder="RG">
+                </div>
+    
+               <div>
+               </div>
+    
+                <div id="container-middle">
+                    <input type="text" maxlength="11" minlength="11" inputmode="numeric" id="CPF" name="CPF" placeholder="CPF">
+                    <div>
+                        <div>
+                            <input type="checkbox" name="Independente" value="Independente"><a>Independente</a>
+                        </div>
+            
+                        <div>
+                            <input type="checkbox" name="Dependente" value="Dependente"><a>Dependente</a>
+                        </div>
+                    </div>
+                </div>
+    
+    
+                <div>
+                    <input type="text" id="Name" name="Nome Responsavel" placeholder="Nome Responsavel">
+                </div>
+    
+                <div>
+                    <input type="text" maxlength="10" minlength="10" inputmode="numeric" name="RG" placeholder="RG">
+                    <input type="text" maxlength="11" minlength="11" inputmode="numeric" name="CPF" placeholder="CPF">
+                </div>
+
+                <div>
+                    <input type="tel" maxlength="14" minlength="11"  id="phone" name="phone" placeholder="(ddd) 99999-9999">
+                    <input type="text" inputmode="numeric" id="CEP" name="CEP" placeholder="CEP">
+                </div>
+    
+                <div>
+                    <input type="text" id="Endereço" name="Endereço" placeholder="Endereço">
+                    <input type="text" inputmode="numeric" id="Numero" name="Numero" placeholder="Numero">
+                    <input type="text" name="Complemento" placeholder="Complemento">
+                </div>
+    
+                <div>
+                    <input type="Email" id="E-mail" name="E-mail" placeholder="E-mail">
+                    <input type="Confirmar Email" id="Confirmar E-mail" name="Confirmar E-mail" placeholder="Confirmar E-mail">
+                </div>
+    
+                <div>
+                    <input type="password" id="Senha" name="Senha" placeholder="Senha">
+                    <input type="password" id="Confirmar Senha" name="confirmar Senha" placeholder="Confirmar Senha">
+                </div>
+
+                <div>
+                    <input type="checkbox" name="Eu não sou um robô" value="Eu não sou um robô"><a>Não sou robô</a>
+                </div>
+    
+                <div>
+                    <input type="submit" value="Voltar">
+                </div>
+    
+                <div>
+                    <input type="submit" value="Criar conta">
+                </div>
+    
+            </ul>
+            </div>
+    </main>
+    <footer>
+        <p id="Copyright">Copyright 2023 - Desenvolvido por DEV Nutri - Todos os direitos reservados.</p>
+    </footer>
 </body>
 </html>

@@ -48,11 +48,10 @@ main{
     height: 383px;
     width: 838px;
     border-radius: 15px;
-    border-radius: 15px;
     background-color: #F2F2F2;
     box-shadow: 0px 6px 5px 0px #00000040;
-    margin-top: 107px;
-    margin-bottom: 107px;
+    margin-top: 171px;
+    margin-bottom: 171px;
     padding-bottom: 24px;
     padding-left: 61px;
 }
@@ -127,6 +126,10 @@ main{
     letter-spacing: 0em;
     color:  #333333;
     cursor: pointer;
+}
+
+#text-options:hover{
+    text-decoration: underline;
 }
 
 #button-box{
