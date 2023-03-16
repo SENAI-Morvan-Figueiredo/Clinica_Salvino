@@ -29,7 +29,7 @@ header{
     border: 2px solid #FFFFFF;
     background-color: #6F5BE3;
     color: #FFFFFF;
-    font-size: 70%;
+    font-size: 80%;
     padding-top: 0.5%;
     padding-bottom: 0.5%;
     padding-left: 1.38%;
@@ -186,7 +186,7 @@ ul {
 
 #middle-input-left-cpf {
     height: 5.095541401273885%;
-    width: 95.82100238663484%;
+    width: 89.82100238663484%;
     padding-left: 3.944444444444444%;
     padding-bottom: 2%;
     padding-top: 2%;
@@ -198,7 +198,7 @@ ul {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-left: 40px;
+    margin-left: 6.8%;
 }
 
 #option-dependence{
