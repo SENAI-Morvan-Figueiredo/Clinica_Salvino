@@ -88,11 +88,11 @@ body {
     font-size: 12px;
 }
 .bg-onda-top {
-    background-image: url(/assets/images/onda-top-dr.png);
+    background-image: url(/assets/images/onda-top-dr-maior.png);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    min-height: 314px;
+    min-height: 390px;
 }
 .sec-dr-home {
     position: relative;
@@ -107,7 +107,7 @@ body {
     font-weight: 100;
 }
 .bg-onda-contato {
-    background-image: url(/assets/images/onda-top-contato.png);
+    background-image: url(/assets/images/onda-top-contato-maior.png);
     background-position: center;
     background-size: cover;
     min-height: 312px;
