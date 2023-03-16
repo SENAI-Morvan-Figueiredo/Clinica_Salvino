@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap');
+    </style>
+</head>
+<body>
+    <header>
+        <img id="White-Logo" src="./img/Logo Branco 1.png">
+        <button id="Agendamento">Agendamento Online</button>
+        <button id="Login">Fazer Login</button>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1 id="title">CADASTRO</h1>
+            <ul>
+                <form action="/action_page.php"></form>
+    
+                <div id="name-box">
+                    <input type="text" id="Name" name="Nome completo" placeholder="Nome completo">
+                </div>
+    
+                <div id="container-middle">
+                    <input type="date" id="middle-input-left" name="Data de nascimento">
+                    <input type="text" maxlength="10" minlength="10" inputmode="numeric" id="middle-input-right" name="RG" placeholder="RG">
+                </div>
+    
+               <div>
+               </div>
+    
+                <div id="container-middle-cpf">
+                    <input type="text" maxlength="11" minlength="11" inputmode="numeric" id="middle-input-left-cpf" name="CPF" placeholder="CPF">
+                    <div id="dependence">
+                        <div>
+                            <input type="checkbox" name="Independente" value="Independente"><a id="robot">Independente</a>
+                        </div>
+            
+                        <div>
+                            <input type="checkbox" name="Dependente" value="Dependente"><a id="robot">Dependente</a>
+                        </div>
+                    </div>
+                </div>
+    
+    
+                <div id="name-box">
+                    <input type="text" id="Name" name="Nome Responsavel" placeholder="Nome Responsável">
+                </div>
+    
+                <div id="container-middle">
+                    <input type="text" maxlength="10" minlength="10" inputmode="numeric" id="middle-input-left" name="RG" placeholder="RG">
+                    <input type="text" maxlength="11" minlength="11" inputmode="numeric" id="middle-input-right" name="CPF" placeholder="CPF">
+                </div>
+
+                <div id="container-middle">
+                    <input type="tel" maxlength="14" minlength="11"  id="middle-input-left" name="phone" placeholder="(ddd) 99999-9999">
+                    <input type="text" inputmode="numeric" id="middle-input-right" name="CEP" placeholder="CEP">
+                </div>
+    
+                <div id="container-middle">
+                    <input type="text" id="address-input-left" name="Endereço" placeholder="Endereço">
+                    <input type="text" inputmode="numeric" id="address-input-middle" name="Numero" placeholder="Numero">
+                    <input type="text" name="Complemento" id="address-input-right" placeholder="Complemento">
+                </div>
+    
+                <div id="container-middle">
+                    <input type="Email" id="middle-input-left" name="E-mail" placeholder="E-mail">
+                    <input type="Confirmar Email" id="middle-input-right" name="Confirmar E-mail" placeholder="Confirmar E-mail">
+                </div>
+    
+                <div id="container-middle">
+                    <input type="password" id="middle-input-left" name="Senha" placeholder="Senha">
+                    <input type="password" id="middle-input-right" name="confirmar Senha" placeholder="Confirmar Senha">
+                </div>
+
+                <div id="captcha-box">
+                    <input type="checkbox" name="Eu não sou um robô" value="Eu não sou um robô"><a id="robot">Não sou robô</a>
+                </div>
+    
+            </ul>
+            <div id="button-box">
+                <input type="submit" id="back" value="Voltar">
+                <input type="submit" id="account" value="Criar conta">
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p id="Copyright">Copyright 2023 - Desenvolvido por DEV Nutri - Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>

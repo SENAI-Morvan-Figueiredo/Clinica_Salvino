@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 {
     "livePreview.defaultPreviewPath": "/Usuario/usuario.html"
+=======
+Endereço desabilitadas
+sempre clonagem{
+    "liveServer.settings.port": 5501
+>>>>>>> c441735668667600afdb19e1272e03027fb8e00c
 }

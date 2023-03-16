@@ -1,0 +1,100 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Kumbh Sans', sans-serif;
+}
+
+header{
+    background-color: #6F5BE3;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 7px;
+    padding-bottom: 10px;
+}
+
+#Agendamento{
+    height: 36px;
+    width: 200px;   
+    border-radius: 30px;
+    border: 2px solid #FFFFFF;
+    background-color: #6F5BE3;
+    color: #FFFFFF;
+}
+
+#menu button{
+    height: 39.056617736816406px;
+    width: 46px;
+
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    flex-wrap:wrap;
+    background-color: #2BAE89;
+    font-size: large;
+    text-align: center;
+    border: 1px;
+    justify-content: center;
+    align-content: center;
+}
+
+ul{
+    justify-content: space-between;
+    list-style-type: none;
+    align-items: center;
+    padding: 30px;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 614px;
+    width: 838px;
+    border-radius: 15px;
+    background-color: #F2F2F2;
+    box-shadow: 0px 6px 5px 0px #00000040;
+    align-content: center;
+}
+
+#page-title{
+    
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 45px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #333333;
+    margin-top: 54px;
+
+}
+
+#Senha{
+
+    height: 48px;
+    width: 307px;
+    border-radius: 0px;
+    padding-left: 37px;
+    border: none;
+    margin-top: 28px;
+}
+
+#captcha-box{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    height: 76px;
+    width: 307px;
+    border-radius: 0px;
+    border: none;
+    background-color: #FFFFFF;
+    
+}
+
+
+
