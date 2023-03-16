@@ -48,14 +48,15 @@ main{
 .container{
     display: flex;
     flex-direction: column;
+    align-items: center;
     height: 942px;
-    width: 838px;
-    left: 301px;
-    top: 197px;
     border-radius: 15px;    
     background-color: #F2F2F2;
     box-shadow: 0px 6px 5px 0px #00000040;
     padding-top: 42px;
+    margin-top: 107px;
+    margin-bottom: 107px;
+    width: 838px;
 }
 
 #title {
@@ -67,30 +68,76 @@ main{
     margin-bottom: 42px;
 }
 
+#name-box {
+    margin-bottom: 20px;
+}
+
 #Name {
     height: 48px;
     width: 485px;
-    border-radius: 0px;
     padding-left: 28px;
 }
 
 #middle-input-left {
     height: 48px;
     width: 208px;
-    border-radius: 0px;
+    margin-right: 38px;
+    padding-left: 28px;
 }
 
 #middle-input-right {
     height: 48px;
     width: 208px;
-    border-radius: 0px;
+    padding-left: 28px;
+}
+
+#address-input-left{
+    height: 48px;
+    width: 209px;
+    margin-right: 15px;
+    padding-left: 28px;
+}
+
+#address-input-middle{
+    text-align: center;
+    height: 48px;
+    width: 75px;
+    margin-right: 15px;
+}
+
+#address-input-right{
+    height: 47px;
+    width: 137px;
+    padding-left: 28px;
 }
 
 #container-middle {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    margin-bottom: 20px;
 }
+
+#container-middle-cpf {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    margin-bottom: 20px;
+}
+
+#middle-input-left-cpf {
+    height: 48px;
+    width: 208px;
+    padding-left: 28px;
+}
+
+#dependence {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 40px;
+}
+
 #Copyright{
     font-size: 12px;
     font-weight: 600;
@@ -124,12 +171,22 @@ main{
     flex-direction: row;
     flex-wrap: wrap;
     align-content: center;
-    height: 67.83636474609375px;
-    width: 273px;
+    height: 76px;
+    width: 307px;
     border-radius: 0px;
     border: none;
     background-color: #FFFFFF;
     padding-left: 37px;
+    margin-top: 36px;
+}
+
+#robot{
+    margin-left: 19px ;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: left;
 }
 
 #options-box {
@@ -146,7 +203,6 @@ main{
 }
 
 #text-options{
-    font-family: Kumbh Sans;
     font-size: 15px;
     font-weight: 400;
     line-height: 19px;
@@ -167,7 +223,7 @@ main{
     margin-left: 20px;
 }
 
-#enter {
+#account {
     height: 38px;
     width: 143px;
     border-radius: 15px;
@@ -179,5 +235,15 @@ main{
     letter-spacing: 0em;
     text-align: center;
     color: #FFFFFF;
+    margin-left: 199px;
+    cursor: pointer;
+}
+
+#back{
+    height: 38px;
+    width: 143px;
+    border-radius: 15px;
+    border: 3px solid #000000;
+    background-color: #FFFFFF;
     cursor: pointer;
 }
