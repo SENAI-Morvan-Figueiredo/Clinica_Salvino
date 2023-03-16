@@ -1,10 +1,13 @@
+/*  */
 *{
     margin: 0;
     padding: 0;
 }
 
-body {
+.body_user {
 background-color: #6F5BE3;
+ min-height: 100vh;
+ display: flex;
 }
 
 .dash_menu {
@@ -45,7 +48,79 @@ background-color: #6F5BE3;
     justify-content: center;
 }
 
-header {
-    display: felx;
+.day_week,
+.date_grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.date_grid {
+    margin: 5px;
+}
+
+/* .calender {
+    display: flex;
     justify-content: flex-end;
+} */
+
+.header_user {
+    width: 1015px;
+    height: 715px;
+    margin: 3em auto 0 auto;
+    padding: 1.5em;
+    background-color: #333333;
+    border-radius: 15px;
+}
+
+.month {
+    color: #ffffff;
+    border: 6px solid;
+}
+
+.day_week {
+    margin-top: 1.25em;
+}
+
+.day_week > * {
+    font-size: 1em;
+    color: #000;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-align: center;
+    font-variant: small-caps;
+}
+
+.day_week_border {
+    background-color: #ffffff;
+    border-radius: 5px;
+    margin: 0 5px;
+}
+
+.date_grid button:first-child {
+    grid-column: 1;
+}
+
+.date_grid button {
+    display: flex;
+    align-items: flex-start;
+    width: 137px;
+    height: 107px;
+    border-radius: 5px;
+    background-color: #ffffff;
+
+}
+
+.date_grid button:hover,
+.date_grid button:focus {
+    outline: none;
+    background-color: #F2F2F2;
+}
+
+.date_grid button:active,
+.date_grid button.is-selected {
+    border: 3px solid #2BAE89;
+ 
+}
+.date_grid time{
+    margin: 10px;
 }
