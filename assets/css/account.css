@@ -611,7 +611,7 @@ footer{
     flex-wrap: wrap;
     align-content: center;
     height: 8.06%;
-    width: 100%;
+    width: 70%;
     border-radius: 0px;
     border: none;
     background-color: #FFFFFF;
@@ -619,6 +619,7 @@ footer{
     padding-top: 7.74%;
     padding-bottom: 7.74%;
     margin-top: 7.29%;
+    margin-left: 15%;
 }
 
 #robot{
