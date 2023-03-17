@@ -6,69 +6,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minha conta</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap');
+    </style>
 </head>
 <body>
-    <header>
-        <H1>MINHA CONTA</H1>
+    <header id="header-account">
+        <img id="White-Logo" src="./img/Logo Branco 1.png">
+        <button id="Agendamento-cad">Agendamento Online</button>
+        <button id="Login">Fazer Login</button>
     </header>
 
-    <div class="container">
+    <main>
+        <div class="container-cad">
+            <h1 id="title">MINHA CONTA</h1>
+            <ul id="cad-list">
+                <form id="form-cad" action="/action_page.php">
+                    <div id="name-box">
+                        <input type="text" id="Name" name="Nome completo" placeholder="Nome completo">
+                    </div>
+        
+                    <div id="container-middle">
+                        <input type="date" id="middle-input-left" name="Data de nascimento">
+                        <input type="text" maxlength="10" minlength="10" inputmode="numeric" id="middle-input-right" name="RG" placeholder="RG">
+                   </div>
 
-        <ul>
-            <form action="/action_page.php"></form>
+                    <div id="container-middle">
+                        <input type="text" maxlength="10" minlength="10" inputmode="numeric" id="middle-input-left" name="RG" placeholder="RG">
+                        <input type="text" maxlength="11" minlength="11" inputmode="numeric" id="middle-input-right" name="CPF" placeholder="CPF">
+                    </div>
 
-            <div>
-                <input type="text" id="Nome completo" name="Nome completo" placeholder="Nome completo">
-            </div>
+                    <div id="container-middle">
+                        <input type="tel" maxlength="14" minlength="11"  id="middle-input-left" name="phone" placeholder="(ddd) 99999-9999">
+                        <input type="text" inputmode="numeric" id="middle-input-right" name="CEP" placeholder="CEP">
+                    </div>
 
-           <div>
-                <input type="number" id="RG" name="RG" placeholder="RG">
-           </div>
+                    <div id="container-middle">
+                        <input type="text" id="address-input-left" name="Endereço" placeholder="Endereço">
+                        <input type="text" inputmode="numeric" id="address-input-middle" name="Numero" placeholder="N°">
+                        <input type="text" name="Complemento" id="address-input-right" placeholder="Complemento">
+                    </div>
 
-            <div>
-                <input type="number" id="CPF" name="CPF" placeholder="CPF">
-            </div>
-
-            <div>
-                <input type="tel" id="phone" name="phone" placeholder="(ddd) 99999-9999">
-            </div>
-
-            <div>
-                <input type="number" id="CEP" name="CEP" placeholder="CEP">
-            </div>
-
-            <div>
-                <input type="text" id="Endereço" name="Endereço" placeholder="Endereço">
-            </div>
-
-            <div>
-                <input type="number" id="Numero" name="Numero" placeholder="Numero">
-            </div>
-
-            <div>
-                <input type="number" id="Complemento" name="Complemento" placeholder="Complemento">
-            </div>
-
-            <div>
-                <input type="submit" value="Alterar Email">
-            </div>
-
-            <div>
-                <input type="submit" value="Alterar Senha">
-            </div>
-
-            <div>
-                <input type="submit" value="Voltar">
-            </div>
-
-            <div>
-                <input type="submit" value="Salvar">
-            </div>
-
-
-
-        </ul>
+                    <div id="button-box-cad">
+                        <input type="submit" id="button-change" value="Alterar Email">
+                        <input type="submit" id="button-change" value="Alterar Senha">
+                    </div>
+                </form>
+            </ul>
+        <div id="button-box-cad">
+        <input type="submit" id="back" value="Voltar">
+        <input type="submit" id="account" value="Salvar">
     </div>
-    
+</div>
+</main>
+<footer>
+<p id="Copyright">Copyright 2023 - Desenvolvido por DEV Nutri - Todos os direitos reservados.</p>
+</footer>
 </body>
 </html>
