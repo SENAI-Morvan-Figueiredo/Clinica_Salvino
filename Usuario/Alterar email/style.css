@@ -29,7 +29,7 @@ header{
     border: 2px solid #FFFFFF;
     background-color: #6F5BE3;
     color: #FFFFFF;
-    font-size: 70%;
+    font-size: clamp(2px, 2px + 1vw, 15px);
     padding-top: 0.5%;
     padding-bottom: 0.5%;
     padding-left: 1.38%;
@@ -82,7 +82,7 @@ ul{
 #title {
     width: 43.03102625298329%;
     height: 10.821656050955414%;
-    font-size: 150%;
+    font-size: clamp(15px, 15px + 1vw, 36px);
     font-weight: 600;
     line-height: 45px;
     letter-spacing: 0em;
@@ -120,7 +120,7 @@ ul{
 
 #robot{
     margin-left: 5.18% ;
-    font-size: 80%;
+    font-size: clamp(4px, 4px + 1vw, 15px);
     font-weight: 400;
     line-height: 19px;
     letter-spacing: 0em;
@@ -141,7 +141,7 @@ ul{
     border-radius: 15px;
     border: none;
     background-color: #6F5BE3;
-    font-size: 70%;
+    font-size: clamp(4px, 4px + 1vw, 15px);
     font-weight: 400;
     line-height: 19px;
     letter-spacing: 0em;
@@ -159,7 +159,7 @@ ul{
     border: 3px solid #000000;
     background-color: #FFFFFF;
     cursor: pointer;
-    font-size: 70%;
+    font-size: clamp(4px, 4px + 1vw, 15px);
     padding-top: 0.83%;
     padding-bottom: 0.83%;
     padding-left: 3.43%;
@@ -178,7 +178,7 @@ footer{
 }
 
 #Copyright{
-    font-size: 80%;
+    font-size: clamp(4px, 4px + 1vw, 15px);
     font-weight: 600;
     line-height: 15px;
     letter-spacing: 0em;
