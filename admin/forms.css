@@ -13,41 +13,33 @@ header{
     justify-content: space-between;
     align-items: center;
     padding-left: 9.930555555555556%;
-    padding-right: 9.930555555555556%;
+    padding-right: 12.30555555555556%;
     padding-top: 0.4861111111111111%;
     padding-bottom: 0.6944444444444444%;
 }
 
 #White-Logo {
-    width: 7.573888888888889% ;
+    width: 5.763888888888889% ;
 }
 
 #Agendamento {
     height: 37.11%;
-    width: 13.88%;
+    width: 14.58%;
     border-radius: 30px;
     border: 2px solid #FFFFFF;
     background-color: #6F5BE3;
     color: #FFFFFF;
-    font-size: clamp(4px, 4px + 1vw, 15px);
+    font-size: clamp(2px, 2px + 1vw, 15px);
     padding-top: 0.5%;
     padding-bottom: 0.5%;
     padding-left: 1.38%;
     padding-right: 1.38%;
 }
 
-#Login{
-    height: 37.11%;
-    width: 7.986111111111111%;
-    border-radius: 30px;
-    border: 3px solid #FFFFFF;
-    background-color: #6F5BE3;
-    color: #FFFFFF;
-    font-size: clamp(4px, 4px + 1vw, 15px);
-    padding-top: 0.5%;
-    padding-bottom: 0.5%;
-    padding-left: 0.11%;
-    padding-right: 0.11%;
+#menu-button{
+    height: 40.25%;
+    width: 3.19%;
+    cursor: pointer;
 }
 
 main{
@@ -62,6 +54,13 @@ main{
     align-content: center;
 }
 
+ul{
+    justify-content: space-between;
+    list-style-type: none;
+    align-items: center;
+    width: 40.66%;
+}
+
 .container{
     display: flex;
     flex-direction: column;
@@ -69,7 +68,7 @@ main{
     align-items: center;
     justify-content: center;
     align-content: center;
-    height: 66.61951909476662%;
+    height: 42.14%;
     width: 58.19444444444444%;
     border-radius: 15px;    
     background-color: #F2F2F2;
@@ -83,7 +82,7 @@ main{
 #title {
     width: 43.03102625298329%;
     height: 10.821656050955414%;
-    font-size: 150%;
+    font-size: clamp(15px, 15px + 1vw, 36px);
     font-weight: 600;
     line-height: 45px;
     letter-spacing: 0em;
@@ -92,113 +91,15 @@ main{
     margin-bottom: 2.916666666666667%;
 }
 
-ul {
-    width: 57.87589498806683%;
-}
-
-#name-box {
-    margin-bottom: 2.38%;
-    width: 95.5%;
-}
-
-#Name {
+#input-text {
+    height: 8.05%;
     width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    height: 5.095541401273885%;
-    padding-left: 3.944444444444444%;
-    padding-bottom: 2%;
-    padding-top: 2%;
-    font-size: 70%;
-}
-
-#middle-input-left {
-    height: 5.095541401273885%;
-    width: 44.82100238663484%;
-    padding-left: 3.944444444444444%;
-    padding-bottom: 2%;
-    padding-top: 2%;
-    font-size: 70%;
-    margin-right: 6.8%;
-}
-
-#middle-input-right {
-    height: 5.095541401273885%;
-    width: 44.82100238663484%;
-    padding-left: 3.944444444444444%;
-    padding-bottom: 2%;
-    padding-top: 2%;
-    font-size: 70%;
-}
-
-#address-input-left{
-    height: 5.72%;
-    width: 41.94%;
-    margin-right: 1.78%;
-    padding-left: 3.944444444444444%;
-    padding-bottom: 2%;
-    padding-top: 2%;
-    font-size: 70%;
-}
-
-#address-input-middle{
-    text-align: center;
-    height: 5.72%;
-    width: 8.94%;
-    margin-right: 1.78%;
-    padding-bottom: 2%;
-    padding-top: 2%;
-    font-size: 70%;
-}
-
-#address-input-right{
-    height: 5.72%;
-    width: 26.34%;
-    padding-left: 3.944444444444444%;
-    padding-bottom: 2%;
-    padding-top: 2%;
-    font-size: 70%;
-}
-
-#container-middle {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    align-content: center;
-    margin-bottom: 2.38%;
-}
-
-#container-middle-cpf {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-    margin-bottom: 2.38%;
-}
-
-#middle-input-left-cpf {
-    height: 5.095541401273885%;
-    width: 89.82100238663484%;
-    padding-left: 3.944444444444444%;
-    padding-bottom: 2%;
-    padding-top: 2%;
-    font-size: 70%;
-}
-
-#dependence {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-left: 6.8%;
-}
-
-#option-dependence{
-    display: flex;
-    flex-direction: row;
+    border-radius: 0px;
+    border: none;
+    margin-top: 5.94%;
+    padding-left: 4.41%;
+    padding-bottom: 4%;
+    padding-top: 4%;
 }
 
 #captcha-box {
@@ -207,25 +108,24 @@ ul {
     flex-wrap: wrap;
     align-content: center;
     height: 8.06%;
-    width: 36.63%;
+    width: 100%;
     border-radius: 0px;
     border: none;
     background-color: #FFFFFF;
     padding-left: 4.41%;
-    padding-top: 2.74%;
-    padding-bottom: 2.74%;
-    margin-top: 2.29%;
+    padding-top: 7.74%;
+    padding-bottom: 7.74%;
+    margin-top: 7.29%;
 }
 
 #robot{
     margin-left: 5.18% ;
-    font-size: 80%;
+    font-size: clamp(4px, 4px + 1vw, 15px);
     font-weight: 400;
     line-height: 19px;
     letter-spacing: 0em;
     text-align: left;
 }
-
 
 #button-box{
     width: 100%;
@@ -237,11 +137,11 @@ ul {
     padding-top: 4.38%;
 }
 
-#account {
+#save {
     border-radius: 15px;
     border: none;
     background-color: #6F5BE3;
-    font-size: 70%;
+    font-size: clamp(4px, 4px + 1vw, 15px);
     font-weight: 400;
     line-height: 19px;
     letter-spacing: 0em;
@@ -259,7 +159,7 @@ ul {
     border: 3px solid #000000;
     background-color: #FFFFFF;
     cursor: pointer;
-    font-size: 70%;
+    font-size: clamp(4px, 4px + 1vw, 15px);
     padding-top: 0.83%;
     padding-bottom: 0.83%;
     padding-left: 3.43%;
@@ -278,7 +178,7 @@ footer{
 }
 
 #Copyright{
-    font-size: 80%;
+    font-size: clamp(4px, 4px + 1vw, 15px);
     font-weight: 600;
     line-height: 15px;
     letter-spacing: 0em;

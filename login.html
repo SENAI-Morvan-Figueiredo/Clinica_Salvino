@@ -5,28 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./assets/css/account.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap');
     </style>
 </head>
 <body class="home_body bg-black">
-    <header>
-        <img src="./img/Logo Branco 1.png">
-        <button id="Agendamento">Agendamento Online</button>
+    <header id="header-login">
+        <img src="./assets/img/Logo Branco 1.png">
+        <button id="Agendamento-login">Agendamento Online</button>
     </header>
     <main>
-        <div class="container">
-                <img id="Logo" src="./img/Logotipo Salvino.png">
+        <div class="container-login">
+                <img id="Logo" src="./assets/img/Logotipo Salvino.png">
             <div id="Login-Box">
                 <H1 id="title">LOGIN</H1>
                 <ul id="inputs">
-                    <form action="/action_page.php">
+                    <form id="form-login" action="/action_page.php">
                         <input type="Email" id="input-box" name="E-mail" placeholder="E-mail">
                         <input type="password" id="input-box" name="Senha" placeholder="Senha">
                     </form>
                     <div id="options-box">
-                        <div id="captcha-box">
+                        <div id="captcha-box-login">
                             <input type="checkbox" name="Eu não sou um robô" value="Eu não sou um robô"><a id="robot">Não sou robô</a>
                         </div>
                         
@@ -40,7 +40,7 @@
                             </div>  
                         </div> 
                     </div>
-                    <div id="button-box">
+                    <div id="button-box-login">
                         <input type="submit" id="enter" value="Entrar">
                 </ul>
             </div>
