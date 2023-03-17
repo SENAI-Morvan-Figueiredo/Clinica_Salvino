@@ -65,6 +65,18 @@ main{
     padding-top: 3.89%;
 }
 
+#title {
+    width: 43.03102625298329%;
+    height: 10.821656050955414%;
+    font-size: clamp(15px, 15px + 1vw, 36px);
+    font-weight: 600;
+    line-height: 45px;
+    letter-spacing: 0em;
+    text-align: center;
+    color:  #333333;
+    margin-bottom: 2.916666666666667%;
+}
+
 #Logo {
     width: 23.86%;
     height: 23.86%;
