@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="assets/css/responsivo.css">
     <script src="assets/js/script.js"></script>
   </head>
-  <body class="home_body saindo bg-gray">
+  <body class="home_body saindo bg-green">
     <nav class="navbar navbar-expand-sm bg-purple d-flex d-lg-none">
         <div class="container-fluid white">
           <a class="navbar-brand" href="#">
@@ -23,7 +23,7 @@
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
               <a class="nav-link active" href="#">Fazer cadastro</a>
-              <a class="nav-link" href="#">Fazer login</a>
+              <a class="nav-link" href="login/index.html">Fazer login</a>
             </div>
           </div>
         </div>
@@ -48,7 +48,7 @@
                             </li>
                             <li> | </li>
                             <li>
-                                <button href="login/index.html" class="btn-white">Fazer Login</button>
+                                <a href="login/index.html" class="btn-white">Fazer Login</a>
                             </li>
                         </ul>
                     </div>
@@ -58,18 +58,18 @@
     <header id="banner-principal">
         <div class="container">
             <div class="row justify-content-around">
-                <div class="col-lg-6 d-flex align-items-center">
+                <div class="col-lg-6 d-flex align-items-center" id="textoBanner">
                   <div>
                     <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1>
-                    <button class="btn-white">
+                    <a href="login/index.html" class="btn-white">
                         Agendar consulta
-                    </button>
-                    <a href="#" class="d-block">
-                        <img src="assets/images/play-banner.png" alt="" class="pe-2">Assista o vídeo de como agendar</a>
+                    </a>
+                    <a href="#" class="d-block assistir-video">
+                        <img src="assets/images/play-banner.png" alt="" class="pe-2 ">Assista o vídeo de como agendar</a>
                   </div>
                 </div>
                 <div class="col-lg-6 d-flex align-items-center">
-                    <img src="assets/images/img-banner.png" alt="" class="py-5">
+                    <img src="assets/images/img-banner.png" alt="" class="py-5" id="illustracaoBanner">
                 </div>
                 </div>
             </div>
@@ -114,8 +114,8 @@
     </section>
     <article id="dr-salvino"class="bg-green">
         <div class="container sec-dr-home">
-            <div class="row justify-content-around">
-                <div class="col-lg-6 d-sm-12 d-flex align-items-center">
+            <div class="row justify-content-around doutor">
+                <div class="col-lg-6 d-sm-12 d-flex align-items-center ">
                     <img src="assets/images/DrLeonor.png" alt="">
                 </div>
                 <div class="col-lg-6 col-sm-12 text-end px-5 d-flex align-items-end">
@@ -151,7 +151,7 @@
             </div>
         </div>
     </section>
-    <section class="bg-onda-contato" id="contato">
+    <section class="bg-onda-contato bg-white" id="contato">
         <div class="container">
             <div class="row justify-content-between pt-5">
                 <div class="col-lg-4 d-none d-lg-flex white  justify-content-center mb-5">
@@ -184,7 +184,7 @@
             </div>
         </div>
     </section>
-    <footer class="pt-3">
+    <footer class="pt-3 bg-white">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 d-flex justify-content-center pt-5">

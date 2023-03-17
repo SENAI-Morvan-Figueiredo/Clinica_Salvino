@@ -23,8 +23,17 @@ h1 {
 body {
     font-family: 'Kumbh-regular', Arial, Helvetica, sans-serif;
 }
-
-
+nav {
+    position: relative;
+    top: 0;
+    animation: surgirNav ;
+    animation-duration: 1s;
+    animation-direction: normal;
+}
+@keyframes surgirNav {
+    from {top: -100px}
+    to {top: 0px}
+}
 
 
 
@@ -52,6 +61,24 @@ body {
 #banner-principal {
     background-color: #03A678;
     color: white;
+}
+#illustracaoBanner{
+    position: relative;
+    left: 0;
+    animation: surgirBanner;
+    animation-duration: 2s;
+    animation-direction: normal;
+}
+@keyframes surgirBanner {
+    from {left: -1000px}
+    to {left: 0px}
+}
+#textoBanner {
+    position: relative;
+    left: 0;
+    animation: surgirBanner;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
 }
 #banner-principal h1 {
     font-size: 43px;
@@ -90,7 +117,7 @@ body {
 .logo-home {
     max-width: 100px;
 }
-#banner-principal a{
+.assistir-video{
     color: white;
     padding-top: 20px;
     font-size: 12px;
@@ -109,6 +136,22 @@ body {
 }
 #dr-salvino {
     color: white;
+}
+.doutor {
+    position: relative;
+    left: -2000px;
+}
+.doutorAtivo {
+    position: relative;
+    left: 0;
+    animation: surgirDoutor;
+    animation-duration: 3s;
+    animation-direction: normal;
+    
+}
+@keyframes surgirDoutor {
+    from {left: -2000px}
+    to {left: 0px}
 }
 #dr-salvino h2{
     font-size: 32px;
