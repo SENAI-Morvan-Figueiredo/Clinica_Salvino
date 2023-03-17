@@ -4,17 +4,6 @@
     font-family: 'Kumbh Sans', sans-serif;
 }
 
-.home_body {
-    opacity: 0; /* começa com opacidade zero */
-  transition: opacity 1s ease-in-out; /* transição suave de 1 segundo */
-}
-.home_body.saindo {
-    opacity: 1; /* mostra a página com opacidade total */
-}
-.bg-black {
-    background-color: #333;
-}
-
 header{
     background-color: #6F5BE3;
     height: 6.85997171145686%;
@@ -83,10 +72,6 @@ main{
     right: 0;
     animation: surgir;
     animation-duration: 2s;
-}
-@keyframes surgir {
-    from {right: -1000px;}
-    to {right: 0;}
 }
 
 #Login-Box{
