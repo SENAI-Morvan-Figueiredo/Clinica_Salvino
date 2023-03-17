@@ -25,7 +25,7 @@ header{
     border: 2px solid #FFFFFF;
     background-color: #6F5BE3;
     color: #FFFFFF;
-    font-size: 80%;
+    font-size: clamp(2px, 2px + 1vw, 15px);
     padding-top: 0.5%;
     padding-bottom: 0.5%;
     padding-left: 1.38%;
@@ -49,7 +49,7 @@ main{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: left;
     align-content: center;
     align-items: center;
     height: 34.47%;
@@ -61,32 +61,21 @@ main{
     margin-bottom: 6.87%;
     padding-bottom: 1.66%;
     padding-left: 4.23%;
+    padding-right: 2.23%;
+    padding-top: 3.89%;
+}
+
+#Logo {
+    width: 23.86%;
+    height: 23.86%;
 }
 
 #Login-Box{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-left: 68px;
-    padding-top: 41px;
-}
-
-#robot{
-    margin-left: 19px ;
-    font-size: 15px;
-    font-weight: 400;
-    line-height: 19px;
-    letter-spacing: 0em;
-    text-align: left;
-}
-
-#input-box {
-    height: 48px;
-    width: 466px;
-    border-radius: 0px;
-    padding-left: 37px;
-    border: none;
-    margin-top: 28px;
+    margin-left: 11.11%;
+    width: 65%;
 }
 
 #captcha-box {
@@ -94,30 +83,65 @@ main{
     flex-direction: row;
     flex-wrap: wrap;
     align-content: center;
-    height: 67.83636474609375px;
-    width: 273px;
+    height: 8.06%;
+    width: 36.63%;
     border-radius: 0px;
     border: none;
     background-color: #FFFFFF;
-    padding-left: 37px;
+    padding-left: 4.41%;
+    padding-top: 2.74%;
+    padding-bottom: 2.74%;
+    margin-right: 33.5%;
+}
+
+#robot{
+    margin-left: 5.18% ;
+    font-size: clamp(4px, 4px + 1vw, 15px);
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+#inputs {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    width: 100%;
+}
+
+form{
+    width: 100%;
+}
+
+#input-box {
+    height: 10.72%;
+    width: 95%;
+    border-radius: 0px;
+    padding-left: 4.7%;
+    padding-top: 2.5%;
+    padding-bottom: 2.5%;
+    margin-right: 4.7%;
+    border: none;
+    margin-top: 3.34%;
 }
 
 #options-box {
     display: flex;
     flex-direction: row;
-    margin-top: 36px;
+    margin-top: 8.29%;
+    width: 100%;
 }
 
 #options{
     display: flex;
     flex-direction: column;
     align-items: end;
-    margin-left: 49px;
 }
 
 #text-options{
-    font-family: Kumbh Sans;
-    font-size: 15px;
+    font-size: clamp(4px, 4px + 1vw, 15px);
     font-weight: 400;
     line-height: 19px;
     letter-spacing: 0em;
@@ -130,11 +154,12 @@ main{
 }
 
 #button-box{
+    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     margin-top: 20.16px;
-    margin-left: 20px;
+    padding-left: 5%;
 }
 
 #enter {
@@ -143,7 +168,7 @@ main{
     border-radius: 15px;
     border: none;
     background-color: #6F5BE3;
-    font-size: 15px;
+    font-size: clamp(4px, 4px + 1vw, 15px);
     font-weight: 400;
     line-height: 19px;
     letter-spacing: 0em;
@@ -164,7 +189,7 @@ footer{
 }
 
 #Copyright{
-    font-size: 80%;
+    font-size: clamp(4px, 4px + 1vw, 15px);
     font-weight: 600;
     line-height: 15px;
     letter-spacing: 0em;
