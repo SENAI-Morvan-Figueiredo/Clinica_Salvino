@@ -72,7 +72,6 @@ main{
     margin-bottom: 6.87%;
     padding-bottom: 1.66%;
     padding-left: 4.23%;
-<<<<<<< HEAD
     padding-right: 2.23%;
     padding-top: 3.89%;
 }
@@ -80,17 +79,15 @@ main{
 #Logo {
     width: 23.86%;
     height: 23.86%;
-=======
     position: relative;
     right: 0;
     animation: surgir;
     animation-duration: 2s;
->>>>>>> cea4db72d7d2aded18a769eb2a01773e891235f1
 }
 @keyframes surgir {
     from {right: -1000px;}
     to {right: 0;}
-  }
+}
 
 #Login-Box{
     display: flex;
