@@ -10,12 +10,16 @@ header{
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: left;
+    justify-content: space-between;
     align-items: center;
     padding-left: 9.930555555555556%;
     padding-right: 12.30555555555556%;
     padding-top: 0.4861111111111111%;
     padding-bottom: 0.6944444444444444%;
+}
+
+#White-Logo {
+    width: 5.763888888888889% ;
 }
 
 #Agendamento {
@@ -30,7 +34,12 @@ header{
     padding-bottom: 0.5%;
     padding-left: 1.38%;
     padding-right: 1.38%;
-    margin-left: 37.36%;
+}
+
+#menu-button{
+    height: 40.25%;
+    width: 3.19%;
+    cursor: pointer;
 }
 
 main{
@@ -45,24 +54,29 @@ main{
     align-content: center;
 }
 
+ul{
+    justify-content: space-between;
+    list-style-type: none;
+    align-items: center;
+    width: 40.66%;
+}
+
 .container{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
-    justify-content: left;
-    align-content: center;
     align-items: center;
-    height: 34.47%;
-    width: 48.19%;
-    border-radius: 15px;
+    justify-content: center;
+    align-content: center;
+    height: 42.14%;
+    width: 58.19444444444444%;
+    border-radius: 15px;    
     background-color: #F2F2F2;
     box-shadow: 0px 6px 5px 0px #00000040;
-    margin-top: 6.87%;
-    margin-bottom: 6.87%;
-    padding-bottom: 1.66%;
-    padding-left: 4.23%;
-    padding-right: 2.23%;
-    padding-top: 3.89%;
+    padding-top: 5.01%;
+    padding-bottom: 5.01%;
+    margin-top: 7.43%;
+    margin-bottom: 7.43%;
 }
 
 #title {
@@ -77,21 +91,15 @@ main{
     margin-bottom: 2.916666666666667%;
 }
 
-#Logo {
-    width: 23.86%;
-    height: 23.86%;
-    position: relative;
-    right: 0;
-    animation: surgir;
-    animation-duration: 2s;
-}
-
-#Login-Box{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-left: 11.11%;
-    width: 65%;
+#input-text {
+    height: 8.05%;
+    width: 100%;
+    border-radius: 0px;
+    border: none;
+    margin-top: 5.94%;
+    padding-left: 4.41%;
+    padding-bottom: 4%;
+    padding-top: 4%;
 }
 
 #captcha-box {
@@ -100,14 +108,14 @@ main{
     flex-wrap: wrap;
     align-content: center;
     height: 8.06%;
-    width: 36.63%;
+    width: 100%;
     border-radius: 0px;
     border: none;
     background-color: #FFFFFF;
     padding-left: 4.41%;
-    padding-top: 2.74%;
-    padding-bottom: 2.74%;
-    margin-right: 33.5%;
+    padding-top: 7.74%;
+    padding-bottom: 7.74%;
+    margin-top: 7.29%;
 }
 
 #robot{
@@ -119,68 +127,17 @@ main{
     text-align: left;
 }
 
-#inputs {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-content: flex-start;
-    width: 100%;
-}
-
-form{
-    width: 100%;
-}
-
-#input-box {
-    height: 10.72%;
-    width: 95%;
-    border-radius: 0px;
-    padding-left: 4.7%;
-    padding-top: 2.5%;
-    padding-bottom: 2.5%;
-    margin-right: 4.7%;
-    border: none;
-    margin-top: 3.34%;
-}
-
-#options-box {
-    display: flex;
-    flex-direction: row;
-    margin-top: 8.29%;
-    width: 100%;
-}
-
-#options{
-    display: flex;
-    flex-direction: column;
-    align-items: end;
-}
-
-#text-options{
-    font-size: clamp(4px, 4px + 1vw, 15px);
-    font-weight: 400;
-    line-height: 19px;
-    letter-spacing: 0em;
-    color:  #333333;
-    cursor: pointer;
-}
-
-#text-options:hover{
-    text-decoration: underline;
-}
-
 #button-box{
     width: 100%;
+    height: 50.53%;
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
-    margin-top: 20.16px;
-    padding-left: 5%;
+    align-items: center;
+    justify-content: space-around;
+    padding-top: 4.38%;
 }
 
-#enter {
-    height: 38px;
-    width: 143px;
+#save {
     border-radius: 15px;
     border: none;
     background-color: #6F5BE3;
@@ -191,6 +148,22 @@ form{
     text-align: center;
     color: #FFFFFF;
     cursor: pointer;
+    padding-top: 0.83%;
+    padding-bottom: 0.83%;
+    padding-left: 3.43%;
+    padding-right: 3.43%;
+}
+
+#back{
+    border-radius: 15px;
+    border: 3px solid #000000;
+    background-color: #FFFFFF;
+    cursor: pointer;
+    font-size: clamp(4px, 4px + 1vw, 15px);
+    padding-top: 0.83%;
+    padding-bottom: 0.83%;
+    padding-left: 3.43%;
+    padding-right: 3.43%;
 }
 
 footer{
