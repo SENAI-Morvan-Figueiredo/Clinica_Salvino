@@ -1,3 +1,5 @@
+
+
 /* Css da pagina do usuario */
 
 /* Css global da pagina do usuario */
@@ -6,125 +8,135 @@
     padding: 0;
 }
 
-/* class do css do boddy da pagina do usuario */
-.body_user {
-background-color: #6F5BE3;                                                         /*  */
- min-height: 100vh;
- display: flex;
- justify-content: space-around;
-}
+/* começo das classes da dashboard do menu do usuario */
 
-.dash_menu {
-    background-color: #333333;
-    color: #ffffff;
-    font-family: 'Kumbh-medium', Arial, Helvetica, sans-serif;
-    width: 18.75em;
-    height: 44.6875em;
-    border-radius: 15px;
-    justify-content: flex-start;
-    position: relative;
-    top: 3.25em;
-    left: 3.25em;
-}
+    /* class do css do boddy da pagina do usuario */
+    .body_user {
+    background-color: #6F5BE3;                                                        /* cor da tela de fundo do body */
+    min-height: 100vh;                                                                  /* valor minimo da altura da pagina */
+    display: flex;                                                                      /* Definição da exibição como flex (vai jogar todos os elementos dentro da classe para a esquerda) */
+    justify-content: space-around;
+    }
 
-.ul_dash_menu li {
-    list-style: none;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-    margin: 15px;
-}
+    /* class para dashboard do menu do usuario */
+    .dash_menu_user {
+        background-color: #333333;                                                    /* cor da dashboard */
+        color: #ffffff;                                                               /* cor da fonte da dashboard */
+        font-family: 'Kumbh-medium', Arial, Helvetica, sans-serif;                      /* fonte estilizada da dashboard */                 
+        width: 18.75em;                                                                 /* tamanho horizontal da dashboard */
+        height: 44.6875em;                                                              /* tamanho vertical da dashboard */
+        border-radius: 15px;                                                            /* curvatura da borda da dashboard */
+        position: relative;                                                             /* define a posição da dashboard como relativa, e usa os valores top e left */
+        top: 52px;                                                                    /* valor da posição a partir do topo */
+        left: 52px;                                                                   /* valor da posição a partir da esquerda */
+    }
 
-#line_menu {
-    border-top: 2px solid white;
-    border-bottom: 2px solid white;
-    margin: 0 30px 0 30px;
-}
+    /* class para o botão do home */
+    .button_home {
+        position: relative;                                                             /* posição do botão da home relativo na dashboard com os valores top e left */
+        top: 18px;                                                                      /* valor da posição a partir do topo */     
+        left: 28px;                                                                     /* valor da posição a partir da esquerda */
+    }
 
-.button_home {
-    position: relative;
-    top: 18px;
-    left: 28px;
-}
+    /* class para a imagem do usuario */
+    .image_user {
+        display: flex;                                                                  /* exibição da imagem como flexivel */
+        justify-content: center;                                                        /* alinha a imagem no centro em comparação a dashboard */
+    }
 
-.image_user {
-    display: flex;
-    justify-content: center;
-}
+    /* estilizando a lista da class da dashboard do menu do usuario */
+    .ul_dash_menu li {
+        list-style: none;                                                               /* estilo da lista: sem caracteres */
+        justify-content: center;                                                        /* alinhando os items no centro da dashboard */
+        flex-direction: column;                                                         /* define como os items dentro dele se organizam: em coluna */
+        text-align: center;                                                             /* alinha os textos ao centro da dashboard */
+        margin: 15px;                                                                   /* margem dos items da lista em comparação ao seu redor */
+    }
 
-.day_week,
-.date_grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-}
+    /* adicionando 2 linhas ao redor de uma lista no menu */
+    #line_menu {
+        border-top: 2px solid white;                                                  /* adicionando uma borda na parte de cima da lista (sintax 'border-(direção): tam_tipo de borda_cor da borda')*/
+        border-bottom: 2px solid white;                                               /* adicionando uma borda na parte de baixo da lista */                         
+        margin: 0 30px 0 30px;                                                          /* margem somente para as laterais (esquerda e direita) */
+    }
+    
 
-.date_grid {
-    margin: 5px;
-}
+/* fim das classes da dashboard do menu do usuario */
 
-/* .calender {
-    display: flex;
-    justify-content: flex-end;
-} */
+/* começo das classes da dashboard do calendario */
+    /* class para o dashboard do calendario */ 
+    .dash_calender {
+        width: 1015px;                                                                  /* tamanho horizontal */
+        height: 715px;                                                                  /* tamanho vertical */
+        margin: 52px 52px 0 52px;                                                       /* margin = margem externa relativo ao seu arredor */
+        padding: 20px 20px 35px 20px;                                                    /* padding = margem interna */
+        background-color: #333333;
+        border-radius: 15px;
+        position: relative;
+        
+    }
 
-.header_user {
-    width: 63.4375em;
-    height: 44.6875em;
-    margin: 3em auto 0 auto;
-    padding: 1.5em;
-    background-color: #333333;
-    border-radius: 15px;
-}
+        .day_week,
+        .date_grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+        }
 
-.month {
-    color: #ffffff;
-    border: 6px solid;
-}
+        .date_grid {
+            margin: 5px;
+        }
 
-.day_week {
-    margin-top: 1.25em;
-}
+        .month {
+            color: #ffffff;
+            border: 6px solid;
+        }
 
-.day_week > * {
-    font-size: 1em;
-    color: #000;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-align: center;
-    font-variant: small-caps;
-}
+        .day_week {
+            margin-top: 1.25em;
+        }
 
-.day_week_border {
-    background-color: #ffffff;
-    border-radius: 5px;
-    margin: 0 5px;
-}
+        .day_week > * {
+            font-size: 1em;
+            color: #000;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-align: center;
+            font-variant: small-caps;
+        }
 
-.date_grid button:first-child {
-    grid-column: 1;
-}
+        .day_week_border {
+            background-color: #ffffff;
+            border-radius: 2px;
+            margin: 0 5px;
+        }
 
-.date_grid button {
-    display: flex;
-    align-items: flex-start;
-    width: 137px;
-    height: 107px;
-    border-radius: 5px;
-    background-color: #ffffff;
+        .date_grid button:first-child {
+            grid-column: 1;
+        }
 
-}
+        .date_grid button {
+            display: flex;
+            align-items: flex-start;
+            width: 137px;
+            height: 108px;
+            border-radius: 2px;
+            background-color: #ffffff;
 
-.date_grid button:hover,
-.date_grid button:focus {
-    outline: none;
-    background-color: #F2F2F2;
-}
+        }
 
-.date_grid button:active,
-.date_grid button.is-selected {
-    border: 3px solid #2BAE89;
- 
-}
-.date_grid time{
-    margin: 10px;
-}
+        .date_grid button:hover,
+        .date_grid button:focus {
+            outline: none;
+            background-color: #F2F2F2;
+        }
+
+        .date_grid button:active,
+        .date_grid button.is-selected {
+            border: 3px solid #2BAE89;
+        
+        }
+        .date_grid time{
+            margin: 10px;
+        }
+
+/* fim das classes da dashboard do calendario */
