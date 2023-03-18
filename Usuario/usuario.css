@@ -8,14 +8,14 @@
     padding: 0;
 }
 
-/* começo das classes da dashboard do menu do usuario */
+/* --- começo das classes da dashboard do menu do usuario --- */
 
     /* class do css do boddy da pagina do usuario */
     .body_user {
     background-color: #6F5BE3;                                                        /* cor da tela de fundo do body */
-    min-height: 100vh;                                                                  /* valor minimo da altura da pagina */
+    min-height: 6.25em;                                                                  /* valor minimo da altura da pagina */
     display: flex;                                                                      /* Definição da exibição como flex (vai jogar todos os elementos dentro da classe para a esquerda) */
-    justify-content: space-around;
+    justify-content: space-around;                                                      /* dimencionando os items do body espaçados ao seu redor */
     }
 
     /* class para dashboard do menu do usuario */
@@ -24,71 +24,79 @@
         color: #ffffff;                                                               /* cor da fonte da dashboard */
         font-family: 'Kumbh-medium', Arial, Helvetica, sans-serif;                      /* fonte estilizada da dashboard */                 
         width: 18.75em;                                                                 /* tamanho horizontal da dashboard */
-        height: 44.6875em;                                                              /* tamanho vertical da dashboard */
+        height: 44.688em;                                                               /* tamanho vertical da dashboard */
         border-radius: 15px;                                                            /* curvatura da borda da dashboard */
         position: relative;                                                             /* define a posição da dashboard como relativa, e usa os valores top e left */
-        top: 52px;                                                                    /* valor da posição a partir do topo */
-        left: 52px;                                                                   /* valor da posição a partir da esquerda */
+        top: 3.25em;                                                                    /* valor da posição a partir do topo */
+        left: 3.25em;                                                                   /* valor da posição a partir da esquerda */
     }
 
     /* class para o botão do home */
     .button_home {
-        position: relative;                                                             /* posição do botão da home relativo na dashboard com os valores top e left */
-        top: 18px;                                                                      /* valor da posição a partir do topo */     
-        left: 28px;                                                                     /* valor da posição a partir da esquerda */
+        position: relative;                                                                 /* posição do botão da home relativo na dashboard com os valores top e left */
+        top: 1.125em;                                                                      /* valor da posição a partir do topo */     
+        left: 1.125em;                                                                     /* valor da posição a partir da esquerda */
     }
 
     /* class para a imagem do usuario */
     .image_user {
-        display: flex;                                                                  /* exibição da imagem como flexivel */
-        justify-content: center;                                                        /* alinha a imagem no centro em comparação a dashboard */
+        display: flex;                                                                      /* exibição da imagem como flexivel */
+        justify-content: center;                                                            /* alinha a imagem no centro em comparação a dashboard */
     }
 
     /* estilizando a lista da class da dashboard do menu do usuario */
     .ul_dash_menu li {
-        list-style: none;                                                               /* estilo da lista: sem caracteres */
-        justify-content: center;                                                        /* alinhando os items no centro da dashboard */
-        flex-direction: column;                                                         /* define como os items dentro dele se organizam: em coluna */
-        text-align: center;                                                             /* alinha os textos ao centro da dashboard */
-        margin: 15px;                                                                   /* margem dos items da lista em comparação ao seu redor */
+        list-style: none;                                                                   /* estilo da lista: sem caracteres */
+        justify-content: center;                                                            /* alinhando os items no centro da dashboard */
+        flex-direction: column;                                                             /* define como os items dentro dele se organizam: em coluna */
+        text-align: center;                                                                 /* alinha os textos ao centro da dashboard */
+        margin: 1em;                                                                        /* margem dos items da lista em comparação ao seu redor */
     }
 
     /* adicionando 2 linhas ao redor de uma lista no menu */
     #line_menu {
-        border-top: 2px solid white;                                                  /* adicionando uma borda na parte de cima da lista (sintax 'border-(direção): tam_tipo de borda_cor da borda')*/
-        border-bottom: 2px solid white;                                               /* adicionando uma borda na parte de baixo da lista */                         
-        margin: 0 30px 0 30px;                                                          /* margem somente para as laterais (esquerda e direita) */
+        border-top: 2px solid white;                                                      /* adicionando uma borda na parte de cima da lista (sintax 'border-(direção): tamanho   tipo-de-borda   cor-da-borda')*/
+        border-bottom: 2px solid white;                                                   /* adicionando uma borda na parte de baixo da lista */                         
+        margin: 0 1.875em 0 1.875em;                                                        /* margem somente para as laterais (esquerda e direita) */
     }
     
 
-/* fim das classes da dashboard do menu do usuario */
+/* --- fim das classes da dashboard do menu do usuario --- */
 
 /* começo das classes da dashboard do calendario */
     /* class para o dashboard do calendario */ 
     .dash_calender {
-        width: 1015px;                                                                  /* tamanho horizontal */
-        height: 715px;                                                                  /* tamanho vertical */
-        margin: 52px 52px 0 52px;                                                       /* margin = margem externa relativo ao seu arredor */
-        padding: 20px 20px 35px 20px;                                                    /* padding = margem interna */
-        background-color: #333333;
-        border-radius: 15px;
-        position: relative;
-        
+        width: 63.438em;                                                                    /* tamanho horizontal */
+        height: 44.688em;                                                                   /* tamanho vertical */
+        margin: 3.25em 3.25em 0 3.25em;                                                     /* margin = margem externa relativo ao seu arredor */
+        padding: 1.25em 1.25em 0em 1.25em;                                                  /* padding = margem interna */
+        background-color: #333333;                                                        /* cor da dashboard do calendario */
+        border-radius: 15px;                                                                /* borda da dashboard do calendario */
     }
 
+        /* grupo englobando 2 classes e pondo elas em grade */
         .day_week,
         .date_grid {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
+            display: grid;                                                                  /* dimencionando os items em grades */
+            grid-template-columns: repeat(7, 1fr)                                          /* templante das colunas (sintax 'grid-template-columnds: repeat(n°-de-colunas, fração do espaço disponivel)') */
+        
         }
 
         .date_grid {
-            margin: 5px;
+            margin: 0.25em;
         }
 
         .month {
-            color: #ffffff;
-            border: 6px solid;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            border-radius: 2px;
+        }
+
+        .month button {
+            color: #000;
+            
+            background-color: #ffffff;
         }
 
         .day_week {
@@ -107,21 +115,26 @@
         .day_week_border {
             background-color: #ffffff;
             border-radius: 2px;
-            margin: 0 5px;
+            margin: 0 0.25em
         }
 
         .date_grid button:first-child {
             grid-column: 1;
         }
 
-        .date_grid button {
+        .date_grid time {
             display: flex;
+            justify-self: flex-start;
             align-items: flex-start;
-            width: 137px;
-            height: 108px;
+        }
+
+        .date_grid button {
+            width: 8.625em;
+            height: 6.75em;
+            margin: 0.25em;
             border-radius: 2px;
             background-color: #ffffff;
-
+            border: 0px solid;
         }
 
         .date_grid button:hover,
@@ -136,7 +149,7 @@
         
         }
         .date_grid time{
-            margin: 10px;
+            margin: 0.625em;
         }
 
 /* fim das classes da dashboard do calendario */
