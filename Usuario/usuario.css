@@ -152,4 +152,14 @@
             margin: 0.625em;
         }
 
+
+        /* botão para mudar o mês, esquerda */
+        .button_left {
+            width: 0; 
+            height: 0; 
+            border-top: 25px solid transparent;
+            border-bottom: 25px solid transparent; 
+            border-right:25px solid #ABA8B2;
+        }
+
 /* fim das classes da dashboard do calendario */
