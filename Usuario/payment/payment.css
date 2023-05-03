@@ -91,263 +91,6 @@ footer{
     letter-spacing: 0em;
 }
 
-/*Estilos da páginas de alteração de email e de senha*/
-#menu-button{
-    height: 40.25%;
-    width: 3.19%;
-    cursor: pointer;
-}
-
-#ul-change{
-    justify-content: space-between;
-    list-style-type: none;
-    align-items: center;
-    width: 40.66%;
-}
-
-.container-change{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    align-content: center;
-    height: 42.14%;
-    width: 58.19444444444444%;
-    border-radius: 15px;    
-    background-color: #F2F2F2;
-    box-shadow: 0px 6px 5px 0px #00000040;
-    padding-top: 5.01%;
-    padding-bottom: 5.01%;
-    margin-top: 7.43%;
-    margin-bottom: 7.43%;
-}
-
-#input-text {
-    height: 8.05%;
-    width: 100%;
-    border-radius: 0px;
-    border: none;
-    margin-top: 5.94%;
-    padding-left: 4.41%;
-    padding-bottom: 4%;
-    padding-top: 4%;
-}
-
-#captcha-box {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-content: center;
-    height: 8.06%;
-    width: 100%;
-    border-radius: 0px;
-    border: none;
-    background-color: #FFFFFF;
-    padding-left: 4.41%;
-    padding-top: 7.74%;
-    padding-bottom: 7.74%;
-    margin-top: 7.29%;
-}
-
-#robot{
-    margin-left: 5.18% ;
-    font-size: clamp(4px, 4px + 1vw, 15px);
-    font-weight: 400;
-    line-height: 19px;
-    letter-spacing: 0em;
-    text-align: left;
-}
-
-#button-box{
-    width: 100%;
-    height: 50.53%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    padding-top: 4.38%;
-}
-
-#save {
-    border-radius: 15px;
-    border: none;
-    background-color: #6F5BE3;
-    font-size: clamp(4px, 4px + 1vw, 15px);
-    font-weight: 400;
-    line-height: 19px;
-    letter-spacing: 0em;
-    text-align: center;
-    color: #FFFFFF;
-    cursor: pointer;
-    padding-top: 0.83%;
-    padding-bottom: 0.83%;
-    padding-left: 3.43%;
-    padding-right: 3.43%;
-}
-
-/*Estilos da página minha conta*/
-/*Estilos do cadastro*/
-#Login{
-    height: 37.11%;
-    width: 7.986111111111111%;
-    border-radius: 30px;
-    border: 3px solid #FFFFFF;
-    background-color: #6F5BE3;
-    color: #FFFFFF;
-    font-size: clamp(4px, 4px + 1vw, 15px);
-    padding-top: 0.5%;
-    padding-bottom: 0.5%;
-    padding-left: 0.11%;
-    padding-right: 0.11%;
-}
-
-.container-cad{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    align-content: center;
-    height: 66.61951909476662%;
-    width: 58.19444444444444%;
-    border-radius: 15px;    
-    background-color: #F2F2F2;
-    box-shadow: 0px 6px 5px 0px #00000040;
-    padding-top: 5.01%;
-    padding-bottom: 5.01%;
-    margin-top: 7.43%;
-    margin-bottom: 7.43%;
-}
-
-
-#cad-list {
-    width: 57.87589498806683%;
-}
-
-#form-cad {
-    width: 100%;
-}
-
-#name-box {
-    margin-bottom: 2.38%;
-    width: 95.5%;
-}
-
-#Name {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    height: 5.095541401273885%;
-    padding-left: 3.944444444444444%;
-    padding-bottom: 2%;
-    padding-top: 2%;
-    font-size: clamp(4px, 4px + 1vw, 15px);
-}
-
-#middle-input-left {
-    height: 5.095541401273885%;
-    width: 44.82100238663484%;
-    padding-left: 3.944444444444444%;
-    padding-bottom: 2%;
-    padding-top: 2%;
-    font-size: clamp(4px, 4px + 1vw, 15px);
-    margin-right: 6.8%;
-}
-
-#middle-input-right {
-    height: 5.095541401273885%;
-    width: 44.82100238663484%;
-    padding-left: 3.944444444444444%;
-    padding-bottom: 2%;
-    padding-top: 2%;
-    font-size: clamp(4px, 4px + 1vw, 15px);
-}
-
-#address-input-left{
-    height: 5.72%;
-    width: 41.94%;
-    margin-right: 1.78%;
-    padding-left: 3.944444444444444%;
-    padding-bottom: 2%;
-    padding-top: 2%;
-    font-size: clamp(4px, 4px + 1vw, 15px);
-}
-
-#address-input-middle{
-    text-align: center;
-    height: 5.72%;
-    width: 8.94%;
-    margin-right: 1.78%;
-    padding-bottom: 2%;
-    padding-top: 2%;
-    font-size: clamp(4px, 4px + 1vw, 15px);
-}
-
-#address-input-right{
-    height: 5.72%;
-    width: 26.34%;
-    padding-left: 3.944444444444444%;
-    padding-bottom: 2%;
-    padding-top: 2%;
-    font-size: clamp(4px, 4px + 1vw, 15px);
-}
-
-#container-middle{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    align-content: center;
-    margin-bottom: 2.38%;
-}
-
-#button-box-cad{
-    width: 100%;
-    height: 50.53%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    padding-top: 4.38%;
-}
-
-#account {
-    border-radius: 15px;
-    border: none;
-    background-color: #6F5BE3;
-    font-size: clamp(4px, 4px + 1vw, 15px);
-    font-weight: 400;
-    line-height: 19px;
-    letter-spacing: 0em;
-    text-align: center;
-    color: #FFFFFF;
-    cursor: pointer;
-    padding-top: 0.83%;
-    padding-bottom: 0.83%;
-    padding-left: 3.43%;
-    padding-right: 3.43%;
-}
-
-#button-payment {
-    border-radius: 15px;
-    border: none;
-    background-color: #6F5BE3;
-    font-size: clamp(4px, 4px + 1vw, 15px);
-    font-weight: 400;
-    line-height: 19px;
-    letter-spacing: 0em;
-    text-align: center;
-    color: #FFFFFF;
-    cursor: pointer;
-    padding-top: 2.23%;
-    padding-bottom: 2.23%;
-    padding-left: 4.43%;
-    padding-right: 4.43%;
-}
-
 
 
 /*Estilos do cadastro de cartão*/
@@ -463,12 +206,22 @@ th{
     border: 1px solid #000000;
 }
 
+#total{
+    margin-left: 20%;
+    margin-bottom: 10%;
+}
+
+#payment-form{
+    width: 100%;
+    text-align: center;
+    font-weight: 300;
+}
+
 #options-payment{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding-top: 10%;
-    padding-left: 40%;
     width: 100%;
 }
 
@@ -476,7 +229,7 @@ th{
     width: 100%;
     display: flex;
     flex-direction: column;
-    margin-top: 10%;
+    margin-top: 5%;
 }
 
 .options-buttons-lines{
@@ -489,4 +242,21 @@ th{
 
 .bottom-padding{
     padding-bottom: 5%;
+}
+
+#button-payment {
+    border-radius: 15px;
+    border: none;
+    background-color: #6F5BE3;
+    font-size: clamp(4px, 4px + 1vw, 15px);
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #FFFFFF;
+    cursor: pointer;
+    padding-top: 2.23%;
+    padding-bottom: 2.23%;
+    padding-left: 4.43%;
+    padding-right: 4.43%;
 }
