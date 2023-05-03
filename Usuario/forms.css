@@ -347,3 +347,107 @@ footer{
     padding-left: 3.43%;
     padding-right: 3.43%;
 }
+
+
+
+/*Estilos do cadastro de cartão*/
+#Agendamento-cad {
+    height: 37.11%;
+    width: 13.88%;
+    border-radius: 30px;
+    border: 2px solid #FFFFFF;
+    background-color: #6F5BE3;
+    color: #FFFFFF;
+    font-size: clamp(2px, 2px + 1vw, 15px);
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+    padding-left: 1.38%;
+    padding-right: 1.38%;
+}
+
+#Name-card {
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 5.095541401273885%;
+    padding-left: 3.944444444444444%;
+    padding-bottom: 2%;
+    padding-top: 2%;
+    font-size: clamp(4px, 4px + 1vw, 15px);
+}
+.container-cad-card {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    height: 66.61951909476662%;
+    width: 58.19444444444444%;
+    border-radius: 15px;
+    background-color: #F2F2F2;
+    box-shadow: 0px 6px 5px 0px #00000040;
+    padding-top: 5.01%;
+    padding-bottom: 5.01%;
+    margin-top: 7.43%;
+    margin-bottom: 7.43%;
+}
+
+#cad-list-card {
+    width: 57.87589498806683%;
+}
+
+#form-cad-card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#name-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2.38%;
+    width: 100%;
+}
+
+#number-card {
+    height: 5.095541401273885%;
+    width: 65.58472553699284%;
+    padding-left: 3.944444444444444%;
+    padding-bottom: 2%;
+    padding-top: 2%;
+    font-size: clamp(4px, 4px + 1vw, 15px);
+    margin-right: 6.8%;
+}
+
+
+#CVC {
+    text-align: center;
+    height: 5.72%;
+    width: 22.94%;
+    margin-left: 0%;
+    padding-bottom: 2%;
+    padding-top: 2%;
+    font-size: clamp(4px, 4px + 1vw, 15px);
+}
+
+#captcha-box-cad {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    height: 8.06%;
+    width: 36.63%;
+    border-radius: 0px;
+    border: none;
+    background-color: #FFFFFF;
+    padding-left: 4.41%;
+    padding-top: 2.74%;
+    padding-bottom: 2.74%;
+    margin-top: 2.29%;
+}
