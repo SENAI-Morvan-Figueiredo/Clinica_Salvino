@@ -331,7 +331,7 @@ footer{
     padding-right: 3.43%;
 }
 
-#button-change {
+#button-payment {
     border-radius: 15px;
     border: none;
     background-color: #6F5BE3;
@@ -342,10 +342,10 @@ footer{
     text-align: center;
     color: #FFFFFF;
     cursor: pointer;
-    padding-top: 1.43%;
-    padding-bottom: 1.43%;
-    padding-left: 3.43%;
-    padding-right: 3.43%;
+    padding-top: 2.23%;
+    padding-bottom: 2.23%;
+    padding-left: 4.43%;
+    padding-right: 4.43%;
 }
 
 
@@ -476,6 +476,17 @@ th{
     width: 100%;
     display: flex;
     flex-direction: column;
-    margin-left: -20%;
     margin-top: 10%;
+}
+
+.options-buttons-lines{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+.bottom-padding{
+    padding-bottom: 5%;
 }
