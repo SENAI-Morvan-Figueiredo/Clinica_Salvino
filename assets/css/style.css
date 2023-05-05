@@ -180,7 +180,42 @@ nav {
     }
  }
 
+/* Pop up vídeo*/
+.popUpVideo {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 20%;
+    right: 40%;
+    width: 600px;
+    height: 400px;
+    z-index: 999;
+}
+.blur {
+    filter: brightness(0.5);
+}
+.ocultar {
+    display: none;
+}
+.mostrar {
+    filter: none !important;
+	opacity: 0;
+    animation: surgirVideo;
+	animation: surgirVideo 1s ease-in both;
+    z-index: 9999;
 
+}
+@keyframes surgirVideo {
+    from {
+		opacity: 0;
+		transform: translate3d(0, -20%, 0);
+	}
+	to {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+}
 /* menu navegação home */
 
 .logo_branco {
