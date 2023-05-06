@@ -22,8 +22,7 @@
     <main>
         <div class="container-cad">
             <h1 id="title">CADASTRO</h1>
-            <form id="form-cad" action="/action_page.php">
-                <ul id="cad-list">
+            <form class="form-cad" id="form-cad" action="/action_page.php">
                     <div class="form-control">
                         <input type="text" id="Name" name="Nome completo" placeholder="Nome completo">
                         <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
@@ -32,7 +31,7 @@
                         <small></small>
                     </div>
 
-                    <div id="container-middle">
+                    <div class="container-middle">
                         <div class="form-control">
                             <input type="date" id="date" name="Data de nascimento">
                             <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
@@ -41,7 +40,7 @@
                             <small></small>
                         </div>
                         <div class="form-control">
-                            <input type="text" maxlength="10" minlength="10" inputmode="numeric" id="middle-input-right"
+                            <input type="text" maxlength="10" minlength="10" inputmode="numeric" id="RG"
                                 name="RG" placeholder="RG">
                             <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                             <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
@@ -50,27 +49,28 @@
                         </div>
                     </div>
 
-                    <div id="container-middle-cpf">
+                    <div class="container-middle">
                         <div class="form-control">
                             <input type="text" maxlength="11" minlength="11" inputmode="numeric"
-                                id="middle-input-left-cpf" name="CPF" placeholder="CPF">
+                                id="CPF" name="CPF" placeholder="CPF">
                             <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                             <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
                             <small></small>
                         </div>
-                        <div id="form-control">
-                            <div id="option-dependence">
-                                <input type="checkbox" name="Independente" value="Independente"><a
-                                    id="robot">Independente</a>
+                        <div class="form-control Dependente">
+                            <div class="option-dependence">
+                                <label for="independente">Independente</label>
+                                <input type="radio" name="dependente" value="Independente" class="checkbox left" id="dependente">
                                 <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                                 <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
                                 <small></small>
                             </div>
 
-                            <div id="option-dependence">
-                                <input type="checkbox" name="Dependente" value="Dependente"><a id="robot">Dependente</a>
+                            <div class="option-dependence">
+                                <label for="dependente">Dependente</label>
+                                <input type="radio" name="dependente" value="Dependente" class="checkbox left" id="dependente">
                                 <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                                 <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
@@ -81,7 +81,7 @@
 
                     <div class="form-control">
                         <div id="name-box">
-                            <input type="text" id="Name" name="Nome Responsavel" placeholder="Nome Responsável">
+                            <input type="text" id="Responsavel" name="Nome Responsavel" placeholder="Nome Responsável">
                         </div>
                         <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                         <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
@@ -89,9 +89,9 @@
                         <small></small>
                     </div>
 
-                    <div id="container-middle">
+                    <div class="container-middle">
                         <div class="form-control">
-                            <input type="text" maxlength="10" minlength="10" inputmode="numeric" id="middle-input-left"
+                            <input type="text" maxlength="10" minlength="10" inputmode="numeric" id="RGResponsavel"
                                 name="RG" placeholder="RG">
                             <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                             <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
@@ -99,7 +99,7 @@
                             <small></small>
                         </div>
                         <div class="form-control">
-                            <input type="text" maxlength="11" minlength="11" inputmode="numeric" id="middle-input-right"
+                            <input type="text" maxlength="11" minlength="11" inputmode="numeric" id="CPFResponsavel"
                                 name="CPF" placeholder="CPF">
                             <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                             <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
@@ -108,9 +108,9 @@
                         </div>
                     </div>
 
-                    <div id="container-middle">
+                    <div class="container-middle">
                         <div class="form-control">
-                            <input type="tel" maxlength="14" minlength="11" id="middle-input-left" name="phone"
+                            <input type="tel" maxlength="14" minlength="11" id="phone" name="phone"
                                 placeholder="(ddd) 99999-9999">
                             <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                             <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
@@ -118,7 +118,7 @@
                             <small></small>
                         </div>
                         <div class="form-control">
-                            <input type="text" inputmode="numeric" id="middle-input-right" name="CEP" placeholder="CEP">
+                            <input type="text" inputmode="numeric" id="CEP" name="CEP" placeholder="CEP">
                             <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                             <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
@@ -128,9 +128,9 @@
 
                     </div>
 
-                    <div id="container-middle">
-                        <div class="form-control">
-                            <input type="text" id="address-input-left" name="Endereço" placeholder="Endereço">
+                    <div class="container-middle">
+                        <div class="form-control right complemento">
+                            <input type="text" id="Endereco" name="Endereço" placeholder="Endereço">
                             <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                             <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
@@ -138,15 +138,16 @@
                         </div>
 
                         <div class="form-control">
-                            <input type="text" inputmode="numeric" id="address-input-middle" name="Numero"
+                            <input type="text" inputmode="numeric" id="Numero" name="Numero"
                                 placeholder="N°">
                             <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                             <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
                             <small></small>
                         </div>
-                        <div class="form-control">
-                            <input type="text" name="Complemento" id="address-input-right" placeholder="Complemento">
+
+                        <div class="form-control left">
+                            <input type="text" name="Complemento" id="Complemento" placeholder="Complemento">
                             <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                             <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
@@ -154,7 +155,7 @@
                         </div>
                     </div>
 
-                    <div id="container-middle">
+                    <div class="container-middle">
                         <div class="form-control">
                             <input type="Email" id="email" name="E-mail" placeholder="E-mail">
                             <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
@@ -163,7 +164,7 @@
                             <small></small>
                         </div>
                         <div class="form-control">
-                            <input type="Confirmar Email" id="middle-input-right" name="Confirmar E-mail"
+                            <input type="Confirmar Email" id="emailCheck" name="Confirmar E-mail"
                                 placeholder="Confirmar E-mail">
                             <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                             <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
@@ -172,7 +173,7 @@
                         </div>
                     </div>
 
-                    <div id="container-middle">
+                    <div class="container-middle">
                         <div class="form-control">
                             <input type="password" id="password" name="Senha" placeholder="Senha">
                             <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
@@ -189,8 +190,6 @@
                             <small></small>
                         </div>
                     </div>
-
-                </ul>
                 <div id="captcha-box-cad">
                     <input type="checkbox" name="Eu não sou um robô" value="Eu não sou um robô"><a id="robot">Não sou
                         robô</a>

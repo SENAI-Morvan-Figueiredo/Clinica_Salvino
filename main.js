@@ -3,11 +3,15 @@ const userName = document.getElementById('Name');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
 const passwordCheck = document.getElementById('passwordCheck');
-let formControls = [userName, email, password, passwordCheck];;
+const date = document.getElementById('date');
+const rg = document.getElementById('RG');
+const cpf = document.getElementById('CPF');
+const dependente = document.querySelectorAll('input[name="dependente"]');
+let formControls = [userName, email, password, passwordCheck, date, rg, cpf];
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-
+    
     checkInputs();
 });
 
@@ -16,6 +20,17 @@ function checkInputs() {
     const emailValue = email.value.trim();
     const passwordValue = password.value.trim();
     const passwordCheckValue = passwordCheck.value.trim();
+    const dateValue = date.value.trim();
+    const rgValue = rg.value.trim();
+    const cpfValue = cpf.value.trim();
+    let dependenteValue='';
+
+    dependente.forEach((radio) => {
+        if (radio.checked) {
+          dependenteValue = radio.value;
+        }
+      });
+    console.log(dependenteValue)
 
     if (nameValue === '') {
         errorValidation(userName, 'Preencha esse campo');
@@ -46,6 +61,27 @@ function checkInputs() {
         errorValidation(passwordCheck, 'As senhas são diferentes');
     } else {
         successValidation(passwordCheck);
+    };
+
+    if (dateValue === '') {
+        errorValidation(date, 'Preencha esse campo');
+        
+    } else {
+        successValidation(date);
+    };
+
+    if (rgValue === '') {
+        errorValidation(rg, 'Preencha esse campo');
+        
+    } else {
+        successValidation(rg);
+    };
+
+    if (cpfValue === '') {
+        errorValidation(cpf, 'Preencha esse campo');
+        
+    } else {
+        successValidation(cpf);
     };
 };
 
