@@ -315,20 +315,34 @@ footer{
     color:  #333333;
     margin-bottom: 2.916666666666667%;
 }
-
-
-#cad-list {
-    width: 57.87589498806683%;
+.form-cad{
+    translate: 50%, -50%;
 }
-
-#form-cad {
-    width: 100%;
+.option-dependence{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
 }
-
+.checkbox{
+    width: 13px;
+    height: 13px;
+    align-items: center;
+}
 .form-control {
     margin-bottom: 10px;
     padding-bottom: 20px;
     position: relative;
+}
+.complemento {
+    width: 50%;
+}
+.right {
+    margin-right: 10% ;
+}
+
+.left{
+    margin-left: 10%;
 }
 
 .form-control label {
@@ -341,8 +355,6 @@ footer{
     border: 2px solid #3E445B;
     border-radius: 5px;
     outline: 0;
-
-    display: flex;
 
     font-size: 14px;
 
@@ -403,7 +415,7 @@ footer{
 
 }
 
-#container-middle {
+.container-middle {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -413,18 +425,6 @@ footer{
     margin-bottom: 2.38%;
 }
 
-#dependence {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-left: 9.27%;
-}
-
-#option-dependence{
-    display: flex;
-    flex-direction: row;
-}
 
 #captcha-box-cad {
     display: flex;
