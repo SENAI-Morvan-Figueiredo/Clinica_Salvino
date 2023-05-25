@@ -250,13 +250,8 @@ footer{
     align-items: center;
     padding-left: 9.930555555555556%;
     padding-right: 9.930555555555556%;
-    padding-top: 0.4861111111111111%;
-    padding-bottom: 0.6944444444444444%;
 }
 
-#White-Logo {
-    width: 7.573888888888889% ;
-}
 
 #Agendamento-cad {
     height: 37.11%;
@@ -410,7 +405,7 @@ footer{
     visibility: hidden;
     position: absolute;
     margin-top: 5px;
-    font-size: 14px;
+    font-size: 12px;
     color: #b22c2c;
 
 }
