@@ -19,13 +19,25 @@
     </header>
     <main>
         <div class="container-login">
-            <img id="Logo" src="./assets/img/Logotipo Salvino.png">
+            <img class="logo_branco" src="./assets/img/Logotipo Salvino.png">
             <div id="Login-Box">
                 <H1 id="title">LOGIN</H1>
                 <ul id="inputs">
                     <form id="form-login" action="/action_page.php">
-                        <input type="Email" id="input-box" name="E-mail" placeholder="E-mail">
-                        <input type="password" id="input-box" name="Senha" placeholder="Senha">
+                        <div class="form-control">
+                            <input type="Email" id="email" name="E-mail" placeholder="E-mail">
+                            <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                            <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                            <small></small>
+                        </div>
+                        <div class="form-control">
+                            <input type="password" id="password" name="Senha" placeholder="Senha">
+                            <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                            <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                            <small></small>
+                        </div>
 
                         <div id="options-box">
                             <div id="captcha-box-login">
@@ -53,7 +65,8 @@
     <footer>
         <p id="Copyright">Copyright 2023 - Desenvolvido por DEV Nutri - Todos os direitos reservados.</p>
     </footer>
+    <script src="./assets/js/login.js"></script>
 </body>
-<script src="/assets/js/script.js"></script>
+
 
 </html>
