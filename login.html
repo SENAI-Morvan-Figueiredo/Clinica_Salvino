@@ -13,16 +13,18 @@
 </head>
 
 <body class="home_body bg-black">
-    <header id="header-login">
-        <img src="./assets/img/Logo Branco 1.png">
+    <header class="header">
+        <div class="container">
+            <img src="./assets/img/Logo Branco 1.png">
+        </div>
         <!--<button id="Agendamento-login">Voltar para Home</button>-->
     </header>
     <main>
         <div class="container-login">
             <img class="logo_branco" src="./assets/img/Logotipo Salvino.png">
-            <div id="Login-Box">
-                <H1 id="title">LOGIN</H1>
-                <ul id="inputs">
+            <div class="Login-Box">
+                <h1 class="title">LOGIN</h1>
+                <div class="inputs">
                     <form id="form-login" action="/action_page.php">
                         <div class="form-control">
                             <input type="Email" id="email" name="E-mail" placeholder="E-mail">
@@ -39,13 +41,13 @@
                             <small></small>
                         </div>
 
-                        <div id="options-box">
-                            <div id="captcha-box-login">
+                        <div class="options-box">
+                            <div class="captcha-box">
                                 <input type="checkbox" name="Eu não sou um robô" value="Eu não sou um robô"><a
                                     id="robot">Não sou robô</a>
                             </div>
 
-                            <div id="options">
+                            <div class="options">
                                 <div>
                                     <p id="text-options"><a>Esqueci minha senha</a></p>
                                 </div>
@@ -56,9 +58,9 @@
                             </div>
                         </div>
                         <div id="button-box-login">
-                            <input type="submit" id="enter" value="Entrar">
+                            <input type="submit" id="enter" class="submit" value="Entrar">
                     </form>
-                </ul>
+                </div>
             </div>
         </div>
     </main>
