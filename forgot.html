@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,47 +8,56 @@
     <title>Esqueci a Senha</title>
     <link rel="stylesheet" href="./assets/css/account.css">
 </head>
+
 <body>
-    <header id="header-forgot">
-        <img src="./assets/img/Logo Branco 1.png">
-        <!--<button id="Agendamento-login">Agendamento Online</button>-->
-        <img id="menu-button" src="./assets/img/Menu.png">
+    <header class="header">
+        <div class="container">
+            <img src="./assets/img/Logo Branco 1.png">
+            <!--<button id="Agendamento-login">Agendamento Online</button>-->
+            <img id="menu-button" src="./assets/img/Menu.png">
+        </div>
     </header>
 
     <main>
         <div class="container-forgot">
-            <h1>Esqueci a Senha</h1>
+            <h1 class="title">Esqueci a Senha</h1>
             <ul id="ul-forgot">
                 <form action="/action_page.php">
-                    <div>
+                    <div class="form-control">
                         <input type="Email" id="input-text-forgot" name="Email Conta" placeholder="Email Conta">
+                        <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                        <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                        <small></small>
                     </div>
-        
+
                     <p id="receive">Receber por</p>
-        
+
                     <div id="button-receive-box">
-                        <input type="submit" id= "receive-button" value="Email">
-                        <input type="submit" id= "receive-button" value="SMS">
+                        <input type="submit" id="receive-button" value="Email">
+                        <input type="submit" id="receive-button" value="SMS">
                     </div>
-        
+
                     <div id="Code-Box">
                         <input type="text" id="Code" name="Codígo de Segurança" placeholder="000">
                         <p id="robot">Código de Segurança</p>
                     </div>
-        
-                    <div id="captcha-box-forgot">
-                        <input type="checkbox" name="Eu não sou um robô" value="Eu não sou um robô"><a id="robot">Não sou robô</a>
+
+                    <div class="captcha-box">
+                        <input type="checkbox" name="Eu não sou um robô" value="Eu não sou um robô"><a id="robot">Não
+                            sou robô</a>
                     </div>
-                </form> 
-            </ul>
-            <div id="button-box">
-                <input type="submit" id="back" value="Voltar">
-                <input type="submit" id="save" value="Salvar">
-            </div>
+                    </ul>
+                    <div id="button-box">
+                        <input type="submit" id="back" class="back" value="Voltar">
+                        <input type="submit" id="save" class="submit" value="Salvar">
+                    </div>
+                </form>
         </div>
     </main>
     <footer>
         <p id="Copyright">Copyright 2023 - Desenvolvido por DEV Nutri - Todos os direitos reservados.</p>
     </footer>
 </body>
+
 </html>

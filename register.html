@@ -14,15 +14,17 @@
 </head>
 
 <body>
-    <header id="header-cad">
-        <img class="logo_branco" src="./assets/img/Logo Branco 1.png">
+    <header class="header">
+        <div class="container">
+            <img class="logo_branco" src="./assets/img/Logo Branco 1.png">
         <!--<button id="Agendamento-cad">Voltar para Home</button>-->
         <button id="Login">Fazer Login</button>
+        </div>
     </header>
 
     <main>
         <div class="container-cad">
-            <h1 id="title">CADASTRO</h1>
+            <h1 class="title">CADASTRO</h1>
             <form class="form-cad" id="form-cad" action="/action_page.php">
                 <div class="form-control">
                     <input type="text" id="Name" class="input" name="Nome completo" placeholder="Nome completo">
@@ -190,13 +192,13 @@
                         <small></small>
                     </div>
                 </div>
-                <div id="captcha-box-cad">
+                <div class="captcha-box">
                     <input type="checkbox" name="Eu não sou um robô" value="Eu não sou um robô"><a id="robot">Não sou
                         robô</a>
                 </div>
                 <div id="button-box-cad">
-                    <input type="submit" id="back" value="Voltar">
-                    <input type="submit" id="account" value="Criar conta">
+                    <input type="submit" id="back" class="back" value="Voltar">
+                    <input type="submit" id="account" class="submit" value="Criar conta">
                 </div>
             </form>
         </div>
