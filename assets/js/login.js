@@ -34,6 +34,9 @@ function errorValidation(input, message) {
     const formControl = input.parentElement;
     formControl.classList.add('error');
     formControl.classList.remove('success');
+    
+    const messageError = formControl.querySelector('small');
+    messageError.innerHTML = message;
 
     shake(formControl);
 };

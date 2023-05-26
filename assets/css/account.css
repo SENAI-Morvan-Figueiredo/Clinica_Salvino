@@ -328,7 +328,7 @@ footer{
 .form-control i {
     position: absolute;
     top: 17px;
-    right: 0px;
+    right: 10px;
     visibility: hidden;
 }
 
@@ -374,6 +374,12 @@ footer{
     text-align: center;
     color: #FFFFFF;
     cursor: pointer;
+}
+
+.message{
+    position: absolute;
+    top: 50px;
+    left: 0;
 }
 
 
