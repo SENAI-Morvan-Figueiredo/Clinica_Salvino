@@ -14,45 +14,44 @@
         <div class="container">
             <img src="./assets/img/Logo Branco 1.png">
             <!--<button id="Agendamento-login">Agendamento Online</button>-->
-            <img id="menu-button" src="./assets/img/Menu.png">
+            <img class="menu-button" src="./assets/img/Menu.png">
         </div>
     </header>
 
     <main>
         <div class="container-forgot">
             <h1 class="title">Esqueci a Senha</h1>
-            <ul id="ul-forgot">
-                <form action="/action_page.php">
-                    <div class="form-control">
-                        <input type="Email" id="input-text-forgot" name="Email Conta" placeholder="Email Conta">
-                        <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
-                        <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+            <form class="form" action="/action_page.php">
+                <div class="form-control">
+                    <input type="Email" id="input-text-forgot" name="Email Conta" placeholder="Email Conta">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
-                        <small></small>
-                    </div>
+                    <small></small>
+                </div>
 
-                    <p id="receive">Receber por</p>
+                <p id="receive">Receber por</p>
 
-                    <div id="button-receive-box">
-                        <input type="submit" id="receive-button" value="Email">
-                        <input type="submit" id="receive-button" value="SMS">
-                    </div>
+                <div id="button-receive-box">
+                    <input type="submit" id="receive-button" class="submit" value="Email">
+                    <input type="submit" id="receive-button" class="submit" value="SMS">
+                </div>
 
-                    <div id="Code-Box">
-                        <input type="text" id="Code" name="Codígo de Segurança" placeholder="000">
-                        <p id="robot">Código de Segurança</p>
-                    </div>
+                <div class="form-control code">
+                    <label for="Code">Código de Segurança</label>
+                    <input type="text" id="Code" class="code" name="Codígo de Segurança" placeholder="000">
+                </div>
 
-                    <div class="captcha-box">
-                        <input type="checkbox" name="Eu não sou um robô" value="Eu não sou um robô"><a id="robot">Não
-                            sou robô</a>
-                    </div>
-                    </ul>
-                    <div id="button-box">
-                        <input type="submit" id="back" class="back" value="Voltar">
-                        <input type="submit" id="save" class="submit" value="Salvar">
-                    </div>
-                </form>
+                <div class="captcha-box center">
+                    <input type="checkbox" name="Eu não sou um robô" value="Eu não sou um robô"><a id="robot">Não
+                        sou robô</a>
+                </div>
+                </ul>
+                <div class="button-box">
+                    <input type="submit" id="back" class="back" value="Voltar">
+                    <input type="submit" id="save" class="submit" value="Salvar">
+                </div>
+            </form>
         </div>
     </main>
     <footer>

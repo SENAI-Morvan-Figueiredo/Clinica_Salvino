@@ -139,7 +139,7 @@ footer{
     align-items: center;
 }
 
-#text-options{
+.text-options{
     font-size: clamp(4px, 4px + 1vw, 15px);
     font-weight: 400;
     line-height: 19px;
@@ -157,8 +157,6 @@ footer{
     flex-direction: row;
     flex-wrap: wrap;
     align-content: center;
-    height: 8.06%;
-    width: 36.63%;
     border-radius: 0px;
     border: none;
     background-color: #FFFFFF;
@@ -239,6 +237,7 @@ footer{
 .form-cad{
     translate: 50%, -50%;
 }
+
 
 .option-dependence{
     display: flex;
@@ -328,7 +327,7 @@ footer{
 .form-control i {
     position: absolute;
     top: 17px;
-    right: 0px;
+    right: 10px;
     visibility: hidden;
 }
 
@@ -376,53 +375,42 @@ footer{
     cursor: pointer;
 }
 
+.message{
+    position: absolute;
+    top: 50px;
+    left: 0;
+}
+
 
 
 
 /*Estilos página esqueci minha senha*/
-#header-forgot{
-    background-color: #6F5BE3;
-    height: 6.85997171145686%;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding-left: 9.930555555555556%;
-    padding-right: 12.30555555555556%;
-    padding-top: 0.4861111111111111%;
-    padding-bottom: 0.6944444444444444%;
-}
 
-#Agendamento-forgot {
-    height: 37.11%;
-    width: 14.58%;
-    border-radius: 30px;
-    border: 2px solid #FFFFFF;
-    background-color: #6F5BE3;
-    color: #FFFFFF;
-    font-size: clamp(2px, 2px + 1vw, 15px);
-    padding-top: 0.5%;
-    padding-bottom: 0.5%;
-    padding-left: 1.38%;
-    padding-right: 1.38%;
-}
-
-#menu-button{
-    height: 40.25%;
-    width: 3.19%;
+.menu-button{
+    height: 35px;
+    width: 35px;
     cursor: pointer;
-}
-
-#ul-forgot{
-    justify-content: space-between;
-    list-style-type: none;
-    align-items: center;
-    width: 40.66%;
 }
 
 .container-forgot .title{
     margin-bottom: 30px;
+}
+
+.form {
+    padding: 0 40px 30px;
+    width: 50%;
+    
+}
+
+.form-control .code{
+    margin-top: 45px ;
+}
+
+.captcha-box.center{
+    position: relative; 
+    top:50%;
+    left:50%;
+    transform: translate(-50%, 0)
 }
 
 .container-forgot{
@@ -489,60 +477,17 @@ footer{
     align-items: center;
 }
 
-#Code{
-    width: 5%;
+.form-control .code{
+    width: 50px;
     padding: 2.43%;
 }
 
-#captcha-box-forgot {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-content: center;
-    height: 8.06%;
-    width: 70%;
-    border-radius: 0px;
-    border: none;
-    background-color: #FFFFFF;
-    padding-left: 4.41%;
-    padding-top: 7.74%;
-    padding-bottom: 7.74%;
-    margin-top: 7.29%;
-    margin-left: 15%;
-}
 
-#robot{
-    margin-left: 5.18% ;
-    font-size: clamp(4px, 4px + 1vw, 15px);
-    font-weight: 400;
-    line-height: 19px;
-    letter-spacing: 0em;
-    text-align: left;
-}
-
-#button-box{
+.button-box{
     width: 100%;
-    height: 50.53%;
+    height: 100px;
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    padding-top: 4.38%;
-}
-
-#save {
-    border-radius: 15px;
-    border: none;
-    background-color: #6F5BE3;
-    font-size: clamp(4px, 4px + 1vw, 15px);
-    font-weight: 400;
-    line-height: 19px;
-    letter-spacing: 0em;
-    text-align: center;
-    color: #FFFFFF;
-    cursor: pointer;
-    padding-top: 0.83%;
-    padding-bottom: 0.83%;
-    padding-left: 3.43%;
-    padding-right: 3.43%;
+    justify-content: space-between;
+    padding-top: 60px;
 }
