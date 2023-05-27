@@ -21,9 +21,9 @@
     <main>
         <div class="container-forgot">
             <h1 class="title">Esqueci a Senha</h1>
-            <form class="form" action="/action_page.php">
+            <form class="form" id="form-forgot" action="/action_page.php">
                 <div class="form-control">
-                    <input type="Email" id="input-text-forgot" name="Email Conta" placeholder="Email Conta">
+                    <input type="Email" id="email" name="Email Conta" placeholder="Email Conta">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
@@ -39,7 +39,7 @@
 
                 <div class="form-control code">
                     <label for="Code">Código de Segurança</label>
-                    <input type="text" id="Code" class="code" name="Codígo de Segurança" placeholder="000">
+                    <input type="text" id="code" class="code" name="Codígo de Segurança" placeholder="000">
                 </div>
 
                 <div class="captcha-box center">
@@ -57,6 +57,8 @@
     <footer>
         <p id="Copyright">Copyright 2023 - Desenvolvido por DEV Nutri - Todos os direitos reservados.</p>
     </footer>
+    <script src="https://kit.fontawesome.com/fc74a91a63.js" crossorigin="anonymous"></script>
+    <script src="./assets/js/forgot.js"></script>
 </body>
 
 </html>
