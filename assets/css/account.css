@@ -176,36 +176,9 @@ footer{
 }
 
 /*Estilos do cadastro*/
-#header-cad{
-    background-color: #6F5BE3;
-    height: 6.85997171145686%;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding-left: 9.930555555555556%;
-    padding-right: 9.930555555555556%;
-}
-
-
-#Agendamento-cad {
-    height: 37.11%;
-    width: 13.88%;
-    border-radius: 30px;
-    border: 2px solid #FFFFFF;
-    background-color: #6F5BE3;
-    color: #FFFFFF;
-    font-size: clamp(2px, 2px + 1vw, 15px);
-    padding-top: 0.5%;
-    padding-bottom: 0.5%;
-    padding-left: 1.38%;
-    padding-right: 1.38%;
-}
-
 #Login{
-    height: 37.11%;
-    width: 7.986111111111111%;
+    height: 40px;
+    width: 130px;
     border-radius: 30px;
     border: 3px solid #FFFFFF;
     background-color: #6F5BE3;

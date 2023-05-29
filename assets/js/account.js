@@ -1,8 +1,5 @@
 const form = document.getElementById('form-cad');
 const userName = document.getElementById('Name');
-const email = document.getElementById('email');
-const password = document.getElementById('password');
-const passwordCheck = document.getElementById('passwordCheck');
 const date = document.getElementById('date');
 const rg = document.getElementById('RG');
 const cpf = document.getElementById('CPF');
@@ -14,9 +11,7 @@ const cep = document.getElementById('CEP');
 const adress = document.getElementById('Endereco');
 const number = document.getElementById('Numero');
 const complement = document.getElementById('Complemento');
-const emailCheck = document.getElementById('emailCheck');
-const dependente = document.querySelectorAll('input[name="dependente"]');
-let formControls = [userName, email, password, passwordCheck, date, rg, cpf, responsavel, RGresponsavel, CPFresponsavel, phone, cep, adress, number, complement, emailCheck, dependente];
+let formControls = [userName, date, rg, cpf, responsavel, phone];
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -26,9 +21,6 @@ form.addEventListener('submit', (e) => {
 
 function checkInputs() {
     const nameValue = userName.value.trim();
-    const emailValue = email.value.trim();
-    const passwordValue = password.value.trim();
-    const passwordCheckValue = passwordCheck.value.trim();
     const dateValue = date.value.trim();
     const rgValue = rg.value.trim();
     const cpfValue = cpf.value.trim();
@@ -40,53 +32,12 @@ function checkInputs() {
     const adressValue = adress.value.trim();
     const numberValue = number.value.trim();
     const complementValue = complement.value.trim();
-    const emailCheckValue = emailCheck.value.trim();
-    let dependenteValue = '';
-    const dependenteArray = Array.from(dependente);
-
-    dependenteArray.forEach((radio) => {
-        if (radio.checked) {
-            dependenteValue = radio.value.trim();
-        }
-    });
-    console.log(dependenteValue);
-
-    if (dependenteValue === '') {
-        errorValidation(dependente[0], 'Preencha esse campo');
-
-    } else {
-        successValidation(dependente[0]);
-    };
 
     if (nameValue === '') {
         errorValidation(userName, 'Preencha esse campo');
 
     } else {
         successValidation(userName);
-    };
-
-    if (emailValue === '') {
-        errorValidation(email, 'Preencha esse campo');
-
-    } else {
-        successValidation(email);
-    };
-
-    if (passwordValue === '') {
-        errorValidation(password, 'Preencha esse campo');
-    } else if (passwordValue.length < 8) {
-        errorValidation(password, 'A senha deve ter 8 ou mais caracteres');
-    } else {
-        successValidation(password);
-    };
-
-    if (passwordCheckValue === '') {
-        errorValidation(passwordCheck, 'Preencha esse campo');
-
-    } else if (passwordCheckValue !== passwordValue) {
-        errorValidation(passwordCheck, 'As senhas são diferentes');
-    } else {
-        successValidation(passwordCheck);
     };
 
     if (dateValue === '') {
@@ -166,13 +117,6 @@ function checkInputs() {
         successValidation(complement);
     };
 
-    if (emailCheckValue === '') {
-        errorValidation(emailCheck, 'Preencha esse campo');
-    } else if (emailCheckValue !== emailValue) {
-        errorValidation(emailCheck, 'Os e-mails são diferentes');
-    } else {
-        successValidation(emailCheck);
-    };
 };
 
 
