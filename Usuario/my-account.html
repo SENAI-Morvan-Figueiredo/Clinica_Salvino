@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,57 +11,146 @@
         @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap');
     </style>
 </head>
+
 <body>
-    <header>
-        <img id="White-Logo" src="./img/Logo Branco 1.png">
-        <button id="Agendamento">Agendamento Online</button>
-        <button id="Login">Fazer Login</button>
+    <header class="header">
+        <div class="container">
+            <img id="White-Logo" src="./img/Logo Branco 1.png">
+            <button id="Agendamento" class="agendamento">Agendamento Online</button>
+            <img class="menu-button" src="../assets/img/Menu.png">
+        </div>
     </header>
 
     <main>
         <div class="container-cad">
-            <h1 id="title">MINHA CONTA</h1>
-            <ul id="cad-list">
-                <form id="form-cad" action="/action_page.php">
-                    <div id="name-box">
-                        <input type="text" id="Name" name="Nome completo" placeholder="Nome completo">
-                    </div>
-        
-                    <div id="container-middle">
-                        <input type="date" id="middle-input-left" name="Data de nascimento">
-                        <input type="text" maxlength="10" minlength="10" inputmode="numeric" id="middle-input-right" name="RG" placeholder="RG">
-                   </div>
+            <h1 class="title">MINHA CONTA</h1>
+            <form id="form-cad" action="/action_page.php">
+                <div class="form-control">
+                    <input type="text" id="Name" class="input" name="Nome completo" placeholder="Nome completo">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
-                    <div id="container-middle">
-                        <input type="text" maxlength="10" minlength="10" inputmode="numeric" id="middle-input-left" name="RG" placeholder="RG">
-                        <input type="text" maxlength="11" minlength="11" inputmode="numeric" id="middle-input-right" name="CPF" placeholder="CPF">
+                    <small class="message"></small>
+                </div>
+
+                <div class="container-middle">
+                    <div class="form-control">
+                        <input type="date" id="date" class="input" name="Data de nascimento">
+                        <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                        <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                        <small class="message"></small>
+                    </div>
+                    <div class="form-control">
+                        <input type="text" maxlength="10" minlength="10" inputmode="numeric" id="RG" name="RG"
+                            placeholder="RG">
+                        <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                        <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                        <small class="message"></small>
+                    </div>
+                </div>
+
+                <div class="container-middle">
+                    <div class="form-control">
+                        <input type="text" maxlength="11" minlength="11" inputmode="numeric" id="CPF" name="CPF"
+                            placeholder="CPF">
+                        <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                        <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                        <small class="message"></small>
+                    </div>
+                </div>
+
+                <div class="form-control">
+                    <input type="text" id="responsavel" class="input" name="Nome Responsavel"
+                        placeholder="Nome Responsável">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+
+                <div class="container-middle">
+                    <div class="form-control">
+                        <input type="text" maxlength="10" minlength="10" inputmode="numeric" id="RGResponsavel"
+                            name="RG" placeholder="RG do Responsável">
+                        <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                        <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                        <small class="message"></small>
+                    </div>
+                    <div class="form-control">
+                        <input type="text" maxlength="11" minlength="11" inputmode="numeric" id="CPFResponsavel"
+                            name="CPF" placeholder="CPF do Responsável">
+                        <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                        <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                        <small class="message"></small>
+                    </div>
+                </div>
+
+                <div class="container-middle">
+                    <div class="form-control">
+                        <input type="tel" maxlength="14" minlength="11" class="input" id="phone" name="phone"
+                            placeholder="(ddd) 99999-9999">
+                        <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                        <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                        <small class="message"></small>
                     </div>
 
-                    <div id="container-middle">
-                        <input type="tel" maxlength="14" minlength="11"  id="middle-input-left" name="phone" placeholder="(ddd) 99999-9999">
-                        <input type="text" inputmode="numeric" id="middle-input-right" name="CEP" placeholder="CEP">
+                    <div class="form-control">
+                        <input type="text" inputmode="numeric" id="CEP" class="input" name="CEP" placeholder="CEP">
+                        <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                        <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                        <small class="message"></small>
+                    </div>
+                </div>
+
+                <div class="container-middle">
+                    <div class="form-control right complemento">
+                        <input type="text" id="Endereco" class="input" name="Endereço" placeholder="Endereço">
+                        <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                        <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                        <small class="message"></small>
                     </div>
 
-                    <div id="container-middle">
-                        <input type="text" id="address-input-left" name="Endereço" placeholder="Endereço">
-                        <input type="text" inputmode="numeric" id="address-input-middle" name="Numero" placeholder="N°">
-                        <input type="text" name="Complemento" id="address-input-right" placeholder="Complemento">
+                    <div class="form-control">
+                        <input type="text" inputmode="numeric" class="input" id="Numero" name="Numero" placeholder="N°">
+                        <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                        <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                        <small class="message"></small>
                     </div>
 
-                    <div id="button-box-cad">
-                        <input type="submit" id="button-change" value="Alterar Email">
-                        <input type="submit" id="button-change" value="Alterar Senha">
+                    <div class="form-control left">
+                        <input type="text" name="Complemento" class="input" id="Complemento" placeholder="Complemento">
+                        <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                        <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                        <small class="message"></small>
                     </div>
-                </form>
-            </ul>
-        <div id="button-box-cad">
-        <input type="submit" id="back" value="Voltar">
-        <input type="submit" id="account" value="Salvar">
-    </div>
-</div>
-</main>
-<footer>
-<p id="Copyright">Copyright 2023 - Desenvolvido por DEV Nutri - Todos os direitos reservados.</p>
-</footer>
+                </div>
+
+                <div id="button-box-cad">
+                    <button id="button-change-email" class="submit">Alterar Email</button>
+                    <button id="button-change-password" class="submit">Alterar Senha</button>
+                </div>
+                <div id="button-box-cad">
+                    <input type="submit" id="back" class="back relative" value="Voltar">
+                    <input type="submit" id="account" class="submit relative" value="Salvar">
+                </div>
+            </form>
+        </div>
+    </main>
+    <footer>
+        <p id="Copyright">Copyright 2023 - Desenvolvido por DEV Nutri - Todos os direitos reservados.</p>
+    </footer>
+    <script src="../assets/js/account.js"></script>
+    <script src="https://kit.fontawesome.com/fc74a91a63.js" crossorigin="anonymous"></script>
 </body>
+
 </html>
