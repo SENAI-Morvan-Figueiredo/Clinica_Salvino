@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,41 +11,59 @@
         @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap');
     </style>
 </head>
+
 <body>
-    <header>
-        <img src="./img/Logo Branco 1.png">
-        <button id="Agendamento">Agendamento Online</button>
-        <img id="menu-button" src="./img/Menu.png">
+    <header class="header">
+        <div class="container">
+            <img src="./img/Logo Branco 1.png">
+            <button class="agendamento">Agendamento Online</button>
+            <img class="menu-button" src="../assets/img/Menu.png">
+        </div>
     </header>
     <main>
         <div class="container-change">
-            <h1 id="title">Alterar E-mail</h1>
-            <ul id="ul-change">
-                <form action="/action_page.php"></form> 
-    
-                 <div>
-                    <input type="Email " id="input-text" name="E-mail Anterior" placeholder="E-mail Anterior">
+            <h1 class="title">Alterar E-mail</h1>
+            <form id="form-changeEmail" class="form-changeEmail" action="/action_page.php">
+                <div class="form-control">
+                    <input type="Email" id="email" name="E-mail" class="input" placeholder="E-mail">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
                 </div>
-    
-                <div>
-                    <input type="Email" id="input-text" name="Novo E-mail" placeholder="Novo E-mail">
+
+                <div class="form-control">
+                    <input type="Email" id="newEmail" name="E-mail" class="input" placeholder="E-mail">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
                 </div>
-    
-                <div>
-                    <input type="Email" id="input-text" name="Confirmar E-mail" placeholder="Confirmar E-mail">
+                <div class="form-control">
+                    <input type="Confirmar Email" id="emailCheck" name="Confirmar E-mail"
+                        placeholder="Confirmar E-mail">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
                 </div>
-                <div id="captcha-box">
-                    <input type="checkbox" name="Eu não sou um robô" value="Eu não sou um robô"><a id="robot">Não sou robô</a>
+
+                <div class="captcha-box center">
+                    <input type="checkbox" name="Eu não sou um robô" value="Eu não sou um robô"><a id="robot">Não sou
+                        robô</a>
                 </div>
-            </ul>
-            <div id="button-box">
-                <input type="submit" id="back" value="Voltar">
-                <input type="submit" id="save" value="Salvar">
-            </div>
+                <div class="button-box">
+                    <input type="submit" id="back" class="back" value="Voltar">
+                    <input type="submit" id="save" class="submit" value="Salvar">
+                </div>
+            </form>
         </div>
     </main>
-   <footer>
+    <footer>
         <p id="Copyright">Copyright 2023 - Desenvolvido por DEV Nutri - Todos os direitos reservados.</p>
-   </footer>
+    </footer>
+    <script src="https://kit.fontawesome.com/fc74a91a63.js" crossorigin="anonymous"></script>
+    <script src="../assets/js/changeEmail.js"></script>
 </body>
+
 </html>
