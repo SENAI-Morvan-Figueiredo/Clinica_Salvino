@@ -29,8 +29,8 @@ main{
 }
 
 #robot{
-    margin-left: 5.18% ;
-    font-size: clamp(4px, 4px + 1vw, 15px);
+    margin-left: 15px ;
+    font-size: 14px;
     font-weight: 400;
     line-height: 19px;
     letter-spacing: 0em;
@@ -360,11 +360,7 @@ footer{
 
 /*Estilos página esqueci minha senha*/
 
-.menu-button{
-    height: 35px;
-    width: 35px;
-    cursor: pointer;
-}
+
 
 .container-forgot .title{
     margin-bottom: 30px;
