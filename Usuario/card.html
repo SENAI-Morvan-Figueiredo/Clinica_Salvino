@@ -15,53 +15,73 @@
 </head>
 
 <body>
-    <header id="header-account">
-        <img id="White-Logo" src="./img/Logo Branco 1.png">
-        <button id="Agendamento-cad">Agendamento Online</button>
-        <button id="Login">Fazer Login</button>
+    <header class="header">
+        <div class="container">
+            <img id="White-Logo" src="./img/Logo Branco 1.png">
+            <button id="Agendamento-cad" class="agendamento animationHeader">Agendamento Online</button>
+            <img class="menu-button" src="../assets/img/Menu.png">
+        </div>
     </header>
 
     <main>
         <div class="container-cad-card">
-            <h1 id="title">CADASTRO DE CARTÃO</h1>
-            <div id="cad-list-card">
-                <form id="form-cad-card" action="/action_page.php">
-                    <div id="name-box">
-                        <input type="text" id="Name-card" name="Nome do Titular" placeholder="Nome do Titular">
+            <h1 class="title">CADASTRO DE CARTÃO</h1>
+            <form id="form-cad-card" class="form" action="/action_page.php">
+                <div class="form-control">
+                    <input type="text" id="Name" class="input" name="Nome completo" placeholder="Nome completo">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+
+                <div class="container-middle">
+                    <div class="form-control card">
+                        <input type="text" id="number-card" class="input" name="Numero do cartão"
+                            placeholder="Número do Cartão">
+                        <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                        <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                        <small class="message"></small>
                     </div>
+                    <div class="form-control cvc">
+                        <input type="text" id="CVC" class="input" name="CVC" placeholder="CVC">
+                        <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                        <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
-                    <div id="name-box">
-                        <div id="container-middle">
-                            <input type="text" inputmode="numeric" maxlength="14" minlength="11" id="number-card"
-                                name="Numero do Cartão" placeholder="Numero do Cartão">
-                            <input type="text" inputmode="numeric" id="CVC" name="Numero" placeholder="CVC">
-                        </div>
+                        <small class="message"></small>
+                    </div>
+                </div>
 
-                        <div id="name-box">
-                            <div id="container-middle">
-                                <input type="text" inputmode="numeric" maxlength="14" minlength="11" id="number-card"
-                                    name="Data de vencimento" placeholder="Data do vencimento">
-                                <input type="text" inputmode="numeric" id="CVC" name="Numero" placeholder="Parcelas">
-                            </div>
+                <div class="container-middle">
+
+                    <div class="form-control">
+                        <input type="date" id="vencimento" class="input" name="vencimento"
+                            placeholder="Data de Vencimento">
+                        <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                        <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                        <small class="message"></small>
+                    </div>
+                </div>
 
 
-                            </ul>
-                            <div id="captcha-box-cad">
-                                <input type="checkbox" name="Eu não sou um robô" value="Eu não sou um robô"><a
-                                    id="robot">Não sou
-                                    robô</a>
-                            </div>
+                <div class="captcha-box center">
+                    <input type="checkbox" name="Eu não sou um robô" value="Eu não sou um robô"><a id="robot">Não
+                        sou robô</a>
+                </div>
 
-                            <div id="button-box-cad">
-                                <input type="submit" id="back" value="Voltar">
-                                <input type="submit" id="account" value="Criar conta">
-                            </div>
-                </form>
-            </div>
+                <div id="button-box-cad">
+                    <input type="submit" id="back" class="back animationBack" value="Voltar">
+                    <input type="submit" id="account" class="submit animationPayment" value="Criar conta">
+                </div>
+            </form>
     </main>
     <footer>
         <p id="Copyright">Copyright 2023 - Desenvolvido por DEV Nutri - Todos os direitos reservados.</p>
     </footer>
+    <script src="https://kit.fontawesome.com/fc74a91a63.js" crossorigin="anonymous"></script>
+    <script src="../assets/js/card.js"></script>
 </body>
 
 </html>
