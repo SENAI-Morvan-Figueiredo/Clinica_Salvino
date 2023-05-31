@@ -17,14 +17,14 @@
     <header class="header">
         <div class="container">
             <img class="logo_branco" src="./assets/img/Logo Branco 1.png">
-            <button id="Login">Fazer Login</button>
+            <button id="Login" class="animationHeader" onclick="redirect()">Fazer Login</button>
         </div>
     </header>
 
     <main>
         <div class="container-cad">
             <h1 class="title">CADASTRO</h1>
-            <form class="form-cad" id="form-cad" action="/action_page.php">
+            <form class="form-cad" id="form-cad" action="/login.html" method="POST" onsubmit="return validate(this)">
                 <div class="form-control">
                     <input type="text" id="Name" class="input" name="Nome completo" placeholder="Nome completo">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
@@ -196,7 +196,7 @@
                         robô</a>
                 </div>
                 <div id="button-box-cad">
-                    <input type="submit" id="back" class="back animationBack" value="Voltar">
+                    <input type="submit" id="back" onclick="voltar()" class="back animationBack" value="Voltar">
                     <input type="submit" id="account" class="submit animationPayment" value="Criar conta">
                 </div>
             </form>
