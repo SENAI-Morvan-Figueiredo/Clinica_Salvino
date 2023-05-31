@@ -17,6 +17,7 @@ const complement = document.getElementById('Complemento');
 const emailCheck = document.getElementById('emailCheck');
 const dependente = document.querySelectorAll('input[name="dependente"]');
 let formControls = [userName, email, password, passwordCheck, date, rg, cpf, responsavel, RGresponsavel, CPFresponsavel, phone, cep, adress, number, complement, emailCheck, dependente];
+let confirmar;
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -223,3 +224,11 @@ function shake(formControl) {
         formControl.classList.remove('shake');
     });
 };
+
+function voltar(){
+    history.back();
+}
+
+function redirect(){
+    window.location.href = "login.html"
+}

@@ -49,3 +49,7 @@ function shake(formControl) {
         formControl.classList.remove('shake');
     });
 };
+
+function voltar(){
+    history.back();
+}

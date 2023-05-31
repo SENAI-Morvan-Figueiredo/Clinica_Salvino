@@ -149,6 +149,12 @@ footer{
     cursor: pointer;
 }
 
+.text-options a {
+    text-emphasis: none;
+    text-decoration: none;
+    color: currentColor;
+}
+
 .text-options:hover{
     text-decoration: underline;
 }
@@ -170,6 +176,7 @@ footer{
     width: 100%;
     display: flex;
     flex-direction: row;
+    justify-content: space-evenly;
     align-items: flex-start;
     margin-top: 60px;
     padding-left: 5%;
@@ -183,11 +190,8 @@ footer{
     border: 3px solid #FFFFFF;
     background-color: #6F5BE3;
     color: #FFFFFF;
-    font-size: clamp(4px, 4px + 1vw, 15px);
-    padding-top: 0.5%;
-    padding-bottom: 0.5%;
-    padding-left: 0.11%;
-    padding-right: 0.11%;
+    font-size: 14px;
+    cursor: pointer;
 }
 
 .container-cad{
