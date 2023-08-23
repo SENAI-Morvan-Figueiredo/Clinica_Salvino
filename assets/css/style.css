@@ -42,6 +42,14 @@ nav {
     background-color: #6F5BE3;
     /* opacity: 0.78; */
 }
+.bg-copyright {
+    background-color: #fff;
+    border-top: #000 0.5px solid;
+    color: #000;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    /* opacity: 0.78; */
+}
 .bg-white {
     background-color: #fff;
 }
@@ -58,6 +66,11 @@ nav {
     opacity: 1; /* mostra a página com opacidade total */
     transition: opacity 1s ease-in-out; /* transição suave de 1 segundo */
 }
+.map{
+    height: 300px;
+    border-radius: 15px;
+}
+
 #banner-principal {
     background-color: #03A678;
     color: white;
@@ -157,11 +170,18 @@ nav {
     font-size: 32px;
     font-weight: 100;
 }
+.margin-top{
+    margin-top: 10px;
+}
 .bg-onda-contato {
     background-image: url(../images/onda-top-contato-maior.png);
-    background-position: center;
     background-size: cover;
+    background-repeat: no-repeat;
+    background-position-x: -150px;
+    background-position-y: -70px;
     min-height: 312px;
+    border-top: #fff solid 0.5px;
+    padding-top: 30px;
 }
 #contato li {
     list-style: none;
