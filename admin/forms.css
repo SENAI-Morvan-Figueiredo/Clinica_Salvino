@@ -110,6 +110,7 @@ footer{
     width: 250px;
     height: 70px;
     padding-left: 25px;
+    justify-self: center;
 }
 
 .captcha-box.center{
@@ -231,6 +232,7 @@ footer{
 
 .right {
     margin-right: 10% ;
+    grid-area: r;
 }
 
 .left{
@@ -374,7 +376,6 @@ footer{
 .form {
     padding: 0 40px 30px;
     width: 50%;
-    
 }
 
 #captcha-box-cad {
