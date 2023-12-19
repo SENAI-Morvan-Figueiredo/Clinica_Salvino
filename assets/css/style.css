@@ -35,6 +35,19 @@ nav {
     to {top: 0px}
 }
 
+.white{
+    color: #fff;
+}
+.bord{
+    border: #fff solid 2px;
+    border-radius: 25px;
+    text-align: center;
+}
+.bord-right{
+    margin-right: 10px;
+    text-align: center;
+}
+
 
 
 /* Background Cores */
@@ -71,6 +84,10 @@ nav {
     border-radius: 15px;
 }
 
+.convenios{
+    padding-top: 40px;
+    border-top: #fff 1px solid;
+}
 #banner-principal {
     background-color: #03A678;
     color: white;
@@ -121,11 +138,10 @@ nav {
     background-color: #6F5BE3;
     color: white;
     font-weight: 600;
-    margin: 0 2em 0 2em;
     border-radius: 30px;
     padding: 1vh 3vh;
-    font-size: 26px;
-    min-width: 324px;
+    font-size: 20px;
+    min-width: 150px;
 }
 .logo-home {
     max-width: 100px;
@@ -140,7 +156,7 @@ nav {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    min-height: 390px;
+    min-height: 590px;
 }
 .sec-dr-home {
     position: relative;

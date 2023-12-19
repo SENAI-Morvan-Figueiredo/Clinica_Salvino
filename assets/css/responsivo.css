@@ -1,9 +1,19 @@
-.navbar-toggler {
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+  }
+  
+.custom-toggler.navbar-toggler {
+    border-color: rgb(255, 255, 255);
+} 
+
+.white{
     color: #fff;
 }
 
-
-@media (max-width: 768px) {
+@media (max-width: 990px) {
+    .nav-responsive{
+        justify-content: right;
+    }
     .logo_branco {
         max-width: 150px;
     }
@@ -13,25 +23,29 @@
         margin-top: 20px;
     }
     #banner-principal img {
-        max-width: 360px;
+        max-width: 280px;
     }
     .titulo-espec {
         margin: 0;
     }
     .bg-onda-top {
-        min-height: 94px;
+        min-height: 145px;
     }
     .sec-dr-home {
         max-height: none;
         top: 0;
     }
     #dr-salvino img {
-        max-width: 380px;
+        max-width: 280px;
     }
     #convenios img {
-        max-width: 50px;
+        margin-top: 30px;
     }
     .fs-small {
         font-size: 12px;
+    }
+
+    .convenios{
+        padding: 50px 25%;
     }
 }
