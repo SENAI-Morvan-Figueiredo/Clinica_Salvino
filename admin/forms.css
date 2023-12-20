@@ -173,17 +173,6 @@ footer{
 }
 
 /*Estilos da página minha conta*/
-#Login{
-    height: 40px;
-    width: 130px;
-    border-radius: 30px;
-    border: 3px solid #FFFFFF;
-    background-color: #6F5BE3;
-    color: #FFFFFF;
-    font-size: 14px;
-    cursor: pointer;
-}
-
 .container-cad{
     display: flex;
     flex-direction: column;
@@ -526,16 +515,9 @@ th{
 
 
 /*Animações*/
-.animationHeader{
-    background-color: #6F5BE3;
-    border: 2px solid #FFFFFF;
-    color: #FFFFFF;
-    transition: all 1s;
-}
-
 .animationHeader:hover{
     background-color: #FfFFFF;
-    color: #6F5BE3;
+    color: #000;
     border: #6F5BE3;
     -webkit-transform: scale(1.1);
     transform: scale(1.1);

@@ -9,10 +9,12 @@
     border-radius: 30px;
     cursor: pointer;
     font-weight: 600;
+    transition: 1s all ease-in-out;
 }
 .btn-white:hover {
     background-color: #ffffff96;
     color: #333;
+    transform: scale(1.1);
 }
 .btn-black {
     background: none;

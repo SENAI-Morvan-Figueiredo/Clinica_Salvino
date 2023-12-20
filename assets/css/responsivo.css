@@ -11,6 +11,10 @@
 }
 
 @media (max-width: 990px) {
+    #banner-principal{
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
     .nav-responsive{
         justify-content: right;
     }
@@ -47,5 +51,11 @@
 
     .convenios{
         padding: 50px 25%;
+    }
+}
+
+@media (max-width: 575px) {
+    .bord-right{
+        margin: 0
     }
 }
