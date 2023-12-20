@@ -98,6 +98,12 @@ nav {
 .escalar:hover{
     scale: 1.1;
 }
+.change-color{
+    transition: 1s all ease;
+}
+.change-color:hover{
+    color: #000;
+}
 .login-button:hover{
     background-color: #fff;
     color: #000;

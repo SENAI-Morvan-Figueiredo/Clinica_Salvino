@@ -12,6 +12,7 @@
     transition: 1s all ease-in-out;
 }
 .btn-white:hover {
+    border: 2px solid white;
     background-color: #ffffff96;
     color: #333;
     transform: scale(1.1);
