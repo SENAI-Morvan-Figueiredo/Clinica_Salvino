@@ -481,19 +481,6 @@ footer{
     justify-items: center;
     align-content: center;
     grid-template-columns: 1fr 1fr;
-}
-
-#receive-button {
-    border-radius: 15px;
-    border: none;
-    background-color: #6F5BE3;
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 19px;
-    letter-spacing: 0em;
-    text-align: center;
-    color: #FFFFFF;
-    cursor: pointer;
     margin-bottom: 40px;
 }
 
