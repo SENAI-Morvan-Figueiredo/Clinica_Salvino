@@ -25,7 +25,7 @@ main{
     letter-spacing: 0em;
     text-align: center;
     color:  #333333;
-    margin-bottom: 15px;
+    margin-bottom: 40px;
 }
 
 #robot{
@@ -227,7 +227,7 @@ footer{
 }
 
 .form-control {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     padding-bottom: 20px;
     position: relative;
 }
@@ -362,24 +362,16 @@ footer{
 /*Estilos do cadastro de cartão*/
 .container-cad-card {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-content: center;
     align-items: center;
-    height: 34.47%;
     border-radius: 15px;
     background-color: #F2F2F2;
     box-shadow: 0px 6px 5px 0px #00000040;
     margin: 100px 0;
-    padding-top: 50px;
-    padding-bottom: 50px;
-}
-
-.form {
-    padding: 0 40px 30px;
-    width: 50%;
-    
+    padding: 80px 10%;
 }
 
 #captcha-box-cad {
@@ -406,21 +398,36 @@ footer{
     align-content: center;
     margin-bottom: 2.38%;
 }
-
-/*Classes JS*/
-.form-control {
-    margin-bottom: 10px;
-    padding-bottom: 20px;
-    position: relative;
-}
-
 .form-control.card {
     width: 75%;
 }
 
 .form-control.cvc {
-    width: 15%;
+    width: 18%;
+    max-width: 162px;
 }
+
+@media (max-width: 425px) {
+    .container-middle{
+        flex-direction: column;
+        align-items: start;
+    }
+    .form-control.card {
+        width: 100%;
+    }
+
+    .form-control.cvc {
+        width: 62px;
+    }
+}
+
+/*Classes JS*/
+.form-control {
+    margin-bottom: 10px;
+    position: relative;
+    padding: 0;
+}
+
 
 .form-control label {
     display: inline-block;
