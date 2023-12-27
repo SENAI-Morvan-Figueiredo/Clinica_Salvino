@@ -47,6 +47,10 @@ main{
     height: 40px;
 }
 
+.back.right{
+    margin-right: 50px;
+}
+
 .back.relative {
     position: relative;
     left: -70px;
@@ -147,25 +151,19 @@ footer{
     align-items: center;
     justify-content: center;
     align-content: center;
-    height: 66.61951909476662%;
-    width: 58.19444444444444%;
     border-radius: 15px;    
     background-color: #F2F2F2;
     box-shadow: 0px 6px 5px 0px #00000040;
-    padding-top: 75px;
-    padding-bottom: 75px;
-    margin-top: 115px;
-    margin-bottom: 115px;
+    padding: 80px 10%;
+    margin: 100px 0;
 }
 
 .form-changeEmail{
-    padding: 0 40px 30px;
-    width: 50%;
+    width: 100%;
 }
 
 .form-changePassword{
-    padding: 0 40px 30px;
-    width: 50%;
+    width: 100%;
 }
 
 .button-box{
@@ -175,7 +173,7 @@ footer{
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding-top: 4.38%;
+    padding-top: 30px;
 }
 
 /*Estilos da página minha conta*/
@@ -422,13 +420,6 @@ footer{
 }
 
 /*Classes JS*/
-.form-control {
-    margin-bottom: 10px;
-    position: relative;
-    padding: 0;
-}
-
-
 .form-control label {
     display: inline-block;
     margin-bottom: 5px;
