@@ -6,13 +6,6 @@
     font-family: 'Kumbh Sans', sans-serif;
 }
 
-.escalar{
-    transition: 1s all ease;
-}
-.escalar:hover{
-    scale: 1.1;
-}
-
 main{
     display: flex;
     flex-direction: column;

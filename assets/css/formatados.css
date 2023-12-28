@@ -29,7 +29,12 @@
 .btn-black:hover {
     background-color: #eaeaea;
 }   
-
+.escalar{
+    transition: 1s all ease;
+}
+.escalar:hover{
+    scale: 1.1;
+}
 
 
 /* Background Cores */
