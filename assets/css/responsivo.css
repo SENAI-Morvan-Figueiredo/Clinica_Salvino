@@ -12,6 +12,7 @@
 
 @media (max-width: 990px) {
     #banner-principal{
+        margin-top: 0;
         padding-top: 50px;
         padding-bottom: 50px;
     }

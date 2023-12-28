@@ -61,7 +61,7 @@ footer{
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: left;
+    justify-content: center;
     align-items: center;
 }
 
@@ -450,8 +450,9 @@ footer{
     border-radius: 15px;    
     background-color: #F2F2F2;
     box-shadow: 0px 6px 5px 0px #00000040;
-    padding: 75px 15%;
+    padding: 75px 10%;
     margin: 115px;
+    max-width: 850px;
 }
 
 .form-forgot{
