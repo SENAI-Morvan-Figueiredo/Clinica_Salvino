@@ -29,27 +29,29 @@
             </div>
         </div>
       </nav>
-    <nav class="nav-home nav-bar d-none d-lg-flex">
+    <nav class="nav-home nav-bar d-none d-lg-flex animate">
         <div class="container-fluid">
-            <div class="row justify-content-around">
+            <div class="row justify-content-around nav">
                     <div class="col-lg-auto nav-brand d-flex align-items-center">
-                        <a href="./index.html" class="logo-home">
-                            <img src="assets/images/logo-branco.png" class="logo_branco">
+                        <a href="./index.html">
+                            <div class="logo-home">
+                                <img src="assets/images/logo-branco.png" class="logo_branco">
+                            </div>
                         </a>
                     </div>
-                    <div class="col-lg-auto d-flex align-items-start mt-4">
+                    <div class="col-lg-auto d-flex align-items-start">
                         <a href="login.html" class="btn btn-white">
                             Agendamento de Consulta 
                         </a>
                     </div>
-                    <div class="col-lg-auto d-flex align-items-start justify-content-center mt-4">  
+                    <div class="col-lg-auto d-flex align-items-start justify-content-center">  
                         <ul class="home_nav_ul">
                             <li class="escalar">
                                 <a class="change-color" href="register.html">Cadastrar</a>
                             </li>
                             <li> | </li>
-                            <li class="escalar">
-                                <a href="login.html" class="btn-white">Fazer Login</a>
+                            <li class="escalar login">
+                                <a href="login.html" class="btn-white login">Fazer Login</a>
                             </li>
                         </ul>
                     </div>
@@ -220,4 +222,5 @@
     </section>
   </body>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  <script src="./assets/js/animateHeader.js"></script>
 </html>
