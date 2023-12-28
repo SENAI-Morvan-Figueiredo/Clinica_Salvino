@@ -67,7 +67,7 @@ footer{
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: left;
+    justify-content: center;
     align-items: center;
 }
 
@@ -401,10 +401,6 @@ footer{
 
 .form-control.card {
     width: 75%;
-}
-
-.form-control.cvc {
-    width: 15%;
 }
 
 .form-control label {

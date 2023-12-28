@@ -10,6 +10,7 @@
     cursor: pointer;
     font-weight: 600;
     transition: 1s all ease-in-out;
+    text-decoration: none;
 }
 .btn-white:hover {
     border: 2px solid white;

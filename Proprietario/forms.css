@@ -413,10 +413,6 @@ footer{
     width: 75%;
 }
 
-.form-control.cvc {
-    width: 15%;
-}
-
 .form-control label {
     display: inline-block;
     margin-bottom: 5px;

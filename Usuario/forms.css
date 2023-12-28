@@ -6,6 +6,8 @@
     font-family: 'Kumbh Sans', sans-serif;
 }
 
+
+
 main{
     display: flex;
     flex-direction: column;
@@ -25,7 +27,7 @@ main{
     letter-spacing: 0em;
     text-align: center;
     color:  #333333;
-    margin-bottom: 15px;
+    margin-bottom: 40px;
 }
 
 #robot{
@@ -42,9 +44,13 @@ main{
     border: 3px solid #000000;
     background-color: #FFFFFF;
     cursor: pointer;
-    font-size: clamp(4px, 4px + 1vw, 15px);
+    font-size: 14px;
     width: 130px;
     height: 40px;
+}
+
+.back.right{
+    margin-right: 50px;
 }
 
 .back.relative {
@@ -61,13 +67,21 @@ footer{
     align-items: center;
 }
 
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+  
+.custom-toggler.navbar-toggler {
+    border-color: rgb(255, 255, 255);
+} 
+
 .header{
     background-color: #6F5BE3;
     height: 120px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: left;
+    justify-content: center;
     align-items: center;
 }
 
@@ -75,10 +89,9 @@ footer{
     display: flex;
     align-items: center;
     justify-content: space-between;
-  
+    margin: 0 12vh;
     width: 100%;
     max-width: 1480px;
-    margin: auto ;
 }
 
 #Copyright{
@@ -140,25 +153,20 @@ footer{
     align-items: center;
     justify-content: center;
     align-content: center;
-    height: 66.61951909476662%;
-    width: 58.19444444444444%;
     border-radius: 15px;    
     background-color: #F2F2F2;
     box-shadow: 0px 6px 5px 0px #00000040;
-    padding-top: 75px;
-    padding-bottom: 75px;
-    margin-top: 115px;
-    margin-bottom: 115px;
+    padding: 80px 10%;
+    margin: 100px 0;
+    max-width: 850px;
 }
 
 .form-changeEmail{
-    padding: 0 40px 30px;
-    width: 50%;
+    width: 100%;
 }
 
 .form-changePassword{
-    padding: 0 40px 30px;
-    width: 50%;
+    width: 100%;
 }
 
 .button-box{
@@ -168,7 +176,7 @@ footer{
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding-top: 4.38%;
+    padding-top: 30px;
 }
 
 /*Estilos da página minha conta*/
@@ -220,7 +228,7 @@ footer{
 }
 
 .form-control {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     padding-bottom: 20px;
     position: relative;
 }
@@ -314,7 +322,7 @@ footer{
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    padding-top: 4.38%;
+    padding-top: 40px;
 }
 
 .submit {
@@ -323,7 +331,7 @@ footer{
     border-radius: 15px;
     border: none;
     background-color: #6F5BE3;
-    font-size: clamp(4px, 4px + 1vw, 15px);
+    font-size: 14px;
     font-weight: 400;
     line-height: 19px;
     letter-spacing: 0em;
@@ -357,24 +365,15 @@ footer{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     align-content: center;
-    height: 66.61951909476662%;
-    width: 58.19444444444444%;
+    align-items: center;
     border-radius: 15px;
     background-color: #F2F2F2;
     box-shadow: 0px 6px 5px 0px #00000040;
-    padding-top: 5.01%;
-    padding-bottom: 5.01%;
-    margin-top: 7.43%;
-    margin-bottom: 7.43%;
-}
-
-.form {
-    padding: 0 40px 30px;
-    width: 50%;
-    
+    margin: 100px 0;
+    padding: 80px 10%;
+    max-width: 850px;
 }
 
 #captcha-box-cad {
@@ -401,22 +400,30 @@ footer{
     align-content: center;
     margin-bottom: 2.38%;
 }
-
-/*Classes JS*/
-.form-control {
-    margin-bottom: 10px;
-    padding-bottom: 20px;
-    position: relative;
-}
-
 .form-control.card {
     width: 75%;
 }
 
 .form-control.cvc {
-    width: 15%;
+    width: 18%;
+    max-width: 162px;
 }
 
+@media (max-width: 425px) {
+    .container-middle{
+        flex-direction: column;
+        align-items: start;
+    }
+    .form-control.card {
+        width: 100%;
+    }
+
+    .form-control.cvc {
+        width: 68px;
+    }
+}
+
+/*Classes JS*/
 .form-control label {
     display: inline-block;
     margin-bottom: 5px;
@@ -438,9 +445,6 @@ footer{
 }
 
 /*Estilos Tela de Pagamento*/
-
-
-
 main{
     display: flex;
     flex-direction: column;
@@ -453,33 +457,30 @@ main{
     align-content: center;
 }
 
-
-/*Estilos da tela de pagamento*/
 .container-payment {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     align-content: center;
-    height: 66.61951909476662%;
-    width: 58.19444444444444%;
+    align-items: center;
     border-radius: 15px;
     background-color: #F2F2F2;
     box-shadow: 0px 6px 5px 0px #00000040;
-    padding-top: 5.01%;
-    padding-bottom: 5.01%;
-    margin-top: 7.43%;
-    margin-bottom: 7.43%;
+    margin: 100px 0;
+    padding: 80px 10%;
+    max-width: 850px;
 }
 
 table{
-    width: 60%;
+    width: 40vw;
     background-color: #FFFFFF;
     border-collapse: collapse;
+    margin-top: 40px;
+    max-width: 540px;
 }
 
-th{
+.cells{
     width: 50%;
     border: 1px solid #000000;
 }
@@ -514,32 +515,38 @@ th{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    padding-left: 15%;
-    padding-right: 15%;
 }
 
 .bottom-padding{
     padding-bottom: 5%;
 }
 
+@media (max-width: 690px) {
+    .btn.btn-white{
+        display: none;
+    }
+}
+
+@media (max-width: 780px) {
+    .submit{
+        width: 100px;
+    }
+    .back{
+        width: 100px;
+    }
+
+    table{
+        width: 100%;
+        font-size: 12px;
+    }
+    #total {
+        font-size: 12px;
+    }
+}
+
 
 
 /*Animações*/
-.animationHeader{
-    background-color: #6F5BE3;
-    border: 2px solid #FFFFFF;
-    color: #FFFFFF;
-    transition: all 1s;
-}
-
-.animationHeader:hover{
-    background-color: #FfFFFF;
-    color: #6F5BE3;
-    border: #6F5BE3;
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
-}
-
 .animationPayment{
     background-color: #6F5BE3;
     color: #F0F0F0;
