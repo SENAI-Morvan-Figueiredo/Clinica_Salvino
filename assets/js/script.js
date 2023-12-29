@@ -3,7 +3,7 @@ const pagina = document.querySelector('.home_body');
 
 // adiciona a classe "mostrar" depois de um atraso de 1 segundo
 setTimeout(() => {
-  pagina.style.opacity = '1';
+  pagina.style.opacity = 1;
 }, 300);
 
 // adiciona um ouvinte de evento para a página descarregando
@@ -23,6 +23,8 @@ function adicionaClasseAoRolar() {
   window.addEventListener('scroll', function () {
     if (window.pageYOffset >= pontoDeRolagem) {
       minhaDiv.classList.add('doutorAtivo');
+    }else{
+      minhaDiv.classList.remove('doutorAtivo');
     }
   });
 }
@@ -35,20 +37,14 @@ window.addEventListener('load', adicionaClasseAoRolar);
 
 function popUpVideo() {
   let Video = document.querySelector('.popUpVideo');
-  let main = document.querySelector('main')
-  main.classList.toggle('blur')
   Video.classList.toggle('ocultar');
-  Video.classList.add('mostrar')
 }
 
 function fecharPopUpVideo() {
   let Video = document.querySelector('.popUpVideo');
   let botaoFecharVideo = document.querySelector('.botaoFechar');
-  let main = document.querySelector('main')
   if (botaoFecharVideo = true) {
     let fechar
     fechar = Video.classList.toggle('ocultar');
-    main.classList.toggle('blur')
-
   }
 }
