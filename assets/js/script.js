@@ -7,34 +7,25 @@ setTimeout(() => {
 }, 300);
 
 // adiciona um ouvinte de evento para a página descarregando
-window.addEventListener('beforeunload', function () {
-  pagina.classList.add('saindo');
-});
+window.addEventListener('load', adicionaClasseAoRolar);
 
+window.addEventListener('scroll', adicionaClasseAoRolar);
 
 function adicionaClasseAoRolar() {
   // seleciona a div
   const minhaDiv = document.querySelector('.doutor');
+  // define a posição do scroll
+  const posicaoScroll = window.pageYOffset;
 
-  // determina o ponto de rolagem para adicionar a classe
-  const pontoDeRolagem = 700; // ajuste o valor conforme necessário
-
-  // adiciona a classe "ativo" quando a página é rolada para o ponto
-  window.addEventListener('scroll', function () {
-    if (window.pageYOffset >= pontoDeRolagem) {
-      minhaDiv.classList.add('doutorAtivo');
-    }else{
-      minhaDiv.classList.remove('doutorAtivo');
-    }
-  });
+  // adiciona a classe "ativo" quando a página é rolada para o ponto e desativa
+  if (posicaoScroll >= 821 && posicaoScroll < 1859) {
+    minhaDiv.classList.add('doutorAtivo');
+  } else {
+    minhaDiv.classList.remove('doutorAtivo');
+  }
 }
 
-// chama a função quando a página é carregada
-window.addEventListener('load', adicionaClasseAoRolar);
-
-
 // abrir pop-up na página inicial
-
 function popUpVideo() {
   let Video = document.querySelector('.popUpVideo');
   Video.classList.toggle('ocultar');
