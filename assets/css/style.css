@@ -193,6 +193,7 @@ nav {
     background-size: cover;
     background-repeat: no-repeat;
     min-height: 590px;
+    margin-top: -200px;
 }
 .sec-dr-home {
     position: relative;

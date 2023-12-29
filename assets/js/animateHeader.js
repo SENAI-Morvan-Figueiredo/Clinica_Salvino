@@ -1,14 +1,3 @@
-const debounce = (func, wait, immediate, timeout) => 
-(...args) => {
-        const later =  () => {
-            if (!immediate) func(args);
-        };
-        const callNow = immediate && !timeout;
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-        if (callNow) func(args);
-    };
-
 const nav = document.querySelector('.nav-home');
 const logo = document.querySelector('.logo-home');
 const container = document.querySelector('.nav');
@@ -30,7 +19,5 @@ function scrollPosition(){
 scrollPosition();
 
 
-window.addEventListener('scroll', debounce(() => {
-    scrollPosition();
-}, 200));
+window.addEventListener('scroll', scrollPosition);
 
