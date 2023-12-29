@@ -17,7 +17,6 @@ const login = document.querySelector('.login');
 function scrollPosition(){
     if(window.scrollY>40){
         nav.classList.remove('animate');
-        console.log(logo)
         logo.classList.add('animatelogo');
         container.classList.add('align-items-center');
         login.style.marginTop= 0;

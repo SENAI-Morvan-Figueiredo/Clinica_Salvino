@@ -6,15 +6,15 @@
 
 @font-face {
     font-family: 'Kumbh-regular';
-    src: url(/assets/fonts/Kumbh_Sans/static/KumbhSans-Regular.ttf);
+    src: url(../fonts/Kumbh_Sans/static/KumbhSans-Regular.ttf);
 }
 @font-face {
     font-family: 'Kumbh-light';
-    src: url(/assets/fonts/Kumbh_Sans/static/KumbhSans-Light.ttf);
+    src: url(../fonts/Kumbh_Sans/static/KumbhSans-Light.ttf);
 }
 @font-face {
     font-family: 'OpenSans-regular';
-    src: url(/assets/fonts/OpenSans/OpenSans-Regular.ttf);
+    src: url(../fonts/OpenSans/OpenSans-Regular.ttf);
 }
 
 
