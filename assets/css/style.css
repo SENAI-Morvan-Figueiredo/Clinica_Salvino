@@ -267,6 +267,9 @@ nav {
 .ocultar {
     display: none;
 }
+.botaoFechar{
+    margin-top: 40px;
+}
 @keyframes surgirVideo {
     from {
 		opacity: 0;

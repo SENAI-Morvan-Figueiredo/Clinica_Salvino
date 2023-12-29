@@ -37,9 +37,7 @@ window.addEventListener('load', adicionaClasseAoRolar);
 
 function popUpVideo() {
   let Video = document.querySelector('.popUpVideo');
-  let player = document.querySelector('.player')
   Video.classList.toggle('ocultar');
-  player.classList.toggle('ocultar');
 }
 
 function fecharPopUpVideo() {
