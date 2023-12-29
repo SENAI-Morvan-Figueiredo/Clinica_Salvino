@@ -182,6 +182,10 @@ nav {
     color: white;
     padding-top: 20px;
     font-size: 1rem;
+    transition: 1s all ease;
+}
+.assistir-video:hover{
+    color: #000;
 }
 .bg-onda-top {
     background-image: url(../images/onda-top-dr-maior.png);
@@ -262,6 +266,23 @@ nav {
     align-items: center;
     background-color: rgba(10,23,55,0.5);
     
+}
+
+.player{
+    width: 50%;
+    height: 60%;
+}
+
+@media (max-width: 690px) {
+    .player{
+        width: 70%;
+    }
+}
+
+@media (max-width: 425px) {
+    .player{
+        width: 95%;
+    }
 }
 
 .ocultar {
