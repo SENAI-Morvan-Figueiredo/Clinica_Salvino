@@ -36,7 +36,7 @@ class PopUpAbrir {
   }
 }
 
-class FecharPopUp{
+class FecharPopUp {
   /**
    * @param botao
    */
@@ -49,17 +49,17 @@ class FecharPopUp{
       fechar = popUp.classList.toggle('ocultar');
     }
   }
-  
+
 }
 
 function abrirPopUp() {
   let popUp;
-  elemento = `.popUp${event.target.classList['0']}` 
+  elemento = `.popUp${event.target.classList['0']}`
   console.log(elemento)
   popUp = new PopUpAbrir(document.querySelector(elemento));
 }
 
-function fecharPopUp(event){
+function fecharPopUp(event) {
   let fechar
   fechar = new FecharPopUp(event.target)
 }
