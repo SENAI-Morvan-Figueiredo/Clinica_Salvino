@@ -72,7 +72,7 @@
                             <a href="./templates/login.html" class="btn-white fs-4">
                                 Agendar consulta
                             </a>
-                            <a href="#" class="d-block assistir-video" onclick="popUpVideo()">
+                            <a href="#" class="Video d-block assistir-video" onclick="abrirPopUp()">
                                 <img src="assets/images/play-banner.png" alt="" class="pe-2 ">Assista o vídeo de como
                                 agendar</a>
                         </div>
@@ -87,28 +87,28 @@
         <section id="espec-home">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-3 bg-white espec-item pt-5 d-flex justify-content-center">
-                        <div>
-                            <h2 class="text-center titulo-espec ">Psiquatria Nutricional</h2>
-                            <img src="assets/images/psiquiatrico.png" alt="" class="mt-3 w-100">
+                    <div class="PsiNutri col-lg-3 bg-white espec-item pt-5 d-flex justify-content-center" onclick="abrirPopUp()">
+                        <div class="PsiNutri d-flex-col">
+                            <h2 class="PsiNutri text-center titulo-espec ">Psiquatria Nutricional</h2>
+                            <img src="assets/images/psiquiatrico.png" alt="" class="PsiNutri mt-3 w-100">
                         </div>
                     </div>
-                    <div class="col-lg-3 bg-gray espec-item pt-5 d-flex justify-content-center">
-                        <div class="d-flex-col">
-                            <h2 class="text-center titulo-espec">Emagrecimento</h2>
-                            <img src="assets/images/obesidade.png" alt="" class="mt-3 w-100">
+                    <div class="Emagrecimento col-lg-3 bg-gray espec-item pt-5 d-flex justify-content-center" onclick="abrirPopUp()">
+                        <div class="Emagrecimento d-flex-col">
+                            <h2 class="Emagrecimento text-center titulo-espec">Emagrecimento</h2>
+                            <img src="assets/images/obesidade.png" alt="" class="Emagrecimento mt-3 w-100">
                         </div>
                     </div>
-                    <div class="col-lg-3 bg-white pt-5 espec-item d-flex justify-content-center">
-                        <div class="d-flex-col">
-                            <h2 class="text-center titulo-espec">Nutrição Esportiva</h2>
-                            <img src="assets/images/builder.png" alt="" class="mt-3 w-100">
+                    <div class="NutriSport col-lg-3 bg-white pt-5 espec-item d-flex justify-content-center" onclick="abrirPopUp()">
+                        <div class="NutriSport d-flex-col">
+                            <h2 class="NutriSport text-center titulo-espec">Nutrição Esportiva</h2>
+                            <img src="assets/images/builder.png" alt="" class="NutriSport mt-3 w-100">
                         </div>
                     </div>
-                    <div class="col-lg-3 bg-gray pt-5 espec-item d-flex justify-content-center">
-                        <div class="d-flex-col">
-                            <h2 class="text-center titulo-espec">Nutrição Clínica</h2>
-                            <img src="assets/images/clinico.png" alt="" class="mt-3 w-100">
+                    <div class="NutriClinic col-lg-3 bg-gray pt-5 espec-item d-flex justify-content-center" onclick="abrirPopUp()">
+                        <div class="NutriClinic d-flex-col">
+                            <h2 class="NutriClinic text-center titulo-espec">Nutrição Clínica</h2>
+                            <img src="assets/images/clinico.png" alt="" class="NutriClinic mt-3 w-100">
                         </div>
                     </div>
                     <div class="col-lg-12 d-flex justify-content-center align-items-center py-5 bg-white">
@@ -246,11 +246,92 @@
         <iframe width="50%" class="player" height="56%" src="https://www.youtube.com/embed/YisYNBBd3Jw"
             title="YouTube video player" frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen></iframe>
+            allowfullscreen>
+        </iframe>
 
         <div class="row">
             <div class="col-lg-12 d-flex justify-content-center">
-                <button class="botaoFechar btn-white" onclick="fecharPopUpVideo()">Fechar</button>
+                <button class="botaoFechar btn-white" onclick="fecharPopUp(event)">Fechar</button>
+            </div>
+        </div>
+    </section>
+    <section class="popUpEspecialidade popUpPsiNutri ocultar">
+        <div class="especialidade">
+            <h1>
+                Psicologia Nutricional
+            </h1>
+            <p>
+                Suspendisse potenti. Nam tempus scelerisque nunc vel convallis. Maecenas hendrerit
+                sapien vel orci hendrerit porttitor. Pellentesque habitant morbi tristique senectus
+                et netus et malesuada fames ac turpis egestas. Nam ac sapien non mauris blandit
+                gravida at non tortor. Pellentesque in tristique urna. Mauris sit amet diam
+                fringilla, hendrerit mi vitae, hendrerit orci.
+            </p>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 d-flex justify-content-center">
+                <button class="botaoFechar btn-white" onclick="fecharPopUp(event)">Fechar</button>
+            </div>
+        </div>
+    </section>
+    <section class="popUpEspecialidade popUpEmagrecimento ocultar">
+        <div class="especialidade">
+            <h1>
+                Emagrecimento
+            </h1>
+            <p>
+                Suspendisse potenti. Nam tempus scelerisque nunc vel convallis. Maecenas hendrerit
+                sapien vel orci hendrerit porttitor. Pellentesque habitant morbi tristique senectus
+                et netus et malesuada fames ac turpis egestas. Nam ac sapien non mauris blandit
+                gravida at non tortor. Pellentesque in tristique urna. Mauris sit amet diam
+                fringilla, hendrerit mi vitae, hendrerit orci.
+            </p>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 d-flex justify-content-center">
+                <button class="botaoFechar btn-white" onclick="fecharPopUp(event)">Fechar</button>
+            </div>
+        </div>
+    </section>
+    <section class="popUpEspecialidade popUpNutriSport ocultar">
+        <div class="especialidade">
+            <h1>
+                Nutrição Esportiva
+            </h1>
+            <p>
+                Suspendisse potenti. Nam tempus scelerisque nunc vel convallis. Maecenas hendrerit
+                sapien vel orci hendrerit porttitor. Pellentesque habitant morbi tristique senectus
+                et netus et malesuada fames ac turpis egestas. Nam ac sapien non mauris blandit
+                gravida at non tortor. Pellentesque in tristique urna. Mauris sit amet diam
+                fringilla, hendrerit mi vitae, hendrerit orci.
+            </p>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 d-flex justify-content-center">
+                <button class="botaoFechar btn-white" onclick="fecharPopUp(event)">Fechar</button>
+            </div>
+        </div>
+    </section>
+    <section class="popUpEspecialidade popUpNutriClinic ocultar">
+        <div class="especialidade">
+            <h1>
+                Nutrição Clínica
+            </h1>
+            <p>
+                Suspendisse potenti. Nam tempus scelerisque nunc vel convallis. Maecenas hendrerit
+                sapien vel orci hendrerit porttitor. Pellentesque habitant morbi tristique senectus
+                et netus et malesuada fames ac turpis egestas. Nam ac sapien non mauris blandit
+                gravida at non tortor. Pellentesque in tristique urna. Mauris sit amet diam
+                fringilla, hendrerit mi vitae, hendrerit orci.
+            </p>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 d-flex justify-content-center">
+                <button class="botaoFechar btn-white" onclick="fecharPopUp(event)">Fechar</button>
             </div>
         </div>
     </section>
