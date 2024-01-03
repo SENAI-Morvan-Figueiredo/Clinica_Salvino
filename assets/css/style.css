@@ -256,7 +256,7 @@ nav {
 /* Pop up vídeo*/
 .popUpVideo {
     display: flex;
-	animation: surgirVideo 1s ease-in both;
+	animation: surgirPopUp 1s ease-in both;
     z-index: 9999;
     position: fixed;
     flex-direction: column;
@@ -272,6 +272,46 @@ nav {
 .player{
     width: 50%;
     height: 60%;
+}
+
+/*Pop up especialidades*/
+.popUpEspecialidade {
+    display: flex;
+	animation: surgirPopUp 1s ease-in both;
+    z-index: 9999;
+    position: fixed;
+    flex-direction: column;
+    justify-content: center;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    background-color: rgba(10,23,55,0.5);
+    
+}
+
+.especialidade{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    width: 70vw;
+    border-radius: 30px;
+    padding: 5% 50px;
+}
+
+.especialidadeImg{
+    width: 325px;
+    height: 225px;
+}
+
+.left{
+    margin-left: 50px;
+}
+
+.especialidadeText{
+    font-size: clamp(3px, 3px + 1vw, 15px);
 }
 
 @media (max-width: 690px) {
@@ -290,9 +330,9 @@ nav {
     display: none;
 }
 .botaoFechar{
-    margin-top: 40px;
+    margin-top: 15px;
 }
-@keyframes surgirVideo {
+@keyframes surgirPopUp {
     from {
 		opacity: 0;
 		transform: translate3d(0, -20%, 0);

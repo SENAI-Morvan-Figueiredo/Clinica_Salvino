@@ -26,16 +26,40 @@ function adicionaClasseAoRolar() {
 }
 
 // abrir pop-up na página inicial
-function popUpVideo() {
-  let Video = document.querySelector('.popUpVideo');
-  Video.classList.toggle('ocultar');
+class PopUpAbrir {
+  /**
+  * @param  element
+  */
+  constructor(element) {
+    this.elemento = element;
+    this.elemento.classList.toggle('ocultar');
+  }
 }
 
-function fecharPopUpVideo() {
-  let Video = document.querySelector('.popUpVideo');
-  let botaoFecharVideo = document.querySelector('.botaoFechar');
-  if (botaoFecharVideo = true) {
-    let fechar
-    fechar = Video.classList.toggle('ocultar');
+class FecharPopUp {
+  /**
+   * @param botao
+   */
+  constructor(botao) {
+    let elemento1 = botao.parentElement
+    let elemento2 = elemento1.parentElement
+    let popUp = elemento2.parentElement
+    if (botao = true) {
+      let fechar;
+      fechar = popUp.classList.toggle('ocultar');
+    }
   }
+
+}
+
+function abrirPopUp() {
+  let popUp;
+  elemento = `.popUp${event.target.classList['0']}`
+  console.log(elemento)
+  popUp = new PopUpAbrir(document.querySelector(elemento));
+}
+
+function fecharPopUp(event) {
+  let fechar
+  fechar = new FecharPopUp(event.target)
 }
