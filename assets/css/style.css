@@ -313,6 +313,9 @@ nav {
 .especialidadeText{
     font-size: clamp(3px, 3px + 1vw, 15px);
 }
+.especialidadeTitle{
+    margin: 20px 0;
+}
 
 @media (max-width: 690px) {
     .player{
