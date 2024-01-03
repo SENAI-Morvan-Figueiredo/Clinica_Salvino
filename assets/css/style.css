@@ -291,10 +291,27 @@ nav {
 }
 
 .especialidade{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     background-color: #fff;
     width: 70vw;
-    height: 70%;
     border-radius: 30px;
+    padding: 5% 50px;
+}
+
+.especialidadeImg{
+    width: 325px;
+    height: 225px;
+}
+
+.left{
+    margin-left: 50px;
+}
+
+.especialidadeText{
+    font-size: clamp(3px, 3px + 1vw, 15px);
 }
 
 @media (max-width: 690px) {
@@ -313,7 +330,7 @@ nav {
     display: none;
 }
 .botaoFechar{
-    margin-top: 40px;
+    margin-top: 15px;
 }
 @keyframes surgirPopUp {
     from {
