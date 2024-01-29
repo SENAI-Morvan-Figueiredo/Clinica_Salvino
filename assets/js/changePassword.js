@@ -1,5 +1,4 @@
 const formChangeEmail = document.getElementById('form-changePassword');
-const password = document.getElementById('password');
 const newPassword = document.getElementById('newPassword');
 const passwordCheck = document.getElementById('passwordCheck');
 
@@ -10,15 +9,8 @@ formChangeEmail.addEventListener('submit', (e) => {
 });
 
 function checkInputs() {
-    const passwordValue = password.value.trim();
     const newPasswordValue = newPassword.value.trim();
     const passwordCheckValue = passwordCheck.value.trim();
-
-    if (passwordValue === '') {
-        errorValidation(password, 'Preencha esse campo');
-    } else {
-        successValidation(password);
-    }
 
     if (newPasswordValue === '') {
         errorValidation(newPassword, 'Preencha esse campo');
