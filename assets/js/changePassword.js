@@ -1,33 +1,30 @@
-const formChangeEmail = document.getElementById('form-changePassword');
-const newPassword = document.getElementById('newPassword');
-const passwordCheck = document.getElementById('passwordCheck');
+const formChangePassword = document.getElementById('form-changePassword');
+const inputs = document.querySelectorAll('.input');
+let password 
 
-formChangeEmail.addEventListener('submit', (e) => {
+formChangePassword.addEventListener('submit', (e) => {
     e.preventDefault();
 
     checkInputs();
 });
 
 function checkInputs() {
-    const newPasswordValue = newPassword.value.trim();
-    const passwordCheckValue = passwordCheck.value.trim();
+    inputs.forEach(input => {
+        const inputValue = input.value.trim()
+        const classInput = input.classList.value.split(' ')
+        console.log(classInput)
+        if (inputValue === '') {
+            errorValidation(input, 'Preencha esse campo');
 
-    if (newPasswordValue === '') {
-        errorValidation(newPassword, 'Preencha esse campo');
-    } else if (newPasswordValue === passwordValue){
-        errorValidation(newPassword, 'Use uma senha diferente da anterior');
-    }
-    else{
-        successValidation(newPassword);
-    }
-
-    if (passwordCheckValue === '') {
-        errorValidation(passwordCheck, 'Preencha esse campo');
-    } else if (passwordCheckValue !== newPasswordValue) {
-        errorValidation(passwordCheck, 'As senhas não correspondem');
-    } else {
-        successValidation(passwordCheck);
-    }
+        }
+        else if(classInput.includes("confirm") && input.value.trim() !== password){
+            errorValidation(passwordCheck, 'As senhas não correspondem');
+        }
+        else {
+            successValidation(input);
+            password = inputValue
+        }
+    });
 }
 
 
@@ -35,7 +32,7 @@ function errorValidation(input, message) {
     const formControl = input.parentElement;
     formControl.classList.add('error');
     formControl.classList.remove('success');
-    
+
     const messageError = formControl.querySelector('small');
     messageError.innerHTML = message;
 
