@@ -24,7 +24,7 @@
     <main>
         <div class="container-cad">
             <h1 class="title">CADASTRO</h1>
-            <form class="form-cad" id="form-cad" action="/login.html" method="POST" onsubmit="return validate(this)">
+            <form class="form-cad form" id="form-cad" action="/login.html" method="POST">
                 <div class="form-control">
                     <input type="text" id="Name" class="input" name="Nome completo" placeholder="Nome completo">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
@@ -43,7 +43,7 @@
                     </div>
                     <div class="form-control">
                         <input type="text" maxlength="10" minlength="10" inputmode="numeric" id="RG" name="RG"
-                            placeholder="RG">
+                            placeholder="RG" class="input">
                         <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                         <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
@@ -54,7 +54,7 @@
                 <div class="container-middle">
                     <div class="form-control">
                         <input type="text" maxlength="11" minlength="11" inputmode="numeric" id="CPF" name="CPF"
-                            placeholder="CPF">
+                            placeholder="CPF" class="input">
                         <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                         <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
@@ -63,7 +63,7 @@
                     <div class="form-control Dependente">
                         <div class="option-dependence">
                             <label for="independente">Independente</label>
-                            <input type="radio" name="dependente" value="Independente" class="checkbox left"
+                            <input type="radio" name="dependente" value="Independente" class="checkbox left input"
                                 id="dependente">
                             <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                             <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
@@ -73,7 +73,7 @@
 
                         <div class="option-dependence">
                             <label for="dependente">Dependente</label>
-                            <input type="radio" name="dependente" value="Dependente   " class="checkbox left"
+                            <input type="radio" name="dependente" value="Dependente" class="checkbox left input"
                                 id="dependente">
                             <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                             <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
@@ -95,14 +95,14 @@
                 <div class="container-middle">
                     <div class="form-control">
                         <input type="text" maxlength="10" minlength="10" inputmode="numeric" id="RGResponsavel"
-                            name="RG" placeholder="RG do Responsável">
+                            name="RG" placeholder="RG do Responsável" class="input">
                         <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                         <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
                         <small class="message"></small>
                     </div>
                     <div class="form-control">
-                        <input type="text" maxlength="11" minlength="11" inputmode="numeric" id="CPFResponsavel"
+                        <input type="text" maxlength="11" minlength="11" inputmode="numeric" id="CPFResponsavel" class="input"
                             name="CPF" placeholder="CPF do Responsável">
                         <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                         <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
@@ -159,7 +159,7 @@
 
                 <div class="container-middle">
                     <div class="form-control">
-                        <input type="Email" id="email" name="E-mail" class="input" placeholder="E-mail">
+                        <input type="Email" id="email" name="E-mail" class="input email" placeholder="E-mail">
                         <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                         <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
@@ -167,7 +167,7 @@
                     </div>
                     <div class="form-control">
                         <input type="Confirmar Email" id="emailCheck" name="Confirmar E-mail"
-                            placeholder="Confirmar E-mail">
+                            placeholder="Confirmar E-mail" class="input emailConfirm">
                         <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                         <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
@@ -177,14 +177,14 @@
 
                 <div class="container-middle">
                     <div class="form-control">
-                        <input type="password" id="password" name="Senha" placeholder="Senha">
+                        <input type="password" id="password" name="Senha" placeholder="Senha" class="input password">
                         <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                         <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
                         <small class="message"></small>
                     </div>
                     <div class="form-control">
-                        <input type="password" id="passwordCheck" name="confirmar Senha" placeholder="Confirmar Senha">
+                        <input type="password" id="passwordCheck" name="confirmar Senha" placeholder="Confirmar Senha" class="input passwordConfirm">
                         <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                         <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
@@ -206,7 +206,7 @@
         <p id="Copyright">Copyright 2023 - Desenvolvido por DEV Nutri - Todos os direitos reservados.</p>
     </footer>
     <script src="https://kit.fontawesome.com/fc74a91a63.js" crossorigin="anonymous"></script>
-    <script src="../assets/js/register.js"></script>
+    <script src="../assets/js/formValidation.js"></script>
 </body>
 
 </html>
