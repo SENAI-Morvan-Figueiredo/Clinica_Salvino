@@ -389,6 +389,51 @@ nav {
     padding: 0 5px;
 }
 
+.titulo-medicos{
+    display: flex;
+    background-color: #03A678;
+    color: white;
+    height: 600px;
+    padding-top: 160px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.titulo-medicos h1{
+    font-weight: 900;
+}
+
+.circulo{
+    position: absolute;
+    top: 40%;
+    left: 19%;
+    width: 320px;
+    height: 320px;
+    border-radius: 175px;
+    background-color: #f5f0f0;
+}
+
+.medicos{
+    position: relative;
+    padding-top: 70px;
+}
+
+.medico{
+    text-align: justify;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 2fr;
+    height: 470px;
+}
+
+.med-img{
+    top: 20%;
+    left: 16%;
+    position: absolute;
+    width: 400px;
+    z-index: 900;
+}
 
 
 .li_border {
@@ -407,7 +452,17 @@ nav {
     background-color: rgba(10,23,55,0);
     background-image: url(../images/onda-menu.png);
     padding-bottom: 111px;
-  }
+}
+
+.bg-onda-purple{
+    background-image: url(../images/onda-menu.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-clip: border-box;
+    background-position-x: -210px;
+    transform: rotate(180deg);
+    height: 300px;
+}
 
 .animatelogo{
     width: 90px;
