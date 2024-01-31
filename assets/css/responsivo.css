@@ -11,6 +11,18 @@
 }
 
 @media (max-width: 990px) {
+    .medico{
+        grid-template-areas: 'tmp' 'txt';
+        place-items: center;
+    }
+    .med-text{
+        top: -230px;
+        left: 0;
+        padding-top: 120px;
+    }
+    .reverse .med-text{
+        left: 0;
+    }
     .left{
         margin: 0;
     }
@@ -72,5 +84,25 @@
 @media (max-width: 575px) {
     .bord-right{
         margin: 0
+    }
+}
+
+@media (max-width: 425px) {
+    .med-text{
+        top: -150px;
+        left: 0;
+        padding: 70px 10% 0;
+    }
+    .med-img{
+        width: 199px;
+    }
+    .circulo{
+        width: 200px;
+        height: 200px;
+        top: 0;
+        left: -4px;
+    }
+    .reverse .med-text{
+        left: 0;
     }
 }

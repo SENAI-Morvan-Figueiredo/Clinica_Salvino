@@ -394,7 +394,7 @@ nav {
     background-color: #03A678;
     color: white;
     height: 600px;
-    padding-top: 160px;
+    padding-top: 10%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -422,6 +422,10 @@ nav {
 }
 
 .medicos{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     position: relative;
 }
 
