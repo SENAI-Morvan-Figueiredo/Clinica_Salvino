@@ -462,6 +462,7 @@ nav {
     text-align: justify;
     display: grid;
     align-items: center;
+    justify-content: center;
     grid-template-areas: 'tmp txt txt';
     padding-top: 100px;
 }
