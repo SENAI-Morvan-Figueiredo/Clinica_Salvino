@@ -406,32 +406,78 @@ nav {
 
 .circulo{
     position: absolute;
-    top: 40%;
-    left: 19%;
+    top: 70px;
+    left: 54px;
     width: 320px;
     height: 320px;
     border-radius: 175px;
     background-color: #f5f0f0;
 }
 
+.bg-onda-purple.bg-white{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
 .medicos{
     position: relative;
-    padding-top: 70px;
 }
+
+.template-med{
+    position: relative;
+    grid-area: tmp;
+}
+
+.med-text{
+    position: relative;
+    left: -85px;
+    top: -20px;
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    grid-area: txt;
+    padding: 20px 100px;
+}
+
+
+.med-text.bg-purple{
+    color: #fff;
+    border-radius: 15px;
+}
+
+.botaoFechar.btn-white.rotation{
+    margin-top: -180px;
+    transform: rotate(180deg)
+}
+
+.border-null{
+    border: none;
+}
+
 
 .medico{
     text-align: justify;
     display: grid;
     align-items: center;
-    grid-template-columns: 1fr 2fr;
-    height: 470px;
+    grid-template-areas: 'tmp txt txt';
+    padding-top: 100px;
+}
+
+.reverse{
+    grid-template-areas: 'txt txt tmp';
+}
+
+.reverse .med-text{
+    left: 85px;
 }
 
 .med-img{
-    top: 20%;
-    left: 16%;
-    position: absolute;
-    width: 400px;
+    top: -37px;
+    position: relative;
+    width: 399px;
     z-index: 900;
 }
 
