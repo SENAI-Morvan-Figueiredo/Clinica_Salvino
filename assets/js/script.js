@@ -63,7 +63,3 @@ function fecharPopUp(event) {
   let fechar
   fechar = new FecharPopUp(event.target)
 }
-
-function voltar(){
-  history.back();
-}
