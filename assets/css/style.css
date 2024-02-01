@@ -216,8 +216,8 @@ nav {
     
 }
 @keyframes surgirDoutor {
-    from {left: -2000px}
-    to {left: 0px}
+    from {left: -100%}
+    to {left: 0}
 }
 #dr-salvino h2{
     font-size: 32px;

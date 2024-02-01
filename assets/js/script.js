@@ -16,9 +16,10 @@ function adicionaClasseAoRolar() {
   const minhaDiv = document.querySelector('.doutor');
   // define a posição do scroll
   const posicaoScroll = window.pageYOffset;
-
+  const doc = document.documentElement
+  console.log(100 * posicaoScroll / (doc.scrollHeight - doc.clientHeight))
   // adiciona a classe "ativo" quando a página é rolada para o ponto e desativa
-  if (posicaoScroll >= 821 && posicaoScroll < 1859) {
+  if (100 * posicaoScroll / (doc.scrollHeight - doc.clientHeight) >= 35 && 100 * posicaoScroll / (doc.scrollHeight - doc.clientHeight) <= 80) {
     minhaDiv.classList.add('doutorAtivo');
   } else {
     minhaDiv.classList.remove('doutorAtivo');

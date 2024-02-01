@@ -60,11 +60,11 @@
         margin: 0;
     }
     .bg-onda-top {
-        min-height: 145px;
+        min-height: 650px;
     }
     .sec-dr-home {
         max-height: none;
-        top: 0;
+        top: -240px;
     }
     #dr-salvino img {
         max-width: 280px;
