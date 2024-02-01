@@ -316,6 +316,19 @@ nav {
 .especialidadeTitle{
     margin: 20px 0;
 }
+.link-black{
+    text-decoration: underline;
+    text-emphasis: none;
+    font-weight: 900;
+    opacity: 1;
+    transition: all ease 0.3s;
+    cursor: pointer;
+    color: #000000;
+}
+
+.link-black:hover{
+    opacity: 0.7;
+}
 
 @media (max-width: 690px) {
     .player{

@@ -3,18 +3,15 @@
 }
 
 .title-contact{
+    color: #6F5BE3;
     margin-bottom: 40px;
     font-size: 2em;
     font-weight: 900;
 }
 
-.icon-contact.redes{
-    cursor: pointer;
-}
-
-.icon-contact.redes:hover{
-    opacity: 0.7;
-    transform: scale(1.2);
+.redes{
+    padding: 0;
+    width: 100%;
 }
 
 .redes-buttons{
@@ -25,6 +22,7 @@
 }
 
 .title-form{
+    color: #03A678;
     margin-bottom: 40px;
     font-size: 2em;
     font-weight: 900;
@@ -37,8 +35,8 @@
 }
 
 .adress-text-speak{
-    width: 250px;
-    margin-bottom: 20px;
+    width: 100%;
+    padding: 15px 20%;
 }
 
 .contact-forms{
@@ -315,6 +313,11 @@ p.text{
     width: 100%;
 }
 
+#contato li {
+    list-style: none;
+}
+
+
 @keyframes shake {
     25% {
         translate: 6px 0;
@@ -327,11 +330,16 @@ p.text{
     }
 }
 
-@media(max-width: 939px){
-    .adress-text, .contact-text{
-        font-size: 0.9em;
-        width: 250px;
+@media (min-width:2000px) {
+    .adress-text-speak{
+        padding-left: 30%;
     }
+    .division.contact-box .contact-forms {
+        width: 100%;
+        padding-left: 30%;
+    }
+}
+@media(max-width: 939px){
     .redes-buttons{
         width: 100px;
     }
@@ -445,6 +453,9 @@ p.text{
 @media (max-width: 375px) {
     .division.contact-box .contact-forms{
         display: block;
-       padding-left: 8%;
+        padding-left: 8%;
+    }
+    .adress-text-speak{
+        padding: 15px 8%;
     }
 }
