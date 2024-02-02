@@ -197,11 +197,12 @@ nav {
 }
 .sec-dr-home {
     position: relative;
-    top: -35vh;
+    top: -20vh;
     max-height: 314px;
 }
 #dr-salvino {
     color: white;
+    padding-bottom: 80px;
 }
 .doutor {
     position: relative;

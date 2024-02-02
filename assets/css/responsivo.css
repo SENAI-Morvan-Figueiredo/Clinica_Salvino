@@ -10,6 +10,13 @@
     color: #fff;
 }
 
+@media (max-width: 1900px) {
+    #dr-salvino{
+        padding-top: 200px;
+        margin-bottom: 80px;
+    }
+}
+
 @media (max-width: 990px) {
     .medico{
         grid-template-areas: 'tmp' 'txt';
@@ -65,6 +72,11 @@
     .sec-dr-home {
         max-height: none;
         top: -240px;
+    }
+    #dr-salvino{
+        padding-bottom: 0;
+        margin-bottom: -200px;
+        margin-top: -50px;
     }
     #dr-salvino img {
         max-width: 280px;
