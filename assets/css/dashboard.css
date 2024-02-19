@@ -11,8 +11,7 @@
 /* --- começo das classes da dashboard do menu do usuario --- */
 
     /* class do css do boddy da pagina do usuario */
-    .body_user {
-    background-color: #266796;                                                        /* cor da tela de fundo do body */
+    .body_user {                                                       /* cor da tela de fundo do body */
     min-height: 6.25em;                                                                  /* valor minimo da altura da pagina */
     display: flex;                                                                      /* Definição da exibição como flex (vai jogar todos os elementos dentro da classe para a esquerda) */
     justify-content: space-around;                                                      /* dimencionando os items do body espaçados ao seu redor */

@@ -43,14 +43,29 @@
     background-color: #eaeaea;
     /* opacity: 0.78; */
 }
+
 .bg-white {
     background-color: #fff;
 }
+
 .bg-green {
     background-color: #03A678;;
 }
+
 .bg-purple {
     background-color: #6F5BE3;
+}
+
+.bg-lightcoral{
+    background-color: #F79283;                                                      
+}
+
+.bg-yellow{
+    background-color: #FCB74A;
+}
+
+.bg-blue{
+    background-color: #266796;   
 }
 
 /* Cores */
