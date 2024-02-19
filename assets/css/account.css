@@ -37,16 +37,6 @@ main{
     text-align: left;
 }
 
-.back{
-    border-radius: 15px;
-    border: 3px solid #000000;
-    background-color: #FFFFFF;
-    cursor: pointer;
-    font-size: 12px;
-    width: 130px;
-    height: 40px;
-}
-
 footer{
     height: 12vh;
     display: flex;
@@ -404,7 +394,7 @@ footer{
     .btn-purple{
         scale: 0.75;
     }
-    .back{
+    .btn-black-white{
         scale: 0.75;
     }
 }
@@ -508,17 +498,3 @@ footer{
         padding: 75px 5%;
     }
  }
-
-
-/*Animações*/
-
-.animationBack{
-    border: 3px solid #000000;
-    background-color: #FFFFFF;
-    transition: all 0.1s;
-}
-
-.animationBack:hover{
-    background-color: #000;
-    color: #fff;
-}
