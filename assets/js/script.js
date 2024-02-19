@@ -20,8 +20,8 @@ function adicionaClasseAoRolar() {
   console.log(minhaDiv.getBoundingClientRect())
   // adiciona a classe "ativo" quando a página é rolada para o ponto e desativa
 
-  if (window.screen.height >= 1225) {
-    if (minhaDiv.getBoundingClientRect()['y'] < 1322 && minhaDiv.getBoundingClientRect()['y'] > -465) {
+  if (window.screen.height > 1000) {
+    if (minhaDiv.getBoundingClientRect()['y'] < 1200 && minhaDiv.getBoundingClientRect()['y'] > -465) {
       minhaDiv.classList.add('doutorAtivo');
     } else {
       minhaDiv.classList.remove('doutorAtivo');
