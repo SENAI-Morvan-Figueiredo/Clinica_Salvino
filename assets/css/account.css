@@ -391,21 +391,6 @@ footer{
     padding-top: 4.38%;
 }
 
-.submit {
-    width: 130px;
-    height: 40px;
-    border-radius: 15px;
-    border: none;
-    background-color: #6F5BE3;
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 19px;
-    letter-spacing: 0em;
-    text-align: center;
-    color: #FFFFFF;
-    cursor: pointer;
-}
-
 .message{
     position: absolute;
     top: 50px;
@@ -416,7 +401,7 @@ footer{
     .button-box-cad{
         justify-content: space-between;
     }
-    .submit{
+    .btn-purple{
         scale: 0.75;
     }
     .back{
@@ -526,18 +511,6 @@ footer{
 
 
 /*Animações*/
-.animationPayment{
-    background-color: #6F5BE3;
-    color: #F0F0F0;
-    transition: all 0.1s;
-    border: 2px solid transparent;
-}
-
-.animationPayment:hover{
-    background-color: #F0F0F0;
-    color: #6F5BE3;
-    border: 2px solid #6F5BE3;
-}
 
 .animationBack{
     border: 3px solid #000000;

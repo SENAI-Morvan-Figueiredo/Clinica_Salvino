@@ -53,12 +53,6 @@ main{
     margin-right: 50px;
 }
 
-.back.relative {
-    position: relative;
-    left: -70px;
-    margin-top: 40px;
-}
-
 footer{
     height: 12vh;
     display: flex;
@@ -325,31 +319,10 @@ footer{
     padding-top: 40px;
 }
 
-.submit {
-    width: 130px;
-    height: 40px;
-    border-radius: 15px;
-    border: none;
-    background-color: #6F5BE3;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 19px;
-    letter-spacing: 0em;
-    text-align: center;
-    color: #FFFFFF;
-    cursor: pointer;
-}
-
 .menu-button{
     height: 35px;
     width: 35px;
     cursor: pointer;
-}
-
-.submit.relative{
-    position: relative;
-    right: -70px;
-    margin-top: 40px;
 }
 
 .message{
@@ -528,7 +501,7 @@ table{
 }
 
 @media (max-width: 780px) {
-    .submit{
+    .btn-purple{
         width: 100px;
     }
     .back{
@@ -547,19 +520,6 @@ table{
 
 
 /*Animações*/
-.animationPayment{
-    background-color: #6F5BE3;
-    color: #F0F0F0;
-    transition: all 0.1s;
-    border: 2px solid transparent;
-}
-
-.animationPayment:hover{
-    background-color: #F0F0F0;
-    color: #6F5BE3;
-    border: 2px solid #6F5BE3;
-}
-
 .animationBack{
     border: 3px solid #000000;
     background-color: #FFFFFF;
