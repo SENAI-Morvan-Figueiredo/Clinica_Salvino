@@ -10,10 +10,16 @@
     color: #fff;
 }
 
-@media (min-height: 1225px) {
+@media (max-height: 1225px) {
     #dr-salvino{
-        padding-top: 200px;
+        margin-top: 100px;
         margin-bottom: 80px;
+    }
+}
+
+@media (max-width: 1440px) {
+    #dr-salvino{
+        margin-top: -80px;
     }
 }
 

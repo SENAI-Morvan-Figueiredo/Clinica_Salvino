@@ -20,23 +20,37 @@ function adicionaClasseAoRolar() {
   console.log(minhaDiv.getBoundingClientRect())
   // adiciona a classe "ativo" quando a página é rolada para o ponto e desativa
 
-  if (window.screen.height >= 1225){
+  if (window.screen.height >= 1225) {
     if (minhaDiv.getBoundingClientRect()['y'] < 1322 && minhaDiv.getBoundingClientRect()['y'] > -465) {
       minhaDiv.classList.add('doutorAtivo');
     } else {
       minhaDiv.classList.remove('doutorAtivo');
     }
-  } else if(minhaDiv.getBoundingClientRect()['weight'] >= 663) {
-    if (minhaDiv.getBoundingClientRect()['y'] < 918 && minhaDiv.getBoundingClientRect()['y'] > -620) {
-      minhaDiv.classList.add('doutorAtivo');
-    } else {
-      minhaDiv.classList.remove('doutorAtivo');
-    }
-  } else{
-    if (minhaDiv.getBoundingClientRect()['y'] < 918 && minhaDiv.getBoundingClientRect()['y'] > -420) {
-      minhaDiv.classList.add('doutorAtivo');
-    } else {
-      minhaDiv.classList.remove('doutorAtivo');
+  } else {
+    if (minhaDiv.getBoundingClientRect()['height'] <= 552) {
+      if (minhaDiv.getBoundingClientRect()['y'] < 658 && minhaDiv.getBoundingClientRect()['y'] > -522) {
+        minhaDiv.classList.add('doutorAtivo');
+      } else {
+        minhaDiv.classList.remove('doutorAtivo');
+      }
+    } else if(minhaDiv.getBoundingClientRect()['height'] <= 663){
+      if (minhaDiv.getBoundingClientRect()['y'] < 574 && minhaDiv.getBoundingClientRect()['y'] > -755) {
+        minhaDiv.classList.add('doutorAtivo');
+      } else {
+        minhaDiv.classList.remove('doutorAtivo');
+      }
+    }else if(minhaDiv.getBoundingClientRect()['height'] <= 870){
+      if (minhaDiv.getBoundingClientRect()['y'] < 574 && minhaDiv.getBoundingClientRect()['y'] > -825) {
+        minhaDiv.classList.add('doutorAtivo');
+      } else {
+        minhaDiv.classList.remove('doutorAtivo');
+      }
+    } else{
+      if (minhaDiv.getBoundingClientRect()['y'] < 574 && minhaDiv.getBoundingClientRect()['y'] > -910) {
+        minhaDiv.classList.add('doutorAtivo');
+      } else {
+        minhaDiv.classList.remove('doutorAtivo');
+      }
     }
   }
 }
