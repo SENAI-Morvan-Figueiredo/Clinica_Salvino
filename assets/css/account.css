@@ -371,16 +371,6 @@ footer{
     }
 }
 
-#button-box-cad{
-    width: 100%;
-    height: 50.53%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    padding-top: 4.38%;
-}
-
 .message{
     position: absolute;
     top: 50px;
@@ -388,9 +378,6 @@ footer{
 }
 
 @media(max-width: 650px) {
-    .button-box-cad{
-        justify-content: space-between;
-    }
     .btn-purple{
         scale: 0.75;
     }

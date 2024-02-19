@@ -95,12 +95,6 @@ nav {
     flex-direction: column;
     align-items: center;
 }
-.escalar{
-    transition: 1s all ease;
-}
-.escalar:hover{
-    scale: 1.1;
-}
 .change-color{
     transition: 1s all ease;
 }
