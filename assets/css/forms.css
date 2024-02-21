@@ -6,6 +6,28 @@
     font-family: 'Kumbh Sans', sans-serif;
 }
 
+.body-container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    border-radius: 15px;    
+    background-color: #F2F2F2;
+    box-shadow: 0px 6px 5px 0px #00000040;
+    padding: 80px 10%;
+    margin: 115px 0;
+}
+
+.form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 main{
     display: flex;
     flex-direction: column;
@@ -19,7 +41,7 @@ main{
 }
 
 .title {
-    font-size: clamp(15px, 15px + 1vw, 36px);
+    font-size: 28px;
     font-weight: 600;
     line-height: 45px;
     letter-spacing: 0em;
@@ -28,7 +50,7 @@ main{
     margin-bottom: 40px;
 }
 
-#robot{
+.robot{
     margin-left: 15px ;
     font-size: 14px;
     font-weight: 400;
@@ -37,7 +59,20 @@ main{
     text-align: left;
 }
 
+.button-box{
+    width: 100%;
+    display: grid;
+    justify-content: space-between;
+    justify-items: center;
+    align-content: center;
+    margin-bottom: 30px;
+    padding-top: 60px;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 35px;
+}
+
 footer{
+    padding: 0 10%;
     height: 12vh;
     display: flex;
     flex-direction: column;
@@ -77,6 +112,7 @@ footer{
     font-weight: 600;
     line-height: 15px;
     letter-spacing: 0em;
+    text-align: center;
 }
 
 .agendamento {
@@ -103,123 +139,19 @@ footer{
     padding-left: 25px;
 }
 
-.captcha-box.center{
-    position: relative; 
-    top:50%;
-    left:50%;
-    transform: translate(-50%, 0)
-}
-
-/*Estilos da páginas de alteração de email e de senha*/
-#menu-button{
-    height: 40.25%;
-    width: 3.19%;
+.menu-button{
+    height: 35px;
+    width: 35px;
     cursor: pointer;
 }
 
-#ul-change{
-    justify-content: space-between;
-    list-style-type: none;
-    align-items: center;
-    width: 40.66%;
-}
 
-.container-change{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    align-content: center;
-    border-radius: 15px;    
-    background-color: #F2F2F2;
-    box-shadow: 0px 6px 5px 0px #00000040;
-    padding: 80px 10%;
-    margin: 100px 0;
-    max-width: 850px;
-}
-
-.form-changeEmail{
-    width: 100%;
-}
-
-.form-changePassword{
-    width: 100%;
-}
-
-.button-box{
-    justify-items: center;
-    width: 100%;
-    display: grid;
-    flex-direction: row;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 50px;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 30px;
-    grid-gap: 25px;
-}
-
-/*Estilos da página minha conta*/
-#Login{
-    height: 40px;
-    width: 130px;
-    border-radius: 30px;
-    border: 3px solid #FFFFFF;
-    background-color: #6F5BE3;
-    color: #FFFFFF;
-    font-size: 14px;
-    cursor: pointer;
-}
-
-.container-cad{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    align-content: center;
-    height: 66.61951909476662%;
-    width: 58.19444444444444%;
-    border-radius: 15px;    
-    background-color: #F2F2F2;
-    box-shadow: 0px 6px 5px 0px #00000040;
-    padding-top: 75px;
-    padding-bottom: 75px;
-    margin-top: 115px;
-    margin-bottom: 115px;
-}
-
-.form-cad{
-    translate: 50%, -50%;
-}
-
-
-.option-dependence{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
-}
-
-.checkbox{
-    width: 13px;
-    height: 13px;
-    align-items: center;
-}
-
+/*Classes JS*/
 .form-control {
-    margin-bottom: 20px;
+    width: 100%;
+    margin-bottom: 10px;
     padding-bottom: 20px;
     position: relative;
-}
-
-.complemento {
-    width: 50%;
-}
-
-.left{
-    margin-left: 10%;
 }
 
 .form-control label {
@@ -232,9 +164,7 @@ footer{
     border: 2px solid #3E445B;
     border-radius: 5px;
     outline: 0;
-
     font-size: 14px;
-
     width: 100%;
     padding: 15px;
     position: relative;
@@ -250,18 +180,6 @@ footer{
 
 .shake {
     animation: shake 0.2s 2;
-}
-
-@keyframes shake {
-    25% {
-        translate: 6px 0;
-    }
-    50% {
-        translate: -6px 0;
-    }
-    75% {
-        translate: 6px 0;
-    }
 }
 
 .form-control.success i.icon-success {
@@ -289,13 +207,6 @@ footer{
     margin-top: 5px;
     font-size: 12px;
     color: #b22c2c;
-
-}
-
-.menu-button{
-    height: 35px;
-    width: 35px;
-    cursor: pointer;
 }
 
 .message{
@@ -304,12 +215,35 @@ footer{
     left: 0;
 }
 
+@keyframes shake {
+    25% {
+        translate: 6px 0;
+    }
+    50% {
+        translate: -6px 0;
+    }
+    75% {
+        translate: 6px 0;
+    }
+}
 
 
-/*Estilos do cadastro de cartão*/
-.container-cad-card {
+/*Estilos tela de login*/
+.Login-Box{
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 50%;
+}
+
+.Login-Box .title{
+    text-align: left;
+}
+
+.container-login{
+    display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-content: center;
@@ -318,106 +252,128 @@ footer{
     background-color: #F2F2F2;
     box-shadow: 0px 6px 5px 0px #00000040;
     margin: 100px 0;
-    padding: 80px 10%;
-    max-width: 850px;
+    padding: 50px 5% 50px 0
 }
 
-#captcha-box-cad {
+.options-box {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    align-content: center;
-    height: 8.06%;
-    width: 36.63%;
-    border-radius: 0px;
-    border: none;
-    background-color: #FFFFFF;
-    padding-left: 4.41%;
-    padding-top: 2.74%;
-    padding-bottom: 2.74%;
-    margin-top: 2.29%;
+    justify-content: space-between;
+    margin-top: 30px;
+    width: 100%;
 }
+
+.options{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.text-options{
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: end;
+    color:  #333333;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.text-options a{
+    text-emphasis: none;
+    text-decoration: none;
+    color: currentColor;
+}
+
+.text-options:hover{
+    text-decoration: underline;
+}
+
+
+/*Estilos do cadastro*/
+.Dependente{
+    padding-left: 20px;
+}
+
+.option-dependence{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.checkbox{
+    width: 13px;
+    height: 13px;
+    align-items: center;
+}
+
+.mid {
+    width: 50%;
+    grid-area: c;
+}
+
+.right {
+    grid-column: 1;
+}
+
+.left{
+    grid-area: l;
+}
+
 .container-middle {
     width: 100%;
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    margin-bottom: 10px;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 5%;
+}
+
+.container-middle.address {
+    width: 100%;
+    display: grid;
     justify-content: space-between;
     align-items: center;
     align-content: center;
     margin-bottom: 2.38%;
+    grid-template-areas: 'r c l';
+    grid-gap: 0;
+    justify-items: center;
+}  
+
+
+/*Estilos página esqueci minha senha*/
+.form-control .code{
+    width: 70px;
+    text-align: center;
 }
+
+
+/*Estilos da páginas de alteração de email e de senha*/
+#menu-button{
+    height: 40.25%;
+    width: 3.19%;
+    cursor: pointer;
+}
+
+
+/*Estilos do cadastro de cartão*/
 .form-control.card {
-    width: 75%;
+    width: 165%;
 }
 
 .form-control.cvc {
-    width: 18%;
-    max-width: 162px;
+    width: 65px;
+    justify-self: end;
 }
 
-@media (max-width: 425px) {
-    .container-middle{
-        flex-direction: column;
-        align-items: start;
-    }
-    .form-control.card {
-        width: 100%;
-    }
-
-    .form-control.cvc {
-        width: 68px;
-    }
-}
-
-/*Classes JS*/
-.form-control label {
-    display: inline-block;
-    margin-bottom: 5px;
-    color: #828CAD;
-}
-
-.form-control input {
-    border: 2px solid #3E445B;
-    border-radius: 5px;
-    outline: 0;
-
-    display: flex;
-
-    font-size: 14px;
-
-    width: 100%;
-    padding: 15px;
-    position: relative;
-}
 
 /*Estilos Tela de Pagamento*/
-main{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    background-color: #2BAE89;
-    font-size: large;
-    text-align: center;
-    border: 1px;
-    justify-content: center;
-    align-content: center;
-}
-
-.container-payment {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-content: center;
-    align-items: center;
-    border-radius: 15px;
-    background-color: #F2F2F2;
-    box-shadow: 0px 6px 5px 0px #00000040;
-    margin: 100px 0;
-    padding: 130px 10%;
-    max-width: 850px;
-}
-
 table{
     width: 40vw;
     background-color: #FFFFFF;
@@ -434,12 +390,14 @@ table{
 #total{
     margin-left: 20%;
     margin-bottom: 10%;
+    font-size: 16px;
 }
 
-#payment-metod{
+#payment-method{
     width: 100%;
     text-align: center;
     font-weight: 300;
+    font-size: 18px;
 }
 
 #options-payment{
@@ -456,20 +414,12 @@ table{
     flex-direction: column;
 }
 
-.bottom-padding{
-    padding-bottom: 5%;
-}
-
-@media (max-width: 690px) {
-    .btn.btn-white{
-        display: none;
-    }
-}
-
-@media (max-width: 780px) {
+/*Responsividade das páginas*/
+@media (max-width: 790px) {
     .btn-purple{
         width: 100px;
     }
+
     .btn-black-white{
         width: 100px;
     }
@@ -478,7 +428,102 @@ table{
         width: 100%;
         font-size: 12px;
     }
-    #total {
-        font-size: 12px;
+
+    .container-middle.address {
+        width: 100%;
+        display: grid;
+        justify-content: space-between;
+        align-items: center;
+        align-content: center;
+        margin-bottom: 2.38%;
+        grid-template-areas: 'r c' 'l l';
+        justify-items: stretch;
+    }  
+
+    .right{
+        width: 140%;
+        margin-right: 0;
+    }
+
+    .left{
+        margin-left: 0;
+    }
+
+    .mid{
+        margin-left: 50%;
+    }
+}
+
+@media (max-width: 690px) {
+    .btn.btn-white{
+        display: none;
+    }
+
+    .form-control.card {
+        width: 100%;
+    }
+
+    .container-middle {
+        display: block;
+    }
+
+    .btn-purple{
+        scale: 0.75;
+    }
+
+    .btn-black-white{
+        scale: 0.75;
+    }
+
+    .captcha-box{
+        scale: 0.75;
+    }
+
+    .button-box{
+        grid-gap: 0;
+    }
+}
+
+@media (max-width: 425px) {
+    .container-middle{
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .form-control.card {
+        width: 100%;
+    }
+
+    .Login-Box .title{
+        margin-top: 40px;
+    }
+
+    .container-login{
+        flex-direction: column;
+        padding: 50px 10%;
+    }
+
+    .Login-Box{
+        width: 85%;
+    }
+
+    .options-box{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .options{
+        margin-top: 35px;
+        align-items: center;
+    }
+
+    .header .container{
+        margin: 0;
+        justify-content: space-around;
+    }
+
+    .container-middle{
+        flex-direction: column;
+        align-items: start;
     }
 }

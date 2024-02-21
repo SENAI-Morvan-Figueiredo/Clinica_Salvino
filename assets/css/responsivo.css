@@ -105,6 +105,19 @@
     }
 }
 
+@media (max-width: 575.98px) { 
+    .row {
+        flex-direction: column;
+    }
+    .row-center {
+        flex-direction: column;
+    }
+    .container {
+        flex-direction: column;
+    }
+ }
+
+
 @media (max-width: 425px) {
     .med-text{
         top: -150px;

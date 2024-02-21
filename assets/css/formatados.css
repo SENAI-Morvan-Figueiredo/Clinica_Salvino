@@ -71,14 +71,6 @@
     border: 2px solid #6F5BE3;
 }
 
-.escalar{
-    transition: 1s all ease;
-}
-
-.escalar:hover{
-    scale: 1.1;
-}
-
 
 /* Background Cores */
 .bg-gray {
@@ -120,4 +112,14 @@
 .black-link a{
     color: #333;
     text-decoration: underline;
+}
+
+
+/*Estilos*/
+.escalar{
+    transition: 1s all ease;
+}
+
+.escalar:hover{
+    scale: 1.1;
 }

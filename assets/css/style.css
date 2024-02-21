@@ -236,18 +236,6 @@ nav {
 }
 
 
-@media (max-width: 575.98px) { 
-    .row {
-        flex-direction: column;
-    }
-    .row-center {
-        flex-direction: column;
-    }
-    .container {
-        flex-direction: column;
-    }
- }
-
 /* Pop up vídeo*/
 .popUpVideo {
     display: flex;
@@ -325,17 +313,7 @@ nav {
     opacity: 0.7;
 }
 
-@media (max-width: 690px) {
-    .player{
-        width: 70%;
-    }
-}
 
-@media (max-width: 425px) {
-    .player{
-        width: 95%;
-    }
-}
 
 .ocultar {
     display: none;
@@ -526,3 +504,27 @@ nav {
 .animatelogo{
     width: 90px;
 }
+
+@media (max-width: 690px) {
+    .player{
+        width: 70%;
+    }
+}
+
+@media (max-width: 425px) {
+    .player{
+        width: 95%;
+    }
+}
+
+@media (max-width: 575.98px) { 
+    .row {
+        flex-direction: column;
+    }
+    .row-center {
+        flex-direction: column;
+    }
+    .container {
+        flex-direction: column;
+    }
+ }
