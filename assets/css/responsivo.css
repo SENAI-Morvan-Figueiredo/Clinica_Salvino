@@ -10,6 +10,12 @@
     color: #fff;
 }
 
+@media (max-width: 1440px) {
+    #dr-salvino{
+        margin-top: -80px;
+    }
+}
+
 @media (max-height: 1225px) {
     #dr-salvino{
         margin-top: 100px;
@@ -17,11 +23,6 @@
     }
 }
 
-@media (max-width: 1440px) {
-    #dr-salvino{
-        margin-top: -80px;
-    }
-}
 
 @media (max-width: 990px) {
     .medico{
