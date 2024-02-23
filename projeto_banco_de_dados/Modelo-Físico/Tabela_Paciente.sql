@@ -1,0 +1,21 @@
+CREATE TABLE Paciente (
+	ID_Paciente INT PRIMARY KEY IDENTITY(1,1),
+	Nome VARCHAR(50) NOT NULL,
+	RG VARCHAR(9) NOT NULL,
+	CPF VARCHAR(11) NOT NULL,
+	Data_Nascimento DATE NOT NULL,
+	Naturalidade VARCHAR(50),
+	Status_Responsavel BIT,
+	ID_Sexo INT NOT NULL,
+	Genero VARCHAR(50),
+	Telefone VARCHAR(11),
+	Email VARCHAR(50),
+	CEP VARCHAR(8) NOT NULL,
+	Endereco VARCHAR(MAX) NOT NULL,
+	N_Endereco INT NOT NULL,
+	Complemento VARCHAR(MAX),
+	Data_Cadastro DATETIME NOT NULL,
+	Contato_Emergencia VARCHAR(MAX)
+)
+ALTER TABLE Paciente 
+ADD CONSTRAINT fk_SEXO_Paciente FOREIGN KEY (ID_Sexo) REFERENCES Sexo(ID_Sexo)
