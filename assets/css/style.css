@@ -333,12 +333,6 @@ nav {
 }
 
 
-
-
-
-
-
-
 /* menu navegação home */
 
 .logo_branco {
@@ -511,12 +505,6 @@ nav {
     }
 }
 
-@media (max-width: 425px) {
-    .player{
-        width: 95%;
-    }
-}
-
 @media (max-width: 575.98px) { 
     .row {
         flex-direction: column;
@@ -528,3 +516,9 @@ nav {
         flex-direction: column;
     }
  }
+
+@media (max-width: 425px) {
+    .player{
+        width: 95%;
+    }
+}
