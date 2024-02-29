@@ -7,15 +7,11 @@ class FormSubmit {
             this.url = this.form.getAttribute("action");
         };
         this.sendForm = this.sendForm.bind(this);
-        this.name = document.getElementById('nome');
-        this.email = document.getElementById('email');
-        this.subject = document.getElementById('subject');
-        this.message = document.getElementById('message');
         this.result = document.querySelector('.result')
         this.resultMesssage = document.querySelector('.result-text')
         this.shake = shake;
-        this.formControls = [this.name, this.email, this.subject, this.message];
-
+        this.formControls = document.querySelectorAll('.input');
+        console.log(this.formControls)
         this.setupEventListeners();
     };
 
@@ -124,7 +120,7 @@ class FormSubmit {
             
             if (value === '') {
                 type = 'empty';
-            } else if (input === this.email && !this.validateEmail(input)) {
+            } else if (input.name === 'email' && !this.validateEmail(input)) {
                 type = 'invalid email';
             }
             
@@ -148,10 +144,15 @@ class FormSubmit {
             }
             
             // Verificar se o e-mail é válido
-            if (!this.validateEmail(this.email)) {
-                this.errorValidation();
-                return;
-            }
+            this.formControls.forEach((input)=>{
+                if(input.name === 'email'){
+                    if (!this.validateEmail(input)) {
+                        this.errorValidation();
+                        return;
+                    }
+                }    
+            })
+            
     
             this.onSubmission(event);
             await fetch(this.url, {
