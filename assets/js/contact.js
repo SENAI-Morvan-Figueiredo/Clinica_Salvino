@@ -11,7 +11,6 @@ class FormSubmit {
         this.resultMesssage = document.querySelector('.result-text')
         this.shake = shake;
         this.formControls = document.querySelectorAll('.input');
-        console.log(this.formControls)
         this.setupEventListeners();
     };
 
