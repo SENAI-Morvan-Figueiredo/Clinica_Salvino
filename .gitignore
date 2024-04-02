@@ -1,1 +1,4 @@
 venv
+db.sqlite3
+clinica_salvino/__pycache__
+clinica/__pycache__
