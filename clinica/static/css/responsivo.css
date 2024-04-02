@@ -18,8 +18,9 @@
 
 @media (max-height: 1225px) {
     #dr-salvino{
-        margin-top: 100px;
-        margin-bottom: 80px;
+        padding-top: 105px;
+        padding-bottom: 80px;
+        margin-top: -3px;
     }
 }
 
