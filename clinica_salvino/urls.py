@@ -20,5 +20,6 @@ from clinica import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home)
+    path('', views.home),
+    path('contact/', views.contact_us, name='contact')
 ]

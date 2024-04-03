@@ -1,7 +1,6 @@
 {% load static i18n %}
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,7 +18,7 @@
     {% endblock extra_head %}
 </head>
 
-<body>
+<body class="home_body saindo bg-green">
     <header>
         <nav class="navbar navbar-expand-sm bg-purple d-flex d-lg-none">
             <div class="container-fluid">
@@ -70,10 +69,8 @@
             </div>
         </nav>
     </header>
-    <main>
-        {% block content %}
-        {% endblock content %}
-    </main>
+    {% block content %}
+    {% endblock content %}
     <footer class="bg-copyright">
         <div class="container">
             <div class="row">
@@ -85,3 +82,6 @@
         </div>
     </footer>
 </body>
+{% block script %}
+{% endblock script %}
+</html>

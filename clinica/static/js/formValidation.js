@@ -7,18 +7,15 @@ let dependenteValue;
 
 formChangePassword.addEventListener('submit', (e) => {
     e.preventDefault();
-
     checkInputs();
 });
 
 function checkInputs() {
     inputs.forEach(input => {
-        console.log(input)
         const inputValue = input.value.trim()
         const classInput = input.classList.value.split(' ')
         if (inputValue === '') {
             errorValidation(input, 'Preencha esse campo');
-
         }
         else if(classInput.includes("passwordConfirm") && input.value.trim() !== password){
             errorValidation(passwordCheck, 'As senhas não correspondem');
@@ -27,7 +24,6 @@ function checkInputs() {
             errorValidation(emailCheck, 'Os e-mails não correspondem');
         }
         else if (classInput.includes("checkbox")) {
-            check.push(input)
             let isChecked
             check.forEach((radio) => {
                 if (radio.checked) {
