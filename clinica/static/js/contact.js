@@ -31,7 +31,7 @@ class FormSubmit {
     restart() {
         this.formButton.removeEventListener("click", this.sendForm);
         this.formButton.addEventListener('click', (event) => {
-            event.preventDefault();
+            
             formSubmit.sendForm(event);
         });
         this.formButton.disabled = false;
@@ -75,7 +75,7 @@ class FormSubmit {
     }
 
     onSubmission(event) {
-        event.preventDefault();
+        
         event.target.disabled = true;
         event.target.innerText = "Enviando...";
     }
@@ -133,7 +133,7 @@ class FormSubmit {
 
     async sendForm(event) {
         try {
-            event.preventDefault();
+            
             
             // Verificar se os campos estão preenchidos corretamente
             const formIsValid = this.form.checkValidity();

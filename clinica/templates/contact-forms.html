@@ -73,25 +73,26 @@
                     <div class="speak-form">
                         <div class="container">
                             <h2 class="title-form">Envie uma Mensagem</h2>
-                            <form action="https://formsubmit.co/ajax/avelinogabrieldossantos@gmail.com" method="POST"
+                            <form action="{% url 'contact' %}" method="POST"
                                 class="form" data-form>
+                                {% csrf_token %}
                                 <div class="form-control">
                                     <label for="nome">Nome</label>
-                                    <input type="text" name="nome" id="nome" class="input" required>
+                                    <input type="text" name="nome" id="nome" class="input">
                                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
                                     <small>Mensagem de Erro</small>
                                 </div>
                                 <div class="form-control">
                                     <label for="email">E-mail</label>
-                                    <input type="email" name="email" id="email" class="input" required>
+                                    <input type="email" name="email" id="email" class="input">
                                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                                     <i class="fa-solid fa-circle-check icon-success hidden" style="color: #328146;"></i>
                                     <small>Mensagem de Erro</small>
                                 </div>
                                 <div class="form-control">
                                     <label for="subject">Assunto</label>
-                                    <input type="text " name="assunto" id="subject" class="input" required>
+                                    <input type="text " name="assunto" id="subject" class="input">
                                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                                     <i class="fa-solid fa-circle-check icon-success hidden" style="color: #328146;"></i>
                                     <small>Mensagem de Erro</small>
@@ -99,7 +100,7 @@
                                 <div class="form-control">
                                     <label for="message">Mensagem</label>
                                     <textarea name="mensagem" id="message" class="input" cols="30" rows="10"
-                                        placeholder="Digite sua mensagem" required></textarea>
+                                        placeholder="Digite sua mensagem"></textarea>
                                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                                     <i class="fa-solid fa-circle-check icon-success hidden" style="color: #328146;"></i>
                                     <small>Mensagem de Erro</small>
@@ -129,5 +130,5 @@
         crossorigin="anonymous"></script>
     <script src="{% static 'js/animateHeader.js' %}"></script>
     <script src="{% static 'js/button.js' %}"></script>
-    <script src="{% static 'js/contact.js' %}"></script>
+    <script src="{% static 'js/formValidation.js' %}"></script>
 {% endblock script %}

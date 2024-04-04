@@ -1,27 +1,36 @@
-const formChangePassword = document.querySelector('.form');
+const form = document.querySelector('.form');
 const inputs = document.querySelectorAll('.input');
 let password;
 let email;
 let check = []
 let dependenteValue;
 
-formChangePassword.addEventListener('submit', (e) => {
-    e.preventDefault();
-    checkInputs();
+form.addEventListener('submit', (e) => {
+    let check = checkInputs();
+    if (check.findIndex(value => value === false) !== -1){
+        e.preventDefault();
+    } else {
+        console.log("Todos os campos estão válidos. Redirecionando...");
+        window.location.href = ""; // Substitua pela URL desejada
+    }
 });
 
 function checkInputs() {
+    let validate = [];
     inputs.forEach(input => {
         const inputValue = input.value.trim()
         const classInput = input.classList.value.split(' ')
         if (inputValue === '') {
             errorValidation(input, 'Preencha esse campo');
+            validate.push(false)
         }
         else if(classInput.includes("passwordConfirm") && input.value.trim() !== password){
             errorValidation(passwordCheck, 'As senhas não correspondem');
+            validate.push(false)
         }
         else if(classInput.includes("emailConfirm") && input.value.trim() !== email){
             errorValidation(emailCheck, 'Os e-mails não correspondem');
+            validate.push(false)
         }
         else if (classInput.includes("checkbox")) {
             let isChecked
@@ -33,8 +42,10 @@ function checkInputs() {
             });
             if (isChecked === true) {
                 successValidation(check[0]);
+                validate.push(true)
             } else {
                 errorValidation(check[0], 'Preencha esse campo');
+                validate.push(false)
             };
         }
         else{
@@ -45,8 +56,10 @@ function checkInputs() {
                 password = inputValue
             }
             successValidation(input);
+            validate.push(true)
         }
     });
+    return validate
 }
 
 

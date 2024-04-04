@@ -1,7 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 def home(request):
     return render(request, 'index.html')
 
 def contact_us(request):
-    return render(request, 'contact-forms.html')
+    if request.POST:
+        return redirect(home)
+    else:
+        return render(request, 'contact-forms.html')

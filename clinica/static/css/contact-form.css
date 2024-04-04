@@ -95,11 +95,11 @@
     visibility: visible;
 }
 
-.result.success{
-    color: #328146;
+.form-control.success input {
+    border: 3px solid #328146;
 }
 
-.result.success i.icon-success {
+.form-control.success i.icon-success {
     visibility: visible;
 }
 
