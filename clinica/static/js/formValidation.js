@@ -1,11 +1,17 @@
 const form = document.querySelector('.form');
 const inputs = document.querySelectorAll('.input');
 const result = document.querySelector('.result');
+const message = document.querySelector('.result-text')
 let password;
 let email;
 let check = []
 let dependenteValue;
 
+document.addEventListener('DOMContentLoaded', (e) => {
+    setTimeout(() => {
+        message.innerHTML = ''
+    }, 5000);
+})
 
 form.addEventListener('submit', (e) => {
     e.preventDefault(); // Prevenir o envio padrão do formulário

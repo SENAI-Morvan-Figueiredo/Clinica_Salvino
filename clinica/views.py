@@ -10,13 +10,18 @@ def contact_us(request):
         email = request.POST.get('email')
         assunto = request.POST.get('assunto')
         mensagem = request.POST.get('mensagem')
-        send_mail(
-            f'Mensagem de {nome}: {assunto}',
-            f'Nome: {nome} \nEmail:{email} \nAssunto:{assunto} \n{mensagem}',
-            "avelinogabrieldossantos@gmail.com",
-            ["aluno103.23187221gabriel@gmail.com"],
-            fail_silently=False,
-        )
-        return redirect(home)
+        try:
+            send_mail(
+                f'Mensagem de {nome}: {assunto}',
+                f'Nome: {nome} \nEmail: {email} \nAssunto:{assunto} \n{mensagem}',
+                "avelinogabrieldossantos@gmail.com",
+                ["aluno103.23187221gabriel@gmail.com"],
+                fail_silently=False,
+            )
+            message = 'Mensagem enviada com sucesso!'
+        except:
+            message = 'Ocorreu um erro com a mensagem!'
     else:
-        return render(request, 'contact-forms.html')
+        message = ''
+
+    return render(request, 'contact-forms.html', {'message': message})
