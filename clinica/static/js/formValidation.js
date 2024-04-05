@@ -1,17 +1,23 @@
 const form = document.querySelector('.form');
 const inputs = document.querySelectorAll('.input');
+const result = document.querySelector('.result');
 let password;
 let email;
 let check = []
 let dependenteValue;
 
+
 form.addEventListener('submit', (e) => {
+    e.preventDefault(); // Prevenir o envio padrão do formulário
     let check = checkInputs();
-    if (check.findIndex(value => value === false) !== -1){
-        e.preventDefault();
-    } else {
+    if (check.every(value => value === true)) {
         console.log("Todos os campos estão válidos. Redirecionando...");
-        window.location.href = ""; // Substitua pela URL desejada
+        const btnEnviar = document.querySelector('[data-button]');
+        btnEnviar.disabled = true; // Desativar o botão
+        btnEnviar.innerText = "Enviando..."; // Alterar o texto do botão
+        setTimeout(() => {
+            form.submit(); // Enviar o formulário após 5 segundos
+        }, 5000);
     }
 });
 

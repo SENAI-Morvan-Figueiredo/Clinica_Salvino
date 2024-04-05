@@ -95,7 +95,15 @@
     visibility: visible;
 }
 
+.result.success{
+    color: #328146;
+}
+
 .form-control.success input {
+    border: 3px solid #328146;
+}
+
+.form-control.success textarea {
     border: 3px solid #328146;
 }
 
