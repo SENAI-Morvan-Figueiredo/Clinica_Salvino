@@ -3,3 +3,4 @@ db.sqlite3
 clinica_salvino/__pycache__
 clinica/__pycache__
 clinica/migrations/__pycache__
+.env
