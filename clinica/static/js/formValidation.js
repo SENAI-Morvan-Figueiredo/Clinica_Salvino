@@ -10,19 +10,25 @@ let dependenteValue;
 document.addEventListener('DOMContentLoaded', (e) => {
     setTimeout(() => {
         message.innerHTML = ''
+        if (result.classList.contains('error')){
+            result.classList.remove('error')
+        } else if (result.classList.contains('success')){
+                    result.classList.remove('success')
+        }
     }, 5000);
 })
 
 form.addEventListener('submit', (e) => {
-    e.preventDefault(); // Prevenir o envio padrão do formulário
+    e.preventDefault();
     let check = checkInputs();
     if (check.every(value => value === true)) {
         console.log("Todos os campos estão válidos. Redirecionando...");
         const btnEnviar = document.querySelector('[data-button]');
-        btnEnviar.disabled = true; // Desativar o botão
-        btnEnviar.innerText = "Enviando..."; // Alterar o texto do botão
+        btnEnviar.disabled = true; 
+        btnEnviar.innerText = "Enviando..."; 
         setTimeout(() => {
-            form.submit(); // Enviar o formulário após 5 segundos
+            form.submit(); 
+            form.reset(); 
         }, 5000);
     }
 });

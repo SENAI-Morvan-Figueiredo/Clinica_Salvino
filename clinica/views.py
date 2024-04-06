@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
+from django.contrib import messages
 
 def home(request):
     return render(request, 'index.html')
 
 def contact_us(request):
+    requisicao = ''
     if request.POST:
         nome = request.POST.get('nome')
         email = request.POST.get('email')
@@ -18,10 +20,10 @@ def contact_us(request):
                 ["aluno103.23187221gabriel@gmail.com"],
                 fail_silently=False,
             )
-            message = 'Mensagem enviada com sucesso!'
+            messages.success(request, 'Formulário enviado com sucesso!')
+            return redirect('contact')
         except:
-            message = 'Ocorreu um erro com a mensagem!'
+            messages.error(request, 'Ocorreu um erro com a mensagem!')
+        messages.clear(request)
     else:
-        message = ''
-
-    return render(request, 'contact-forms.html', {'message': message})
+        return render(request, 'contact-forms.html')

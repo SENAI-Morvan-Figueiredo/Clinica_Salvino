@@ -82,8 +82,8 @@
 
 .result i {
     position: absolute;
-    top: 0px;
-    left: 150px;
+    top: 5px;
+    left: 275px;
     visibility: hidden;
 }
 
@@ -97,6 +97,10 @@
 
 .result.success{
     color: #328146;
+}
+
+.result.success i.icon-success  {
+    visibility: visible;
 }
 
 .form-control.success input {
