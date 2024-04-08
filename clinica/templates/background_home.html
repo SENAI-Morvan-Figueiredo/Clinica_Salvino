@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="{% static 'css/formatados.css' %}">
     <link rel="stylesheet" href="{% static 'css/globais.css' %}">
     <link rel="stylesheet" href="{% static 'css/responsivo.css' %}">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap');
+    </style>
     {% block extra_head %}
     {% endblock extra_head %}
 </head>
@@ -33,7 +36,7 @@
                 <div class="collapse navbar-collapse nav-responsive" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
                         <a class="nav-link white bord-right escalar" href="./register.html">Fazer cadastro</a>
-                        <a class="nav-link white bord login-button btn-white" href="./login.html">Fazer
+                        <a class="nav-link white bord login-button btn-white" href="{% url 'login' %}">Fazer
                             login</a>
                     </div>
                 </div>
@@ -50,7 +53,7 @@
                         </a>
                     </div>
                     <div class="col-lg-auto d-flex align-items-start">
-                        <a href="./login.html" class="btn btn-white">
+                        <a href="{% url 'login' %}" class="btn btn-white">
                             Agendamento de Consulta
                         </a>
                     </div>
@@ -61,7 +64,7 @@
                             </li>
                             <li> | </li>
                             <li class="escalar login">
-                                <a href="./login.html" class="btn-white login">Fazer Login</a>
+                                <a href="{% url 'login' %}" class="btn-white login">Fazer Login</a>
                             </li>
                         </ul>
                     </div>

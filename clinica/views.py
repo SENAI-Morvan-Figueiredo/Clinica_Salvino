@@ -9,7 +9,6 @@ def nutris(request):
     return render(request, 'conhecaNossosNutris.html')
 
 def contact_us(request):
-    requisicao = ''
     if request.POST:
         nome = request.POST.get('nome')
         email = request.POST.get('email')
@@ -30,3 +29,6 @@ def contact_us(request):
             return redirect('contact')
     else:
         return render(request, 'contact-forms.html')
+    
+def login(request):
+    return render(request, 'login.html')
