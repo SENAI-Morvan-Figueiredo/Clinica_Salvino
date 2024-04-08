@@ -65,7 +65,7 @@
     top: 50%;
     right: 6%;
     visibility: hidden;
-}
+} 
 
 .form-control small {
     visibility: hidden;
@@ -82,25 +82,16 @@
 
 .result i {
     position: absolute;
-    top: 5px;
-    left: 275px;
-    visibility: hidden;
+    top: 20px;
+    left: 475px;
 }
 
 .result.error{
     color: #b22c2c;
 }
 
-.result.error i.icon-error{
-    visibility: visible;
-}
-
 .result.success{
     color: #328146;
-}
-
-.result.success i.icon-success  {
-    visibility: visible;
 }
 
 .form-control.success input {

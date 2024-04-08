@@ -108,16 +108,23 @@
                             <div class="result">
                                 <p class="result-text">
                                     {% if messages %}
-                                <div class="alert alert-success">
-                                    <strong>Sucesso!</strong>
-                                    {% for message in messages %}
-                                    {{ message }}
-                                    {% endfor %}
-                                </div>
-                                {% endif %}
+                                        {% for message in messages %}
+                                            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                                                <div class="alert alert-danger">
+                                                    <strong>Erro!</strong>
+                                                    {{ message }}
+                                                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                                                </div>
+                                            {% else %}
+                                                <div class="alert alert-success">
+                                                    <strong>Sucesso!</strong>
+                                                    {{ message }}
+                                                    <i class="fa-solid fa-circle-check icon-success hidden" style="color: #328146;"></i>
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
                                 </p>
-                                <i class="fa-solid fa-circle-check icon-success hidden" style="color: #328146;"></i>
-                                <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                             </div>
                         </form>
                     </div>

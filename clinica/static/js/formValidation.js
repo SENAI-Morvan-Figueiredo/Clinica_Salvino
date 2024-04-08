@@ -9,11 +9,8 @@ let dependenteValue;
 
 document.addEventListener('DOMContentLoaded', (e) => {
     setTimeout(() => {
-        message.innerHTML = ''
-        if (result.classList.contains('error')){
-            result.classList.remove('error')
-        } else if (result.classList.contains('success')){
-                    result.classList.remove('success')
+        if (message.parentElement){
+            message.parentElement.remove()
         }
     }, 5000);
 })

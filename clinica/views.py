@@ -24,6 +24,6 @@ def contact_us(request):
             return redirect('contact')
         except:
             messages.error(request, 'Ocorreu um erro com a mensagem!')
-        messages.clear(request)
+            return redirect('contact')
     else:
         return render(request, 'contact-forms.html')
