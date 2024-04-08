@@ -16,11 +16,17 @@
     }
 }
 
-@media (max-height: 1225px) {
+@media (max-width: 2000px) {
     #dr-salvino{
-        padding-top: 105px;
+        padding-top: 0;
         padding-bottom: 160px;
-        margin-top: -3px;
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 1440px) {
+    #dr-salvino{
+        margin-top: -50px;
     }
 }
 

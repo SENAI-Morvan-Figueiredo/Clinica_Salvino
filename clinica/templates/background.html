@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block head_title %}
+        {% endblock head_title %}
+    </title>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="{% url 'home' %}" class="login">
+                <img class="escalar" src="../assets/img/Logo Branco 1.png">
+            </a>
+        </div>
+    </header>
+    {% block content %}
+    {% endblock content %}
+    <footer>
+        <p id="Copyright">Copyright 2023 - Desenvolvido por DEV Nutri - Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>

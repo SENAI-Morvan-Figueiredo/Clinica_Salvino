@@ -28,19 +28,19 @@ function adicionaClasseAoRolar() {
       } else {
         minhaDiv.classList.remove('doutorAtivo');
       }
-    } else if(minhaDiv.getBoundingClientRect()['height'] <= 663){
+    } else if (minhaDiv.getBoundingClientRect()['height'] <= 663) {
       if (minhaDiv.getBoundingClientRect()['y'] < 574 && minhaDiv.getBoundingClientRect()['y'] > -755) {
         minhaDiv.classList.add('doutorAtivo');
       } else {
         minhaDiv.classList.remove('doutorAtivo');
       }
-    }else if(minhaDiv.getBoundingClientRect()['height'] <= 870){
+    } else if (minhaDiv.getBoundingClientRect()['height'] <= 870) {
       if (minhaDiv.getBoundingClientRect()['y'] < 574 && minhaDiv.getBoundingClientRect()['y'] > -825) {
         minhaDiv.classList.add('doutorAtivo');
       } else {
         minhaDiv.classList.remove('doutorAtivo');
       }
-    } else{
+    } else {
       if (minhaDiv.getBoundingClientRect()['y'] < 574 && minhaDiv.getBoundingClientRect()['y'] > -910) {
         minhaDiv.classList.add('doutorAtivo');
       } else {
@@ -80,7 +80,6 @@ class FecharPopUp {
 function abrirPopUp() {
   let popUp;
   elemento = `.popUp${event.target.classList['0']}`
-  console.log(elemento)
   popUp = new PopUpAbrir(document.querySelector(elemento));
 }
 

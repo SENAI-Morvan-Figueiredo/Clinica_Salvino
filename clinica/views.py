@@ -5,6 +5,9 @@ from django.contrib import messages
 def home(request):
     return render(request, 'index.html')
 
+def nutris(request):
+    return render(request, 'conhecaNossosNutris.html')
+
 def contact_us(request):
     requisicao = ''
     if request.POST:
