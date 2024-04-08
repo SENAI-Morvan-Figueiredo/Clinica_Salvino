@@ -1,3 +1,4 @@
+{% extends 'background.html' %}
 {% load static i18n %}
 {% block head_title %}
     {% trans 'Login - Clínica Salvino' %}
@@ -6,7 +7,7 @@
 {% block content %}
     <main>
         <div class="container-login">
-            <img class="logo_branco center-img" src="../assets/img/Logotipo Salvino.png">
+            <img class="logo_branco center-img" src="{% static 'img/Logotipo Salvino.png' %}">
             <div class="Login-Box">
                 <h1 class="title margin-tp">LOGIN</h1>
                 <div class="inputs">
@@ -48,6 +49,6 @@
 {% endblock content %}
 {% block script %}
     <script src="https://kit.fontawesome.com/fc74a91a63.js" crossorigin="anonymous"></script>
-    <script src="../assets/js/formValidation.js"></script>
-    <script src="../assets/js/button.js"></script>
+    <script src="{% static 'js/formValidation.js' %}"></script>
+    <script src="{% static 'js/button.js' %}"></script>
 {% endblock script %}
