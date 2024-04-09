@@ -35,7 +35,7 @@
                 </button>
                 <div class="collapse navbar-collapse nav-responsive" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                        <a class="nav-link white bord-right escalar" href="./register.html">Fazer cadastro</a>
+                        <a class="nav-link white bord-right escalar" href="{% url 'cadastro' %}">Fazer cadastro</a>
                         <a class="nav-link white bord login-button btn-white" href="{% url 'login' %}">Fazer
                             login</a>
                     </div>
@@ -60,7 +60,7 @@
                     <div class="col-lg-auto d-flex align-items-start justify-content-center">
                         <ul class="home_nav_ul">
                             <li class="escalar">
-                                <a class="change-color" href="./register.html">Cadastrar</a>
+                                <a class="change-color" href="{% url 'cadastro' %}">Cadastrar</a>
                             </li>
                             <li> | </li>
                             <li class="escalar login">

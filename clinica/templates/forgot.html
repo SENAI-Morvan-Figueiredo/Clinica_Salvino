@@ -1,24 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'background.html' %}
+{% load static i18n %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Esqueci a Senha - Clínica Salvino</title>
-    <link rel="stylesheet" href="../assets/css/formatados.css">
-    <link rel="stylesheet" href="../assets/css/forms.css">
-</head>
-
-<body>
-    <header class="header">
-        <div class="container">
-            <a href="../index.html">
-                <img class="escalar" src="../assets/img/Logo Branco 1.png">
-            </a>
-        </div>
-    </header>
-
+{% block header %}
+    <div class="container">
+        <a href="{% url 'home' %}">
+            <img class="escalar" src="{% static 'img/Logo Branco 1.png' %}">
+        </a>
+    </div>
+{% endblock header %}
+{% block content%}
     <main>
         <div class="body-container">
             <h1 class="title">Esqueci a Senha</h1>
@@ -55,12 +45,9 @@
             </form>
         </div>
     </main>
-    <footer>
-        <p id="Copyright">Copyright 2023 - Desenvolvido por DEV Nutri - Todos os direitos reservados.</p>
-    </footer>
+{% endblock content %}
+{% block script %}
     <script src="https://kit.fontawesome.com/fc74a91a63.js" crossorigin="anonymous"></script>
-    <script src="../assets/js/formValidation.js"></script>
-    <script src="../assets/js/button.js"></script>
-</body>
-
-</html>
+    <script src="{% static 'js/formValidation.js' %}"></script>
+    <script src="{% static 'js/button.js' %}"></script>
+{% endblock script %}

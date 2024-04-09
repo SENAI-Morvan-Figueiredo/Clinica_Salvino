@@ -1,30 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'background.html' %}
+{% load static i18n%}
+{% block head_title %}
+    {% trans "Cadastro - Clínica Salvino" %}
+{% endblock head_title %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro - Clínica Salvino</title>
-    <link rel="stylesheet" href="../assets/css/formatados.css">
-    <link rel="stylesheet" href="../assets/css/forms.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap');
-    </style>
-</head>
-
-<body>
-    <header class="header">
-        <div class="container">
-            <a href="../index.html"><img class="logo_branco escalar" src="../assets/img/Logo Branco 1.png"></a>
-            <button id="Login" class="btn-white" onclick="redirect()">Fazer Login</button>
-        </div>
-    </header>
-
+{% block header%}
+    <div class="container">
+        <a href="../index.html"><img class="logo_branco escalar" src="{% static 'img/Logo Branco 1.png' %}"></a>
+        <button id="Login" class="btn-white" onclick="redirect()">Fazer Login</button>
+    </div>
+{% endblock header %}
+{% block content %}
     <main>
         <div class="body-container">
             <h1 class="title">CADASTRO</h1>
-            <form class="form" id="form-cad" action="/login.html" method="POST">
+            <form class="form" id="form-cad" action="" method="POST">
                 <div class="form-control">
                     <input type="text" id="Name" class="input" name="Nome completo" placeholder="Nome completo">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
@@ -202,12 +192,9 @@
             </form>
         </div>
     </main>
-    <footer>
-        <p id="Copyright">Copyright 2023 - Desenvolvido por DEV Nutri - Todos os direitos reservados.</p>
-    </footer>
+{% endblock content %}
+{% block script %}
     <script src="https://kit.fontawesome.com/fc74a91a63.js" crossorigin="anonymous"></script>
-    <script src="../assets/js/formValidation.js"></script>
-    <script src="../assets/js/button.js"></script>
-</body>
-
-</html>
+    <script src="{% static 'js/formValidation.js' %}"></script>
+    <script src="{% static 'js/button.js' %}"></script>
+{% endblock script %}
