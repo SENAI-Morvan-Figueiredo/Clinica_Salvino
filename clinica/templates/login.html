@@ -4,6 +4,13 @@
     {% trans 'Login - Clínica Salvino' %}
 {% endblock head_title %}
 
+{% block header %}
+    <div class="container">
+        <a href="{% url 'home' %}" class="login">
+            <img class="escalar" src="{% static 'img/Logo Branco 1.png' %}">
+        </a>
+    </div>
+{% endblock header %}
 {% block content %}
     <main>
         <div class="container-login">
@@ -34,8 +41,8 @@
                             </div>
 
                             <div class="options">
-                                    <p class="text-options"><a href="../templates/forgot.html">Esqueci minha senha</a></p>
-                                    <p class="text-options"><a href="../templates/register.html">Cadastrar</a></p>
+                                    <p class="text-options"><a href="{% url 'esqueci-senha' %}">Esqueci minha senha</a></p>
+                                    <p class="text-options"><a href="{% url 'cadastro' %}">Cadastrar</a></p>
                             </div>
                         </div>
                         <div class="button-box">

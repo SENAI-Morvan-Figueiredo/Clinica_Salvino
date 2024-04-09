@@ -23,5 +23,9 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('contact/', views.contact_us, name='contact'),
     path('nutris/', views.nutris, name='nutris'),
-    path('login/', views.login, name='login')
+    path('login/', views.login, name='login'),
+    path('cadastro/', views.register, name='cadastro'),
+    path('esqueci-senha/', views.forgot, name='esqueci-senha'),
+    path('alterar-email/', views.change_email, name='alterar-email'),
+    path('alterar-senha/', views.change_password, name='alterar-senha')
 ]

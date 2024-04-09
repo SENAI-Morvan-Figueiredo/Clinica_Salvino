@@ -3,5 +3,5 @@ function voltar(){
 }
 
 function redirect(){
-    window.location.href = "login.html"
+    window.location.href = "/login"
 }

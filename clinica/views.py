@@ -33,4 +33,15 @@ def contact_us(request):
 def login(request):
     return render(request, 'login.html')
 
+def register(request):
+    return render(request, 'register.html')
+
+def forgot(request):
+    return render(request, 'forgot.html')
+
+def change_email(request):
+    return render(request, 'change-email.html')
+
+def change_password(request):
+    return render(request, 'change-password.html')
 
