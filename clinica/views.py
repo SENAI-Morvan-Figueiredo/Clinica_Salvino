@@ -32,3 +32,5 @@ def contact_us(request):
     
 def login(request):
     return render(request, 'login.html')
+
+
