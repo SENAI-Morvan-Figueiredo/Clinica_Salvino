@@ -4,21 +4,23 @@ const result = document.querySelector('.result');
 const message = document.querySelector('.result-text')
 let password;
 let email;
-let check = []
+//let check = []
 let dependenteValue;
 
-document.addEventListener('DOMContentLoaded', (e) => {
-    setTimeout(() => {
-        if (message.parentElement){
-            message.parentElement.remove()
-        }
-    }, 5000);
-})
+if (message){
+    document.addEventListener('DOMContentLoaded', (e) => {
+        setTimeout(() => {
+            if (message.parentElement){
+                message.parentElement.remove()
+            }
+        }, 5000);
+    })
+}
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    let check = checkInputs();
-    if (check.every(value => value === true)) {
+    let valid = checkInputs();
+    if (valid.every(value => value === true)) {
         console.log("Todos os campos estão válidos. Redirecionando...");
         const btnEnviar = document.querySelector('[data-button]');
         btnEnviar.disabled = true; 
@@ -33,6 +35,7 @@ form.addEventListener('submit', (e) => {
 function checkInputs() {
     let validate = [];
     inputs.forEach(input => {
+        console.log(input)
         const inputValue = input.value.trim()
         const classInput = input.classList.value.split(' ')
         if (inputValue === '') {
@@ -48,6 +51,18 @@ function checkInputs() {
             validate.push(false)
         }
         else if (classInput.includes("checkbox")) {
+            let isChecked = Array.from(inputs).some(input => input.type === 'checkbox' && input.checked);
+            if (isChecked) {
+                successValidation(input);
+                validate.push(true);
+            } else {
+                errorValidation(input, 'Preencha este campo');
+                validate.push(false);
+            }
+        }
+        /*
+        else if (classInput.includes("checkbox")) {
+            check.push(input)
             let isChecked
             check.forEach((radio) => {
                 if (radio.checked) {
@@ -62,7 +77,7 @@ function checkInputs() {
                 errorValidation(check[0], 'Preencha esse campo');
                 validate.push(false)
             };
-        }
+        */
         else{
             if(classInput.includes("email")){
                 email = inputValue
