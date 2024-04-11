@@ -33,9 +33,6 @@ def contact_us(request):
 def login(request):
     return render(request, 'login.html')
 
-def register(request):
-    return render(request, 'register.html')
-
 def forgot(request):
     return render(request, 'forgot.html')
 
