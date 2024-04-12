@@ -1,13 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../assets/css/dashboard.css">
-    <link rel="stylesheet" href="../../assets/css/formatados.css">
-    <title>Paciente - Clínica Salvino</title>
-</head>
+{% extends 'background.html' %}
+{% load static i18n %}
+{% block head_title %}
+{% trans 'paciente - Clínica Salvino' %}
+{% endblock head_title %}
+
+<title>
+    {% block head_title %}
+    {% endblock head_title %}
+</title>
+
+{% block content %}
 <body class="body_user bg-purple">
    
 <!-- começo da dashboard do menu do usuario -->
@@ -151,4 +153,4 @@
     </header>
 
 </body>
-</html>
+{% endblock content %}
