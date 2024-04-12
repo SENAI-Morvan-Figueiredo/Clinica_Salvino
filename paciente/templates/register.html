@@ -15,6 +15,8 @@
         <div class="body-container">
             <h1 class="title">CADASTRO</h1>
             <form class="form" id="form-cad" action="" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
                 <div class="form-control">
                     <input type="text" id="Name" class="input" name="name" placeholder="Nome completo">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
@@ -32,7 +34,7 @@
                         <small class="message"></small>
                     </div>
                     <div class="form-control">
-                        <input type="text" maxlength="10" minlength="10" inputmode="numeric" id="RG" name="RG"
+                        <input type="text" maxlength="9" minlength="9" inputmode="numeric" id="RG" name="RG"
                             placeholder="RG" class="input">
                         <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                         <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
@@ -53,7 +55,7 @@
                     <div class="form-control Dependente">
                         <div class="option-dependence">
                             <label for="independente">Independente</label>
-                            <input type="radio" name="dependente" value="Independente" class="checkbox left input"
+                            <input type="radio" name="status_dependencia" value="Independente" class="checkbox left input"
                                 id="independente">
                             <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                             <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
@@ -63,7 +65,7 @@
 
                         <div class="option-dependence">
                             <label for="dependente">Dependente</label>
-                            <input type="radio" name="dependente" value="Dependente" class="checkbox left input"
+                            <input type="radio" name="status_dependencia" value="Dependente" class="checkbox left input"
                                 id="dependente">
                             <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                             <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
@@ -187,7 +189,7 @@
                 </div>
                 <div class="button-box">
                     <input type="submit" id="back" onclick="voltar()" class="btn-black-white" value="Voltar">
-                    <input type="submit" id="account" class="btn-purple" value="Criar conta">
+                    <button type="submit" data-button class="btn-purple">Enviar</button>
                 </div>
             </form>
         </div>
