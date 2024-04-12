@@ -1,3 +1,4 @@
+from typing import Iterable
 from django.db import models
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
@@ -6,6 +7,7 @@ from .const import STATUS_DEPENDENCE_CHOICE
 # Create your models here.
 class Paciente(User):
     id_paciente = models.BigAutoField(primary_key=True)
+    name = models.CharField(max_length=256)
     data_nascimento = models.DateField(auto_created=False, auto_now=False, auto_now_add=False)
     rg = models.CharField(max_length=9)
     cpf = models.CharField(max_length=11)
@@ -26,7 +28,7 @@ class Paciente(User):
         if self.status_dependencia == 'Dependente' and not self.nome_responsavel:
             raise ValidationError({'nome_responsavel': 'O nome do responsável é obrigatório para pacientes dependentes.'})
         
-        if self.status_dependencia == 'Dependente' and not self.rg_reponsavel:
+        if self.status_dependencia == 'Dependente' and not self.rg_responsavel:
             raise ValidationError({'nome_responsavel': 'O nome do responsável é obrigatório para pacientes dependentes.'})
         
         if self.status_dependencia == 'Dependente' and not self.cpf_responsavel:
