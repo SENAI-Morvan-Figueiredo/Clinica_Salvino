@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from clinica.views import home, contact_us, nutris, login, forgot, change_email, change_password
-from paciente.views import register, card, paciente
+from paciente.views import register, card, paciente,payment
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,4 +31,5 @@ urlpatterns = [
     path('alterar-senha/', change_password, name='alterar-senha'),
     path('card/', card, name='card'),
     path('paciente/', paciente, name='paciente'),
+    path('pagamento/', payment, name='pagamento'),
 ]
