@@ -24,3 +24,15 @@ def register(request):
             return redirect('cadastro')
     else:
         return render(request, 'register.html')
+    
+def card(request):
+    return render(request, 'card.html')
+
+def paciente(request):
+    return render(request, 'paciente.html')
+
+def payment(request):
+    return render(request, 'payment.html')
+
+def nutricionista(request):
+    return render(request, 'nutricionista.html')
