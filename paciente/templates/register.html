@@ -18,7 +18,7 @@
                 {% csrf_token %}
                 {{ form.as_p }}
                 <div class="form-control">
-                    <input type="text" id="Name" class="input" name="name" placeholder="Nome completo" required>
+                    <input type="text" id="Name" class="input" name="username" placeholder="Nome completo" required>
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
@@ -169,14 +169,14 @@
 
                 <div class="container-middle">
                     <div class="form-control">
-                        <input type="password" id="password" name="password" placeholder="Senha" class="input password" required>
+                        <input type="password" id="password" name="password1" placeholder="Senha" class="input password" required>
                         <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                         <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
                         <small class="message"></small>
                     </div>
                     <div class="form-control">
-                        <input type="password" id="passwordCheck" name="confirmar Senha" placeholder="Confirmar Senha" class="input passwordConfirm" required>
+                        <input type="password" id="passwordCheck" name="password" placeholder="Confirmar Senha" class="input passwordConfirm" required>
                         <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                         <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 

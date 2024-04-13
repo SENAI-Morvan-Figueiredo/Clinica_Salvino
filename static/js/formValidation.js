@@ -7,6 +7,14 @@ let email;
 let check = []
 let dependenteValue;
 
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('form-cad').addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+        }
+    });
+});
+
 if (message){
     document.addEventListener('DOMContentLoaded', (e) => {
         setTimeout(() => {
