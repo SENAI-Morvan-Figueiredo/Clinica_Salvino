@@ -29,3 +29,6 @@ def paciente(request):
 
 def payment(request):
     return render(request, 'payment.html')
+
+def nutricionista(request):
+    return render(request, 'nutricionista.html')
