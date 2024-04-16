@@ -1,10 +1,21 @@
-{% extends 'background_home.html'%}
-{% load static i18n %}
-{% block head_title %}
-    {% trans 'Card - Clínica Salvino' %}
-{% endblock head_title %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block header %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Cartão - Clínica Salvino</title>
+    <link rel="stylesheet" href="../../assets/css/formatados.css">
+    <link rel="stylesheet" href="../../assets/css/forms.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap');
+    </style>
+
+</head>
+
+<body>
+    <header class="header">
         <div class="container">
             <a href="../../index.html"><img class="logo_branco escalar" src="../../assets/img/Logo Branco 1.png"></a>
             <a href="../../login.html" class="btn btn-white">
@@ -12,9 +23,8 @@
             </a>
             <img class="menu-button" src="../../assets/img/Menu.png">
         </div>
-{% endblock header %}
+    </header>
 
-{% block content %}
     <main>
         <div class="body-container">
             <h1 class="title">CADASTRO DE CARTÃO</h1>
@@ -69,9 +79,11 @@
                 </div>
             </form>
     </main>
-{% endblock content %}
-
-{% block script %}
+    <footer>
+        <p id="Copyright">Copyright 2023 - Desenvolvido por DEV Nutri - Todos os direitos reservados.</p>
+    </footer>
     <script src="https://kit.fontawesome.com/fc74a91a63.js" crossorigin="anonymous"></script>
-    <script src="{% static 'js/formValidation.js' %}"></script>
-{% endblock script %}
+    <script src="../../assets/js/formValidation.js"></script>
+</body>
+
+</html>
