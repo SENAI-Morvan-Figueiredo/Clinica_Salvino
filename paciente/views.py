@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from .forms import CadPaciente
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 logger = logging.getLogger(__name__)
 
@@ -14,7 +15,7 @@ def register(request):
             user = User.objects.create_user(
                 username=request.POST['username'],
                 password=request.POST['password'],
-                email=request.POST['email'],
+                email=request.POST['username'],
             )
             new_paciente = paciente_form.save(commit=False)
             new_paciente.user = user
@@ -26,3 +27,7 @@ def register(request):
             return redirect('cadastro')
     else:
         return render(request, 'register.html')
+
+@login_required   
+def pacienteBoard(request):
+    return render(request, 'paciente.html')

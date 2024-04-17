@@ -1,6 +1,12 @@
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.contrib import messages
+from django.contrib.auth import authenticate
+from django.contrib.auth import login as Login_django
+from paciente.models import Paciente
+from paciente.views import pacienteBoard
+from django.http import HttpResponseBadRequest
+
 
 def home(request):
     return render(request, 'index.html')
@@ -31,7 +37,25 @@ def contact_us(request):
         return render(request, 'contact-forms.html')
     
 def login(request):
-    return render(request, 'login.html')
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        if username and password:
+            user = authenticate(username=username, password=password)
+            try:
+                if user:
+                    Login_django(request, user)
+                    if Paciente.objects.filter(user=user).exists():
+                        return pacienteBoard(request)
+                else:
+                    messages.error(request, "Credenciais inválidas. Por favor, verifique seu email e senha.")
+                    return redirect('login')
+            except:
+                messages.error(request, "Tivemos um pequeno erro ao realizar seu login. Tente novamente.")
+                return redirect('login')
+    else:
+        return render(request, 'login.html')
 
 def forgot(request):
     return render(request, 'forgot.html')
