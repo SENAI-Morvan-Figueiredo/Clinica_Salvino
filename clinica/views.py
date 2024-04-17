@@ -1,6 +1,18 @@
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.contrib import messages
+from django.contrib.auth import authenticate
+from django.contrib.auth import login as Login_django
+from paciente.models import Paciente
+from proprietario.models import Proprietario
+from medico.models import Medico
+from recept.models import Recepcionista
+from paciente.views import pacienteBoard
+from proprietario.views import proprietyBoard
+from medico.views import medBoard
+from recept.views import receptBoard
+from django.http import HttpResponseBadRequest
+
 
 def home(request):
     return render(request, 'index.html')
@@ -31,7 +43,31 @@ def contact_us(request):
         return render(request, 'contact-forms.html')
     
 def login(request):
-    return render(request, 'login.html')
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        if username and password:
+            user = authenticate(username=username, password=password)
+            try:
+                if user:
+                    Login_django(request, user)
+                    if Paciente.objects.filter(user=user).exists():
+                        return pacienteBoard(request)
+                    elif Proprietario.objects.filter(user=user).exists():
+                        return proprietyBoard(request)
+                    elif Medico.objects.filter(user=user).exists():
+                        return medBoard(request)
+                    elif Recepcionista.objects.filter(user=user).exists():
+                        return receptBoard(request)
+                else:
+                    messages.error(request, "Credenciais inválidas. Por favor, verifique seu email e senha.")
+                    return redirect('login')
+            except:
+                messages.error(request, "Tivemos um pequeno erro ao realizar seu login. Tente novamente.")
+                return redirect('login')
+    else:
+        return render(request, 'login.html')
 
 def forgot(request):
     return render(request, 'forgot.html')
@@ -41,7 +77,4 @@ def change_email(request):
 
 def change_password(request):
     return render(request, 'change-password.html')
-
-def proprietario(request):
-    return render(request, 'proprietario.html')
 

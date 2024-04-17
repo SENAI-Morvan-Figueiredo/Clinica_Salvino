@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 class Paciente(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=256, unique=True)
     data_nascimento = models.DateField(auto_created=False, auto_now=False, auto_now_add=False)
     rg = models.CharField(max_length=9)
     cpf = models.CharField(max_length=11)
