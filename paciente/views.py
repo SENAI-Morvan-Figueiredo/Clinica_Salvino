@@ -1,7 +1,8 @@
 import logging
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect
 from .forms import CadPaciente
 from django.contrib.auth.models import User
+from django.contrib import messages
 
 logger = logging.getLogger(__name__)
 
@@ -18,9 +19,10 @@ def register(request):
             new_paciente = paciente_form.save(commit=False)
             new_paciente.user = user
             new_paciente.save()
+            messages.success(request, 'Usuário Cadastrado com Sucesso!')
             return redirect('cadastro')
         else:
-            logger.error("Formulário de cadastro inválido: %s", paciente_form.errors)
+            messages.error("Formulário de cadastro inválido: %s", paciente_form.errors)
             return redirect('cadastro')
     else:
         return render(request, 'register.html')

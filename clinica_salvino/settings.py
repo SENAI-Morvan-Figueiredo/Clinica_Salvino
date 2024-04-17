@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'recept',
     'medico',
     'paciente',
-    'proprietario'
+    'proprietario',
 ]
 
 MIDDLEWARE = [
