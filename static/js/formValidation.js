@@ -30,7 +30,6 @@ form.addEventListener('submit', (e) => {
     e.preventDefault();
     let valid = checkInputs();
     if (valid.every(value => value === true)) {
-        console.log("Todos os campos estão válidos. Redirecionando...");
         const btnEnviar = document.querySelector('[data-button]');
         btnEnviar.disabled = true; 
         btnEnviar.innerText = "Enviando..."; 
