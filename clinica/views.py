@@ -42,3 +42,6 @@ def change_email(request):
 def change_password(request):
     return render(request, 'change-password.html')
 
+def proprietario(request):
+    return render(request, 'proprietario.html')
+
