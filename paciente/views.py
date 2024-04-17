@@ -30,3 +30,6 @@ def card(request):
 
 def paciente(request):
     return render(request, 'paciente.html')
+
+def payment(request):
+    return render(request, 'payment.html')
