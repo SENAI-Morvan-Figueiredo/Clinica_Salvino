@@ -33,7 +33,7 @@ urlpatterns = [
     path('alterar-email/', change_email, name='alterar-email'),
     path('alterar-senha/', change_password, name='alterar-senha'),
     path('proprietario/', proprietyBoard, name='proprietario'),
-    path('paciente', proprietyBoard, name='paciente'),
+    path('paciente/', proprietyBoard, name='paciente'),
     path('medico/', medBoard, name='medico'),
-    path('recepcionista', receptBoard, name='recepcionista')
+    path('recepcionista/', receptBoard, name='recepcionista')
 ]
