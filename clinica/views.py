@@ -4,7 +4,13 @@ from django.contrib import messages
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as Login_django
 from paciente.models import Paciente
+from proprietario.models import Proprietario
+from medico.models import Medico
+from recept.models import Recepcionista
 from paciente.views import pacienteBoard
+from proprietario.views import proprietyBoard
+from medico.views import medBoard
+from recept.views import receptBoard
 from django.http import HttpResponseBadRequest
 
 
@@ -48,6 +54,12 @@ def login(request):
                     Login_django(request, user)
                     if Paciente.objects.filter(user=user).exists():
                         return pacienteBoard(request)
+                    elif Proprietario.objects.filter(user=user).exists():
+                        return proprietyBoard(request)
+                    elif Medico.objects.filter(user=user).exists():
+                        return medBoard(request)
+                    elif Recepcionista.objects.filter(user=user).exists():
+                        return receptBoard(request)
                 else:
                     messages.error(request, "Credenciais inválidas. Por favor, verifique seu email e senha.")
                     return redirect('login')
@@ -65,7 +77,4 @@ def change_email(request):
 
 def change_password(request):
     return render(request, 'change-password.html')
-
-def proprietario(request):
-    return render(request, 'proprietario.html')
 

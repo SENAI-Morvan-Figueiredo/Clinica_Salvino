@@ -23,7 +23,7 @@ def register(request):
             messages.success(request, 'Usuário Cadastrado com Sucesso!')
             return redirect('cadastro')
         else:
-            messages.error(request, f"Formulário de cadastro inválido: {paciente_form.errors}")
+            messages.error("Formulário de cadastro inválido: %s", paciente_form.errors)
             return redirect('cadastro')
     else:
         return render(request, 'register.html')
