@@ -4,4 +4,5 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 @login_required 
 def medBoard(request):
-    return render(request, 'nutricionista.html')
+    medico = request.user.medico
+    return render(request, 'nutricionista.html', {'medico': medico})
