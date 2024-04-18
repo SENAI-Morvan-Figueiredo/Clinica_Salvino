@@ -7,7 +7,6 @@ from paciente.models import Paciente
 from proprietario.models import Proprietario
 from medico.models import Medico
 from recept.models import Recepcionista
-from paciente.views import pacienteBoard
 from proprietario.views import proprietyBoard
 from medico.views import medBoard
 from recept.views import receptBoard
@@ -53,9 +52,9 @@ def login(request):
                 if user:
                     Login_django(request, user)
                     if Paciente.objects.filter(user=user).exists():
-                        return pacienteBoard(request)
+                        return redirect('paciente')
                     elif Proprietario.objects.filter(user=user).exists():
-                        return proprietyBoard(request)
+                        return redirect('proprietario')
                     elif Medico.objects.filter(user=user).exists():
                         return medBoard(request)
                     elif Recepcionista.objects.filter(user=user).exists():

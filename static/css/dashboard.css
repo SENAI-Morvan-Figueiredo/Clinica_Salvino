@@ -6,10 +6,16 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 /* --- começo das classes da dashboard do menu do usuario --- */
-
+ul{
+    padding: 0;
+}
+    .bg-purple{
+        padding-bottom: 80px;
+    }
     /* class do css do boddy da pagina do usuario */
     .body_user {                                                       /* cor da tela de fundo do body */
     min-height: 6.25em;                                                                  /* valor minimo da altura da pagina */
@@ -34,7 +40,8 @@
     .button_home {
         position: relative;                                                                 /* posição do botão da home relativo na dashboard com os valores top e left */
         top: 1.125em;                                                                      /* valor da posição a partir do topo */     
-        left: 1.125em;                                                                     /* valor da posição a partir da esquerda */
+        left: 16.125em;
+        margin-bottom: 20px;                                                                     /* valor da posição a partir da esquerda */
     }
 
     /* class para a imagem do usuario */
@@ -76,13 +83,14 @@
         /* grupo englobando 2 classes e pondo elas em grade */
         .day_week,
         .date_grid {
-            display: grid;                                                                  /* dimencionando os items em grades */
+            display: grid;
+            grid-gap: 10px;                                                                  /* dimencionando os items em grades */
             grid-template-columns: repeat(7, 1fr)                                          /* templante das colunas (sintax 'grid-template-columnds: repeat(n°-de-colunas, fração do espaço disponivel)') */
         
         }
 
         .date_grid {
-            margin: 0.25em;
+            margin: 10px 0;
         }
 
         .month {
@@ -114,7 +122,6 @@
         .day_week_border {
             background-color: #ffffff;
             border-radius: 2px;
-            margin: 0 0.25em
         }
 
         .date_grid button:first-child {
@@ -128,9 +135,7 @@
         }
 
         .date_grid button {
-            width: 8.625em;
             height: 6.75em;
-            margin: 0.25em;
             border-radius: 2px;
             background-color: #ffffff;
             border: 0px solid;

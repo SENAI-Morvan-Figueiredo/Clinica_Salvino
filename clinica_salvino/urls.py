@@ -21,6 +21,7 @@ from paciente.views import register
 from medico.views import medBoard
 from recept.views import receptBoard
 from proprietario.views import proprietyBoard
+from paciente.views import pacienteBoard
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -33,7 +34,7 @@ urlpatterns = [
     path('alterar-email/', change_email, name='alterar-email'),
     path('alterar-senha/', change_password, name='alterar-senha'),
     path('proprietario/', proprietyBoard, name='proprietario'),
-    path('paciente/', proprietyBoard, name='paciente'),
+    path('paciente/', pacienteBoard, name='paciente'),
     path('medico/', medBoard, name='medico'),
     path('recepcionista/', receptBoard, name='recepcionista')
 ]
