@@ -1,7 +1,9 @@
 import logging
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect
 from .forms import CadPaciente
 from django.contrib.auth.models import User
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 logger = logging.getLogger(__name__)
 
@@ -13,23 +15,19 @@ def register(request):
             user = User.objects.create_user(
                 username=request.POST['username'],
                 password=request.POST['password'],
-                email=request.POST['email'],
+                email=request.POST['username'],
             )
             new_paciente = paciente_form.save(commit=False)
             new_paciente.user = user
             new_paciente.save()
+            messages.success(request, 'Usuário Cadastrado com Sucesso!')
             return redirect('cadastro')
         else:
-            logger.error("Formulário de cadastro inválido: %s", paciente_form.errors)
+            messages.error(request, f"Formulário de cadastro inválido: {paciente_form.errors}")
             return redirect('cadastro')
     else:
         return render(request, 'register.html')
-    
-def card(request):
-    return render(request, 'card.html')
 
-def paciente(request):
+@login_required   
+def pacienteBoard(request):
     return render(request, 'paciente.html')
-
-def payment(request):
-    return render(request, 'payment.html')
