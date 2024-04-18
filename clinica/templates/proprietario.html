@@ -1,14 +1,25 @@
+{% extends 'background.html'%}
 {% load static i18n %}
 {% block head_title %}
     {% trans 'Proprietario - Clínica Salvino' %}
 {% endblock head_title %}
 
-<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
-<link rel="stylesheet" href="{% static 'css/formatados.css' %}">
-<link rel="stylesheet" href="{% static 'css/globais.css' %}">
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'css/formatados.css'%}">
+{% endblock extra_head %}
+
+{% block header %}
+    <div class="container">
+        <a href="{% url 'home' %}" class="login">
+            <img class="escalar" src="{% static 'img/Logo Branco 1.png' %}">
+        </a>
+    </div>
+{% endblock header %}
 
 {% block content %}  
 <!-- começo da dashboard do menu do usuario -->
+<div class="body_user bg-yellow">
     <nav  class="dash_menu_user">
         <div>
             <div class="button_home">
@@ -72,7 +83,7 @@
 
 <!-- dashboard do calendario -->
 
-    <header class="dash_calender">
+    <section class="dash_calender">
         <!-- <div> -->
 
             <div class="month">
@@ -133,6 +144,7 @@
                 <button> <time datetime="2023-01-31"> 31 </time> </button>
               
             </div>
+    </section>
+</div>
 
-        <!-- </div> -->
 {% endblock content %}

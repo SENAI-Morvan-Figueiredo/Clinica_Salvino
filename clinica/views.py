@@ -56,9 +56,9 @@ def login(request):
                     elif Proprietario.objects.filter(user=user).exists():
                         return redirect('proprietario')
                     elif Medico.objects.filter(user=user).exists():
-                        return medBoard(request)
+                        return redirect('medico')
                     elif Recepcionista.objects.filter(user=user).exists():
-                        return receptBoard(request)
+                        return redirect('recepcionista')
                 else:
                     messages.error(request, "Credenciais inválidas. Por favor, verifique seu email e senha.")
                     return redirect('login')
