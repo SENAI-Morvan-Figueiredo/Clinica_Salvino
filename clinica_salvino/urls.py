@@ -36,3 +36,4 @@ urlpatterns = [
     path('paciente/', proprietyBoard, name='paciente'),
     path('medico/', medBoard, name='medico'),
     path('recepcionista/', receptBoard, name='recepcionista')
+]
