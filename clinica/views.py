@@ -3,6 +3,7 @@ from django.core.mail import send_mail
 from django.contrib import messages
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as Login_django
+from django.contrib.auth import logout
 from paciente.models import Paciente
 from proprietario.models import Proprietario
 from medico.models import Medico
@@ -42,6 +43,17 @@ def contact_us(request):
         return render(request, 'contact-forms.html')
     
 def login(request):
+    if request.user.is_authenticated:
+        # Se o usuário já estiver autenticado, redirecione-o para a área de dashboard correta
+        if Paciente.objects.filter(user=request.user).exists():
+            return redirect('paciente')
+        elif Proprietario.objects.filter(user=request.user).exists():
+            return redirect('proprietario')
+        elif Medico.objects.filter(user=request.user).exists():
+            return redirect('medico')
+        elif Recepcionista.objects.filter(user=request.user).exists():
+            return redirect('recepcionista')
+        
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -67,6 +79,10 @@ def login(request):
                 return redirect('login')
     else:
         return render(request, 'login.html')
+
+def logout_user(request):
+    logout(request)
+    return redirect('home')
 
 def forgot(request):
     return render(request, 'forgot.html')

@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from clinica.views import home, contact_us, nutris, login, forgot, change_email, change_password
+from clinica.views import home, contact_us, nutris, login, forgot, change_email, change_password, logout_user
 from paciente.views import register
 from medico.views import medBoard
 from recept.views import receptBoard
@@ -36,5 +36,6 @@ urlpatterns = [
     path('proprietario/', proprietyBoard, name='proprietario'),
     path('paciente/', pacienteBoard, name='paciente'),
     path('medico/', medBoard, name='medico'),
-    path('recepcionista/', receptBoard, name='recepcionista')
+    path('recepcionista/', receptBoard, name='recepcionista'),
+    path('logout/', logout_user, name='logout')
 ]

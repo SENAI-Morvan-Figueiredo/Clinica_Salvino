@@ -4,6 +4,16 @@
     {% trans 'Cartão - Clínica Salvino' %}
 {% endblock head_title %}
 
+{% block header %}
+    <header class="header bg-purple">
+        <div class="container">
+            <a href="{% url 'home' %}" class="login">
+                <img class="escalar" src="{% static 'img/Logo Branco 1.png' %}">
+            </a>
+        </div>
+    </header>
+{% endblock header %}
+
 {% block content %}
     <main>
         <div class="body-container">

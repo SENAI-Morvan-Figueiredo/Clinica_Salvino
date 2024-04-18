@@ -1,19 +1,20 @@
 {% extends 'background.html'%}
 {% load static i18n %}
 {% block head_title %}
-    {% trans 'paciente - Clínica Salvino' %}
+    {% trans 'Paciente - Clínica Salvino' %}
 {% endblock head_title %}
 {% block extra_head %}
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
-    <link rel="stylesheet" href="{% static 'css/formatados.css'%}">
 {% endblock extra_head %}
 
 {% block header %}
-    <div class="container">
-        <a href="{% url 'home' %}" class="login">
-            <img class="escalar" src="{% static 'img/Logo Branco 1.png' %}">
-        </a>
-    </div>
+    <header class="header bg-purple">
+        <div class="container">
+            <a href="{% url 'home' %}" class="login">
+                <img class="escalar" src="{% static 'img/Logo Branco 1.png' %}">
+            </a>
+        </div>
+    </header>
 {% endblock header %}
 
 {% block content %}  
@@ -36,7 +37,7 @@
                     </li>
 
                     <li>
-                        "Nome do Usuário"
+                        {{ paciente.name }}
                     </li>
 
                     <li>
@@ -72,7 +73,7 @@
                         </li>
 
                         <li>
-                            Sair
+                            <a href="{% url 'logout' %}">Sair</a>
                         </li>
                 </ul>
             </div>
