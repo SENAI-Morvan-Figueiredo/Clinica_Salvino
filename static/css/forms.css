@@ -6,6 +6,10 @@
     font-family: 'Kumbh Sans', sans-serif;
 }
 
+p{
+    margin-bottom: 0;
+}
+
 .body-container{
     display: flex;
     flex-direction: column;
@@ -50,6 +54,15 @@ main{
     margin-bottom: 40px;
 }
 
+.result{
+    margin-top: 15px;
+    width: 100%;
+}
+
+.login{
+    font-size: 12px;
+}
+
 .robot{
     margin-left: 15px ;
     font-size: 14px;
@@ -66,7 +79,7 @@ main{
     justify-items: center;
     align-content: center;
     margin-bottom: 30px;
-    padding-top: 60px;
+    padding-top: 30px;
     grid-template-columns: 1fr 1fr;
     grid-gap: 35px;
 }
@@ -89,7 +102,6 @@ footer{
 } 
 
 .header{
-    background-color: #6F5BE3;
     height: 120px;
     display: flex;
     flex-wrap: wrap;
@@ -148,6 +160,9 @@ footer{
 
 /*Classes JS*/
 .form-control {
+    padding: 0;
+    background: transparent;
+    border: none;
     width: 100%;
     margin-bottom: 10px;
     padding-bottom: 20px;
@@ -170,11 +185,29 @@ footer{
     position: relative;
 }
 
+.form-control select {
+    border: 2px solid #3E445B;
+    border-radius: 5px;
+    outline: 0;
+
+    display: flex;
+
+    font-size: 14px;
+
+    width: 100%;
+    padding: 15px;
+    position: relative;
+}
+
 .form-control.success input {
     border: 3px solid #328146;
 }
 
 .form-control.error input {
+    border: 3px solid #b22c2c;
+}
+
+.form-control.error select {
     border: 3px solid #b22c2c;
 }
 
@@ -194,9 +227,13 @@ footer{
     visibility: visible;
 }
 
+.alert{
+    border: none;
+    margin: 0;
+}
 .form-control i {
     position: absolute;
-    top: 17px;
+    top: 21px;
     right: 10px;
     visibility: hidden;
 }
@@ -259,7 +296,6 @@ footer{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-top: 30px;
     width: 100%;
 }
 

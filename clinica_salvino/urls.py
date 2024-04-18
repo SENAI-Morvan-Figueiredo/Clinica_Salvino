@@ -16,8 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from clinica.views import home, contact_us, nutris, login, forgot, change_email, change_password
+from clinica.views import home, contact_us, nutris, login, forgot, change_email, change_password, logout_user
 from paciente.views import register
+from medico.views import medBoard
+from recept.views import receptBoard
+from proprietario.views import proprietyBoard
+from paciente.views import pacienteBoard
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,5 +32,10 @@ urlpatterns = [
     path('cadastro/', register, name='cadastro'),
     path('esqueci-senha/', forgot, name='esqueci-senha'),
     path('alterar-email/', change_email, name='alterar-email'),
-    path('alterar-senha/', change_password, name='alterar-senha')
+    path('alterar-senha/', change_password, name='alterar-senha'),
+    path('proprietario/', proprietyBoard, name='proprietario'),
+    path('paciente/', pacienteBoard, name='paciente'),
+    path('medico/', medBoard, name='medico'),
+    path('recepcionista/', receptBoard, name='recepcionista'),
+    path('logout/', logout_user, name='logout')
 ]
