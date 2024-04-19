@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'medico',
     'paciente',
     'proprietario',
+    'datetime'
 ]
 
 MIDDLEWARE = [
