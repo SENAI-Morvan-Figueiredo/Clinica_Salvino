@@ -5,11 +5,13 @@
 {% endblock head_title %}
 
 {% block header %}
-    <div class="container">
-        <a href="{% url 'home' %}" class="login">
-            <img class="escalar" src="{% static 'img/Logo Branco 1.png' %}">
-        </a>
-    </div>
+    <header class="header bg-purple">
+        <div class="container">
+            <a href="{% url 'home' %}" class="login">
+                <img class="escalar" src="{% static 'img/Logo Branco 1.png' %}">
+            </a>
+        </div>
+    </header>
 {% endblock header %}
 {% block content %}
     <main>
@@ -18,16 +20,17 @@
             <div class="Login-Box">
                 <h1 class="title margin-tp">LOGIN</h1>
                 <div class="inputs">
-                    <form id="form-login" class="form" action="/action_page.php">
+                    <form id="form-login" class="form" action="" method="post">
+                        {% csrf_token %}
                         <div class="form-control">
-                            <input type="Email" id="email" name="E-mail" placeholder="E-mail" class="input">
+                            <input type="text" id="email" name="username" placeholder="E-mail" class="input">
                             <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                             <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
                             <small class="message"></small>
                         </div>
                         <div class="form-control">
-                            <input type="password" id="password" name="Senha" placeholder="Senha" class="input">
+                            <input type="password" id="password" name="password" placeholder="Senha" class="input">
                             <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                             <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
@@ -36,8 +39,8 @@
 
                         <div class="options-box">
                             <div class="captcha-box">
-                                <input type="checkbox" name="Eu não sou um robô" value="Eu não sou um robô"><a
-                                    class="robot">Não sou robô</a>
+                                <input type="checkbox" name="Eu não sou um robô" value="Eu não sou um robô"><p
+                                    class="robot">Não sou robô</p>
                             </div>
 
                             <div class="options">
@@ -45,9 +48,30 @@
                                     <p class="text-options"><a href="{% url 'cadastro' %}">Cadastrar</a></p>
                             </div>
                         </div>
+                        <div class="result">
+                            <p class="result-text">
+                                {% if messages %}
+                                    {% for message in messages %}
+                                        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                                            <div class="alert alert-danger login">
+                                                <strong>Erro!</strong>
+                                                {{ message }}
+                                                <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                                            </div>
+                                        {% else %}
+                                            <div class="alert alert-success">
+                                                <strong>Sucesso!</strong>
+                                                {{ message }}
+                                                <i class="fa-solid fa-circle-check icon-success hidden" style="color: #328146;"></i>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+                            </p>
+                        </div>
                         <div class="button-box">
                             <button id="back" class="btn-black-white" onclick="voltar()">Voltar</button>
-                            <input type="submit" id="enter" class="btn-purple" value="Entrar">
+                            <button type="submit" data-button class="btn-purple">Enviar</button>
                     </form>
                 </div>
             </div>

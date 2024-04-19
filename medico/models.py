@@ -2,9 +2,14 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
+class Especialidade(models.Model):
+    nome_especialidade = models.CharField(max_length=256)
 
 class Medico(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)  
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=256, unique=True)
+    sexo = models.CharField(max_length=25, choices=(('Masculino', 'Masculino'), ('Feminino', 'Feminino'), ('Outro', 'Outro')))
+    genero = models.CharField(max_length=256)  
     data_nascimento = models.DateField(auto_created=False, auto_now=False, auto_now_add=False)
     rg = models.CharField(max_length=9)
     cpf = models.CharField(max_length=11)

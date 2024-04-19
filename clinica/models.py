@@ -20,3 +20,17 @@ class Consulta(models.Model):
 
     def __str__(self):
         return f'{self.paciente.name}  - {self.data}/{self.hora}'
+
+class Convenio(models.Model):
+    name = models.CharField(max_length=256, unique=True)
+
+    def __str__(self):
+        return self.name
+
+class Tratamento(models.Model):
+    name = models.CharField(max_length=256, unique=True)
+    preco = models.DecimalField(max_digits=5, decimal_places=2)
+    descricao = models.TextField()
+
+    def __str__(self):
+        return self.name

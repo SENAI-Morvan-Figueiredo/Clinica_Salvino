@@ -2,11 +2,13 @@
 {% load static i18n %}
 
 {% block header %}
-    <div class="container">
-        <a href="{% url 'home' %}">
-            <img class="escalar" src="{% static 'img/Logo Branco 1.png' %}">
-        </a>
-    </div>
+    <header class="header bg-purple">
+        <div class="container">
+            <a href="{% url 'home' %}">
+                <img class="escalar" src="{% static 'img/Logo Branco 1.png' %}">
+            </a>
+        </div>
+    </header>
 {% endblock header %}
 {% block content%}
     <main>

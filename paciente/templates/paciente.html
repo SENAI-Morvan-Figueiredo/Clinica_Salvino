@@ -1,24 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../assets/css/dashboard.css">
-    <link rel="stylesheet" href="../../assets/css/formatados.css">
-    <title>Paciente - Clínica Salvino</title>
-</head>
-<body class="body_user bg-purple">
-   
+{% extends 'background.html'%}
+{% load static i18n %}
+{% block head_title %}
+    {% trans 'Paciente - Clínica Salvino' %}
+{% endblock head_title %}
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock extra_head %}
+
+{% block header %}
+    <header class="header bg-purple">
+        <div class="container">
+            <a href="{% url 'home' %}" class="login">
+                <img class="escalar" src="{% static 'img/Logo Branco 1.png' %}">
+            </a>
+        </div>
+    </header>
+{% endblock header %}
+
+{% block content %}  
 <!-- começo da dashboard do menu do usuario -->
+<div class="body_user bg-purple">
     <nav  class="dash_menu_user">
         <div>
             <div class="button_home">
-                <img src="../../assets/images/buttons/button_home.png" alt="">
+                <img src="{% static 'imagens/buttons/button_home.png' %}" alt="">
             </div>
 
             <div class="image_user">
-                <img src="../../assets/images/icon_usuario.png" alt="Icone do Usuário">
+                <img src="{% static 'images/icon_usuario.png' %}" alt="Icone do Usuário">
             </div>
             
             <div class="ul_dash_menu">
@@ -28,15 +37,15 @@
                     </li>
 
                     <li>
-                        "Nome do Usuário"
+                        {{ paciente.name }}
                     </li>
 
                     <li>
-                        Minha conta <img src="../../assets/images/buttons/button_lapis.png" alt="Editar minha conta">
+                        Minha conta <img src="{% static 'images/buttons/button_lapis.png' %}" alt="Editar minha conta">
                     </li>
 
                     <li>
-                        Dados do pagamento <img src="../../assets/images/buttons/button_lapis.png" alt="Editar dados de pagamento">
+                        Dados do pagamento <img src="{% static 'images/buttons/button_lapis.png' %}" alt="Editar dados de pagamento">
                     </li>
                 </ul>
             </div>
@@ -44,15 +53,15 @@
             <div class="ul_dash_menu" id="line_menu">
                 <ul>
                         <li>
-                            Dietas <img src="../../assets/images/buttons/button_baixar.png" alt="Baixar dietas">
+                            Dietas <img src="{% static 'images/buttons/button_baixar.png' %}" alt="Baixar dietas">
                         </li>
 
                         <li>
-                            Receitas <img src="../../assets/images/buttons/button_baixar.png" alt="Baixar receitas">
+                            Receitas <img src="{% static 'images/buttons/button_baixar.png' %}" alt="Baixar receitas">
                         </li>
 
                         <li>
-                            Encaminhamentos <img src="../../assets/images/buttons/button_baixar.png" alt="Baixar encaminahmentos">
+                            Encaminhamentos <img src="{% static 'images/buttons/button_baixar.png' %}" alt="Baixar encaminahmentos">
                         </li>
                 </ul>      
             </div>
@@ -64,7 +73,7 @@
                         </li>
 
                         <li>
-                            Sair
+                            <a href="{% url 'logout' %}">Sair</a>
                         </li>
                 </ul>
             </div>
@@ -74,7 +83,7 @@
 
 <!-- dashboard do calendario -->
 
-    <header class="dash_calender">
+    <section class="dash_calender">
         <!-- <div> -->
 
             <div class="month">
@@ -145,10 +154,7 @@
                 <button> <time datetime="2023-01-31"> 31 </time> </button>
               
             </div>
-
-        <!-- </div> -->
+    </section>
+</div>
     
-    </header>
-
-</body>
-</html>
+{% endblock content %}
