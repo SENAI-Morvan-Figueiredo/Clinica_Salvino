@@ -1,14 +1,8 @@
 from django.db import models
 from paciente.models import Paciente
-from medico.models import Medico
+from medico.models import Medico, Especialidade
 
 # Create your models here.
-class Especialidade(models.Model):
-    nome_especialidade = models.CharField(max_length=256)
-
-    def __str__(self):
-        return self.nome_especialidade
-    
 
 class Consulta(models.Model):
     paciente = models.OneToOneField(Paciente,on_delete=models.CASCADE)

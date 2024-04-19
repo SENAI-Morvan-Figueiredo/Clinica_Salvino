@@ -2,6 +2,11 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
+class Especialidade(models.Model):
+    nome_especialidade = models.CharField(max_length=256)
+
+    def __str__(self):
+        return self.nome_especialidade
 
 class Medico(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -12,6 +17,7 @@ class Medico(models.Model):
     rg = models.CharField(max_length=9)
     cpf = models.CharField(max_length=11)
     crm = models.CharField(max_length=12)
+    especialidade = models.ForeignKey(Especialidade, on_delete=models.CASCADE)
     telefone = models.CharField(max_length=14)
     cep = models.CharField(max_length=8)
     endereco = models.TextField()

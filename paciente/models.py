@@ -63,5 +63,8 @@ class Documentos(models.Model):
 
     def __str__(self):
         return self.nome_documento
+    
+    class Meta:
+        verbose_name_plural = 'Documentos'
 
 
