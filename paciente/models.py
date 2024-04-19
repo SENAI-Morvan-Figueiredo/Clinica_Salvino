@@ -48,6 +48,7 @@ class Consulta(models.Model):
     data = models.DateField(auto_created=False, auto_now=False, auto_now_add=False)
     hora = models.TimeField(auto_created=False, auto_now=False, auto_now_add=False)
     especialidade = models.OneToOneField(Especialidade,on_delete=models.CASCADE)
+    file_documento = models.FileField(upload_to='exames/', null=True, blank=True)
     status_consulta =models.CharField(max_length=256, choices=(('Concluida','Concluida'), ('Cancelada','Cancelada'), ('Agendada','Agendada'),('Em andamento','Em andamento')))
 
     def __str__(self):
@@ -58,7 +59,7 @@ class Prontuario(models.Model):
     paciente = models.OneToOneField(Paciente, on_delete=models.CASCADE)
     nome = models.CharField(max_length=256)
     peso = models.DecimalField(max_digits= 5, decimal_places= 2 )
-    tamanho = models.DecimalField(max_digits=3 , decimal_places= 2)
+    altura = models.DecimalField(max_digits=3 , decimal_places= 2)
     alergia = models.BooleanField()
     doenca = models.BooleanField()
     fuma = models.BooleanField()
@@ -72,11 +73,50 @@ class Prontuario(models.Model):
 class Documentos(models.Model):
     prontuario = models.OneToOneField(Prontuario, on_delete= models.CASCADE)
     nome_documento = models.CharField(max_length=256)
+    medico = models.OneToOneField(Medico, on_delete=models.CASCADE)
+    tipo_documento = models.CharField(max_length=256, choices=(('Descrição de Atendimento', 'Descrição de Atendimento'), ('Receita', 'Receita'), ('Dieta', 'Dieta')))
+    data = models.DateField(auto_created=False, auto_now=False, auto_now_add=False)
+    descricao = models.TextField(null=True)
+    file_documento = models.FileField(upload_to='exames/', null=True, blank=True)
+
+    def __str__(self):
+        return self.nome_documento
+    
+    class Meta:
+        verbose_name_plural = 'Documentos'
+
+class Encaminhamento(models.Model):
+    prontuario = models.OneToOneField(Prontuario, on_delete= models.CASCADE)
+    medico = models.OneToOneField(Medico, on_delete=models.CASCADE)
+    data = models.DateField(auto_created=False, auto_now=False, auto_now_add=False)
+    tipo_encaminhamento = models.CharField(max_length=256, choices=(('Consultas', 'Consultas'), ('Exames e Terapias', 'Exames e Terapias'), ('Outros', 'Outros')))
+    area = models.CharField(max_length=256)
     descricao = models.TextField(null=True)
     file_documento = models.FileField(upload_to='exames/')
 
     def __str__(self):
-        return self.nome_documento
+        return self.tipo_encaminhamento
+    
+    class Meta:
+        verbose_name_plural = 'Documentos'
+
+class Bioimpedância(models.Model):
+    prontuario = models.OneToOneField(Prontuario, on_delete= models.CASCADE)
+    medico = models.OneToOneField(Medico, on_delete=models.CASCADE)
+    data = models.DateField(auto_created=False, auto_now=False, auto_now_add=False)
+    peso = models.DecimalField(max_digits= 5, decimal_places= 2)
+    altura = models.DecimalField(max_digits=3 , decimal_places= 2)
+    massa_magra = models.DecimalField(max_digits= 5, decimal_places= 2 )
+    massa_muscular = models.DecimalField(max_digits= 5, decimal_places= 2)
+    agua_corporal = models.DecimalField(max_digits= 5, decimal_places= 2)
+    densidade_ossea = models.DecimalField(max_digits= 5, decimal_places= 2 )
+    gordura_visceral = models.DecimalField(max_digits= 5, decimal_places= 2 )
+    gordura_corporal = models.DecimalField(max_digits= 5, decimal_places= 2 )
+    taxa_metabolica = models.DecimalField(max_digits= 5, decimal_places= 2 )
+    imc = models.DecimalField(max_digits= 4, decimal_places= 2 )
+
+    def __str__(self):
+        return self.data
     
     class Meta:
         verbose_name_plural = 'Documentos'
@@ -130,10 +170,12 @@ class Pagamento(models.Model):
     data_emissao = models.DateField(auto_created=False, auto_now=False, auto_now_add=False)
     tratamento = models.ForeignKey(Tratamento, on_delete=models.CASCADE)
     medico = models.ForeignKey(Medico, on_delete=models.CASCADE)
-    forma_pagamento = models.CharField(max_length=256, choices=(('Convenio', 'Convenio'), ('Cartao', 'Cartao'), ('Pix', 'Pix'), ('Pagar no dia', 'Pagar no dia')))
+    forma_pagamento = models.CharField(max_length=256, choices=(('Convenio', 'Convenio'), ('Cartao', 'Cartao'), ('Pix', 'Pix'), ('Boleto', 'Boleto'), ('Pagar no dia', 'Pagar no dia')))
     convenio = models.OneToOneField(CadConvenio, blank=True, null=True, on_delete=models.SET_NULL)
     cartao = models.OneToOneField(CadCartao, blank=True, null=True, on_delete=models.SET_NULL)
     pix = models.OneToOneField(Pix, blank=True, null=True, on_delete=models.SET_NULL)
+    boleto = models.FileField(upload_to='boletos/', blank=True, null=True)
+    cod_barras =models.CharField(max_length=44, blank=True,null=True)
     status_pagamento = models.CharField(max_length=256, choices=(('Pago', 'Pago'), ('Aguardando pagamento', 'Aguardando pagamento'), ('Cancelado', 'Cancelado'), ('Aguardando reembolso', 'Aguardando reembolso'), ('Reembolsado', 'Reembolsado')))
     data_pagamento = models.CharField(max_length=256,blank=True, null=True)
 
@@ -146,6 +188,9 @@ class Pagamento(models.Model):
         
         if self.forma_pagamento == 'Pix' and not self.pix:
             raise ValidationError({'pix':'Você não selecionou um pix cadastrado'})
+        
+        if self.forma_pagamento == 'Boleto' and not self.boleto:
+            raise ValidationError({'boleto':'Você não incluiu um boleto de pagamento'})
         
 
         if self.status_pagamento == 'Pago' or self.status_pagamento == 'Reembolsado' or self.status_pagamento == 'Cancelado':
