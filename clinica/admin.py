@@ -1,4 +1,5 @@
 from django.contrib import admin
+
 from .models import Especialidade, Convenio, Tratamento
 
 # Register your models here.

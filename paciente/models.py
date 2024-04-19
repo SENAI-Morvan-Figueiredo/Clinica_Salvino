@@ -37,4 +37,31 @@ class Paciente(models.Model):
         if self.status_dependencia == 'Dependente' and not self.cpf_responsavel:
             raise ValidationError({'nome_responsavel': 'O nome do responsável é obrigatório para pacientes dependentes.'})
 
+class Prontuario(models.Model):
+    paciente = models.OneToOneField(Paciente, on_delete=models.CASCADE)
+    nome = models.CharField(max_length=256)
+    peso = models.DecimalField(max_digits= 5, decimal_places= 2 )
+    tamanho = models.DecimalField(max_digits=3 , decimal_places= 2)
+    alergia = models.BooleanField()
+    doenca = models.BooleanField()
+    fuma = models.BooleanField()
+    bebe = models.BooleanField()
+    uso_drogas = models.BooleanField()
+    observacoes = models.TextField(null=True)
+
+
     
+    def __str__(self):
+        return self.paciente.name
+    
+class Documentos(models.Model):
+    prontuario = models.OneToOneField(Prontuario, on_delete= models.CASCADE)
+    nome_documento = models.CharField(max_length=256)
+    descricao = models.TextField(null=True)
+    file_documento = models.FileField(upload_to='exames/')
+
+
+    def __str__(self):
+        return self.nome_documento
+
+
