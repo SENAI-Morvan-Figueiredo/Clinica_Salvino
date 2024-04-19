@@ -6,6 +6,7 @@ from medico.models import Medico, Especialidade
 
 class Consulta(models.Model):
     paciente = models.OneToOneField(Paciente,on_delete=models.CASCADE)
+    tipo_consulta = models.CharField(max_length=256, choices=(('Presencial', 'Presencial'), ('Remoto', 'Remoto')))
     medico = models.OneToOneField(Medico,on_delete=models.CASCADE)
     data = models.DateField(auto_created=False, auto_now=False, auto_now_add=False)
     hora = models.TimeField(auto_created=False, auto_now=False, auto_now_add=False)
