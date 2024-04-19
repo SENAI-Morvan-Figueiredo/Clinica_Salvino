@@ -2,8 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
-class Especialidade(models.Model):
-    nome_especialidade = models.CharField(max_length=256)
 
 class Medico(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -25,6 +23,5 @@ class Medico(models.Model):
     def __str__(self):
         return self.user.username
     
-class Especialidade(models.Model):
-    nome_especialidade = models.CharField(max_length=256)
+
 

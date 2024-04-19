@@ -9,6 +9,6 @@ class Convenio(models.Model):
 
 class Tratamento(models.Model):
     name = models.CharField(max_length=256, unique=True)
-    preco = models.DecimalField(max_digits=5, decimal_places=2)
+    preco = models.DecimalField(max_digits=6, decimal_places=2)
     descricao = models.TextField()
 
