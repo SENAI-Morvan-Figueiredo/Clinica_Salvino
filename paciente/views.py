@@ -32,3 +32,7 @@ def register(request):
 def pacienteBoard(request):
     paciente = request.user.paciente
     return render(request, 'paciente.html', {'paciente': paciente})
+
+def contaPaciente(request):
+    paciente = request.user.paciente
+    return render(request, 'myaccount_paciente.html', {'paciente': paciente})
