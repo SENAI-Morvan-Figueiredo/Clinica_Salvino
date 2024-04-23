@@ -1,4 +1,4 @@
-{% extends 'background.html'%}
+{% extends 'background_proprietario.html'%}
 {% load static i18n %}
 {% block head_title %}
     {% trans 'Proprietario - Clínica Salvino' %}
@@ -21,69 +21,6 @@
 {% block content %}  
 <!-- começo da dashboard do menu do usuario -->
 <div class="body_user bg-yellow">
-    <nav  class="dash_menu_user">
-        <div>
-            <div class="button_home">
-                <img src="{% static 'images/buttons/button_home.png' %}" alt="">
-            </div>
-
-            <div class="image_user">
-                <img src="{% static 'images/icon_usuario.png' %}" alt="Icone do Usuário">
-            </div>
-            
-            <div class="ul_dash_menu">
-                <ul>
-                    <li>
-                        Bem vindo(a)
-                    </li>
-
-                    <li>
-                        "Nome do Usuário"
-                    </li>
-
-                    <li>
-                        Minha conta <img src="{% static 'images/buttons/button_lapis.png' %}" alt="Editar minha conta">
-                    </li>
-
-                    <li>
-                        Dados do pagamento <img src="{% static 'images/buttons/button_lapis.png' %}" alt="Editar dados de pagamento">
-                    </li>
-                </ul>
-            </div>
-
-            <div class="ul_dash_menu" id="line_menu">
-                <ul>
-                        <li>
-                            Dietas <img src="{% static 'images/buttons/button_baixar.png' %}" alt="Baixar dietas">
-                        </li>
-
-                        <li>
-                            Receitas <img src="{% static 'images/buttons/button_baixar.png' %}" alt="Baixar receitas">
-                        </li>
-
-                        <li>
-                            Encaminhamentos <img src="{% static 'images/buttons/button_baixar.png' %}" alt="Baixar encaminahmentos">
-                        </li>
-                </ul>      
-            </div>
-
-            <div  class="ul_dash_menu">
-                <ul>
-                        <li>
-                            Agendar Consulta
-                        </li>
-
-                        <li>
-                           <a href="{% url 'logout' %}">Sair</a> 
-                        </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-<!-- fim da dashboard do menu do usuario -->
-
-<!-- dashboard do calendario -->
-
     <section class="dash_calender">
         <!-- <div> -->
 

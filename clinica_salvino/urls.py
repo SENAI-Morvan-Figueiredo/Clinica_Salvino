@@ -18,9 +18,9 @@ from django.contrib import admin
 from django.urls import path
 from clinica.views import home, contact_us, nutris, login, forgot, change_email, change_password, logout_user
 from paciente.views import register
-from medico.views import medBoard
-from recept.views import receptBoard
-from proprietario.views import proprietyBoard
+from medico.views import medBoard, contaMedico
+from recept.views import receptBoard, contaRecept
+from proprietario.views import proprietyBoard, contaProprietario
 from paciente.views import pacienteBoard, contaPaciente
 
 urlpatterns = [
@@ -38,5 +38,8 @@ urlpatterns = [
     path('medico/', medBoard, name='medico'),
     path('recepcionista/', receptBoard, name='recepcionista'),
     path('logout/', logout_user, name='logout'),
-    path('paciente/conta/', contaPaciente, name='conta_paciente')
+    path('paciente/conta/', contaPaciente, name='conta_paciente'),
+    path('medico/conta/', contaMedico, name='conta_medico'),
+    path('proprietario/conta', contaProprietario, name= 'conta_proprietario'),
+    path('recepcionista/conta', contaRecept, name='conta_recepcionista')
 ]

@@ -6,3 +6,7 @@ from django.contrib.auth.decorators import login_required
 def medBoard(request):
     medico = request.user.medico
     return render(request, 'nutricionista.html', {'medico': medico})
+
+def contaMedico(request):
+    medico = request.user.medico
+    return render(request, 'myaccount_medico.html', {'medico': medico})

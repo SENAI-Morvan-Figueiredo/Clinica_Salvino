@@ -23,11 +23,11 @@
 <body>
     {% block header %}
     {% endblock header %}
-    <div class="body_user bg-purple">
+    <div class="body_user bg-yellow">
         <nav  class="dash_menu_user">
             <div>
                 <div class="button_home">
-                    <a href="{% url 'medico' %}"><img src="{% static 'imagens/buttons/button_home.png' %}" alt=""></a>
+                    <a href="{% url 'proprietario' %}"><img src="{% static 'imagens/buttons/button_home.png' %}" alt=""></a>
                 </div>
     
                 <div class="image_user">
@@ -41,11 +41,11 @@
                         </li>
     
                         <li>
-                            {{ paciente.name }}
+                            {{ proprietario.name }}
                         </li>
     
                         <li>
-                            <a href="{% url 'conta_paciente' %}">Minha conta</a><img src="{% static 'images/buttons/button_lapis.png' %}" alt="Editar minha conta">
+                           <a href="{% url 'conta_proprietario' %}">Minha conta</a><img src="{% static 'images/buttons/button_lapis.png' %}" alt="Editar minha conta">
                         </li>
     
                         <li>
