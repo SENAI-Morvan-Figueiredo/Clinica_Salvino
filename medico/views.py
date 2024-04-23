@@ -7,6 +7,7 @@ def medBoard(request):
     medico = request.user.medico
     return render(request, 'nutricionista.html', {'medico': medico})
 
+@login_required
 def contaMedico(request):
     medico = request.user.medico
     return render(request, 'myaccount_medico.html', {'medico': medico})
