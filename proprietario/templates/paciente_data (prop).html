@@ -1,0 +1,36 @@
+{% extends 'background_proprietario.html' %}
+{% load static i18n %}
+{% block head_title %}
+    {% trans 'Proprietário - Clínica Salvino' %}
+{% endblock head_title %}
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock extra_head %}
+
+{% block header %}
+    <header class="header bg-yellow">
+        <div class="container">
+            <a href="{% url 'home' %}" class="login">
+                <img class="escalar" src="{% static 'img/Logo Branco 1.png' %}">
+            </a>
+        </div>
+    </header>
+{% endblock header %}
+
+{% block content %}  
+    <section class="dash">
+        <h1 class="dash_title">Pacientes</h1>
+        {% if pacientes %}
+            {% for paciente in pacientes %}
+                {{ paciente.name }}
+            {% endfor %}
+        {% else %}
+            <p>Não há pacientes</p> 
+        {% endif %}
+    </section>  
+{% endblock content %}
+{% block script %}
+    <script src="https://kit.fontawesome.com/fc74a91a63.js" crossorigin="anonymous"></script>
+    <script src="{% static 'js/formValidation.js' %}"></script>
+    <script src="{% static 'js/button.js' %}"></script>
+{% endblock script %}

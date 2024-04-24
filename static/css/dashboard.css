@@ -78,7 +78,8 @@ ul{
         border-radius: 15px;                                                                /* borda da dashboard do calendario */
     }
 
-    .dash_conta {
+    .dash{
+        color: #ffffff;
         width: 53.438em;                                                                    /* tamanho horizontal */                                                                  /* tamanho vertical */
         margin: 3.25em 3.25em 0 3.25em;                                                     /* margin = margem externa relativo ao seu arredor */
         padding: 5em 10em;                                                 /* padding = margem interna */
