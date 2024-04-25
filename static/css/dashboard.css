@@ -82,20 +82,36 @@ ul{
         color: #ffffff;
         width: 53.438em;                                                                    /* tamanho horizontal */                                                                  /* tamanho vertical */
         margin: 3.25em 3.25em 0 3.25em;                                                     /* margin = margem externa relativo ao seu arredor */
-        padding: 5em 10em;                                                 /* padding = margem interna */
+        padding: 5em;                                                 /* padding = margem interna */
         background-color: #333333;                                                        /* cor da dashboard do calendario */
         border-radius: 15px;                                                                /* borda da dashboard do calendario */
         display: grid;
-        grid-template-rows: 1fr 2.5fr;
+        grid-template-rows: 0.7fr 2.5fr;
+        min-height: 715px;
+    }
+
+    p{
+        font-size: 12px;
     }
 
     .list{
-        padding: 5em;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .page{
+        padding: 5em 10em;
+    }
+
+    .cabecalho{
+        padding: 1% 2% 0 5%;
+        display: grid;
+        grid-template-columns: 2.4fr 1.7fr 0.79fr;
     }
 
     .info-user{
-        display: flex;
-        flex-direction: row;
+        display: grid;
+        grid-template-columns: 2.9fr 1.8fr 1fr;
         justify-content: space-between;
         align-items: center;
         width: 100%;
@@ -103,12 +119,17 @@ ul{
         border: 1px solid #ffffff;
         border-radius: 15px;
         padding: 1% 2% 1% 5%;
+        margin-bottom: 10px;
     }
 
     .aviso{
         width: 100%;
         text-align: center;
-        justify-self: center;
+        margin-top: 150px;
+    }
+
+    h3{
+        font-size: 18px;
     }
 
     .dash_title{

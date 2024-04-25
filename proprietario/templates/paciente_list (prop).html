@@ -18,22 +18,29 @@
 {% endblock header %}
 
 {% block content %}  
-    <section class="dash list">
+    <section class="dash">
         <h1 class="dash_title">Pacientes</h1>
-        {% if pacientes %}
+        <div class="list">
+            <div class="cabecalho">
+                <p>Nome</p>
+                <p>CPF</p>
+                <p>Informações</p>
+            </div>
+            {% if pacientes %}
             {% for paciente in pacientes %}
             <div class="info-user">
-                {{ paciente.name }}
+                <p>{{ paciente.name }}</p>
+                <p>{{ paciente.cpf }}</p>
                 <button class="btn btn-purple">Info</button>
             </div>
             {% endfor %}
         {% else %}
-            <p class="aviso">Não há pacientes</p> 
+            <h3 class="aviso">Não há pacientes cadastrados.</h3> 
         {% endif %}
+        </div>
     </section>  
 {% endblock content %}
 {% block script %}
     <script src="https://kit.fontawesome.com/fc74a91a63.js" crossorigin="anonymous"></script>
-    <script src="{% static 'js/formValidation.js' %}"></script>
     <script src="{% static 'js/button.js' %}"></script>
 {% endblock script %}
