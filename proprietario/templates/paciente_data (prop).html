@@ -18,14 +18,17 @@
 {% endblock header %}
 
 {% block content %}  
-    <section class="dash">
+    <section class="dash list">
         <h1 class="dash_title">Pacientes</h1>
         {% if pacientes %}
             {% for paciente in pacientes %}
+            <div class="info-user">
                 {{ paciente.name }}
+                <button class="btn btn-purple">Info</button>
+            </div>
             {% endfor %}
         {% else %}
-            <p>Não há pacientes</p> 
+            <p class="aviso">Não há pacientes</p> 
         {% endif %}
     </section>  
 {% endblock content %}

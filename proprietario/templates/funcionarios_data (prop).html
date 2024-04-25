@@ -18,15 +18,18 @@
 {% endblock header %}
 
 {% block content %}  
-    <section class="dash">
+    <section class="dash list">
         <h1 class="dash_title">Funcionários</h1>
         {% if funcionarios %}
             {% for funcionario in funcionarios %}
-                {{ funcionario.name }}
+                <div class="info-user">
+                    {{ funcionario.name }}
+                    <button class="btn btn-purple">Info</button>
+                </div>
                 <br>
             {% endfor %}
         {% else %}
-            <p>Não há funcionários cadastrados</p>
+            <h3 class="aviso">Não há funcionários cadastrados</h3>
         {% endif %}
     </section>  
 {% endblock content %}

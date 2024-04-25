@@ -85,12 +85,36 @@ ul{
         padding: 5em 10em;                                                 /* padding = margem interna */
         background-color: #333333;                                                        /* cor da dashboard do calendario */
         border-radius: 15px;                                                                /* borda da dashboard do calendario */
+        display: grid;
+        grid-template-rows: 1fr 2.5fr;
+    }
+
+    .list{
+        padding: 5em;
+    }
+
+    .info-user{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        max-height: 60px;
+        border: 1px solid #ffffff;
+        border-radius: 15px;
+        padding: 1% 2% 1% 5%;
+    }
+
+    .aviso{
+        width: 100%;
+        text-align: center;
+        justify-self: center;
     }
 
     .dash_title{
         color: #ffffff;
         text-align: center;
-        margin-bottom: 50px;
+        margin-bottom: 0;
     }
 
         /* grupo englobando 2 classes e pondo elas em grade */
