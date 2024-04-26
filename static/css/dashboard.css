@@ -86,7 +86,7 @@ ul{
         background-color: #333333;                                                        /* cor da dashboard do calendario */
         border-radius: 15px;                                                                /* borda da dashboard do calendario */
         display: grid;
-        grid-template-rows: 0.7fr 2.5fr;
+        grid-template-rows: 0.5fr 2.5fr;
         min-height: 715px;
     }
 
@@ -111,12 +111,24 @@ ul{
     .cabecalho{
         padding: 1% 2% 0 5%;
         display: grid;
-        grid-template-columns: 2.4fr 1.7fr 0.79fr;
+        grid-template-columns: 3.7fr 2.2fr 1.9fr;
+    }
+
+    .delete{
+        display: grid;
+        place-items: center;
+        width: 25px;
+        height: 25px;
+    }
+
+    .center{
+        display: grid;
+        place-items: center;
     }
 
     .info-user{
         display: grid;
-        grid-template-columns: 2.9fr 1.8fr 1fr;
+        grid-template-columns: 2.9fr 1.4fr 1.5fr 0.1fr;
         justify-content: space-between;
         align-items: center;
         width: 100%;

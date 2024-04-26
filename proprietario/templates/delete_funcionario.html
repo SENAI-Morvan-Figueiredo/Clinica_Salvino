@@ -1,0 +1,41 @@
+{% extends 'background_proprietario.html' %}
+{% load static i18n %}
+{% block head_title %}
+    {% trans 'Proprietário - Clínica Salvino' %}
+{% endblock head_title %}
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock extra_head %}
+
+{% block header %}
+    <header class="header bg-yellow">
+        <div class="container">
+            <a href="{% url 'home' %}" class="login">
+                <img class="escalar" src="{% static 'img/Logo Branco 1.png' %}">
+            </a>
+        </div>
+    </header>
+{% endblock header %}
+
+{% block content %}  
+    <div class="dash">
+        {% if medico %}
+        <h1 class="text">Confirmar Exclusão</h1>
+        <p class="text">Tem certeza que deseja excluir o médico "{{ medico.name }}"?</p>
+        <form action="{% url 'delete_funcionario' medico.user.id %}" method="post">
+            {% csrf_token %}
+            <button class="btn" type="submit">Confirmar</button>
+        </form>
+        {% elif recepcionista %}
+        <h1 class="text">Confirmar Exclusão</h1>
+        <p class="text">Tem certeza que deseja excluir o recepcionista "{{ recepcionista.name }}"?</p>
+        <form action="{% url 'delete_funcionario' recepcionista.user.id %}" method="post">
+            {% csrf_token %}
+            <button class="btn" type="submit">Confirmar</button>
+        </form>
+        {% endif %}
+    </div>
+{% endblock content %}
+{% block script %}
+    <script src="{% static 'js/button.js' %}"></script>
+{% endblock script %}

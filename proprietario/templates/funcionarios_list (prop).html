@@ -40,7 +40,8 @@
                     {% else %}
                     <div class="func med"><p>Médico</p></div>
                     {% endif %}
-                    <a href="" class="btn btn-purple center">Info</a>
+                    <a href="{% url 'funcionario' funcionario.user.id %}" class="btn btn-purple center">Info</a>
+                    <a href="{% url 'delete_funcionario' funcionario.user.id %}" class="delete"><img class="icon-delete escalar" src="{% static 'img/delete.svg' %}" alt=""></a>
                 </div>
             {% endfor %}
         {% else %}
@@ -50,7 +51,6 @@
     </section>  
 {% endblock content %}
 {% block script %}
-    <script src="https://kit.fontawesome.com/fc74a91a63.js" crossorigin="anonymous"></script>
     <script src="{% static 'js/button.js' %}"></script>
     <script src="{% static 'js/filter.js' %}"></script>
 {% endblock script %}
