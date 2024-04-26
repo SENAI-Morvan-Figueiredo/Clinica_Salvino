@@ -17,7 +17,7 @@ def contaProprietario(request):
 
 def mostrarPacientes(request):
     pacientes = Paciente.objects.all()
-    return render(request, 'paciente_list (prop).html', {'pacientes': pacientes})
+    return render(request, 'pacientes_list (prop).html', {'pacientes': pacientes})
 
 def mostrarFuncionarios(request):
     medicos = Medico.objects.all()
