@@ -39,11 +39,11 @@
 
             <div class="container-middle">
                 <div class="form-control">
-                    <select name="sexo" id="sexo" class="input" form="form-cad">
-                        <option value="" selected disabled>Sexo</option>
-                        <option value="Masculino">Masculino</option>
-                        <option value="Feminino">Feminino</option>
-                        <option value="Outro">Outro</option>
+                    <select name="especialidade" id="especialidade" class="input">
+                        <option value="" disabled selected>Selecione uma especialidade</option>
+                        {% for especialidade in especialidades %}
+                            <option value="{{ especialidade.id }}">{{ especialidade.nome_especialidade }}</option>
+                        {% endfor %}
                     </select>
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>

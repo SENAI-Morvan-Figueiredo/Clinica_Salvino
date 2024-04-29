@@ -19,21 +19,12 @@
 
 {% block content %}  
     <div class="dash">
-        {% if medico %}
         <h1 class="text">Confirmar Exclusão</h1>
-        <p class="text">Tem certeza que deseja excluir o médico "{{ medico.name }}"?</p>
-        <form action="{% url 'delete_funcionario' medico.user.id %}" method="post">
+        <p class="text">Tem certeza que deseja excluir o médico "{{ paciente.name }}"?</p>
+        <form action="{% url 'delete_paciente' paciente.user.id %}" method="post">
             {% csrf_token %}
-            <button class="btn" type="submit">Confirmar</button>
+            <button class="btn btn-purple" type="submit">Confirmar</button>
         </form>
-        {% elif recepcionista %}
-        <h1 class="text">Confirmar Exclusão</h1>
-        <p class="text">Tem certeza que deseja excluir o recepcionista "{{ recepcionista.name }}"?</p>
-        <form action="{% url 'delete_funcionario' recepcionista.user.id %}" method="post">
-            {% csrf_token %}
-            <button class="btn" type="submit">Confirmar</button>
-        </form>
-        {% endif %}
     </div>
 {% endblock content %}
 {% block script %}

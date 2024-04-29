@@ -31,7 +31,7 @@
         <p class="text">Tem certeza que deseja excluir o recepcionista "{{ recepcionista.name }}"?</p>
         <form action="{% url 'delete_funcionario' recepcionista.user.id %}" method="post">
             {% csrf_token %}
-            <button class="btn" type="submit">Confirmar</button>
+            <button class="btn btn-purple" type="submit">Confirmar</button>
         </form>
         {% endif %}
     </div>
