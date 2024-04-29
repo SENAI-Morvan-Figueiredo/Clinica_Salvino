@@ -46,8 +46,19 @@ def dadosFuncionario(request, id):
         elif hasattr(funcionario, 'recepcionista'):
             return render(request, 'funcionario_data (prop).html', {'recepcionista': funcionario.recepcionista})
 
+def addPaciente(request):
+    return render(request, 'add_paciente.html')
+
 def addFuncionario(request):
     return render(request, 'add_funcionario.html')
+
+def deletePaciente(request, id):
+    paciente = User.objects.get(id=id)
+    if request.method == 'POST':
+        paciente.delete()
+        return redirect(mostrarPacientes)
+    else:
+        return render(request, 'delete_paciente.html', {'recepcionista': paciente.paciente})
 
 def deleteFuncionario(request, id):
     funcionario = User.objects.get(id=id)
@@ -60,10 +71,3 @@ def deleteFuncionario(request, id):
         elif hasattr(funcionario, 'recepcionista'):
             return render(request, 'delete_funcionario.html', {'recepcionista': funcionario.recepcionista})
         
-def deletePaciente(request, id):
-    paciente = User.objects.get(id=id)
-    if request.method == 'POST':
-        paciente.delete()
-        return redirect(mostrarPacientes)
-    else:
-        return render(request, 'delete_paciente.html', {'recepcionista': paciente.paciente})
