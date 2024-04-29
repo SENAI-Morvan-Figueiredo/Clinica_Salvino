@@ -45,7 +45,10 @@ def dadosFuncionario(request, id):
             return render(request, 'funcionario_data (prop).html', {'medico': funcionario.medico})
         elif hasattr(funcionario, 'recepcionista'):
             return render(request, 'funcionario_data (prop).html', {'recepcionista': funcionario.recepcionista})
-        
+
+def addFuncionario(request):
+    return render(request, 'add_funcionario.html')
+
 def deleteFuncionario(request, id):
     funcionario = User.objects.get(id=id)
     if request.method == 'POST':

@@ -79,6 +79,7 @@ ul{
     }
 
     .dash{
+        min-width: 855px;
         color: #ffffff;
         width: 53.438em;                                                                    /* tamanho horizontal */                                                                  /* tamanho vertical */
         margin: 3.25em 3.25em 0 3.25em;                                                     /* margin = margem externa relativo ao seu arredor */
@@ -108,6 +109,22 @@ ul{
         place-items: center;
     }
 
+    .add{
+        align-self: end;
+        padding: 0;
+        margin-bottom: 20px;
+    }
+
+    .filter{
+        align-self: flex-end;
+        width: 150px;
+        margin-bottom: 20px;
+    }
+
+    .register{
+        align-self: flex-start;
+    }
+
     .cabecalho{
         padding: 1% 2% 0 5%;
         display: grid;
@@ -119,11 +136,6 @@ ul{
         place-items: center;
         width: 25px;
         height: 25px;
-    }
-
-    .center{
-        display: grid;
-        place-items: center;
     }
 
     .info-user{

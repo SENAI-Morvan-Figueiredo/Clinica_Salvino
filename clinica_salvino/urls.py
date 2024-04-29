@@ -20,7 +20,7 @@ from clinica.views import home, contact_us, nutris, login, forgot, change_email,
 from paciente.views import register
 from medico.views import medBoard, contaMedico
 from recept.views import receptBoard, contaRecept
-from proprietario.views import proprietyBoard, contaProprietario, mostrarPacientes, mostrarFuncionarios, dadosFuncionario, deleteFuncionario, dadosPaciente, deletePaciente
+from proprietario.views import proprietyBoard, contaProprietario, mostrarPacientes, mostrarFuncionarios, dadosFuncionario, deleteFuncionario, dadosPaciente, deletePaciente, addFuncionario
 from paciente.views import pacienteBoard, contaPaciente
 
 urlpatterns = [
@@ -42,6 +42,7 @@ urlpatterns = [
     path('medico/conta/', contaMedico, name='conta_medico'),
     path('proprietario/conta', contaProprietario, name= 'conta_proprietario'),
     path('recepcionista/conta', contaRecept, name='conta_recepcionista'),
+    path('proprietario/funcionarios/add', addFuncionario, name= 'adicionar_funcionarios'),
     path('proprietario/pacientes', mostrarPacientes, name= 'pacientes'),
     path('proprietario/funcionarios', mostrarFuncionarios, name= 'funcionarios'),
     path('proprietario/paciente/<int:id>/', dadosPaciente, name='paciente'),

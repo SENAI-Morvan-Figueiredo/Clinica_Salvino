@@ -21,7 +21,8 @@
     <section class="dash">
         <h1 class="dash_title">Funcionários</h1>
         <div class="list">
-            <select name="filter" id="filter">
+            <a href="{% url 'adicionar_funcionarios' %}" class="btn btn-purple center add">Adicionar Funcionário</a>
+            <select name="filter" id="filter" class="filter">
                 <option value="" selected>Filtro:</option>
                 <option value="medicos">Médicos</option>
                 <option value="recepcionistas">Recepcionistas</option>
