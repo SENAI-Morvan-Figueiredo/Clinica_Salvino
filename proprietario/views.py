@@ -4,6 +4,7 @@ from paciente.models import Paciente
 from paciente.forms import CadPaciente
 from medico.models import Medico, Especialidade
 from recept.models import Recepcionista
+from recept.forms import CadRecep
 from itertools import chain
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -60,7 +61,7 @@ def addPaciente(request):
             new_paciente = paciente_form.save(commit=False)
             new_paciente.user = user
             new_paciente.save()
-            messages.success(request, 'Usuário Cadastrado com Sucesso!')
+            messages.success(request, 'Paciente Cadastrado com Sucesso!')
             return redirect('adicionar_pacientes')
         else:
             messages.error(request, f"Formulário de cadastro inválido: {paciente_form.errors}")
@@ -72,6 +73,26 @@ def addPaciente(request):
 def addFuncionario(request):
     especialidades = Especialidade.objects.all()
     return render(request, 'add_funcionario.html', {'especialidades': especialidades})
+
+def addRecep(request):
+    if request.method == 'POST':
+        recepcionista_form = CadRecep(request.POST)
+        if recepcionista_form.is_valid():
+            user = User.objects.create_user(
+                username=request.POST['username'],
+                password=request.POST['password'],
+                email=request.POST['username'],
+            )
+            new_recep = recepcionista_form.save(commit=False)
+            new_recep.user = user
+            new_recep.save()
+            messages.success(request, 'Recepcionista Cadastrado com Sucesso!')
+            return redirect('adicionar_funcionarios')
+        else:
+            messages.error(request, f"Formulário de cadastro inválido: {recepcionista_form.errors}")
+            return redirect('adicionar_funcionarios')     
+    else: 
+        return redirect('adicionar_funcionários')
 
 def deletePaciente(request, id):
     paciente = User.objects.get(id=id)
