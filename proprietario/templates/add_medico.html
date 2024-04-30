@@ -1,0 +1,201 @@
+{% extends 'background_proprietario.html' %}
+{% load static i18n %}
+{% block head_title %}
+    {% trans 'Proprietário - Clínica Salvino' %}
+{% endblock head_title %}
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock extra_head %}
+
+{% block header %}
+    <header class="header bg-yellow">
+        <div class="container">
+            <a href="{% url 'home' %}" class="login">
+                <img class="escalar" src="{% static 'img/Logo Branco 1.png' %}">
+            </a>
+        </div>
+    </header>
+{% endblock header %}
+
+{% block content %}
+    <section class="dash page">
+        <h1 class="dash_title">Cadastro de Funcionário</h1>
+        <div class="select register">
+            <input type="text" placeholder="Selecione o tipo de funcionário" value="Médico" disabled>
+        </div>
+        <form class="form med" id="form-cad" enctype="multipart/form-data" action="#" method="POST" role="form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="form-control">
+                <input type="text" id="Name-med" class="input" name="name" placeholder="Nome completo">
+                <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                <small class="message"></small>
+            </div>
+
+            <div class="container-middle">
+                <div class="form-control">
+                    <select name="sexo" id="sexo" class="input" form="form-cad">
+                        <option value="" selected disabled>Sexo</option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Feminino">Feminino</option>
+                        <option value="Outro">Outro</option>
+                    </select>
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+
+                <div class="form-control">
+                    <input type="text" id="Genero-med" class="input" name="genero" placeholder="Gênero">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+            </div>
+
+            <div class="container-middle">
+                <div class="form-control">
+                    <input type="date" id="date-med" class="input" name="data_nascimento">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+                <div class="form-control">
+                    <input type="text" maxlength="9" minlength="9" inputmode="numeric" id="RG-med" name="rg"
+                        placeholder="RG" class="input">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+            </div>
+
+            <div class="container-middle">
+                <div class="form-control">
+                    <input type="text" maxlength="11" minlength="11" inputmode="numeric" id="CPF-med" name="cpf"
+                        placeholder="CPF" class="input">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+                <div class="form-control">
+                    <input type="text" maxlength="12" minlength="12" inputmode="numeric" id="CRM" name="crm"
+                        placeholder="CRM" class="input">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+                <div class="form-control">
+                    <select name="especialidade" id="especialidade" class="input">
+                        <option value="" disabled selected>Selecione uma especialidade</option>
+                        {% for especialidade in especialidades %}
+                            <option value="{{ especialidade.id }}">{{ especialidade.nome_especialidade }}</option>
+                        {% endfor %}
+                    </select>
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+            </div>
+
+            <div class="container-middle">
+                <div class="form-control">
+                    <input type="tel" maxlength="14" minlength="11" class="input" id="phone-med" name="telefone"
+                        placeholder="(ddd) 99999-9999">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+                <div class="form-control">
+                    <input type="text" inputmode="numeric" id="CEP-med" class="input" name="cep" placeholder="CEP">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+
+
+            </div>
+
+            <div class="container-middle address">
+                <div class="form-control right">
+                    <input type="text" id="Endereco-med" class="input" name="endereco" placeholder="Endereço">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+
+                <div class="form-control address  mid">
+                    <input type="text" inputmode="numeric" class="input" id="Numero-med" name="numero" placeholder="N°">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+
+                <div class="form-control left">
+                    <input type="text" name="complemento" class="input" id="Complemento-med" placeholder="Complemento">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+            </div>
+
+            <div class="container-middle">
+                <div class="form-control">
+                    <input type="Email" id="email" name="username" class="input email" placeholder="E-mail">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+                <div class="form-control">
+                    <input type="Confirmar Email" id="emailCheck" name="Confirmar E-mail"
+                        placeholder="Confirmar E-mail" class="input emailConfirm">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+            </div>
+
+            <div class="container-middle">
+                <div class="form-control">
+                    <input type="password" id="password" name="password1" placeholder="Senha" class="input password">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+                <div class="form-control">
+                    <input type="password" id="passwordCheck" name="password" placeholder="Confirmar Senha" class="input passwordConfirm">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+            </div>
+            
+            <div class="button-box">
+                <input type="submit" id="back-med" onclick="voltar()" class="btn-black-white" value="Voltar">
+                <button type="submit" data-button class="btn-purple">Enviar</button>
+            </div>
+        </form>
+    </section>
+{% endblock content %}
+{% block script %}
+    <script src="https://kit.fontawesome.com/fc74a91a63.js" crossorigin="anonymous"></script>
+    <script src="{% static 'js/formValidation.js' %}"></script>
+    <script src="{% static 'js/button.js' %}"></script>
+{% endblock script %}

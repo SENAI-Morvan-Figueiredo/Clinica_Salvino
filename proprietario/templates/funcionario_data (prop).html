@@ -115,8 +115,16 @@
                         <small class="message"></small>
                     </div>
                     <div class="form-control">
-                        <input type="text" id="especialidade" name="especialidade"
-                            placeholder="Especialidade" class="input" value="{{ medico.especialidade }}">
+                        <select name="especialidade" id="especialidade" class="input">
+                            <option value="" disabled selected>Selecione uma especialidade</option>
+                            {% for especialidade in especialidades %}
+                                {% if especialidade == medico.especialidade %}
+                                    <option value="{{ especialidade.id }}" selected>{{ especialidade.nome_especialidade }}</option>
+                                {% else %}
+                                    <option value="{{ especialidade.id }}">{{ especialidade.nome_especialidade }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
                         <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                         <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 

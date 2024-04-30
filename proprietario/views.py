@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from paciente.models import Paciente
 from paciente.forms import CadPaciente
 from medico.models import Medico, Especialidade
+from medico.forms import CadMedico
 from recept.models import Recepcionista
 from recept.forms import CadRecep
 from itertools import chain
@@ -43,9 +44,10 @@ def dadosFuncionario(request, id):
         pass
     else:
         funcionario = User.objects.get(id=id)
+        especialidades = Especialidade.objects.all()
 
         if hasattr(funcionario, 'medico'):
-            return render(request, 'funcionario_data (prop).html', {'medico': funcionario.medico})
+            return render(request, 'funcionario_data (prop).html', {'medico': funcionario.medico, 'especialidades': especialidades})
         elif hasattr(funcionario, 'recepcionista'):
             return render(request, 'funcionario_data (prop).html', {'recepcionista': funcionario.recepcionista})
 
@@ -71,14 +73,20 @@ def addPaciente(request):
         return render(request, 'add_paciente.html')
 
 def addFuncionario(request):
-    especialidades = Especialidade.objects.all()
-    return render(request, 'add_funcionario.html', {'especialidades': especialidades})
+    if request.method == 'POST':
+        tipo = request.POST['tipo_funcionario']
+        if tipo == 'recepcionista':
+            return redirect('adicionar_recep')
+        elif tipo == 'medico':
+            return redirect('adicionar_medico')
+    else:
+        return render(request, 'add_funcionario.html')
 
 def addRecep(request):
     if request.method == 'POST':
         recepcionista_form = CadRecep(request.POST)
         if recepcionista_form.is_valid():
-            user = User.objects.create_user(
+            user = User.objects.create_superuser(
                 username=request.POST['username'],
                 password=request.POST['password'],
                 email=request.POST['username'],
@@ -92,7 +100,29 @@ def addRecep(request):
             messages.error(request, f"Formulário de cadastro inválido: {recepcionista_form.errors}")
             return redirect('adicionar_funcionarios')     
     else: 
-        return redirect('adicionar_funcionários')
+        return render(request, 'add_recepcionista.html')
+    
+def addMecico(request):
+    if request.method == 'POST':
+        medico_form = CadMedico(request.POST)
+        if medico_form.is_valid():
+            user = User.objects.create_user(
+                username= request.POST['username'],
+                password=request.POST['password'],
+                email=request.POST['username']
+            )
+            new_medico = medico_form.save(commit=False)
+            new_medico.user = user
+            print(new_medico)
+            new_medico.save()
+            messages.success(request, 'Médico Cadastrado com Sucesso!')
+            return redirect('adicionar_funcionarios')
+        else:
+            messages.error(request, f"Formulário de cadastro inválido: {medico_form.errors}")
+            return redirect('adicionar_funcionarios')
+    else: 
+        especialidades = Especialidade.objects.all()
+        return render(request, 'add_medico.html', {'especialidades': especialidades}) 
 
 def deletePaciente(request, id):
     paciente = User.objects.get(id=id)

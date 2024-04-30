@@ -77,6 +77,9 @@ ul{
         background-color: #333333;                                                        /* cor da dashboard do calendario */
         border-radius: 15px;                                                                /* borda da dashboard do calendario */
     }
+    .func{
+        justify-content: flex-start;
+    }
 
     .dash{
         min-width: 855px;
@@ -122,7 +125,15 @@ ul{
     }
 
     .register{
-        align-self: flex-start;
+        align-self: center;
+    }
+
+    .select{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
     .cabecalho{

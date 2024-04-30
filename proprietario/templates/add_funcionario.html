@@ -18,15 +18,15 @@
 {% endblock header %}
 
 {% block content %}
-    <section class="dash page">
-        <h1 class="dash_title">Cadastro de Funcionário</h1>
-        <select name="filter" id="register" class="register">
-            <option value="" selected>Selecione o tipo de funcionário</option>
+<section class="dash page">
+    <h1 class="dash_title">Cadastro de Funcionário</h1>
+    <form class="form func" action="{% url 'adicionar_funcionarios' %}" method="POST">
+        {% csrf_token %}
+        <select name="tipo_funcionario" id="register" class="register">
+            <option value="" disabled selected>Selecione o tipo de funcionário</option>
             <option value="medico">Médico</option>
             <option value="recepcionista">Recepcionista</option>
         </select>
-        {% block form %}
-        {% endblock form%}        
         <div class="result">
             <p class="result-text">
                 {% if messages %}
@@ -48,12 +48,13 @@
                 {% endif %}
             </p>
         </div>
-    </section>
+    </form>
+    
+</section>
 {% endblock content %}
 
 {% block script %}
     <script src="https://kit.fontawesome.com/fc74a91a63.js" crossorigin="anonymous"></script>
-    <script src="{% static 'js/formValidation.js' %}"></script>
     <script src="{% static 'js/select_register.js' %}"></script>
     <script src="{% static 'js/button.js' %}"></script>
 {% endblock script %}
