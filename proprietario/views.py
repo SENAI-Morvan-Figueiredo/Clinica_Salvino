@@ -47,9 +47,9 @@ def dadosFuncionario(request, id):
         especialidades = Especialidade.objects.all()
 
         if hasattr(funcionario, 'medico'):
-            return render(request, 'funcionario_data (prop).html', {'medico': funcionario.medico, 'especialidades': especialidades})
+            return render(request, 'medico_data (prop).html', {'medico': funcionario.medico, 'especialidades': especialidades})
         elif hasattr(funcionario, 'recepcionista'):
-            return render(request, 'funcionario_data (prop).html', {'recepcionista': funcionario.recepcionista})
+            return render(request, 'recepcionista_data (prop).html', {'recepcionista': funcionario.recepcionista})
 
 def addPaciente(request):
     if request.method == 'POST':

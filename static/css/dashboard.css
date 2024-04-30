@@ -14,32 +14,32 @@ ul{
     padding: 0;
 }
     /* class do css do boddy da pagina do usuario */
-    .body_user {                                                       /* cor da tela de fundo do body */
-    min-height: 6.25em;                                                                  /* valor minimo da altura da pagina */
-    display: flex;                                                                      /* Definição da exibição como flex (vai jogar todos os elementos dentro da classe para a esquerda) */
+    .body_user {                                                                            /* cor da tela de fundo do body */
+    min-height: 6.25em;                                                                     /* valor minimo da altura da pagina */
+    display: flex;                                                                          /* Definição da exibição como flex (vai jogar todos os elementos dentro da classe para a esquerda) */
     justify-content: space-around;    
-    padding-bottom: 80px;                                                  /* dimencionando os items do body espaçados ao seu redor */
+    padding-bottom: 80px;                                                                   /* dimencionando os items do body espaçados ao seu redor */
     }
 
     /* class para dashboard do menu do usuario */
     .dash_menu_user {
-        background-color: #333333;                                                    /* cor da dashboard */
-        color: #ffffff;                                                               /* cor da fonte da dashboard */
-        font-family: 'Kumbh-medium', Arial, Helvetica, sans-serif;                      /* fonte estilizada da dashboard */                 
-        width: 18.75em;                                                                 /* tamanho horizontal da dashboard */
-        height: 44.688em;                                                               /* tamanho vertical da dashboard */
-        border-radius: 15px;                                                            /* curvatura da borda da dashboard */
-        position: relative;                                                             /* define a posição da dashboard como relativa, e usa os valores top e left */
-        top: 3.25em;                                                                    /* valor da posição a partir do topo */
-        left: 3.25em;                                                                   /* valor da posição a partir da esquerda */
+        background-color: #333333;                                                        /* cor da dashboard */
+        color: #ffffff;                                                                   /* cor da fonte da dashboard */
+        font-family: 'Kumbh-medium', Arial, Helvetica, sans-serif;                          /* fonte estilizada da dashboard */                 
+        width: 18.75em;                                                                     /* tamanho horizontal da dashboard */
+        height: 44.688em;                                                                   /* tamanho vertical da dashboard */
+        border-radius: 15px;                                                                /* curvatura da borda da dashboard */
+        position: relative;                                                                 /* define a posição da dashboard como relativa, e usa os valores top e left */
+        top: 3.25em;                                                                        /* valor da posição a partir do topo */
+        left: 3.25em;                                                                       /* valor da posição a partir da esquerda */
     }
 
     /* class para o botão do home */
     .button_home {
         position: relative;                                                                 /* posição do botão da home relativo na dashboard com os valores top e left */
-        top: 1.125em;                                                                      /* valor da posição a partir do topo */     
+        top: 1.125em;                                                                       /* valor da posição a partir do topo */     
         left: 16.125em;
-        margin-bottom: 20px;                                                                     /* valor da posição a partir da esquerda */
+        margin-bottom: 20px;                                                                /* valor da posição a partir da esquerda */
     }
 
     /* class para a imagem do usuario */
@@ -71,7 +71,7 @@ ul{
     /* class para o dashboard do calendario */ 
     .dash_calender {
         width: 53.438em;                                                                    /* tamanho horizontal */
-        min-height: 44.688em;                                                                   /* tamanho vertical */
+        min-height: 44.688em;                                                               /* tamanho vertical */
         margin: 3.25em 3.25em 0 3.25em;                                                     /* margin = margem externa relativo ao seu arredor */
         padding: 1.25em 1.25em 0em 1.25em;                                                  /* padding = margem interna */
         background-color: #333333;                                                        /* cor da dashboard do calendario */
@@ -82,15 +82,14 @@ ul{
     }
 
     .dash{
-        min-width: 855px;
         color: #ffffff;
         width: 53.438em;                                                                    /* tamanho horizontal */                                                                  /* tamanho vertical */
         margin: 3.25em 3.25em 0 3.25em;                                                     /* margin = margem externa relativo ao seu arredor */
-        padding: 5em;                                                 /* padding = margem interna */
+        padding: 5em;                                                                       /* padding = margem interna */
         background-color: #333333;                                                        /* cor da dashboard do calendario */
         border-radius: 15px;                                                                /* borda da dashboard do calendario */
         display: grid;
-        grid-template-rows: 0.5fr 2.5fr;
+        grid-template-rows: 0.4fr 2.5fr;
         min-height: 715px;
     }
 
@@ -175,7 +174,7 @@ ul{
     .dash_title{
         color: #ffffff;
         text-align: center;
-        margin-bottom: 0;
+        margin-bottom: 50px;
     }
 
         /* grupo englobando 2 classes e pondo elas em grade */
