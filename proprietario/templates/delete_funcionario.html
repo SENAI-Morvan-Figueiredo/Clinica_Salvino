@@ -20,18 +20,24 @@
 {% block content %}  
     <div class="dash">
         {% if medico %}
-        <h1 class="text">Confirmar Exclusão</h1>
-        <p class="text">Tem certeza que deseja excluir o médico "{{ medico.name }}"?</p>
-        <form action="{% url 'delete_funcionario' medico.user.id %}" method="post">
+        <form class="form" action="{% url 'delete_funcionario' medico.user.id %}" method="post">
+            <h1 class="dash_title">Confirmar Exclusão</h1>
+            <h3 class="text confirm">Tem certeza que deseja excluir o médico "{{ medico.name }}"?</h3>
             {% csrf_token %}
-            <button class="btn" type="submit">Confirmar</button>
+            <div class="button-box">
+                <input type="submit" id="back" onclick="voltar()" class="btn-black-white" value="Voltar">
+                <button type="submit" data-button class="btn-purple">Confirmar</button>
+            </div>
         </form>
         {% elif recepcionista %}
-        <h1 class="text">Confirmar Exclusão</h1>
-        <p class="text">Tem certeza que deseja excluir o recepcionista "{{ recepcionista.name }}"?</p>
-        <form action="{% url 'delete_funcionario' recepcionista.user.id %}" method="post">
+        <form class="form" action="{% url 'delete_funcionario' recepcionista.user.id %}" method="post">
+            <h1 class="dash_title">Confirmar Exclusão</h1>
+            <h3 class="text confirm">Tem certeza que deseja excluir o recepcionista "{{ recepcionista.name }}"?</h3>
             {% csrf_token %}
-            <button class="btn btn-purple" type="submit">Confirmar</button>
+            <div class="button-box">
+                <input type="submit" id="back" onclick="voltar()" class="btn-black-white" value="Voltar">
+                <button type="submit" data-button class="btn-purple">Confirmar</button>
+            </div>
         </form>
         {% endif %}
     </div>

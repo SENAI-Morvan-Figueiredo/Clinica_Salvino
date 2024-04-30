@@ -93,6 +93,10 @@ ul{
         min-height: 715px;
     }
 
+    .confirm{
+        margin: 80px 0 30px;
+    }
+
     p{
         font-size: 12px;
     }
