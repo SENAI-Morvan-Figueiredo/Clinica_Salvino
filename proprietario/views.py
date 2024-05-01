@@ -33,15 +33,48 @@ def mostrarFuncionarios(request):
     return render(request, 'funcionarios_list (prop).html', {'funcionarios': funcionarios, 'medicos': medicos, 'recepcionistas': recepcionistas})
 
 def dadosPaciente(request, id):
-    if request.method == 'post':
-        pass
+    if request.method == 'POST':
+        user = User.objects.get(id=id)
+        paciente = Paciente.objects.get(user=user)
+        edit_paciente_form = CadPaciente(request.POST, instance=paciente)
+        if edit_paciente_form.is_valid():
+            edit_paciente_form.save(commit=False)
+            paciente.save()
+            messages.success(request, 'Dados do paciente editados com Sucesso!')
+            return redirect('paciente', id=id)
+        else:
+            messages.error(request, f"Edição inválida: {edit_paciente_form.errors}")
+            return redirect('paciente', id=id)
     else:
-        paciente = User.objects.get(id=id)
-        return render(request, 'paciente_data (prop).html', {'paciente': paciente.paciente})
+        user = User.objects.get(id=id)
+        paciente = Paciente.objects.get(user=user)
+        return render(request, 'paciente_data (prop).html', {'paciente': paciente})
 
 def dadosFuncionario(request, id):
-    if request.method == 'post':
-        pass
+    if request.method == 'POST':
+        user = User.objects.get(id=id)
+        if hasattr(user, 'medico'):
+            medico = Medico.objects.get(user=user)
+            edit_medico_form = CadMedico(request.POST, instance=medico)
+            if edit_medico_form.is_valid():
+                edit_medico_form.save(commit=False)
+                medico.save()
+                messages.success(request, 'Dados do médico editados com Sucesso!')
+                return redirect('funcionario', id=id)
+            else:
+                messages.error(request, f"Edição inválida: {edit_medico_form.errors}")
+                return redirect('funcionario', id=id)
+        elif hasattr(user, 'recepcionista'):
+            recepcionista = Recepcionista.objects.get(user=user)
+            edit_recepcionista_form = CadRecep(request.POST, instance=recepcionista)
+            if edit_recepcionista_form.is_valid():
+                edit_recepcionista_form.save(commit=False)
+                recepcionista.save()
+                messages.success(request, 'Dados do recepcionista editados com Sucesso!')
+                return redirect('funcionario', id=id)
+            else:
+                messages.error(request, f"Edição inválida: {edit_recepcionista_form.errors}")
+                return redirect('funcionario', id=id)
     else:
         funcionario = User.objects.get(id=id)
         especialidades = Especialidade.objects.all()

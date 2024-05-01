@@ -20,7 +20,7 @@
 {% block content %}
     <section class="dash page">
         <h1 class="dash_title">Recepcionista: {{ recepcionista.name }}</h1>
-        <form class="form" id="form-cad" enctype="multipart/form-data" action="#" method="POST" role="form">
+        <form class="form" id="form-cad" enctype="multipart/form-data" action="{% url 'funcionario' recepcionista.user.id %}" method="POST" role="form">
             {% csrf_token %}
             {{ form.as_p }}
             <div class="form-control">
