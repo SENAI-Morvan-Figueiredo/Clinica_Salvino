@@ -69,7 +69,8 @@ ul{
 
 /* começo das classes da dashboard do calendario */
     /* class para o dashboard do calendario */ 
-    .dash_calender {
+    .dash_prop {
+        display: grid;
         width: 53.438em;                                                                    /* tamanho horizontal */
         min-height: 44.688em;                                                               /* tamanho vertical */
         margin: 3.25em 3.25em 0 3.25em;                                                     /* margin = margem externa relativo ao seu arredor */
