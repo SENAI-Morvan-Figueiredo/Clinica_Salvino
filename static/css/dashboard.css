@@ -71,13 +71,27 @@ ul{
     /* class para o dashboard do calendario */ 
     .dash_prop {
         display: grid;
-        width: 53.438em;                                                                    /* tamanho horizontal */
-        min-height: 44.688em;                                                               /* tamanho vertical */
-        margin: 3.25em 3.25em 0 3.25em;                                                     /* margin = margem externa relativo ao seu arredor */
-        padding: 1.25em 1.25em 0em 1.25em;                                                  /* padding = margem interna */
-        background-color: #333333;                                                        /* cor da dashboard do calendario */
-        border-radius: 15px;                                                                /* borda da dashboard do calendario */
+        width: 53.438em;                                                                    
+        min-height: 44.688em;                                                                                                                                                                  
+        background-color: #FCB74A;                                                        
+        border-radius: 15px;        
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;           
+        grid-gap: 30px;                                             
     }
+
+    .modulo{
+        background-color: #333333;
+        border-radius: 15px;
+    }
+
+    .next{
+        width: 100%;
+        max-height: 300px;
+        background-color: #333333;
+        border-radius: 15px;
+    }
+
     .func{
         justify-content: flex-start;
     }
@@ -87,11 +101,17 @@ ul{
         width: 53.438em;                                                                    /* tamanho horizontal */                                                                  /* tamanho vertical */
         margin: 3.25em 3.25em 0 3.25em;                                                     /* margin = margem externa relativo ao seu arredor */
         padding: 5em;                                                                       /* padding = margem interna */
-        background-color: #333333;                                                        /* cor da dashboard do calendario */
         border-radius: 15px;                                                                /* borda da dashboard do calendario */
         display: grid;
         grid-template-rows: 0.4fr 2.5fr;
         min-height: 715px;
+    }
+
+    .container-prop{
+        display: grid;
+        grid-template-rows: 1fr 0.5fr;
+        grid-gap: 50px;
+        padding: 3.25em 3.25em 0 3.25em; 
     }
 
     .confirm{

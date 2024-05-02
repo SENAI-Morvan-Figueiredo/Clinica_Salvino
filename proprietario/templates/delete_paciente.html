@@ -18,7 +18,7 @@
 {% endblock header %}
 
 {% block content %}  
-    <div class="dash">
+    <div class="dash bg-darkgray">
         <form class="form" action="{% url 'delete_paciente' paciente.user.id %}" method="post">
             <h1 class="dash_title">Confirmar Exclusão</h1>
             <h3 class="text confirm">Tem certeza que deseja excluir o médico "{{ paciente.name }}"?</h3>

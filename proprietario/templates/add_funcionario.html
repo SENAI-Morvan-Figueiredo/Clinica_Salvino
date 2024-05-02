@@ -18,7 +18,7 @@
 {% endblock header %}
 
 {% block content %}
-<section class="dash page">
+<section class="dash page bg-darkgray">
     <h1 class="dash_title">Cadastro de Funcionário</h1>
     <form class="form func" action="{% url 'adicionar_funcionarios' %}" method="POST">
         {% csrf_token %}

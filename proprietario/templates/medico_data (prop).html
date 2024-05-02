@@ -18,7 +18,7 @@
 {% endblock header %}
 
 {% block content %}
-    <section class="dash page">
+    <section class="dash page bg-darkgray">
         <h1 class="dash_title">Médico: {{ medico.name }}</h1>
         <form class="form" id="form-cad" enctype="multipart/form-data" action="{% url 'funcionario' medico.user.id %}" method="POST" role="form">
             {% csrf_token %}
