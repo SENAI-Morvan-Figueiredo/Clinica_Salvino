@@ -26,7 +26,7 @@
                     <div class="info-especialidade">
                         <p>{{ especialidade.nome_especialidade }}</p>
                         <a href="{% url 'especialidade' especialidade.id %}" class="btn btn-purple center">Info</a>
-                        <a href="{% url 'delete_especialidade' especialidade.id %}" class="delete"><img class="icon-delete escalar" src="{% static 'img/delete.svg' %}" alt=""></a>
+                        <a href="{% url 'delete_especialidade' especialidade.id %}"><img class="icon-delete escalar" src="{% static 'img/delete.svg' %}" alt=""></a>
                     </div>
                 {% endfor %}
 

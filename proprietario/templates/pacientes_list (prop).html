@@ -33,7 +33,7 @@
                 <p>{{ paciente.name }}</p>
                 <p>{{ paciente.cpf }}</p>
                 <a href="{% url 'paciente' paciente.user.id %}" class="btn btn-purple center">Info</a>
-                <a href="{% url 'delete_paciente' paciente.user.id %}" class="delete"><img class="icon-delete escalar" src="{% static 'img/delete.svg' %}" alt=""></a>
+                <a href="{% url 'delete_paciente' paciente.user.id %}"><img class="icon-delete escalar" src="{% static 'img/delete.svg' %}" alt=""></a>
             </div>
             {% endfor %}
         {% else %}

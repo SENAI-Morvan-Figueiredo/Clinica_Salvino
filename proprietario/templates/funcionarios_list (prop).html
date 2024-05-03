@@ -42,7 +42,7 @@
                         <div class="func med"><p>Médico</p></div>
                         {% endif %}
                         <a href="{% url 'funcionario' funcionario.user.id %}" class="btn btn-purple center">Info</a>
-                        <a href="{% url 'delete_funcionario' funcionario.user.id %}" class="delete"><img class="icon-delete escalar" src="{% static 'img/delete.svg' %}" alt=""></a>
+                        <a href="{% url 'delete_funcionario' funcionario.user.id %}"><img class="icon-delete escalar" src="{% static 'img/delete.svg' %}" alt=""></a>
                     </div>
                 {% endfor %}
             {% else %}
