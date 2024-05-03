@@ -71,13 +71,13 @@ ul{
     /* class para o dashboard do calendario */ 
     .dash_prop {
         display: grid;
-        width: 53.438em;                                                                    
+        width: 50em;                                                                    
         min-height: 44.688em;                                                                                                                                                                  
         background-color: #FCB74A;                                                        
         border-radius: 15px;        
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr;           
-        grid-gap: 30px;                                             
+        grid-gap: 3%;                                             
     }
 
     .info-especialidade{
@@ -111,7 +111,7 @@ ul{
 
     .dash{
         color: #ffffff;
-        width: 53.438em;                                                                    /* tamanho horizontal */                                                                  /* tamanho vertical */
+        width: 50em;                                                                    /* tamanho horizontal */                                                                  /* tamanho vertical */
         margin: 3.25em 3.25em 0 3.25em;                                                     /* margin = margem externa relativo ao seu arredor */
         padding: 5em;                                                                       /* padding = margem interna */
         border-radius: 15px;                                                                /* borda da dashboard do calendario */
