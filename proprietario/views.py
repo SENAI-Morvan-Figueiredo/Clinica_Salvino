@@ -32,6 +32,10 @@ def mostrarFuncionarios(request):
 
     return render(request, 'funcionarios_list (prop).html', {'funcionarios': funcionarios, 'medicos': medicos, 'recepcionistas': recepcionistas})
 
+def mostrarEspecialidades(request):
+    especialidades = Especialidade.objects.all()
+    return render(request, 'especialidades_list.html', {'especialidades': especialidades})
+
 def dadosPaciente(request, id):
     if request.method == 'POST':
         user = User.objects.get(id=id)

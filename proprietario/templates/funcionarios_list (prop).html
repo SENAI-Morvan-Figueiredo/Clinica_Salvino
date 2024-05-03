@@ -33,25 +33,24 @@
                 <p>Informações</p>
             </div>
             {% if funcionarios %}
-            {% for funcionario in funcionarios %}
-                <div class="info-user">
-                    <p>{{ funcionario.name }}</p>
-                    {% if funcionario in recepcionistas %}
-                    <div class="func recep"><p>Recepcionista</p></div>
-                    {% else %}
-                    <div class="func med"><p>Médico</p></div>
-                    {% endif %}
-                    <a href="{% url 'funcionario' funcionario.user.id %}" class="btn btn-purple center">Info</a>
-                    <a href="{% url 'delete_funcionario' funcionario.user.id %}" class="delete"><img class="icon-delete escalar" src="{% static 'img/delete.svg' %}" alt=""></a>
-                </div>
-            {% endfor %}
-        {% else %}
-            <h3 class="aviso">Não há funcionários cadastrados.</h3>
-        {% endif %}
+                {% for funcionario in funcionarios %}
+                    <div class="info-user">
+                        <p>{{ funcionario.name }}</p>
+                        {% if funcionario in recepcionistas %}
+                        <div class="func recep"><p>Recepcionista</p></div>
+                        {% else %}
+                        <div class="func med"><p>Médico</p></div>
+                        {% endif %}
+                        <a href="{% url 'funcionario' funcionario.user.id %}" class="btn btn-purple center">Info</a>
+                        <a href="{% url 'delete_funcionario' funcionario.user.id %}" class="delete"><img class="icon-delete escalar" src="{% static 'img/delete.svg' %}" alt=""></a>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <h3 class="aviso">Não há funcionários cadastrados.</h3>
+            {% endif %}
         </div>
     </section>  
 {% endblock content %}
 {% block script %}
-    <script src="{% static 'js/button.js' %}"></script>
     <script src="{% static 'js/filter.js' %}"></script>
 {% endblock script %}

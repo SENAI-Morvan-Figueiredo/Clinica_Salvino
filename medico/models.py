@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 class Especialidade(models.Model):
     nome_especialidade = models.CharField(max_length=256)
+    descricao = models.TextField()
 
     def __str__(self):
         return self.nome_especialidade
