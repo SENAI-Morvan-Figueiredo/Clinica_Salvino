@@ -20,15 +20,18 @@
     <section class="dash bg-darkgray">
         <h1 class="dash_title">Especialidades</h1>
         <div class="list">
-            <a href="" class="btn btn-purple center add">Adicionar Especialidade</a>
+            <a href="{% url 'adicionar_especialidade' %}" class="btn btn-purple center add">Adicionar Especialidade</a>
             {% if especialidades %}
                 {% for especialidade in especialidades %}
                     <div class="info-especialidade">
                         <p>{{ especialidade.nome_especialidade }}</p>
-                        <a href="" class="btn btn-purple center">Info</a>
-                        <a href="" class="delete"><img class="icon-delete escalar" src="{% static 'img/delete.svg' %}" alt=""></a>
+                        <a href="{% url 'especialidade' especialidade.id %}" class="btn btn-purple center">Info</a>
+                        <a href="{% url 'delete_especialidade' especialidade.id %}" class="delete"><img class="icon-delete escalar" src="{% static 'img/delete.svg' %}" alt=""></a>
                     </div>
                 {% endfor %}
+
+            {% else %}
+                <h3 class="aviso">Não há especialidades cadastradas.</h3> 
             {% endif %}
         </div>
     </section>

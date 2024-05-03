@@ -1,11 +1,5 @@
-from django.contrib import admin
 from django.urls import path
-from clinica.views import home, contact_us, nutris, login, forgot, change_email, change_password, logout_user
-from paciente.views import register
-from medico.views import medBoard, contaMedico
-from recept.views import receptBoard, contaRecept
-from proprietario.views import proprietyBoard, contaProprietario, mostrarPacientes, mostrarFuncionarios, dadosFuncionario, deleteFuncionario, dadosPaciente, deletePaciente, addFuncionario, addPaciente, addRecep, addMecico, mostrarEspecialidades
-from paciente.views import pacienteBoard, contaPaciente
+from proprietario.views import proprietyBoard, contaProprietario, mostrarPacientes, mostrarFuncionarios, dadosFuncionario, deleteFuncionario, dadosPaciente, deletePaciente, addFuncionario, addPaciente, addRecep, addMedico, mostrarEspecialidades, dadosEspecialidade, addEspecialidade, deleteEspecialidade
 
 urlpatterns = [
     path('', proprietyBoard, name='proprietario_dash'),
@@ -17,8 +11,11 @@ urlpatterns = [
     path('funcionarios', mostrarFuncionarios, name= 'funcionarios'),
     path('funcionarios/add', addFuncionario, name= 'adicionar_funcionarios'),
     path('funcionarios/add/recepcionista', addRecep, name= 'adicionar_recep'),
-    path('funcionarios/add/medico', addMecico, name= 'adicionar_medico'),
+    path('funcionarios/add/medico', addMedico, name= 'adicionar_medico'),
     path('funcionario/<int:id>/', dadosFuncionario, name='funcionario'),
     path('funcionario/<int:id>/delete/', deleteFuncionario, name='delete_funcionario'),
-    path('especialidades', mostrarEspecialidades, name='especialidades')
+    path('especialidades', mostrarEspecialidades, name='especialidades'),
+    path('especialidades/add', addEspecialidade, name='adicionar_especialidade'),
+    path('especialidade/<int:id>/', dadosEspecialidade, name='especialidade'),
+    path('especialidade/<int:id>/delete/', deleteEspecialidade, name='delete_especialidade'),
 ]

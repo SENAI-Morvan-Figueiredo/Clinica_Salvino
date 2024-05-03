@@ -5,7 +5,6 @@ from paciente.views import register
 from medico.views import medBoard, contaMedico
 from recept.views import receptBoard, contaRecept
 import proprietario.urls
-from proprietario.views import proprietyBoard, contaProprietario, mostrarPacientes, mostrarFuncionarios, dadosFuncionario, deleteFuncionario, dadosPaciente, deletePaciente, addFuncionario, addPaciente, addRecep, addMecico
 from paciente.views import pacienteBoard, contaPaciente
 
 urlpatterns = [

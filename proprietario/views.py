@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from paciente.models import Paciente
 from paciente.forms import CadPaciente
 from medico.models import Medico, Especialidade
-from medico.forms import CadMedico
+from medico.forms import CadMedico, CadEspecialidade
 from recept.models import Recepcionista
 from recept.forms import CadRecep
 from itertools import chain
@@ -37,9 +37,9 @@ def mostrarEspecialidades(request):
     return render(request, 'especialidades_list.html', {'especialidades': especialidades})
 
 def dadosPaciente(request, id):
+    user = User.objects.get(id=id)
+    paciente = Paciente.objects.get(user=user)
     if request.method == 'POST':
-        user = User.objects.get(id=id)
-        paciente = Paciente.objects.get(user=user)
         edit_paciente_form = CadPaciente(request.POST, instance=paciente)
         if edit_paciente_form.is_valid():
             edit_paciente_form.save(commit=False)
@@ -50,13 +50,11 @@ def dadosPaciente(request, id):
             messages.error(request, f"Edição inválida: {edit_paciente_form.errors}")
             return redirect('paciente', id=id)
     else:
-        user = User.objects.get(id=id)
-        paciente = Paciente.objects.get(user=user)
         return render(request, 'paciente_data (prop).html', {'paciente': paciente})
 
 def dadosFuncionario(request, id):
+    user = User.objects.get(id=id)
     if request.method == 'POST':
-        user = User.objects.get(id=id)
         if hasattr(user, 'medico'):
             medico = Medico.objects.get(user=user)
             edit_medico_form = CadMedico(request.POST, instance=medico)
@@ -80,13 +78,26 @@ def dadosFuncionario(request, id):
                 messages.error(request, f"Edição inválida: {edit_recepcionista_form.errors}")
                 return redirect('funcionario', id=id)
     else:
-        funcionario = User.objects.get(id=id)
         especialidades = Especialidade.objects.all()
-
-        if hasattr(funcionario, 'medico'):
-            return render(request, 'medico_data (prop).html', {'medico': funcionario.medico, 'especialidades': especialidades})
-        elif hasattr(funcionario, 'recepcionista'):
-            return render(request, 'recepcionista_data (prop).html', {'recepcionista': funcionario.recepcionista})
+        if hasattr(user, 'medico'):
+            return render(request, 'medico_data (prop).html', {'medico': user.medico, 'especialidades': especialidades})
+        elif hasattr(user, 'recepcionista'):
+            return render(request, 'recepcionista_data (prop).html', {'recepcionista': user.recepcionista})
+        
+def dadosEspecialidade(request, id):
+    especialidade = Especialidade.objects.get(id=id)
+    if request.method == 'POST':
+        edit_esp_form = CadEspecialidade(request.POST, instance=especialidade)
+        if edit_esp_form.is_valid():
+            edit_esp_form.save(commit=False)
+            especialidade.save()
+            messages.success(request, 'Dados da especialidade editados com Sucesso!')
+            return redirect('especialidade', id=id)
+        else:
+            messages.error(request, f"Edição inválida: {edit_esp_form.errors}")
+            return redirect('especialidade', id=id)
+    else:
+        return render(request, 'especialidade.html', {'especialidade': especialidade})
 
 def addPaciente(request):
     if request.method == 'POST':
@@ -139,7 +150,7 @@ def addRecep(request):
     else: 
         return render(request, 'add_recepcionista.html')
     
-def addMecico(request):
+def addMedico(request):
     if request.method == 'POST':
         medico_form = CadMedico(request.POST)
         if medico_form.is_valid():
@@ -160,6 +171,20 @@ def addMecico(request):
     else: 
         especialidades = Especialidade.objects.all()
         return render(request, 'add_medico.html', {'especialidades': especialidades}) 
+    
+def addEspecialidade(request):
+    if request.method == 'POST':
+        esp_form = CadEspecialidade(request.POST)
+        if esp_form.is_valid():
+            new_especialidade = esp_form.save(commit=False)
+            new_especialidade.save()
+            messages.success(request, 'Especialidade Cadastrada com Sucesso!')
+            return redirect('adicionar_especialidade')
+        else:
+            messages.error(request, f"Formulário de cadastro inválido: {esp_form.errors}")
+            return redirect('adicionar_especialidade')
+    else:
+        return render(request, 'add_especialidade.html')
 
 def deletePaciente(request, id):
     paciente = User.objects.get(id=id)
@@ -179,4 +204,13 @@ def deleteFuncionario(request, id):
             return render(request, 'delete_funcionario.html', {'medico': funcionario.medico})
         elif hasattr(funcionario, 'recepcionista'):
             return render(request, 'delete_funcionario.html', {'recepcionista': funcionario.recepcionista})
+        
+def deleteEspecialidade(request, id):
+    especialidade = Especialidade.objects.get(id=id)
+    if request.method == 'POST':
+        especialidade.delete()
+        return redirect('especialidades')
+    else:
+        return render(request, 'delete_especialidade.html', {'especialidade': especialidade})
+
         

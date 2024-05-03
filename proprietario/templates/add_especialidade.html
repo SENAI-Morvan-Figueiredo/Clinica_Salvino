@@ -19,12 +19,12 @@
 
 {% block content %}
     <section class="dash bg-darkgray page">
-        <h1 class="dash_title">Especialidade: {{ especialidade.nome_especialidade }}</h1>
+        <h1 class="dash_title">Cadastro de Especialidade</h1>
         <form class="form" id="form-cad" enctype="multipart/form-data" action="#" method="POST" role="form">
             {% csrf_token %}
             {{ form.as_p }}
             <div class="form-control">
-                <input type="text" id="Name-esp" class="input" name="nome_especialidade" placeholder="Nome Especialidade" value="{{ especialidade.nome_especialidade }}">
+                <input type="text" id="Name-esp" class="input" name="nome_especialidade" placeholder="Nome Especialidade">
                 <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                 <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
@@ -32,8 +32,8 @@
             </div>
 
             <div class="form-control">
-                <textarea name="descricao" id="descricao" class="input" cols="30" rows="10"
-                    placeholder="Descrição" value="{{ especialidade.descricao }}">{{ especialidade.descricao }}</textarea>
+                <textarea name="descricao" id="descricao" class="input" cols="57" rows="10"
+                    placeholder="Descrição"></textarea>
                 <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                 <i class="fa-solid fa-circle-check icon-success hidden" style="color: #328146;"></i>
                 <small>Mensagem de Erro</small>
@@ -60,10 +60,10 @@
                     {% endif %}
                 </p>
             </div>
-
+            
             <div class="button-box">
-                <input type="submit" id="back" onclick="voltar()" class="btn-black-white" value="Voltar">
-                <button type="submit" data-button class="btn-purple">Salvar</button>
+                <input type="submit" id="back-med" onclick="voltar()" class="btn-black-white" value="Voltar">
+                <button type="submit" data-button class="btn-purple">Cadastrar</button>
             </div>
         </form>
     </section>
