@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required
 from paciente.models import Paciente
-from paciente.forms import CadPaciente
+from paciente.forms import CadPaciente, AgendaConsulta
 from medico.models import Medico, Especialidade
 from medico.forms import CadMedico, CadEspecialidade
 from recept.models import Recepcionista
@@ -213,4 +213,19 @@ def deleteEspecialidade(request, id):
     else:
         return render(request, 'delete_especialidade.html', {'especialidade': especialidade})
 
-        
+
+def marcarConsulta(request):
+    if request.POST == 'method':
+        atendimento_form = AgendaConsulta(request.POST, request.files)
+        if atendimento_form.is_valid():
+            new_atendimento = atendimento_form.save(commit=False)
+            new_atendimento.save()
+            messages.success(request, 'Consulta agendada com Sucesso!')
+            return redirect('agendamento')
+        else:
+            messages.error(request, f"Formulário de agendamento inválido: {new_atendimento.errors}")
+            return redirect('agendamento')
+    else:
+        pacientes = Paciente.objects.all()
+        medicos = Medico.objects.all()
+        return render(request, 'agendamento.html', {'medicos': medicos, 'pacientes': pacientes})

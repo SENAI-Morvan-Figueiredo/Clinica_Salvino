@@ -120,6 +120,10 @@ ul{
         min-height: 715px;
     }
 
+    .arquivo{
+        color: #ffffff;
+    }
+
     .container-prop{
         display: grid;
         grid-template-rows: 1fr 0.5fr;
