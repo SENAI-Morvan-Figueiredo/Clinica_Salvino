@@ -21,22 +21,26 @@ def contaProprietario(request):
     return render(request, 'myaccount_proprietario.html', {'proprietario': proprietario})
 
 def mostrarPacientes(request):
+    proprietario = request.user.proprietario
     pacientes = Paciente.objects.all()
-    return render(request, 'pacientes_list (prop).html', {'pacientes': pacientes})
+    return render(request, 'pacientes_list (prop).html', {'proprietario': proprietario, 'pacientes': pacientes})
 
 def mostrarFuncionarios(request):
+    proprietario = request.user.proprietario
     medicos = Medico.objects.all()
     recepcionistas = Recepcionista.objects.all()
 
     funcionarios = list(chain(medicos, recepcionistas))
 
-    return render(request, 'funcionarios_list (prop).html', {'funcionarios': funcionarios, 'medicos': medicos, 'recepcionistas': recepcionistas})
+    return render(request, 'funcionarios_list (prop).html', {'proprietario': proprietario, 'funcionarios': funcionarios, 'medicos': medicos, 'recepcionistas': recepcionistas})
 
 def mostrarEspecialidades(request):
+    proprietario = request.user.proprietario
     especialidades = Especialidade.objects.all()
-    return render(request, 'especialidades_list.html', {'especialidades': especialidades})
+    return render(request, 'especialidades_list.html', {'proprietario': proprietario, 'especialidades': especialidades})
 
 def dadosPaciente(request, id):
+    proprietario = request.user.proprietario
     user = User.objects.get(id=id)
     paciente = Paciente.objects.get(user=user)
     if request.method == 'POST':
@@ -50,9 +54,10 @@ def dadosPaciente(request, id):
             messages.error(request, f"Edição inválida: {edit_paciente_form.errors}")
             return redirect('paciente', id=id)
     else:
-        return render(request, 'paciente_data (prop).html', {'paciente': paciente})
+        return render(request, 'paciente_data (prop).html', {'proprietario': proprietario, 'paciente': paciente})
 
 def dadosFuncionario(request, id):
+    proprietario = request.user.proprietario
     user = User.objects.get(id=id)
     if request.method == 'POST':
         if hasattr(user, 'medico'):
@@ -80,11 +85,12 @@ def dadosFuncionario(request, id):
     else:
         especialidades = Especialidade.objects.all()
         if hasattr(user, 'medico'):
-            return render(request, 'medico_data (prop).html', {'medico': user.medico, 'especialidades': especialidades})
+            return render(request, 'medico_data (prop).html', {'proprietario': proprietario, 'medico': user.medico, 'especialidades': especialidades})
         elif hasattr(user, 'recepcionista'):
-            return render(request, 'recepcionista_data (prop).html', {'recepcionista': user.recepcionista})
+            return render(request, 'recepcionista_data (prop).html', {'proprietario': proprietario, 'recepcionista': user.recepcionista})
         
 def dadosEspecialidade(request, id):
+    proprietario = request.user.proprietario
     especialidade = Especialidade.objects.get(id=id)
     if request.method == 'POST':
         edit_esp_form = CadEspecialidade(request.POST, instance=especialidade)
@@ -97,9 +103,10 @@ def dadosEspecialidade(request, id):
             messages.error(request, f"Edição inválida: {edit_esp_form.errors}")
             return redirect('especialidade', id=id)
     else:
-        return render(request, 'especialidade.html', {'especialidade': especialidade})
+        return render(request, 'especialidade.html', {'proprietario': proprietario, 'especialidade': especialidade})
 
 def addPaciente(request):
+    proprietario = request.user.proprietario
     if request.method == 'POST':
         paciente_form = CadPaciente(request.POST)
         if paciente_form.is_valid():
@@ -118,9 +125,10 @@ def addPaciente(request):
             return redirect('adicionar_pacientes')
         
     else:
-        return render(request, 'add_paciente.html')
+        return render(request, 'add_paciente.html', {'proprietario': proprietario})
 
 def addFuncionario(request):
+    proprietario = request.user.proprietario
     if request.method == 'POST':
         tipo = request.POST['tipo_funcionario']
         if tipo == 'recepcionista':
@@ -128,9 +136,10 @@ def addFuncionario(request):
         elif tipo == 'medico':
             return redirect('adicionar_medico')
     else:
-        return render(request, 'add_funcionario.html')
+        return render(request, 'add_funcionario.html', {'proprietario': proprietario})
 
 def addRecep(request):
+    proprietario = request.user.proprietario
     if request.method == 'POST':
         recepcionista_form = CadRecep(request.POST)
         if recepcionista_form.is_valid():
@@ -148,9 +157,10 @@ def addRecep(request):
             messages.error(request, f"Formulário de cadastro inválido: {recepcionista_form.errors}")
             return redirect('adicionar_funcionarios')     
     else: 
-        return render(request, 'add_recepcionista.html')
+        return render(request, 'add_recepcionista.html', {'proprietario': proprietario})
     
 def addMedico(request):
+    proprietario = request.user.proprietario
     if request.method == 'POST':
         medico_form = CadMedico(request.POST)
         if medico_form.is_valid():
@@ -170,9 +180,10 @@ def addMedico(request):
             return redirect('adicionar_funcionarios')
     else: 
         especialidades = Especialidade.objects.all()
-        return render(request, 'add_medico.html', {'especialidades': especialidades}) 
+        return render(request, 'add_medico.html', {'proprietario': proprietario, 'especialidades': especialidades}) 
     
 def addEspecialidade(request):
+    proprietario = request.user.proprietario
     if request.method == 'POST':
         esp_form = CadEspecialidade(request.POST)
         if esp_form.is_valid():
@@ -184,48 +195,53 @@ def addEspecialidade(request):
             messages.error(request, f"Formulário de cadastro inválido: {esp_form.errors}")
             return redirect('adicionar_especialidade')
     else:
-        return render(request, 'add_especialidade.html')
+        return render(request, 'add_especialidade.html', {'proprietario': proprietario})
 
 def deletePaciente(request, id):
+    proprietario = request.user.proprietario
     paciente = User.objects.get(id=id)
     if request.method == 'POST':
         paciente.delete()
         return redirect('pacientes')
     else:
-        return render(request, 'delete_paciente.html', {'paciente': paciente.paciente})
+        return render(request, 'delete_paciente.html', {'proprietario': proprietario, 'paciente': paciente.paciente})
 
 def deleteFuncionario(request, id):
+    proprietario = request.user.proprietario
     funcionario = User.objects.get(id=id)
     if request.method == 'POST':
         funcionario.delete()
         return redirect('funcionarios')
     else:
         if hasattr(funcionario, 'medico'):
-            return render(request, 'delete_funcionario.html', {'medico': funcionario.medico})
+            return render(request, 'delete_funcionario.html', {'proprietario': proprietario, 'medico': funcionario.medico})
         elif hasattr(funcionario, 'recepcionista'):
-            return render(request, 'delete_funcionario.html', {'recepcionista': funcionario.recepcionista})
+            return render(request, 'delete_funcionario.html', {'proprietario': proprietario, 'recepcionista': funcionario.recepcionista})
         
 def deleteEspecialidade(request, id):
+    proprietario = request.user.proprietario
     especialidade = Especialidade.objects.get(id=id)
     if request.method == 'POST':
         especialidade.delete()
         return redirect('especialidades')
     else:
-        return render(request, 'delete_especialidade.html', {'especialidade': especialidade})
+        return render(request, 'delete_especialidade.html', {'proprietario': proprietario, 'especialidade': especialidade})
 
 
 def marcarConsulta(request):
-    if request.POST == 'method':
-        atendimento_form = AgendaConsulta(request.POST, request.files)
+    proprietario = request.user.proprietario
+    especialidade = Especialidade.objects.all()
+    if request.method == 'POST':
+        atendimento_form = AgendaConsulta(request.POST, request.FILES)
         if atendimento_form.is_valid():
             new_atendimento = atendimento_form.save(commit=False)
             new_atendimento.save()
             messages.success(request, 'Consulta agendada com Sucesso!')
             return redirect('agendamento')
         else:
-            messages.error(request, f"Formulário de agendamento inválido: {new_atendimento.errors}")
+            messages.error(request, f"Formulário de agendamento inválido: {atendimento_form.errors}")
             return redirect('agendamento')
     else:
         pacientes = Paciente.objects.all()
         medicos = Medico.objects.all()
-        return render(request, 'agendamento.html', {'medicos': medicos, 'pacientes': pacientes})
+        return render(request, 'agendamento.html', {'proprietario': proprietario, 'medicos': medicos, 'pacientes': pacientes, 'especialidades': especialidade})

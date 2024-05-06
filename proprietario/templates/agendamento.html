@@ -49,6 +49,21 @@
                 </div>
 
                 <div class="form-control">
+                    <select name="especialidade" id="especialidade" class="input" form="form-cad">
+                        <option value="" disabled selected>Especialidades</option>
+                        {% for especialidade in especialidades %}
+                            <option value="{{ especialidade.id }}">{{ especialidade.nome_especialidade }}</option>
+                        {% endfor %}
+                    </select>
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+            </div>
+
+            <div class="container-middle">
+                <div class="form-control">
                     <select name="medico" id="medico" class="input" form="form-cad">
                         <option value="" disabled selected>Médico</option>
                         {% for medico in medicos %}
