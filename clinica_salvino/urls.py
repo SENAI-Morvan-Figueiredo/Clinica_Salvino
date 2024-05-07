@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from clinica.views import home, contact_us, nutris, login, forgot, change_email, change_password, logout_user
-from paciente.views import register
+from paciente.views import register, pagamento
 from medico.views import medBoard, contaMedico
 from recept.views import receptBoard, contaRecept
 from proprietario.views import proprietyBoard, contaProprietario, mostrarPacientes, mostrarFuncionarios
@@ -43,5 +43,6 @@ urlpatterns = [
     path('proprietario/conta', contaProprietario, name= 'conta_proprietario'),
     path('recepcionista/conta', contaRecept, name='conta_recepcionista'),
     path('proprietario/pacientes', mostrarPacientes, name= 'pacientes'),
-    path('proprietario/funcionarios', mostrarFuncionarios, name= 'funcionarios')
+    path('proprietario/funcionarios', mostrarFuncionarios, name= 'funcionarios'),
+    path('paciente/pagamento', pagamento, name='pagamento')
 ]

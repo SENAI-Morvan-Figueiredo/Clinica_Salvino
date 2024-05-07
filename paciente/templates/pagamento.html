@@ -1,0 +1,43 @@
+{% extends 'background_paciente.html'%}
+{% load static i18n %}
+{% block head_title %}
+    {% trans 'Pagamento - Clínica Salvino' %}
+{% endblock head_title %}
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock extra_head %}
+
+{% block header %}
+    <header class="header bg-purple">
+        <div class="container">
+            <a href="{% url 'home' %}" class="login">
+                <img class="escalar" src="{% static 'img/Logo Branco 1.png' %}">
+            </a>
+        </div>
+    </header>
+{% endblock header %}
+
+{% block content %}
+    <div class="dash">
+        <h1 class="container-center">Pagamento</h1>
+
+        <div>
+            <div class="container-middle">Descrição do Tratamento</div>
+            <div class="container-middle">Valor</div>
+        </div>  
+
+        <div>
+            <div>Total:</div>
+            <div>R$</div>
+
+        </div>
+
+        <div>Forma de Pagamento</div>
+
+        <div class="btn-purple">Cartão</div>
+        <div class="btn-purple">Convênio</div>
+        <div class="btn-purple">Pagar no dia</div>
+        
+    </div>
+
+{% endblock content %}
