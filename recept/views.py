@@ -1,5 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from paciente.forms import CadPaciente, AgendaConsulta
+from paciente.models import Paciente, Consulta
+from django.contrib.auth.models import User
+from django.contrib import messages
+
 
 # Create your views here.
 @login_required
@@ -7,7 +12,7 @@ def receptBoard(request):
     recepcionista = request.user.recepcionista
     return render(request, 'recepcionista.html', {'recepcionista': recepcionista})
 
-    def dadosPaciente(request, id):
+def dadosPaciente(request, id):
     proprietario = request.user.proprietario
     user = User.objects.get(id=id)
     paciente = Paciente.objects.get(user=user)
