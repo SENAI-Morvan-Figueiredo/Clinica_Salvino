@@ -35,9 +35,20 @@
                 </button>
                 <div class="collapse navbar-collapse nav-responsive" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                        <a class="nav-link white bord-right escalar" href="{% url 'cadastro' %}">Fazer cadastro</a>
-                        <a class="nav-link white bord login-button btn-white" href="{% url 'login' %}">Fazer
-                            login</a>
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'login' %}" class="btn btn-white">
+                                Agendamento de Consulta
+                            </a>
+                            <a class="nav-link white bord-right escalar" href="{% url 'login' %}">Minha Página</a>
+                            <a class="nav-link white bord-right escalar" href="{% url 'logout' %}">Sair</a>
+                        {% else %}
+                            <a href="{% url 'login' %}" class="btn btn-white">
+                                Agendamento de Consulta
+                            </a>
+                            <a class="nav-link white bord-right escalar" href="{% url 'cadastro' %}">Fazer cadastro</a>
+                            <a class="nav-link white bord-right escalar" href="{% url 'login' %}">Fazer
+                                login</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -60,7 +71,7 @@
                     {% if user.is_authenticated %}
                         <nav class="navbar navbar-dark bg-transparent btn-auth">
                             <div class="container-fluid">
-                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <button class="navbar-toggler custom-toggler white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
                             </button>
                             </div>
