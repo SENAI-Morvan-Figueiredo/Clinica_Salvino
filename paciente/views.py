@@ -36,3 +36,7 @@ def pacienteBoard(request):
 def contaPaciente(request):
     paciente = request.user.paciente
     return render(request, 'myaccount_paciente.html', {'paciente': paciente})
+
+def pagamento(request):
+    paciente = request.user.paciente
+    return render(request, 'pagamento.html', {'paciente': paciente}) 

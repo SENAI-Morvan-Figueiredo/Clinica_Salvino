@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from clinica.views import home, contact_us, nutris, login, forgot, change_email, change_password, logout_user
-from paciente.views import register
+from paciente.views import register, pagamento
 from medico.views import medBoard, contaMedico
 from recept.views import receptBoard, contaRecept
 import proprietario.urls
@@ -24,5 +24,5 @@ urlpatterns = [
     path('logout/', logout_user, name='logout'),
     path('paciente/conta/', contaPaciente, name='conta_paciente'),
     path('medico/conta/', contaMedico, name='conta_medico'),
-    path('recepcionista/conta', contaRecept, name='conta_recepcionista'),
+    path('recepcionista/conta', contaRecept, name='conta_recepcionista')
 ]
