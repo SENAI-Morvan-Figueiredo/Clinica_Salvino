@@ -1,5 +1,5 @@
 from django.urls import path
-from proprietario.views import proprietyBoard, contaProprietario, mostrarPacientes, mostrarFuncionarios, dadosFuncionario, deleteFuncionario, dadosPaciente, deletePaciente, addFuncionario, addPaciente, addRecep, addMedico, mostrarEspecialidades, dadosEspecialidade, addEspecialidade, deleteEspecialidade, marcarConsulta
+from proprietario.views import proprietyBoard, contaProprietario, mostrarPacientes, mostrarFuncionarios, dadosFuncionario, deleteFuncionario, dadosPaciente, deletePaciente, addFuncionario, addPaciente, addRecep, addMedico, mostrarEspecialidades, dadosEspecialidade, addEspecialidade, deleteEspecialidade, marcarConsulta, mostrarConsultas, cancelarConsulta
 
 urlpatterns = [
     path('', proprietyBoard, name='proprietario_dash'),
@@ -18,5 +18,7 @@ urlpatterns = [
     path('especialidades/add', addEspecialidade, name='adicionar_especialidade'),
     path('especialidade/<int:id>/', dadosEspecialidade, name='especialidade'),
     path('especialidade/<int:id>/delete/', deleteEspecialidade, name='delete_especialidade'),
-    path('agendamento/', marcarConsulta, name='agendamento')
+    path('agendamento/', marcarConsulta, name='agendamento'),
+    path('consultas', mostrarConsultas, name='consultas'),
+    path('consultas/<int:id>/cancelar/', cancelarConsulta, name='cancelar_consulta')
 ]

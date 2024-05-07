@@ -105,6 +105,58 @@ ul{
         border-radius: 15px;
     }
 
+    .info-consulta{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 0.5fr 0.5fr 0.5fr 0.5fr;
+        grid-template-areas: "p m" "d h" "s s" "doc c";
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        border: 1px solid #ffffff;
+        border-radius: 15px;
+        padding: 1% 2% 1% 5%;
+        margin-bottom: 10px;
+    }
+
+    .info-consulta p{
+        border: 1px solid #ffffff;
+        padding-left: 5px;
+    }
+
+    .info-consulta a{
+        margin: 10px 0;
+        justify-self: center;
+    }
+
+    .paciente{
+        grid-area: p;
+    }
+
+    .medico{
+        grid-area: m;
+    }
+
+    .data{
+        grid-area: d;
+    }
+
+    .hora{
+        grid-area: h;
+    }
+
+    .status{
+        grid-area: s;
+    }
+
+    .doc{
+        grid-area: doc;
+    }
+
+    .can{
+        grid-area: c;
+    }
+
     .func{
         justify-content: flex-start;
     }

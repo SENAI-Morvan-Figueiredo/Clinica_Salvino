@@ -42,12 +42,12 @@ class Paciente(models.Model):
 
 
 class Consulta(models.Model):
-    paciente = models.OneToOneField(Paciente,on_delete=models.CASCADE)
+    paciente = models.ForeignKey(Paciente,on_delete=models.CASCADE)
     tipo_consulta = models.CharField(max_length=256, choices=(('Presencial', 'Presencial'), ('Remoto', 'Remoto')))
-    medico = models.OneToOneField(Medico,on_delete=models.CASCADE)
+    medico = models.ForeignKey(Medico,on_delete=models.CASCADE)
     data = models.DateField(auto_created=False, auto_now=False, auto_now_add=False)
     hora = models.TimeField(auto_created=False, auto_now=False, auto_now_add=False)
-    especialidade = models.OneToOneField(Especialidade,on_delete=models.CASCADE)
+    especialidade = models.ForeignKey(Especialidade,on_delete=models.CASCADE)
     file_documento = models.FileField(upload_to='exames/', null=True, blank=True)
     status_consulta =models.CharField(max_length=256, choices=(('Concluida','Concluida'), ('Cancelada','Cancelada'), ('Agendada','Agendada'),('Em andamento','Em andamento')))
 
@@ -71,9 +71,9 @@ class Prontuario(models.Model):
         return self.paciente.name
     
 class Documentos(models.Model):
-    prontuario = models.OneToOneField(Prontuario, on_delete= models.CASCADE)
+    prontuario = models.ForeignKey(Prontuario, on_delete= models.CASCADE)
     nome_documento = models.CharField(max_length=256)
-    medico = models.OneToOneField(Medico, on_delete=models.CASCADE)
+    medico = models.ForeignKey(Medico, on_delete=models.CASCADE)
     tipo_documento = models.CharField(max_length=256, choices=(('Descrição de Atendimento', 'Descrição de Atendimento'), ('Receita', 'Receita'), ('Dieta', 'Dieta')))
     data = models.DateField(auto_created=False, auto_now=False, auto_now_add=False)
     descricao = models.TextField(null=True)
@@ -86,8 +86,8 @@ class Documentos(models.Model):
         verbose_name_plural = 'Documentos'
 
 class Encaminhamento(models.Model):
-    prontuario = models.OneToOneField(Prontuario, on_delete= models.CASCADE)
-    medico = models.OneToOneField(Medico, on_delete=models.CASCADE)
+    prontuario = models.ForeignKey(Prontuario, on_delete= models.CASCADE)
+    medico = models.ForeignKey(Medico, on_delete=models.CASCADE)
     data = models.DateField(auto_created=False, auto_now=False, auto_now_add=False)
     tipo_encaminhamento = models.CharField(max_length=256, choices=(('Consultas', 'Consultas'), ('Exames e Terapias', 'Exames e Terapias'), ('Outros', 'Outros')))
     area = models.CharField(max_length=256)
@@ -101,8 +101,8 @@ class Encaminhamento(models.Model):
         verbose_name_plural = 'Documentos'
 
 class Bioimpedância(models.Model):
-    prontuario = models.OneToOneField(Prontuario, on_delete= models.CASCADE)
-    medico = models.OneToOneField(Medico, on_delete=models.CASCADE)
+    prontuario = models.ForeignKey(Prontuario, on_delete= models.CASCADE)
+    medico = models.ForeignKey(Medico, on_delete=models.CASCADE)
     data = models.DateField(auto_created=False, auto_now=False, auto_now_add=False)
     peso = models.DecimalField(max_digits= 5, decimal_places= 2)
     altura = models.DecimalField(max_digits=3 , decimal_places= 2)
@@ -124,8 +124,8 @@ class Bioimpedância(models.Model):
 
 class CadConvenio(models.Model):
     paciente = models.OneToOneField(Paciente, on_delete=models.CASCADE)
-    convenio = models.OneToOneField(Convenio, on_delete=models.CASCADE)
-    plano_convenio = models.OneToOneField(PlanoConvenio, on_delete=models.CASCADE)
+    convenio = models.ForeignKey(Convenio, on_delete=models.CASCADE)
+    plano_convenio = models.ForeignKey(PlanoConvenio, on_delete=models.CASCADE)
     numero_carteirinha = models.CharField(max_length=256)
 
     def __str__(self):
@@ -141,7 +141,7 @@ class CadConvenio(models.Model):
 
 class CadCartao(models.Model):
     paciente = models.OneToOneField(Paciente, on_delete=models.CASCADE)
-    bandeira_cartao = models.OneToOneField(BandeiraCartao, on_delete=models.CASCADE)
+    bandeira_cartao = models.ForeignKey(BandeiraCartao, on_delete=models.CASCADE)
     numero_cartao = models.CharField(max_length=256)
     cvc = models.CharField(max_length=3)
     data_vencimento = models.CharField(max_length=7)
@@ -166,14 +166,14 @@ class CadCartao(models.Model):
 
 
 class Pagamento(models.Model):
-    paciente = models.OneToOneField(Paciente, on_delete=models.CASCADE)
+    paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)
     data_emissao = models.DateField(auto_created=False, auto_now=False, auto_now_add=False)
     tratamento = models.ForeignKey(Tratamento, on_delete=models.CASCADE)
     medico = models.ForeignKey(Medico, on_delete=models.CASCADE)
     forma_pagamento = models.CharField(max_length=256, choices=(('Convenio', 'Convenio'), ('Cartao', 'Cartao'), ('Pix', 'Pix'), ('Boleto', 'Boleto'), ('Pagar no dia', 'Pagar no dia')))
-    convenio = models.OneToOneField(CadConvenio, blank=True, null=True, on_delete=models.SET_NULL)
-    cartao = models.OneToOneField(CadCartao, blank=True, null=True, on_delete=models.SET_NULL)
-    pix = models.OneToOneField(Pix, blank=True, null=True, on_delete=models.SET_NULL)
+    convenio = models.ForeignKey(CadConvenio, blank=True, null=True, on_delete=models.SET_NULL)
+    cartao = models.ForeignKey(CadCartao, blank=True, null=True, on_delete=models.SET_NULL)
+    pix = models.ForeignKey(Pix, blank=True, null=True, on_delete=models.SET_NULL)
     boleto = models.FileField(upload_to='boletos/', blank=True, null=True)
     cod_barras =models.CharField(max_length=44, blank=True,null=True)
     status_pagamento = models.CharField(max_length=256, choices=(('Pago', 'Pago'), ('Aguardando pagamento', 'Aguardando pagamento'), ('Cancelado', 'Cancelado'), ('Aguardando reembolso', 'Aguardando reembolso'), ('Reembolsado', 'Reembolsado')))

@@ -1,6 +1,6 @@
-from django.shortcuts import get_object_or_404, render, redirect
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from paciente.models import Paciente
+from paciente.models import Paciente, Consulta
 from paciente.forms import CadPaciente, AgendaConsulta
 from medico.models import Medico, Especialidade
 from medico.forms import CadMedico, CadEspecialidade
@@ -228,6 +228,11 @@ def deleteEspecialidade(request, id):
         return render(request, 'delete_especialidade.html', {'proprietario': proprietario, 'especialidade': especialidade})
 
 
+def mostrarConsultas(request):
+    proprietario = request.user.proprietario
+    consultas = Consulta.objects.all()
+    return render(request, 'consultas.html', {'proprietario': proprietario, 'consultas': consultas})
+
 def marcarConsulta(request):
     proprietario = request.user.proprietario
     especialidade = Especialidade.objects.all()
@@ -235,6 +240,7 @@ def marcarConsulta(request):
         atendimento_form = AgendaConsulta(request.POST, request.FILES)
         if atendimento_form.is_valid():
             new_atendimento = atendimento_form.save(commit=False)
+            new_atendimento.status_consulta = 'Agendada'
             new_atendimento.save()
             messages.success(request, 'Consulta agendada com Sucesso!')
             return redirect('agendamento')
@@ -245,3 +251,12 @@ def marcarConsulta(request):
         pacientes = Paciente.objects.all()
         medicos = Medico.objects.all()
         return render(request, 'agendamento.html', {'proprietario': proprietario, 'medicos': medicos, 'pacientes': pacientes, 'especialidades': especialidade})
+    
+def cancelarConsulta(request, id):
+    proprietario = request.user.proprietario
+    consulta = Consulta.objects.get(id=id)
+    if request.method == 'POST':
+        consulta.status_consulta = 'Cancelada'
+        return redirect('consultas')
+    else:
+        return render(request, 'cancelar_consulta.html', {'proprietario': proprietario, 'consulta': consulta})
