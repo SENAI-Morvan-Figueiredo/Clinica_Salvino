@@ -1,7 +1,7 @@
 /*Estilização com linhas*/
 .line{
     width: 150px;
-    border: 2px solid #fff;
+    border: 1px solid #fff;
 }
 
 .line_menu {
