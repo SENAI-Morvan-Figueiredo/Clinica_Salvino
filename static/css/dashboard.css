@@ -57,14 +57,6 @@ ul{
         margin: 1em;                                                                        /* margem dos items da lista em comparação ao seu redor */
     }
 
-    /* adicionando 2 linhas ao redor de uma lista no menu */
-    #line_menu {
-        border-top: 2px solid white;                                                      /* adicionando uma borda na parte de cima da lista (sintax 'border-(direção): tamanho   tipo-de-borda   cor-da-borda')*/
-        border-bottom: 2px solid white;                                                   /* adicionando uma borda na parte de baixo da lista */                         
-        margin: 0 1.875em 0 1.875em;                                                        /* margem somente para as laterais (esquerda e direita) */
-    }
-    
-
 /* --- fim das classes da dashboard do menu do usuario --- */
 
 /* começo das classes da dashboard do calendario */
@@ -109,7 +101,7 @@ ul{
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 0.5fr 0.5fr 0.5fr 0.5fr;
-        grid-template-areas: "p m" "d h" "s s" "doc c";
+        grid-template-areas: "p m" "e d" "h s" "doc c";
         justify-content: space-between;
         align-items: center;
         width: 100%;
@@ -135,6 +127,10 @@ ul{
 
     .medico{
         grid-area: m;
+    }
+
+    .especialidade{
+        grid-area: e;
     }
 
     .data{

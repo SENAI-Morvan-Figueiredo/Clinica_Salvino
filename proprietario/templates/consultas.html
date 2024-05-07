@@ -26,6 +26,7 @@
                     <div class="info-consulta">
                         <p class="paciente"><b>Paciente:</b> {{ consulta.paciente.name }}</p>
                         <p class="medico"><b>Médico:</b> {{ consulta.medico.name }}</p>
+                        <p class="especialidade"><b>Especialidade</b> {{ consulta.especialidade }}</p>
                         <p class="data"><b>Data:</b> {{ consulta.data|date:'d/m/Y' }}</p>
                         <p class="hora"><b>Hora:</b> {{ consulta.hora|time:"H:i" }}</p>
                         <p class="status"><b>Status:</b> {{ consulta.status_consulta }}</p>
