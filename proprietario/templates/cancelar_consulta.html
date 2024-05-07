@@ -21,7 +21,7 @@
     <div class="dash bg-darkgray page">
         <form class="form" action="{% url 'cancelar_consulta' consulta.id %}" method="post">
             <h1 class="dash_title">Confirmar Cancelamento</h1>
-            <h3 class="text confirm">Tem certeza que deseja cancelar a consulta do paciente "{{ consulta.paciente.name }}" marcada para às {{ consulta.hora }}?</h3>
+            <h3 class="text confirm">Tem certeza que deseja cancelar a consulta do paciente "{{ consulta.paciente.name }}" marcada para às {{ consulta.hora|time:"H:i" }}?</h3>
             {% csrf_token %}
             <div class="button-box">
                 <input type="submit" id="back" onclick="voltar()" class="btn-black-white" value="Voltar">
