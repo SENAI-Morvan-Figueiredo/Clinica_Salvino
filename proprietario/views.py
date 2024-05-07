@@ -257,6 +257,7 @@ def cancelarConsulta(request, id):
     consulta = Consulta.objects.get(id=id)
     if request.method == 'POST':
         consulta.status_consulta = 'Cancelada'
+        consulta.save()
         return redirect('consultas')
     else:
         return render(request, 'cancelar_consulta.html', {'proprietario': proprietario, 'consulta': consulta})
