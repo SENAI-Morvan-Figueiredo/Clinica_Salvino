@@ -1,5 +1,8 @@
-{% extends 'background_proprietario.html'%}
+{% extends 'background_proprietario.html' %}
 {% load static i18n %}
+{% block head_title %}
+    {% trans 'Proprietário - Clínica Salvino' %}
+{% endblock head_title %}
 {% block extra_head %}
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
 {% endblock extra_head %}
@@ -15,13 +18,13 @@
 {% endblock header %}
 
 {% block content %}
-<div class="dash page bg-darkgray">
-    <h1 class="dash_title">Paciente: {{ paciente.name }}</h1>
-        <form class="form" id="form-cad" enctype="multipart/form-data" action="{% url 'paciente' paciente.user.id %}" method="POST" role="form">
+    <section class="dash page bg-darkgray">
+        <h1 class="dash_title">Médico: {{ medico.name }}</h1>
+        <form class="form" id="form-cad" enctype="multipart/form-data" action="{% url 'funcionario' medico.user.id %}" method="POST" role="form">
             {% csrf_token %}
             {{ form.as_p }}
             <div class="form-control">
-                <input type="text" id="Name" class="input" name="name" placeholder="Nome completo" value="{{ paciente.name }}">
+                <input type="text" id="Name" class="input" name="name" placeholder="Nome completo" value="{{ medico.name }}">
                 <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                 <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
@@ -30,14 +33,14 @@
 
             <div class="container-middle">
                 <div class="form-control">
-                    {% if paciente.sexo == 'Masculino' %}
+                    {% if medico.sexo == 'Masculino' %}
                         <select name="sexo" id="sexo" class="input" form="form-cad">
                             <option value="" disabled>Sexo</option>
                             <option value="Masculino" selected>Masculino</option>
                             <option value="Feminino">Feminino</option>
                             <option value="Outro">Outro</option>
                         </select>
-                    {% elif paciente.sexo == 'Feminino' %}
+                    {% elif medico.sexo == 'Feminino' %}
                         <select name="sexo" id="sexo" class="input" form="form-cad">
                             <option value="" disabled>Sexo</option>
                             <option value="Masculino">Masculino</option>
@@ -45,7 +48,7 @@
                             <option value="Outro">Outro</option>
                         </select>
 
-                    {% elif paciente.sexo == 'Outro' %}
+                    {% elif medico.sexo == 'Outro' %}
                         <select name="sexo" id="sexo" class="input" form="form-cad">
                             <option value="" disabled>Sexo</option>
                             <option value="Masculino">Masculino</option>
@@ -67,7 +70,7 @@
                 </div>
 
                 <div class="form-control">
-                    <input type="text" id="Genero" class="input" name="genero" placeholder="Gênero" value="{{ paciente.genero }}">
+                    <input type="text" id="Genero" class="input" name="genero" placeholder="Gênero" value="{{ medico.genero }}">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
@@ -77,7 +80,7 @@
 
             <div class="container-middle">
                 <div class="form-control">
-                    <input type="date" id="date" class="input" name="data_nascimento" value="{{ paciente.data_nascimento|date:'Y-m-d' }}">
+                    <input type="date" id="date" class="input" name="data_nascimento" value="{{ medico.data_nascimento|date:'Y-m-d' }}">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
@@ -85,7 +88,7 @@
                 </div>
                 <div class="form-control">
                     <input type="text" maxlength="9" minlength="9" inputmode="numeric" id="RG" name="rg"
-                        placeholder="RG" class="input" value="{{ paciente.rg }}">
+                        placeholder="RG" class="input" value="{{ medico.rg }}">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
@@ -96,58 +99,34 @@
             <div class="container-middle">
                 <div class="form-control">
                     <input type="text" maxlength="11" minlength="11" inputmode="numeric" id="CPF" name="cpf"
-                        placeholder="CPF" class="input" value="{{ paciente.cpf }}">
+                        placeholder="CPF" class="input" value="{{ medico.cpf }}">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
                     <small class="message"></small>
                 </div>
-                <div class="form-control Dependente">
-                    {% if paciente.status_dependencia == 'Independente' %}
-                        <div class="option-dependence">
-                            <label for="independente">Independente</label>
-                            <input type="radio" name="status_dependencia" value="Independente" class="checkbox left input"
-                                id="independente" value>
-                            <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
-                            <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+                <div class="form-control">
+                    <input type="text" maxlength="12" minlength="12" inputmode="numeric" id="CRM" name="crm"
+                        placeholder="CRM" class="input" value="{{ medico.crm }}">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
-                            <small class="message"></small>
-                        </div>
-
-                        <div class="option-dependence">
-                            <label for="dependente">Dependente</label>
-                            <input type="radio" name="status_dependencia" value="Dependente" class="checkbox left input"
-                                id="dependente">
-                            <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
-                            <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
-
-                            <small class="message"></small>
-                        </div>
-                    {% endif %}
+                    <small class="message"></small>
                 </div>
-            </div>
-
-            <div class="form-control">
-                <input type="text" id="responsavel" class="input" name="nome_responsavel"
-                    placeholder="Nome Responsável" value="{{ paciente.nome_responsavel }}">
-                <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
-                <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
-
-                <small class="message"></small>
             </div>
 
             <div class="container-middle">
                 <div class="form-control">
-                    <input type="text" maxlength="9" minlength="9" inputmode="numeric" id="RGResponsavel"
-                        name="rg_responsavel" placeholder="RG do Responsável" class="input" value="{{ paciente.rg_responsavel }}">
-                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
-                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
-
-                    <small class="message"></small>
-                </div>
-                <div class="form-control">
-                    <input type="text" maxlength="11" minlength="11" inputmode="numeric" id="CPFResponsavel" class="input"
-                        name="cpf_responsavel" placeholder="CPF do Responsável" value="{{ paciente.cpf_responsavel }}">
+                    <select name="especialidade" id="especialidade" class="input">
+                        <option value="" disabled selected>Selecione uma especialidade</option>
+                        {% for especialidade in especialidades %}
+                            {% if especialidade == medico.especialidade %}
+                                <option value="{{ especialidade.id }}" selected>{{ especialidade.nome_especialidade }}</option>
+                            {% else %}
+                                <option value="{{ especialidade.id }}">{{ especialidade.nome_especialidade }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
@@ -158,14 +137,14 @@
             <div class="container-middle">
                 <div class="form-control">
                     <input type="tel" maxlength="14" minlength="11" class="input" id="phone" name="telefone"
-                        placeholder="(ddd) 99999-9999" value="{{ paciente.telefone }}">
+                        placeholder="(ddd) 99999-9999" value="{{ medico.telefone }}">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
                     <small class="message"></small>
                 </div>
                 <div class="form-control">
-                    <input type="text" maxlength="8" minlength="8" inputmode="numeric" id="CEP" class="input" name="cep" placeholder="CEP" value="{{ paciente.cep }}">
+                    <input type="text" inputmode="numeric" id="CEP" class="input" name="cep" placeholder="CEP" value="{{ medico.cep }}">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
@@ -177,7 +156,7 @@
 
             <div class="container-middle address">
                 <div class="form-control right">
-                    <input type="text" id="Endereco" class="input" name="endereco" placeholder="Endereço" value="{{ paciente.endereco }}">
+                    <input type="text" id="Endereco" class="input" name="endereco" placeholder="Endereço" value="{{ medico.endereco }}">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
@@ -185,7 +164,7 @@
                 </div>
 
                 <div class="form-control address  mid">
-                    <input type="text" inputmode="numeric" class="input" id="Numero" name="numero" placeholder="N°" value="{{ paciente.numero }}">
+                    <input type="text" inputmode="numeric" class="input" id="Numero" name="numero" placeholder="N°" value="{{ medico.numero }}">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
@@ -193,7 +172,7 @@
                 </div>
 
                 <div class="form-control left">
-                    <input type="text" name="complemento" class="input" id="Complemento" placeholder="Complemento" value="{{ paciente.complemento }}">
+                    <input type="text" name="complemento" class="input" id="Complemento" placeholder="Complemento" value="{{ medico.complemento }}">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
@@ -227,7 +206,7 @@
                 <button type="submit" data-button class="btn-purple">Salvar</button>
             </div>
         </form>
-    </div>
+    </section>
 {% endblock content %}
 
 {% block script %}

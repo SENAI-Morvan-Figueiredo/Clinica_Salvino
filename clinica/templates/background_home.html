@@ -57,17 +57,40 @@
                             Agendamento de Consulta
                         </a>
                     </div>
-                    <div class="col-lg-auto d-flex align-items-start justify-content-center">
-                        <ul class="home_nav_ul">
-                            <li class="escalar">
-                                <a class="change-color" href="{% url 'cadastro' %}">Cadastrar</a>
-                            </li>
-                            <li> | </li>
-                            <li class="escalar login">
-                                <a href="{% url 'login' %}" class="btn-white login">Fazer Login</a>
-                            </li>
-                        </ul>
-                    </div>
+                    {% if user.is_authenticated %}
+                        <nav class="navbar navbar-dark bg-transparent btn-auth">
+                            <div class="container-fluid">
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            </div>
+                        </nav>
+                    {% else %}
+                        <div class="col-lg-auto d-flex align-items-start justify-content-center">
+                            <ul class="home_nav_ul">
+                                <li class="escalar">
+                                    <a class="change-color" href="{% url 'cadastro' %}">Cadastrar</a>
+                                </li>
+                                <li> | </li>
+                                <li class="escalar login">
+                                    <a href="{% url 'login' %}" class="btn-white login">Fazer Login</a>
+                                </li>
+                            </ul>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="collapse menu-ab" id="navbarToggleExternalContent" data-bs-theme="dark">
+                <div class="bg-dark p-4">
+                    <ul class="home_nav_ul menu-options">
+                        <li class="escalar">
+                            <a href="{% url 'login' %}">Minha Página</a>
+                        </li>
+                        <div class="line"></div>
+                        <li class="escalar">
+                            <a href="{% url 'logout' %}">Sair</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>

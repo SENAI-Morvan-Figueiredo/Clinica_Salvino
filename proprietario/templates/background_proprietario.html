@@ -27,7 +27,7 @@
         <nav  class="dash_menu_user">
             <div>
                 <div class="button_home">
-                    <a href="{% url 'proprietario' %}"><img src="{% static 'imagens/buttons/button_home.png' %}" alt=""></a>
+                    <a href="{% url 'proprietario_dash' %}"><img src="{% static 'imagens/buttons/button_home.png' %}" alt=""></a>
                 </div>
     
                 <div class="image_user">
@@ -50,7 +50,7 @@
                     </ul>
                 </div>
     
-                <div class="ul_dash_menu" id="line_menu">
+                <div class="ul_dash_menu line_menu">
                     <ul>
                         <li>
                            <a href="{% url 'pacientes' %}">Dados de Pacientes</a> 
@@ -58,6 +58,10 @@
 
                         <li>
                             <a href="{% url 'funcionarios' %}">Dados de Funcionários</a>
+                        </li>
+
+                        <li>
+                            <a href="{% url 'especialidades' %}">Especialidades</a> 
                         </li>
 
                         <li>
@@ -69,7 +73,11 @@
                 <div  class="ul_dash_menu">
                     <ul>
                         <li>
-                            Agendar Consulta
+                            <a href="{% url 'agendamento'%}">Agendar Consulta</a> 
+                        </li>
+
+                        <li>
+                            <a href="{% url 'consultas'%}">Consultas</a> 
                         </li>
 
                         <li>

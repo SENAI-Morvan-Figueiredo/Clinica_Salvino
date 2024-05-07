@@ -18,20 +18,18 @@
 {% endblock header %}
 
 {% block content %}  
-    <section class="dash">
-        <h1 class="dash_title">Funcionários</h1>
-        {% if funcionarios %}
-            {% for funcionario in funcionarios %}
-                {{ funcionario.name }}
-                <br>
-            {% endfor %}
-        {% else %}
-            <p>Não há funcionários cadastrados</p>
-        {% endif %}
-    </section>  
+    <div class="dash bg-darkgray page">
+        <form class="form" action="{% url 'cancelar_consulta' consulta.id %}" method="post">
+            <h1 class="dash_title">Confirmar Cancelamento</h1>
+            <h3 class="text confirm">Tem certeza que deseja cancelar a consulta do paciente "{{ consulta.paciente.name }}" marcada para às {{ consulta.hora }}?</h3>
+            {% csrf_token %}
+            <div class="button-box">
+                <input type="submit" id="back" onclick="voltar()" class="btn-black-white" value="Voltar">
+                <button type="submit" data-button class="btn-purple">Confirmar</button>
+            </div>
+        </form>
+    </div>
 {% endblock content %}
 {% block script %}
-    <script src="https://kit.fontawesome.com/fc74a91a63.js" crossorigin="anonymous"></script>
-    <script src="{% static 'js/formValidation.js' %}"></script>
     <script src="{% static 'js/button.js' %}"></script>
 {% endblock script %}

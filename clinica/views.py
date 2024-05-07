@@ -46,13 +46,13 @@ def login(request):
     if request.user.is_authenticated:
         # Se o usuário já estiver autenticado, redirecione-o para a área de dashboard correta
         if Paciente.objects.filter(user=request.user).exists():
-            return redirect('paciente')
+            return redirect('paciente_dash')
         elif Proprietario.objects.filter(user=request.user).exists():
-            return redirect('proprietario')
+            return redirect('proprietario_dash')
         elif Medico.objects.filter(user=request.user).exists():
-            return redirect('medico')
+            return redirect('medico_dash')
         elif Recepcionista.objects.filter(user=request.user).exists():
-            return redirect('recepcionista')
+            return redirect('recepcionista_dash')
         
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -64,13 +64,13 @@ def login(request):
                 if user:
                     Login_django(request, user)
                     if Paciente.objects.filter(user=user).exists():
-                        return redirect('paciente')
+                        return redirect('paciente_dash')
                     elif Proprietario.objects.filter(user=user).exists():
-                        return redirect('proprietario')
+                        return redirect('proprietario_dash')
                     elif Medico.objects.filter(user=user).exists():
-                        return redirect('medico')
+                        return redirect('medico_dash')
                     elif Recepcionista.objects.filter(user=user).exists():
-                        return redirect('recepcionista')
+                        return redirect('recepcionista_dash')
                 else:
                     messages.error(request, "Credenciais inválidas. Por favor, verifique seu email e senha.")
                     return redirect('login')

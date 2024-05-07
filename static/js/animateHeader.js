@@ -2,18 +2,29 @@ const nav = document.querySelector('.nav-home');
 const logo = document.querySelector('.logo-home');
 const container = document.querySelector('.nav');
 const login = document.querySelector('.login');
+const menuAb = document.querySelector('.menu-ab')
 
 function scrollPosition(){
     if(window.scrollY>40){
         nav.classList.remove('animate');
         logo.classList.add('animatelogo');
         container.classList.add('align-items-center');
-        login.style.marginTop= 0;
+        if(login){
+            login.style.marginTop= 0;
+        } else if(menuAb){
+            menuAb.style.top= '15vh'
+        }
+        
     } else{
         nav.classList.add('animate');
         logo.classList.remove('animatelogo');
         container.classList.remove('align-items-center');
-        login.style.marginTop= '10px'
+        if(login){
+            login.style.marginTop= '10px'
+        } else if(menuAb){
+            menuAb.style.top= '13vh'
+        }
+        
     }
 }
 scrollPosition();

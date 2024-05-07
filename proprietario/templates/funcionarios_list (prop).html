@@ -1,0 +1,56 @@
+{% extends 'background_proprietario.html' %}
+{% load static i18n %}
+{% block head_title %}
+    {% trans 'Proprietário - Clínica Salvino' %}
+{% endblock head_title %}
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock extra_head %}
+
+{% block header %}
+    <header class="header bg-yellow">
+        <div class="container">
+            <a href="{% url 'home' %}" class="login">
+                <img class="escalar" src="{% static 'img/Logo Branco 1.png' %}">
+            </a>
+        </div>
+    </header>
+{% endblock header %}
+
+{% block content %}  
+    <section class="dash bg-darkgray">
+        <h1 class="dash_title">Funcionários</h1>
+        <div class="list">
+            <a href="{% url 'adicionar_funcionarios' %}" class="btn btn-purple center add">Adicionar Funcionário</a>
+            <select name="filter" id="filter" class="filter">
+                <option value="" selected>Filtro:</option>
+                <option value="medicos">Médicos</option>
+                <option value="recepcionistas">Recepcionistas</option>
+            </select>
+            <div class="cabecalho">
+                <p>Nome</p>
+                <p>Tipo de funcionário</p>
+                <p>Informações</p>
+            </div>
+            {% if funcionarios %}
+                {% for funcionario in funcionarios %}
+                    <div class="info-user">
+                        <p>{{ funcionario.name }}</p>
+                        {% if funcionario in recepcionistas %}
+                        <div class="func recep"><p>Recepcionista</p></div>
+                        {% else %}
+                        <div class="func med"><p>Médico</p></div>
+                        {% endif %}
+                        <a href="{% url 'funcionario' funcionario.user.id %}" class="btn btn-purple center">Info</a>
+                        <a href="{% url 'delete_funcionario' funcionario.user.id %}"><img class="icon-delete escalar" src="{% static 'img/delete.svg' %}" alt=""></a>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <h3 class="aviso">Não há funcionários cadastrados.</h3>
+            {% endif %}
+        </div>
+    </section>  
+{% endblock content %}
+{% block script %}
+    <script src="{% static 'js/filter.js' %}"></script>
+{% endblock script %}

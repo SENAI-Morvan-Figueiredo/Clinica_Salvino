@@ -14,32 +14,32 @@ ul{
     padding: 0;
 }
     /* class do css do boddy da pagina do usuario */
-    .body_user {                                                       /* cor da tela de fundo do body */
-    min-height: 6.25em;                                                                  /* valor minimo da altura da pagina */
-    display: flex;                                                                      /* Definição da exibição como flex (vai jogar todos os elementos dentro da classe para a esquerda) */
+    .body_user {                                                                            /* cor da tela de fundo do body */
+    min-height: 6.25em;                                                                     /* valor minimo da altura da pagina */
+    display: flex;                                                                          /* Definição da exibição como flex (vai jogar todos os elementos dentro da classe para a esquerda) */
     justify-content: space-around;    
-    padding-bottom: 80px;                                                  /* dimencionando os items do body espaçados ao seu redor */
+    padding-bottom: 80px;                                                                   /* dimencionando os items do body espaçados ao seu redor */
     }
 
     /* class para dashboard do menu do usuario */
     .dash_menu_user {
-        background-color: #333333;                                                    /* cor da dashboard */
-        color: #ffffff;                                                               /* cor da fonte da dashboard */
-        font-family: 'Kumbh-medium', Arial, Helvetica, sans-serif;                      /* fonte estilizada da dashboard */                 
-        width: 18.75em;                                                                 /* tamanho horizontal da dashboard */
-        height: 44.688em;                                                               /* tamanho vertical da dashboard */
-        border-radius: 15px;                                                            /* curvatura da borda da dashboard */
-        position: relative;                                                             /* define a posição da dashboard como relativa, e usa os valores top e left */
-        top: 3.25em;                                                                    /* valor da posição a partir do topo */
-        left: 3.25em;                                                                   /* valor da posição a partir da esquerda */
+        background-color: #333333;                                                        /* cor da dashboard */
+        color: #ffffff;                                                                   /* cor da fonte da dashboard */
+        font-family: 'Kumbh-medium', Arial, Helvetica, sans-serif;                          /* fonte estilizada da dashboard */                 
+        width: 18.75em;                                                                     /* tamanho horizontal da dashboard */
+        height: 44.688em;                                                                   /* tamanho vertical da dashboard */
+        border-radius: 15px;                                                                /* curvatura da borda da dashboard */
+        position: relative;                                                                 /* define a posição da dashboard como relativa, e usa os valores top e left */
+        top: 3.25em;                                                                        /* valor da posição a partir do topo */
+        left: 3.25em;                                                                       /* valor da posição a partir da esquerda */
     }
 
     /* class para o botão do home */
     .button_home {
         position: relative;                                                                 /* posição do botão da home relativo na dashboard com os valores top e left */
-        top: 1.125em;                                                                      /* valor da posição a partir do topo */     
+        top: 1.125em;                                                                       /* valor da posição a partir do topo */     
         left: 16.125em;
-        margin-bottom: 20px;                                                                     /* valor da posição a partir da esquerda */
+        margin-bottom: 20px;                                                                /* valor da posição a partir da esquerda */
     }
 
     /* class para a imagem do usuario */
@@ -57,34 +57,208 @@ ul{
         margin: 1em;                                                                        /* margem dos items da lista em comparação ao seu redor */
     }
 
-    /* adicionando 2 linhas ao redor de uma lista no menu */
-    #line_menu {
-        border-top: 2px solid white;                                                      /* adicionando uma borda na parte de cima da lista (sintax 'border-(direção): tamanho   tipo-de-borda   cor-da-borda')*/
-        border-bottom: 2px solid white;                                                   /* adicionando uma borda na parte de baixo da lista */                         
-        margin: 0 1.875em 0 1.875em;                                                        /* margem somente para as laterais (esquerda e direita) */
-    }
-    
-
 /* --- fim das classes da dashboard do menu do usuario --- */
 
 /* começo das classes da dashboard do calendario */
     /* class para o dashboard do calendario */ 
-    .dash_calender {
-        width: 53.438em;                                                                    /* tamanho horizontal */
-        min-height: 44.688em;                                                                   /* tamanho vertical */
-        margin: 3.25em 3.25em 0 3.25em;                                                     /* margin = margem externa relativo ao seu arredor */
-        padding: 1.25em 1.25em 0em 1.25em;                                                  /* padding = margem interna */
-        background-color: #333333;                                                        /* cor da dashboard do calendario */
-        border-radius: 15px;                                                                /* borda da dashboard do calendario */
+    .dash_prop {
+        display: grid;
+        width: 50em;                                                                    
+        min-height: 44.688em;                                                                                                                                                                  
+        background-color: #FCB74A;                                                        
+        border-radius: 15px;        
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;           
+        grid-gap: 3%;                                             
+    }
+
+    .info-especialidade{
+        display: grid;
+        grid-template-columns: 2.9fr 1fr 0.3fr;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        max-height: 60px;
+        border: 1px solid #ffffff;
+        border-radius: 15px;
+        padding: 1% 2% 1% 5%;
+        margin-bottom: 10px;
+    }
+
+    .modulo{
+        background-color: #333333;
+        border-radius: 15px;
+    }
+
+    .next{
+        width: 100%;
+        max-height: 300px;
+        background-color: #333333;
+        border-radius: 15px;
+    }
+
+    .info-consulta{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 0.5fr 0.5fr 0.5fr 0.5fr;
+        grid-template-areas: "p m" "e d" "h s" "doc c";
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        border: 1px solid #ffffff;
+        border-radius: 15px;
+        padding: 1% 2% 1% 5%;
+        margin-bottom: 10px;
+    }
+
+    .info-consulta p{
+        border: 1px solid #ffffff;
+        padding-left: 5px;
+    }
+
+    .info-consulta a{
+        margin: 10px 0;
+        justify-self: center;
+    }
+
+    .paciente{
+        grid-area: p;
+    }
+
+    .medico{
+        grid-area: m;
+    }
+
+    .especialidade{
+        grid-area: e;
+    }
+
+    .data{
+        grid-area: d;
+    }
+
+    .hora{
+        grid-area: h;
+    }
+
+    .status{
+        grid-area: s;
+    }
+
+    .doc{
+        grid-area: doc;
+    }
+
+    .can{
+        grid-area: c;
+    }
+
+    .func{
+        justify-content: flex-start;
     }
 
     .dash{
         color: #ffffff;
-        width: 53.438em;                                                                    /* tamanho horizontal */                                                                  /* tamanho vertical */
+        width: 50em;                                                                    /* tamanho horizontal */                                                                  /* tamanho vertical */
         margin: 3.25em 3.25em 0 3.25em;                                                     /* margin = margem externa relativo ao seu arredor */
-        padding: 5em 10em;                                                 /* padding = margem interna */
-        background-color: #333333;                                                        /* cor da dashboard do calendario */
+        padding: 5em;                                                                       /* padding = margem interna */
         border-radius: 15px;                                                                /* borda da dashboard do calendario */
+        display: grid;
+        grid-template-rows: 0.4fr 2.5fr;
+        min-height: 715px;
+    }
+
+    .arquivo{
+        color: #ffffff;
+    }
+
+    .container-prop{
+        display: grid;
+        grid-template-rows: 1fr 0.5fr;
+        grid-gap: 50px;
+        padding: 3.25em 3.25em 0 3.25em; 
+    }
+
+    .confirm{
+        margin: 80px 0 30px;
+    }
+
+    p{
+        font-size: 12px;
+    }
+
+    .list{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .page{
+        padding: 5em 10em;
+    }
+
+    .center{
+        display: grid;
+        place-items: center;
+    }
+
+    .add{
+        align-self: end;
+        padding: 0;
+        margin-bottom: 20px;
+    }
+
+    .filter{
+        align-self: flex-end;
+        width: 150px;
+        margin-bottom: 20px;
+    }
+
+    .register{
+        align-self: center;
+    }
+
+    .select{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .cabecalho{
+        padding: 1% 2% 0 5%;
+        display: grid;
+        grid-template-columns: 3.7fr 2.2fr 1.9fr;
+    }
+
+    .delete{
+        display: grid;
+        place-items: center;
+        width: 25px;
+        height: 25px;
+    }
+
+    .info-user{
+        display: grid;
+        grid-template-columns: 2.9fr 1.4fr 1.5fr 0.1fr;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        max-height: 60px;
+        border: 1px solid #ffffff;
+        border-radius: 15px;
+        padding: 1% 2% 1% 5%;
+        margin-bottom: 10px;
+    }
+
+    .aviso{
+        width: 100%;
+        text-align: center;
+        margin-top: 150px;
+    }
+
+    h3{
+        font-size: 18px;
     }
 
     .dash_title{

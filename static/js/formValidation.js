@@ -31,8 +31,9 @@ form.addEventListener('submit', (e) => {
     let valid = checkInputs();
     if (valid.every(value => value === true)) {
         const btnEnviar = document.querySelector('[data-button]');
+        var textoDoBotao = btnEnviar.textContent
         btnEnviar.disabled = true; 
-        btnEnviar.innerText = "Enviando..."; 
+        btnEnviar.innerText = textoDoBotao.replace(/.$/, 'ndo...');
         setTimeout(() => {
             form.submit(); 
             form.reset(); 
