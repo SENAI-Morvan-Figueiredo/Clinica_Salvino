@@ -155,7 +155,7 @@
 
 .menu-options{
     width: 215px;
-    height: 150px;
+    min-height: 150px;
     flex-direction: column;
     padding: 15px 50px;
 }

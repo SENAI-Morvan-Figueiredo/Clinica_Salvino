@@ -176,6 +176,10 @@ ul{
         top: 55px;
     }
 
+    .dash_nav_ul li{
+        margin: 15px;
+    }
+
     .option{
         text-align: center;
     }
