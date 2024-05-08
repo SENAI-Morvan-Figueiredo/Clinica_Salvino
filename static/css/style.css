@@ -345,6 +345,7 @@ nav {
     align-items: center;
     list-style: none;
     font-family: "Open Sans";
+    margin-bottom: 0;
 }
 .nav-home {
     padding: 24px 0;
@@ -359,9 +360,7 @@ nav {
     background-color: #6F5BE3;
     transition: 0.5s all ease;
 }
-.home_nav_ul{
-    margin-bottom: 0;
-}
+
 .nav-home a{
     color: white;
 }

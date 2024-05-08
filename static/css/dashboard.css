@@ -168,6 +168,27 @@ ul{
         min-height: 715px;
     }
 
+    .menu{
+        z-index: 1000;
+        display: none;
+        position: absolute;
+        right: 0;
+        top: 55px;
+    }
+
+    .option{
+        text-align: center;
+    }
+
+    .dash_nav_ul{
+        display: flex;
+        justify-content:space-evenly;
+        align-items: center;
+        list-style: none;
+        font-family: "Open Sans";
+        margin-bottom: 0;
+    }
+
     .arquivo{
         color: #ffffff;
     }
@@ -239,6 +260,7 @@ ul{
     }
 
     .info-user{
+        position: relative;
         display: grid;
         grid-template-columns: 2.9fr 1.4fr 1.5fr 0.1fr;
         justify-content: space-between;

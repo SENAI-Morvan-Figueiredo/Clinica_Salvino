@@ -62,7 +62,7 @@
 
 .btn-purple{
     width: 130px;
-    height: 40px;
+    min-height: 40px;
     border-radius: 15px;
     border: none;
     background-color: #6F5BE3;
@@ -151,7 +151,6 @@
 /*Menu*/
 .menu-ab{
     position: absolute;
-    right: 5%;
 }
 
 .menu-options{

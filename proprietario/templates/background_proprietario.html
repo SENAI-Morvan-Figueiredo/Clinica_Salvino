@@ -27,7 +27,7 @@
         <nav  class="dash_menu_user">
             <div>
                 <div class="button_home">
-                    <a href="{% url 'proprietario_dash' %}"><img src="{% static 'imagens/buttons/button_home.png' %}" alt=""></a>
+                    <a class="" href="{% url 'proprietario_dash' %}"><img class="escalar" src="{% static 'imagens/buttons/button_home.png' %}" alt=""></a>
                 </div>
     
                 <div class="image_user">
@@ -45,7 +45,7 @@
                         </li>
     
                         <li>
-                           <a href="{% url 'conta_proprietario' %}">Minha conta</a> <img src="{% static 'images/buttons/button_lapis.png' %}" alt="Editar minha conta">
+                           <a class="nav-link white bord-right escalar" href="{% url 'conta_proprietario' %}">Minha conta   <img src="{% static 'images/buttons/button_lapis.png' %}" alt="Editar minha conta"></a> 
                         </li>
                     </ul>
                 </div>
@@ -53,15 +53,15 @@
                 <div class="ul_dash_menu line_menu">
                     <ul>
                         <li>
-                           <a href="{% url 'pacientes' %}">Dados de Pacientes</a> 
+                           <a class="nav-link white bord-right escalar" href="{% url 'pacientes' %}">Dados de Pacientes</a> 
                         </li>
 
                         <li>
-                            <a href="{% url 'funcionarios' %}">Dados de Funcionários</a>
+                            <a class="nav-link white bord-right escalar" href="{% url 'funcionarios' %}">Dados de Funcionários</a>
                         </li>
 
                         <li>
-                            <a href="{% url 'especialidades' %}">Especialidades</a> 
+                            <a class="nav-link white bord-right escalar" href="{% url 'especialidades' %}">Especialidades</a> 
                         </li>
 
                         <li>
@@ -73,15 +73,15 @@
                 <div  class="ul_dash_menu">
                     <ul>
                         <li>
-                            <a href="{% url 'agendamento'%}">Agendar Consulta</a> 
+                            <a class="nav-link white bord-right escalar" href="{% url 'agendamento'%}">Agendar Consulta</a> 
                         </li>
 
                         <li>
-                            <a href="{% url 'consultas'%}">Consultas</a> 
+                            <a class="nav-link white bord-right escalar" href="{% url 'consultas'%}">Consultas</a> 
                         </li>
 
                         <li>
-                            <a href="{% url 'logout' %}">Sair</a>
+                            <a class="nav-link white bord-right escalar" href="{% url 'logout' %}">Sair</a>
                         </li>
                     </ul>
                 </div>

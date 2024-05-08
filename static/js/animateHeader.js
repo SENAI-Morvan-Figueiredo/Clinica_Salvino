@@ -12,7 +12,8 @@ function scrollPosition(){
         if(login){
             login.style.marginTop= 0;
         } else if(menuAb){
-            menuAb.style.top= '15vh'
+            menuAb.style.top= '90px'
+            menuAb.style.right= '160px'
         }
         
     } else{
@@ -22,7 +23,8 @@ function scrollPosition(){
         if(login){
             login.style.marginTop= '10px'
         } else if(menuAb){
-            menuAb.style.top= '13vh'
+            menuAb.style.top= '80px'
+            menuAb.style.right= '150px'
         }
         
     }
