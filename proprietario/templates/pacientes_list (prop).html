@@ -34,7 +34,7 @@
                 <p>{{ paciente.cpf }}</p>
                 <a href="" class="btn btn-purple center open-btn">Info</a>
                 <a href="{% url 'delete_paciente' paciente.user.id %}"><img class="icon-delete escalar" src="{% static 'img/delete.svg' %}" alt=""></a>
-                <div class="bg-dark p-4 menu">
+                <div class="bg-dark menu">
                     <ul class="dash_nav_ul menu-options">
                         <li class="escalar">
                             <a href="{% url 'paciente' paciente.user.id %}" class="nav-link white bord-right escalar option">Dados do paciente</a>
