@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from paciente.models import Paciente, Consulta
+from paciente.models import Paciente, Consulta, CadCartao
 from paciente.forms import CadPaciente, AgendaConsulta
 from medico.models import Medico, Especialidade
 from medico.forms import CadMedico, CadEspecialidade
@@ -125,7 +125,7 @@ def addPaciente(request):
             return redirect('adicionar_pacientes')
         
     else:
-        return render(request, 'add_paciente.html', {'proprietario': proprietario})
+        return render(request, 'add_paciente (prop).html', {'proprietario': proprietario})
 
 def addFuncionario(request):
     proprietario = request.user.proprietario
@@ -204,7 +204,7 @@ def deletePaciente(request, id):
         paciente.delete()
         return redirect('pacientes')
     else:
-        return render(request, 'delete_paciente.html', {'proprietario': proprietario, 'paciente': paciente.paciente})
+        return render(request, 'delete_paciente (prop).html', {'proprietario': proprietario, 'paciente': paciente.paciente})
 
 def deleteFuncionario(request, id):
     proprietario = request.user.proprietario
@@ -231,7 +231,7 @@ def deleteEspecialidade(request, id):
 def mostrarConsultas(request):
     proprietario = request.user.proprietario
     consultas = Consulta.objects.all()
-    return render(request, 'consultas.html', {'proprietario': proprietario, 'consultas': consultas})
+    return render(request, 'consultas (prop).html', {'proprietario': proprietario, 'consultas': consultas})
 
 def marcarConsulta(request):
     proprietario = request.user.proprietario
@@ -250,7 +250,7 @@ def marcarConsulta(request):
     else:
         pacientes = Paciente.objects.all()
         medicos = Medico.objects.all()
-        return render(request, 'agendamento.html', {'proprietario': proprietario, 'medicos': medicos, 'pacientes': pacientes, 'especialidades': especialidade})
+        return render(request, 'agendamento (prop).html', {'proprietario': proprietario, 'medicos': medicos, 'pacientes': pacientes, 'especialidades': especialidade})
     
 def cancelarConsulta(request, id):
     proprietario = request.user.proprietario
@@ -260,4 +260,16 @@ def cancelarConsulta(request, id):
         consulta.save()
         return redirect('consultas')
     else:
-        return render(request, 'cancelar_consulta.html', {'proprietario': proprietario, 'consulta': consulta})
+        return render(request, 'cancelar_consulta (prop).html', {'proprietario': proprietario, 'consulta': consulta})
+    
+def mostrarCartoes(request, id):
+    user = User.objects.get(id=id)
+    paciente = Paciente.objects.get(user=user)
+    cartoes = CadCartao.objects.all()
+    print(cartoes)
+    return render(request, 'cartoes_list (prop).html', {'paciente': paciente.user, 'cartoes': cartoes})
+
+def adicionarCartoes(request,id):
+    user = User.objects.get(id=id)
+    paciente = Paciente.objects.get(user=user)
+    return render(request, 'add_cartao (prop).html', {'paciente': paciente})
