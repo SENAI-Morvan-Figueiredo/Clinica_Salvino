@@ -24,7 +24,12 @@
             {% csrf_token %}
             {{ form.as_p }}
             <div class="form-control">
-                <input type="text" id="Name-esp" class="input" name="nome_especialidade" placeholder="Nome Especialidade">
+                <select id="Ban_car" class="input" name="bandeira_cartao" form="form-cad">
+                    <option value="" selected disabled>Bandeira do Cartão</option>
+                    {% for bandeira in bandeiras %}
+                    <option value="{{ bandeira.id }}">{{ bandeira.name }}</option>
+                    {% endfor %}
+                </select>
                 <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                 <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
@@ -32,7 +37,7 @@
             </div>
             
             <div class="form-control">
-                <input type="text" id="Name-esp" class="input" name="nome_especialidade" placeholder="Nome Especialidade">
+                <input type="text" id="Num-card" class="input" name="numero_cartao" placeholder="Número do Cartão">
                 <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                 <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
@@ -42,14 +47,14 @@
 
             <div class="container-middle">
                 <div class="form-control">
-                    <input type="text" id="Name-esp" class="input" name="nome_especialidade" placeholder="Nome Especialidade">
+                    <input type="text" id="cvc" class="input" name="cvc" placeholder="CVC">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
     
                     <small class="message"></small>
                 </div>
                 <div class="form-control">
-                    <input type="text" id="Name-esp" class="input" name="nome_especialidade" placeholder="Nome Especialidade">
+                    <input type="text" id="data_vencimento" class="input" name="data_vencimento" placeholder="mm/aaaa">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
     

@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from clinica.models import BandeiraCartao
 from paciente.models import Paciente, Consulta, CadCartao
-from paciente.forms import CadPaciente, AgendaConsulta
+from paciente.forms import CadPaciente, AgendaConsulta, FormCartao
 from medico.models import Medico, Especialidade
 from medico.forms import CadMedico, CadEspecialidade
 from recept.models import Recepcionista
@@ -265,11 +266,38 @@ def cancelarConsulta(request, id):
 def mostrarCartoes(request, id):
     user = User.objects.get(id=id)
     paciente = Paciente.objects.get(user=user)
-    cartoes = CadCartao.objects.all()
-    print(cartoes)
-    return render(request, 'cartoes_list (prop).html', {'paciente': paciente.user, 'cartoes': cartoes})
+    try:
+        cartoes = CadCartao.objects.filter(paciente=paciente)
+    except:
+        cartoes = ''
+    finally:
+        return render(request, 'cartoes_list (prop).html', {'paciente': paciente.user, 'cartoes': cartoes})
 
 def adicionarCartoes(request,id):
     user = User.objects.get(id=id)
     paciente = Paciente.objects.get(user=user)
-    return render(request, 'add_cartao (prop).html', {'paciente': paciente})
+    if request.method == 'POST':
+        card_form = FormCartao(request.POST)
+        if card_form.is_valid():
+            new_card = card_form.save(commit=False)
+            new_card.paciente = paciente
+            new_card.save()
+            messages.success(request, 'Cartão cadastrado com Sucesso!')
+            return redirect('adicionar_cartoes', id)
+        else:
+            messages.error(request, f"Formulário de cartão inválido: {card_form.errors}")
+            return redirect('adicionar_cartoes', id)
+    else:
+        bandeiras = BandeiraCartao.objects.all()
+        return render(request, 'add_cartao (prop).html', {'bandeiras': bandeiras})
+    
+def deleteCartao(request, id):
+    proprietario = request.user.proprietario
+    cartao = CadCartao.objects.get(id=id)
+    paciente_card = cartao.paciente
+    if request.method == 'POST':
+        cartao.delete()
+        return redirect('cartoes_prop', paciente_card.user.id)
+    else:
+        return render(request, 'delete_cartao (prop).html', {'proprietario': proprietario, 'cartao': cartao})
+

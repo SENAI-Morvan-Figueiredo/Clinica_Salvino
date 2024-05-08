@@ -49,7 +49,7 @@ class Consulta(models.Model):
     hora = models.TimeField(auto_created=False, auto_now=False, auto_now_add=False)
     especialidade = models.ForeignKey(Especialidade,on_delete=models.CASCADE)
     file_documento = models.FileField(upload_to='exames/', null=True, blank=True)
-    status_consulta =models.CharField(max_length=256, choices=(('Concluida','Concluida'), ('Cancelada','Cancelada'), ('Agendada','Agendada'),('Em andamento','Em andamento')))
+    status_consulta =models.CharField(max_length=256, choices=(('Concluida','Concluida'), ('Cancelada','Cancelada'), ('Agendada','Agendada'),('Ficha Aberta','Ficha Aberta')))
 
     def __str__(self):
         return f'{self.paciente.name}  - {self.data}/{self.hora}'
@@ -140,7 +140,7 @@ class CadConvenio(models.Model):
 
 
 class CadCartao(models.Model):
-    paciente = models.OneToOneField(Paciente, on_delete=models.CASCADE)
+    paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)
     bandeira_cartao = models.ForeignKey(BandeiraCartao, on_delete=models.CASCADE)
     numero_cartao = models.CharField(max_length=256)
     cvc = models.CharField(max_length=3)

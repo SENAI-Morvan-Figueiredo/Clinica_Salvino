@@ -23,8 +23,8 @@
         <div class="list">
             <a href="{% url 'adicionar_cartoes' paciente.id %}" class="btn btn-purple center add">Adicionar Cartão</a>
             <div class="cabecalho">
-                <p>Nome</p>
-                <p>CPF</p>
+                <p>Número</p>
+                <p>Vencimento</p>
                 <p>Informações</p>
             </div>
             {% if cartoes %}
@@ -33,7 +33,7 @@
                     <p>{{ cartao.numero_cartao }}</p>
                     <p>{{ cartao.data_vencimento }}</p>
                     <a href="" class="btn btn-purple center open-btn">Info</a>
-                    <a href="{% url 'delete_cartao' cartao.id %}"><img class="icon-delete escalar" src="{% static 'img/delete.svg' %}" alt=""></a>
+                    <a href="{% url 'deletar_cartao' cartao.id %}"><img class="icon-delete escalar" src="{% static 'img/delete.svg' %}" alt=""></a>
                 </div>
             {% endfor %}
         {% else %}
