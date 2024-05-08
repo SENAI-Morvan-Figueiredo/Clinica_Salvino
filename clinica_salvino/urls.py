@@ -24,5 +24,6 @@ urlpatterns = [
     path('logout/', logout_user, name='logout'),
     path('paciente/conta/', contaPaciente, name='conta_paciente'),
     path('medico/conta/', contaMedico, name='conta_medico'),
-    path('recepcionista/conta', contaRecept, name='conta_recepcionista')
+    path('recepcionista/conta', contaRecept, name='conta_recepcionista'),
+    path('paciente/pagamento/', pagamento, name='pagamento')
 ]
