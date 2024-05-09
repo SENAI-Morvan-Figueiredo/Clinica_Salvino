@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from clinica.models import BandeiraCartao, Convenio, PlanoConvenio
+from clinica.forms import CadBandeira
 from paciente.models import Paciente, Consulta
 from paciente.forms import CadPaciente, AgendaConsulta
 from medico.models import Medico, Especialidade
@@ -261,3 +263,34 @@ def cancelarConsulta(request, id):
         return redirect('consultas')
     else:
         return render(request, 'cancelar_consulta.html', {'proprietario': proprietario, 'consulta': consulta})
+    
+def mostrarBandeiras(request):
+    proprietario = request.user.proprietario
+    bandeiras = BandeiraCartao.objects.all()
+
+    return render(request, 'bandeiras_cartao_list.html', {'proprietario': proprietario, 'bandeiras': bandeiras})
+
+    
+def adicionarBandeira(request):
+    proprietario = request.user.proprietario
+    if request.method == 'POST':
+        bandeira = CadBandeira(request.POST)
+        if bandeira.is_valid():
+            new_bandeira = bandeira.save(commit=False)
+            new_bandeira.save()
+            messages.success(request, 'Bandeira cadastrada com Sucesso!')
+            return redirect('adicionar_bandeira')
+        else:
+            messages.error(request, f"Cadastro de bandeira inválido: {bandeira.errors}")
+            return redirect('agendamento')
+    else:
+        return render(request, 'add_bandeira_cartao.html', {'proprietario': proprietario})
+    
+def deleteBandeira(request, id):
+    proprietario = request.user.proprietario
+    bandeira = BandeiraCartao.objects.get(id=id)
+    if request.method == 'POST':
+        bandeira.delete()
+        return redirect('bandeiras')
+    else:
+        return render(request, 'delete_bandeira.html', {'proprietario': proprietario, 'bandeira': bandeira})
