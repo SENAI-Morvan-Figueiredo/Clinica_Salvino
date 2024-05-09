@@ -27,7 +27,7 @@ ul{
         color: #ffffff;                                                                   /* cor da fonte da dashboard */
         font-family: 'Kumbh-medium', Arial, Helvetica, sans-serif;                          /* fonte estilizada da dashboard */                 
         width: 18.75em;                                                                     /* tamanho horizontal da dashboard */
-        height: 44.688em;                                                                   /* tamanho vertical da dashboard */
+        max-height: 50em;                                                                   /* tamanho vertical da dashboard */
         border-radius: 15px;                                                                /* curvatura da borda da dashboard */
         position: relative;                                                                 /* define a posição da dashboard como relativa, e usa os valores top e left */
         top: 3.25em;                                                                        /* valor da posição a partir do topo */
@@ -64,7 +64,7 @@ ul{
     .dash_prop {
         display: grid;
         width: 50em;                                                                    
-        min-height: 44.688em;                                                                                                                                                                  
+        min-height: 50em;                                                                                                                                                                  
         background-color: #FCB74A;                                                        
         border-radius: 15px;        
         grid-template-columns: 1fr 1fr;
@@ -165,7 +165,7 @@ ul{
         border-radius: 15px;                                                                /* borda da dashboard do calendario */
         display: grid;
         grid-template-rows: 0.4fr 2.5fr;
-        min-height: 715px;
+        min-height: 50em;
     }
 
     .menu{

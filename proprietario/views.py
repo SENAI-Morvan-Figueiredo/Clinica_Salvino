@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from clinica.models import BandeiraCartao, Convenio, PlanoConvenio
-from clinica.forms import CadBandeira
+from clinica.forms import CadBandeira, EmpresaConvenio
 from paciente.models import Paciente, Consulta, CadCartao
 from paciente.forms import CadPaciente, AgendaConsulta, FormCartao
 from medico.models import Medico, Especialidade
@@ -282,7 +282,7 @@ def adicionarBandeira(request):
             return redirect('adicionar_bandeira')
         else:
             messages.error(request, f"Cadastro de bandeira inválido: {bandeira.errors}")
-            return redirect('agendamento')
+            return redirect('adicionar_bandeira')
     else:
         return render(request, 'add_bandeira_cartao.html', {'proprietario': proprietario})
     
@@ -332,3 +332,33 @@ def deleteCartao(request, id):
         return redirect('cartoes_prop', paciente_card.user.id)
     else:
         return render(request, 'delete_cartao (prop).html', {'proprietario': proprietario, 'cartao': cartao})
+    
+def mostrarConvenios(request):
+    proprietario = request.user.proprietario
+    convenios = Convenio.objects.all()
+
+    return render(request, 'forn_convenio_list.html', {'proprietario': proprietario, 'convenios': convenios})
+    
+def addFornecedorConvenio(request):
+    proprietario = request.user.proprietario
+    if request.method == 'POST':
+        fornecedor = EmpresaConvenio(request.POST)
+        if fornecedor.is_valid():
+            new_fornecedor = fornecedor.save(commit=False)
+            new_fornecedor.save()
+            messages.success(request, 'Fornecedor de convênio cadastrado com Sucesso!')
+            return redirect('adicionar_convenio')
+        else:
+            messages.error(request, f"Cadastro de fornecerdor de convênio inválido: {fornecedor.errors}")
+            return redirect('adicionar_convenio')
+    else:
+        return render(request, 'add_convenio_empresa.html', {'proprietario': proprietario})
+    
+def deleteConvenio(request, id):
+    proprietario = request.user.proprietario
+    convenio = Convenio.objects.get(id=id)
+    if request.method == 'POST':
+        convenio.delete()
+        return redirect('convenios')
+    else:
+        return render(request, 'delete_convenio.html', {'proprietario': proprietario, 'convenio': convenio})
