@@ -20,5 +20,5 @@ class FormCartao(forms.ModelForm):
         
     class Meta:
         model = CadCartao
-        fields = ('paciente', 'bandeira_cartao', 'numero_cartao', 'cvc', 'data_vencimento')
+        fields = ('bandeira_cartao', 'numero_cartao', 'cvc', 'data_vencimento')
         
