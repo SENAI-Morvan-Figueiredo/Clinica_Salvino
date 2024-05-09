@@ -159,6 +159,7 @@ ul{
     }
 
     .dash{
+        color: #fff;
         background-color: #333333;
         width: 50em;                                                                    /* tamanho horizontal */                                                                  /* tamanho vertical */
         margin: 3.25em 3.25em 0 3.25em;                                                     /* margin = margem externa relativo ao seu arredor */
