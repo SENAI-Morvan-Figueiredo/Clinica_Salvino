@@ -123,7 +123,7 @@ class Bioimpedância(models.Model):
 
 
 class CadConvenio(models.Model):
-    paciente = models.OneToOneField(Paciente, on_delete=models.CASCADE)
+    paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)
     convenio = models.ForeignKey(Convenio, on_delete=models.CASCADE)
     plano_convenio = models.ForeignKey(PlanoConvenio, on_delete=models.CASCADE)
     numero_carteirinha = models.CharField(max_length=256)

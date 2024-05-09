@@ -253,6 +253,12 @@ ul{
         align-items: center;
     }
 
+    .cabecalho-card{
+        padding: 1% 2% 0 5%;
+        display: grid;
+        grid-template-columns: 2.2fr 3.7fr 1.9fr;
+    }
+
     .cabecalho{
         padding: 1% 2% 0 5%;
         display: grid;
@@ -264,6 +270,20 @@ ul{
         place-items: center;
         width: 25px;
         height: 25px;
+    }
+
+    .info-card{
+        position: relative;
+        display: grid;
+        grid-template-columns: 1.8fr 3fr 1.2fr 0.1fr;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        max-height: 60px;
+        border: 1px solid #ffffff;
+        border-radius: 15px;
+        padding: 1% 2% 1% 5%;
+        margin-bottom: 10px;
     }
 
     .info-user{
