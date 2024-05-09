@@ -1,5 +1,5 @@
 from django import forms
-from .models import BandeiraCartao, Convenio
+from .models import BandeiraCartao, Convenio, PlanoConvenio
 
 
 class CadBandeira(forms.ModelForm):
@@ -13,3 +13,9 @@ class EmpresaConvenio(forms.ModelForm):
     class Meta:
         model = Convenio
         fields =('name',)
+
+class CadPlano(forms.ModelForm):
+
+    class Meta:
+        model = PlanoConvenio
+        fields = ('name',)

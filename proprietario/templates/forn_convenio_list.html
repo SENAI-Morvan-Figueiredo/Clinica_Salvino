@@ -25,7 +25,7 @@
                 {% for convenio in convenios %}
                     <div class="info-especialidade">
                         <p>{{ convenio.name }}</p>
-                        <a href="" class="btn btn-purple center open-btn">Planos</a>
+                        <a href="{% url 'planos_convenio' convenio.id %}" class="btn btn-purple center open-btn">Planos</a>
                         <a href="{% url 'deletar_convenio' convenio.id %}"><img class="icon-delete escalar" src="{% static 'img/delete.svg' %}" alt=""></a>
                     </div>
                 {% endfor %}

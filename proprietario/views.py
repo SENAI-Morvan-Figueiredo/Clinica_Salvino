@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from clinica.models import BandeiraCartao, Convenio, PlanoConvenio
-from clinica.forms import CadBandeira, EmpresaConvenio
+from clinica.forms import CadBandeira, EmpresaConvenio, CadPlano
 from paciente.models import Paciente, Consulta, CadCartao
 from paciente.forms import CadPaciente, AgendaConsulta, FormCartao
 from medico.models import Medico, Especialidade
@@ -296,6 +296,7 @@ def deleteBandeira(request, id):
         return render(request, 'delete_bandeira.html', {'proprietario': proprietario, 'bandeira': bandeira})
     
 def mostrarCartoes(request, id):
+    proprietario = request.user.proprietario
     user = User.objects.get(id=id)
     paciente = Paciente.objects.get(user=user)
     try:
@@ -303,9 +304,10 @@ def mostrarCartoes(request, id):
     except:
         cartoes = ''
     finally:
-        return render(request, 'cartoes_list (prop).html', {'paciente': paciente.user, 'cartoes': cartoes})
+        return render(request, 'cartoes_list (prop).html', {'proprietario': proprietario, 'paciente': paciente.user, 'cartoes': cartoes})
 
 def adicionarCartoes(request,id):
+    proprietario = request.user.proprietario
     user = User.objects.get(id=id)
     paciente = Paciente.objects.get(user=user)
     if request.method == 'POST':
@@ -321,7 +323,7 @@ def adicionarCartoes(request,id):
             return redirect('adicionar_cartoes', id)
     else:
         bandeiras = BandeiraCartao.objects.all()
-        return render(request, 'add_cartao (prop).html', {'bandeiras': bandeiras})
+        return render(request, 'add_cartao (prop).html', {'proprietario': proprietario, 'bandeiras': bandeiras})
     
 def deleteCartao(request, id):
     proprietario = request.user.proprietario
@@ -362,3 +364,39 @@ def deleteConvenio(request, id):
         return redirect('convenios')
     else:
         return render(request, 'delete_convenio.html', {'proprietario': proprietario, 'convenio': convenio})
+    
+def mostrarPlano(request, id):
+    convenio = Convenio.objects.get(id=id)
+    try:
+        planos = PlanoConvenio.objects.filter(convenio=convenio)
+    except:
+        planos = ''
+    finally:
+        return render(request, 'planos_list.html', {'planos': planos, 'convenio': convenio})
+
+def addPlano(request, id):
+    proprietario = request.user.proprietario
+    convenio = Convenio.objects.get(id=id)
+    if request.method == 'POST':
+        plano_form = CadPlano(request.POST)
+        if plano_form.is_valid():
+            new_plano = plano_form.save(commit=False)
+            new_plano.convenio = convenio
+            new_plano.save()
+            messages.success(request, 'Plano cadastrado com Sucesso!')
+            return redirect('adicionar_plano', id)
+        else:
+            messages.error(request, f"Formulário de plano inválido: {plano_form.errors}")
+            return redirect('adicionar_plano', id)
+    else:
+        return render(request, 'add_plano.html', {'proprietario': proprietario, 'convenio': convenio})
+
+def deletePlano(request, id):
+    proprietario = request.user.proprietario
+    plano = PlanoConvenio.objects.get(id=id)
+    convenio = plano.convenio
+    if request.method == 'POST':
+        plano.delete()
+        return redirect('planos_convenio', convenio.id)
+    else:
+        return render(request, 'delete_plano.html', {'proprietario': proprietario, 'plano': plano})

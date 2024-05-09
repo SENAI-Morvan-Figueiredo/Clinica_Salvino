@@ -1,5 +1,5 @@
 from django import forms
-from .models import Paciente, Consulta, CadCartao, CadConvenio
+from .models import Paciente, Consulta, CadCartao
 
 class CadPaciente(forms.ModelForm):
 
@@ -21,4 +21,5 @@ class FormCartao(forms.ModelForm):
     class Meta:
         model = CadCartao
         fields = ('bandeira_cartao', 'numero_cartao', 'cvc', 'data_vencimento')
+
         
