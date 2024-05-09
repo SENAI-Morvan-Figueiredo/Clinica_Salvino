@@ -1,5 +1,5 @@
 from django.urls import path
-from proprietario.views import proprietyBoard, contaProprietario, mostrarPacientes, mostrarFuncionarios, dadosFuncionario, deleteFuncionario, dadosPaciente, deletePaciente, addFuncionario, addPaciente, addRecep, addMedico, mostrarEspecialidades, dadosEspecialidade, addEspecialidade, deleteEspecialidade, marcarConsulta, mostrarConsultas, cancelarConsulta, adicionarBandeira, deleteBandeira, mostrarBandeiras, mostrarCartoes, adicionarCartoes, deleteCartao, addFornecedorConvenio, mostrarConvenios, deleteConvenio, mostrarPlano, addPlano, deletePlano
+from proprietario.views import proprietyBoard, contaProprietario, mostrarPacientes, mostrarFuncionarios, dadosFuncionario, deleteFuncionario, dadosPaciente, deletePaciente, addFuncionario, addPaciente, addRecep, addMedico, mostrarEspecialidades, dadosEspecialidade, addEspecialidade, deleteEspecialidade, marcarConsulta, mostrarConsultas, cancelarConsulta, adicionarBandeira, deleteBandeira, mostrarBandeiras, mostrarCartoes, adicionarCartoes, deleteCartao, addFornecedorConvenio, mostrarConvenios, deleteConvenio, mostrarPlano, addPlano, deletePlano, mostrarPacienteConvenio, cadConvPaciente, delPacienteConv
 
 urlpatterns = [
     path('', proprietyBoard, name='proprietario_dash'),
@@ -11,6 +11,9 @@ urlpatterns = [
     path('paciente/<int:id>/cartoes/', mostrarCartoes, name='cartoes_prop'),
     path('paciente/<int:id>/cartoes/add', adicionarCartoes, name='adicionar_cartoes'),
     path('cartao/<int:id>/delete', deleteCartao, name='deletar_cartao'),
+    path('paciente/<int:id>/cadastro_convenios/', mostrarPacienteConvenio, name='convenios_paciente_prop'),
+    path('paciente/<int:id>/cadastro_convenios/add', cadConvPaciente, name='adicionar_convenio_paciente'),
+    path('cadastro_convenio/<int:id>/delete', delPacienteConv, name='deletar_convenio_paciente'),
     path('funcionarios', mostrarFuncionarios, name= 'funcionarios'),
     path('funcionarios/add', addFuncionario, name= 'adicionar_funcionarios'),
     path('funcionarios/add/recepcionista', addRecep, name= 'adicionar_recep'),

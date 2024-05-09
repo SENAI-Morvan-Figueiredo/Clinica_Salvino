@@ -19,9 +19,9 @@
 
 {% block content %}  
     <section class="dash bg-darkgray">
-        <h1 class="dash_title">Cartões</h1>
+        <h1 class="dash_title">Cartões: {{ paciente.name }}</h1>
         <div class="list">
-            <a href="{% url 'adicionar_cartoes' paciente.id %}" class="btn btn-purple center add">Adicionar Cartão</a>
+            <a href="{% url 'adicionar_cartoes' paciente.user.id %}" class="btn btn-purple center add">Adicionar Cartão</a>
             <div class="cabecalho-card">
                 <p>Bandeira</p>
                 <p>Número</p>

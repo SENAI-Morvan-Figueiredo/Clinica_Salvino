@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from clinica.models import BandeiraCartao, Convenio, PlanoConvenio
 from clinica.forms import CadBandeira, EmpresaConvenio, CadPlano
-from paciente.models import Paciente, Consulta, CadCartao
-from paciente.forms import CadPaciente, AgendaConsulta, FormCartao
+from paciente.models import Paciente, Consulta, CadCartao, CadConvenio
+from paciente.forms import CadPaciente, AgendaConsulta, FormCartao, FormConvenio
 from medico.models import Medico, Especialidade
 from medico.forms import CadMedico, CadEspecialidade
 from recept.models import Recepcionista
@@ -304,7 +304,7 @@ def mostrarCartoes(request, id):
     except:
         cartoes = ''
     finally:
-        return render(request, 'cartoes_list (prop).html', {'proprietario': proprietario, 'paciente': paciente.user, 'cartoes': cartoes})
+        return render(request, 'cartoes_list (prop).html', {'proprietario': proprietario, 'paciente': paciente, 'cartoes': cartoes})
 
 def adicionarCartoes(request,id):
     proprietario = request.user.proprietario
@@ -400,3 +400,44 @@ def deletePlano(request, id):
         return redirect('planos_convenio', convenio.id)
     else:
         return render(request, 'delete_plano.html', {'proprietario': proprietario, 'plano': plano})
+    
+def cadConvPaciente(request,id):
+    proprietario = request.user.proprietario
+    user = User.objects.get(id=id)
+    paciente = Paciente.objects.get(user=user)
+    if request.method == 'POST':
+        conv_form = FormConvenio(request.POST)
+        if conv_form.is_valid():
+            new_conv = conv_form.save(commit=False)
+            new_conv.paciente = paciente
+            new_conv.save()
+            messages.success(request, 'Convênio do paciente cadastrado com Sucesso!')
+            return redirect('adicionar_convenio_paciente', id)
+        else:
+            messages.error(request, f"Formulário de cartão inválido: {conv_form.errors}")
+            return redirect('adicionar_convenio_paciente', id)
+    else:
+        convenios = Convenio.objects.all()
+        planos = PlanoConvenio.objects.all()
+        return render(request, 'add_paciente_convenio (prop).html', {'proprietario': proprietario, 'convenios': convenios, 'planos':planos})
+    
+def delPacienteConv(request, id):
+    proprietario = request.user.proprietario
+    convenio = CadConvenio.objects.get(id=id)
+    paciente_conv = convenio.paciente
+    if request.method == 'POST':
+        convenio.delete()
+        return redirect('convenios_paciente_prop', paciente_conv.user.id)
+    else:
+        return render(request, 'delete_paciente_convenio (prop).html', {'proprietario': proprietario, 'convenio': convenio})
+    
+def mostrarPacienteConvenio(request, id):
+    proprietario = request.user.proprietario
+    user = User.objects.get(id=id)
+    paciente = Paciente.objects.get(user=user)
+    try:
+        convenios = CadConvenio.objects.filter(paciente=paciente)
+    except:
+        convenios = ''
+    finally:
+        return render(request, 'convenios_list (prop).html', {'proprietario': proprietario, 'paciente': paciente, 'convenios': convenios})

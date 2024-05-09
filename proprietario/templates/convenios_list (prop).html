@@ -21,23 +21,23 @@
     <section class="dash bg-darkgray">
         <h1 class="dash_title">Convênios: {{ paciente.name }}</h1>
         <div class="list">
-            <a href="{% url 'adicionar_cartoes' paciente.id %}" class="btn btn-purple center add">Adicionar Convênio</a>
+            <a href="{% url 'adicionar_convenio_paciente' paciente.user.id %}" class="btn btn-purple center add">Adicionar Convênio</a>
             <div class="cabecalho-card">
-                <p>Bandeira</p>
-                <p>Número</p>
-                <p>Vencimento</p>
+                <p>Convênio</p>
+                <p>Plano</p>
+                <p>Carteirinha</p>
             </div>
-            {% if cartoes %}
-            {% for cartao in cartoes %}
+            {% if convenios %}
+            {% for convenio in convenios %}
                 <div class="info-card">
-                    <p>{{ cartao.bandeira_cartao }}</p>
-                    <p>{{ cartao.numero_cartao }}</p>
-                    <p>{{ cartao.data_vencimento }}</p>
-                    <a href="{% url 'deletar_cartao' cartao.id %}"><img class="icon-delete escalar" src="{% static 'img/delete.svg' %}" alt=""></a>
+                    <p>{{ convenio.convenio }}</p>
+                    <p>{{ convenio.plano_convenio }}</p>
+                    <p>{{ convenio.numero_carteirinha }}</p>
+                    <a href="{% url 'deletar_convenio_paciente' convenio.id %}"><img class="icon-delete escalar" src="{% static 'img/delete.svg' %}" alt=""></a>
                 </div>
             {% endfor %}
         {% else %}
-            <h3 class="aviso">Não há cartões cadastrados.</h3> 
+            <h3 class="aviso">Não há convênios cadastrados para esse paciente.</h3> 
         {% endif %}
         </div>
     </section>  
