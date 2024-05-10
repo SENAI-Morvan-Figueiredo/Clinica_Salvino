@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 
 
-# Create your views here.
+
 @login_required
 def receptBoard(request):
     recepcionista = request.user.recepcionista
