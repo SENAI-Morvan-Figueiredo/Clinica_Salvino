@@ -6,9 +6,26 @@ from clinica.models import Convenio, PlanoConvenio, BandeiraCartao, Tratamento, 
 from medico.models import Medico, Especialidade
 from django.contrib import admin
 import datetime
+import os
 
 
 # Create your models here.
+def anexo_paciente_upload(instance, filename):
+    # Extraia a data da consulta
+    data_consulta = instance.consulta.data
+    # Formate a data como string (ex: "2024-05-10")
+    data_str = data_consulta.strftime('%Y-%m-%d')
+    # Determine o caminho do arquivo usando a pasta 'anexos' e a data da consulta
+    return os.path.join(data_str, 'anexos_paciente', filename)
+
+def anexo_medico_upload(instance, filename):
+    # Extraia a data da consulta
+    data_consulta = instance.data
+    # Formate a data como string (ex: "2024-05-10")
+    data_str = data_consulta.strftime('%Y-%m-%d')
+    # Determine o caminho do arquivo usando a pasta 'anexos' e a data da consulta
+    return os.path.join(data_str, 'doc_consulta', filename)
+
 class Paciente(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=256, unique=True)
@@ -40,6 +57,12 @@ class Paciente(models.Model):
         if self.status_dependencia == 'Dependente' and not self.cpf_responsavel:
             raise ValidationError({'nome_responsavel': 'O nome do responsável é obrigatório para pacientes dependentes.'})
 
+class AnexoConsulta(models.Model):
+    consulta = models.ForeignKey('Consulta', related_name='documentos', on_delete=models.CASCADE)
+    arquivo = models.FileField(upload_to=anexo_paciente_upload)
+
+    def __str__(self):
+        return self.consulta
 
 class Consulta(models.Model):
     paciente = models.ForeignKey(Paciente,on_delete=models.CASCADE)
@@ -48,7 +71,6 @@ class Consulta(models.Model):
     data = models.DateField(auto_created=False, auto_now=False, auto_now_add=False)
     hora = models.TimeField(auto_created=False, auto_now=False, auto_now_add=False)
     especialidade = models.ForeignKey(Especialidade,on_delete=models.CASCADE)
-    file_documento = models.FileField(upload_to='exames/', null=True, blank=True)
     status_consulta =models.CharField(max_length=256, choices=(('Concluida','Concluida'), ('Cancelada','Cancelada'), ('Agendada','Agendada'),('Ficha Aberta','Ficha Aberta')))
 
     def __str__(self):
@@ -77,7 +99,7 @@ class Documentos(models.Model):
     tipo_documento = models.CharField(max_length=256, choices=(('Descrição de Atendimento', 'Descrição de Atendimento'), ('Receita', 'Receita'), ('Dieta', 'Dieta')))
     data = models.DateField(auto_created=False, auto_now=False, auto_now_add=False)
     descricao = models.TextField(null=True)
-    file_documento = models.FileField(upload_to='exames/', null=True, blank=True)
+    file_documento = models.FileField(upload_to=anexo_medico_upload, null=True, blank=True)
 
     def __str__(self):
         return self.nome_documento
@@ -92,7 +114,7 @@ class Encaminhamento(models.Model):
     tipo_encaminhamento = models.CharField(max_length=256, choices=(('Consultas', 'Consultas'), ('Exames e Terapias', 'Exames e Terapias'), ('Outros', 'Outros')))
     area = models.CharField(max_length=256)
     descricao = models.TextField(null=True)
-    file_documento = models.FileField(upload_to='exames/')
+    file_documento = models.FileField(upload_to='anexo_medico_upload')
 
     def __str__(self):
         return self.tipo_encaminhamento

@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from clinica.models import BandeiraCartao, Convenio, PlanoConvenio
 from clinica.forms import CadBandeira, EmpresaConvenio, CadPlano
-from paciente.models import Paciente, Consulta, CadCartao, CadConvenio
-from paciente.forms import CadPaciente, AgendaConsulta, FormCartao, FormConvenio
+from paciente.models import Paciente, Consulta, CadCartao, CadConvenio, AnexoConsulta, Documentos, Prontuario
+from paciente.forms import CadPaciente, AgendaConsulta, FormCartao, FormConvenio, AnexoForm
 from medico.models import Medico, Especialidade
 from medico.forms import CadMedico, CadEspecialidade
 from recept.models import Recepcionista
@@ -12,6 +12,7 @@ from itertools import chain
 from django.contrib.auth.models import User
 from django.contrib import messages
 from datetime import date
+from collections import defaultdict
 
 # Create your views here.
 @login_required 
@@ -241,10 +242,15 @@ def marcarConsulta(request):
     especialidade = Especialidade.objects.all()
     if request.method == 'POST':
         atendimento_form = AgendaConsulta(request.POST, request.FILES)
-        if atendimento_form.is_valid():
+        anexo_form = AnexoForm(request.POST, request.FILES)
+        if atendimento_form.is_valid() and anexo_form.is_valid():
             new_atendimento = atendimento_form.save(commit=False)
             new_atendimento.status_consulta = 'Agendada'
             new_atendimento.save()
+
+            for arquivo in request.FILES.getlist('arquivos'):
+                AnexoConsulta.objects.create(consulta=new_atendimento, arquivo=arquivo)
+
             messages.success(request, 'Consulta agendada com Sucesso!')
             return redirect('agendamento')
         else:
@@ -458,3 +464,16 @@ def abrirFicha(request, id):
         return redirect('fichas_prop')
     else:
         return render(request, 'abrir_ficha (prop).html', {'proprietario': proprietario, 'consulta': consulta})
+    
+def document_list(request, id):
+    # Agrupar documentos por data
+    list_documents = defaultdict(list)
+    user = User.objects.get(id=id)
+    paciente = Paciente.objects.get(user=user)
+    prontuario = Prontuario.objects.get(paciente=paciente)
+    for document in Documentos.objects.filter(prontuario=prontuario).order_by('data'):
+        list_documents[document.data].append(document)
+
+    print(list_documents[document.data])
+        
+    return render(request, 'prontuario (prop).html', {'list_documents': list_documents.items()})

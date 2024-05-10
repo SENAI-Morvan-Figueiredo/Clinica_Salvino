@@ -12,3 +12,4 @@ paciente/migrations/__pycache__
 medico/__pycache__
 medico/migrations/__pycache__
 .env
+media/
