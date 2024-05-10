@@ -11,6 +11,7 @@ from recept.forms import CadRecep
 from itertools import chain
 from django.contrib.auth.models import User
 from django.contrib import messages
+from datetime import date
 
 # Create your views here.
 @login_required 
@@ -441,3 +442,19 @@ def mostrarPacienteConvenio(request, id):
         convenios = ''
     finally:
         return render(request, 'convenios_list (prop).html', {'proprietario': proprietario, 'paciente': paciente, 'convenios': convenios})
+    
+def mostrarFichas(request):
+    proprietario = request.user.proprietario
+    consultas = Consulta.objects.filter(data=date.today())
+
+    return render(request, 'fichas (prop).html', {'proprietario': proprietario, 'consultas': consultas})
+
+def abrirFicha(request, id):
+    proprietario = request.user.proprietario
+    consulta = Consulta.objects.get(id=id)
+    if request.method == 'POST':
+        consulta.status_consulta = 'Ficha Aberta'
+        consulta.save()
+        return redirect('fichas_prop')
+    else:
+        return render(request, 'abrir_ficha (prop).html', {'proprietario': proprietario, 'consulta': consulta})
