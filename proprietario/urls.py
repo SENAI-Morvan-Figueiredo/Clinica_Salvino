@@ -1,5 +1,5 @@
 from django.urls import path
-from proprietario.views import proprietyBoard, contaProprietario, mostrarPacientes, mostrarFuncionarios, dadosFuncionario, deleteFuncionario, dadosPaciente, deletePaciente, addFuncionario, addPaciente, addRecep, addMedico, mostrarEspecialidades, dadosEspecialidade, addEspecialidade, deleteEspecialidade, marcarConsulta, mostrarConsultas, cancelarConsulta, adicionarBandeira, deleteBandeira, mostrarBandeiras, mostrarCartoes, adicionarCartoes, deleteCartao, addFornecedorConvenio, mostrarConvenios, deleteConvenio, mostrarPlano, addPlano, deletePlano, mostrarPacienteConvenio, cadConvPaciente, delPacienteConv
+from proprietario.views import proprietyBoard, contaProprietario, mostrarPacientes, mostrarFuncionarios, dadosFuncionario, deleteFuncionario, dadosPaciente, deletePaciente, addFuncionario, addPaciente, addRecep, addMedico, mostrarEspecialidades, dadosEspecialidade, addEspecialidade, deleteEspecialidade, marcarConsulta, mostrarConsultas, cancelarConsulta, adicionarBandeira, deleteBandeira, mostrarBandeiras, mostrarCartoes, adicionarCartoes, deleteCartao, addFornecedorConvenio, mostrarConvenios, deleteConvenio, mostrarPlano, addPlano, deletePlano, mostrarPacienteConvenio, cadConvPaciente, delPacienteConv, mostrarFichas, abrirFicha
 
 urlpatterns = [
     path('', proprietyBoard, name='proprietario_dash'),
@@ -36,4 +36,6 @@ urlpatterns = [
     path('convenio/<int:id>/planos/', mostrarPlano, name='planos_convenio'),
     path('convenio/<int:id>/planos/add/', addPlano, name='adicionar_plano'),
     path('plano/<int:id>/delete/', deletePlano, name='deletar_plano'),
+    path('fichas/', mostrarFichas, name='fichas_prop'),
+    path('ficha/<int:id>/abrir', abrirFicha, name='abrir_ficha_prop'),
 ]

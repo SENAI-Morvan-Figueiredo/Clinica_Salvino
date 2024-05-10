@@ -46,10 +46,22 @@ function checkInputs() {
     inputs.forEach(input => {
         const inputValue = input.value.trim()
         const classInput = input.classList.value.split(' ')
-        if (inputValue === '') {
-            errorValidation(input, 'Preencha esse campo');
-            validate.push(false)
+        
+        if (inputValue === '' && input.name !== 'complemento' && input.name !== 'file_documento'){
+            if (input.name === 'nome_responsavel' || input.name === 'rg_responsavel' || input.name === 'cpf_responsavel'){
+                if (dependenteValue === 'Independente'){
+                    successValidation(input);
+                    validate.push(true)
+                } else{
+                    errorValidation(input, 'Preencha esse campo');
+                    validate.push(false)
+                }
+            } else{
+                errorValidation(input, 'Preencha esse campo');
+                validate.push(false)
+            }
         }
+
         else if(classInput.includes("passwordConfirm") && input.value.trim() !== password){
             errorValidation(passwordCheck, 'As senhas não correspondem');
             validate.push(false)
@@ -74,6 +86,7 @@ function checkInputs() {
         else if (classInput.includes("checkbox")) {
             check.push(input)
             let isChecked
+            
             check.forEach((radio) => {
                 if (radio.checked) {
                     isChecked = true
