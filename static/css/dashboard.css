@@ -316,6 +316,20 @@ ul{
         margin-bottom: 50px;
     }
 
+    .dropdown {
+        cursor: pointer;
+        padding: 10px;
+        border: 1px solid #ccc;
+    }
+    
+    .dropdown-content {
+        display: none;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-top: none;
+        background-color: #333333;
+    }
+
         /* grupo englobando 2 classes e pondo elas em grade */
         .day_week,
         .date_grid {
