@@ -19,18 +19,23 @@
 
 {% block content %}  
     <section class="dash bg-darkgray">
-        <h1 class="dash_title">Documentos Organizados por Data</h1>
+        <h1 class="dash_title">Prontuário: {{ paciente.name }}</h1>
         <div>
-        {% for data, documents in list_documents %}
-            <div class="dropdown" onclick="toggleDropdown('{{ data }}')">
-                {{ data }}
-            </div>
-            <div id="content-{{ data }}" class="dropdown-content">
-                {% for document in documents %}
-                    <a href="{{ document.file_documento.url }}"><h3>{{ document.nome_documento }}</h3></a>
+            {% if list_documents %}
+                {% for data, documents in list_documents %}
+                    <div class="dropdown" onclick="toggleDropdown('{{ data }}')">
+                        {{ data }}
+                    </div>
+                    <div id="content-{{ data }}" class="dropdown-content">
+                        {% for document in documents %}
+                            <a href="{{ document.file_documento.url }}"><h3>{{ document.nome_documento }}</h3></a>
+                        {% endfor %}
+                    </div>
                 {% endfor %}
-            </div>
-        {% endfor %}
+            {% else %} 
+                <a href="{% url 'init_prontuario_prop' paciente.user.id %}" class="btn btn-purple center add">Iniciar Prontuário</a>
+                <h3 class="aviso">Este paciente não teve seu prontuário iniciado</h3>
+            {% endif %}
         </div>
     </section>  
 {% endblock content %}

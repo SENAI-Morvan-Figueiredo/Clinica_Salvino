@@ -190,6 +190,7 @@ class CadCartao(models.Model):
 class Pagamento(models.Model):
     paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)
     data_emissao = models.DateField(auto_created=False, auto_now=False, auto_now_add=False)
+    consulta = models.ForeignKey(Consulta, on_delete=models.CASCADE)
     tratamento = models.ForeignKey(Tratamento, on_delete=models.CASCADE)
     medico = models.ForeignKey(Medico, on_delete=models.CASCADE)
     forma_pagamento = models.CharField(max_length=256, choices=(('Convenio', 'Convenio'), ('Cartao', 'Cartao'), ('Pix', 'Pix'), ('Boleto', 'Boleto'), ('Pagar no dia', 'Pagar no dia')))
