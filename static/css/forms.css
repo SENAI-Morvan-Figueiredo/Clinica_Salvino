@@ -266,10 +266,13 @@ footer{
 
 .message{
     position: absolute;
-    top: 50px;
     left: 0;
+    bottom: 0;
 }
 
+.form-control.checkb i{
+    position: static;
+}
 @keyframes shake {
     25% {
         translate: 6px 0;

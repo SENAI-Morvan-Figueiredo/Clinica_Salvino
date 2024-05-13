@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from clinica.models import BandeiraCartao, Convenio, PlanoConvenio
 from clinica.forms import CadBandeira, EmpresaConvenio, CadPlano
 from paciente.models import Paciente, Consulta, CadCartao, CadConvenio, AnexoConsulta, Documentos, Prontuario
-from paciente.forms import CadPaciente, AgendaConsulta, FormCartao, FormConvenio, AnexoForm
+from paciente.forms import CadPaciente, AgendaConsulta, FormCartao, FormConvenio, AnexoForm, ProntuarioForm
 from medico.models import Medico, Especialidade
 from medico.forms import CadMedico, CadEspecialidade
 from recept.models import Recepcionista
@@ -465,24 +465,41 @@ def abrirFicha(request, id):
         return render(request, 'abrir_ficha (prop).html', {'proprietario': proprietario, 'consulta': consulta})
     
 def document_list(request, id):
-    # Agrupar documentos por data
+    proprietario = request.user.proprietario
     list_documents = defaultdict(list)
     user = User.objects.get(id=id)
     paciente = Paciente.objects.get(user=user)
     try:
         prontuario = Prontuario.objects.get(paciente=paciente)
-        for document in Documentos.objects.filter(prontuario=prontuario).order_by('data'):
-            list_documents[document.data].append(document)
+        try:
+            for document in Documentos.objects.filter(prontuario=prontuario).order_by('data'):
+                list_documents[document.data].append(document)
 
-        print(list_documents[document.data])
-        return render(request, 'prontuario (prop).html', {'list_documents': list_documents.items()})
+            print(list_documents[document.data])
+            return render(request, 'prontuario (prop).html', {'proprietario': proprietario, 'paciente': paciente, 'prontuario': prontuario, 'list_documents': list_documents.items()})
+        except:
+            return render(request, 'prontuario (prop).html', {'proprietario': proprietario, 'paciente': paciente, 'prontuario': prontuario, 'listdocumentos': ''})
     except:
-        return render(request, 'prontuario (prop).html', {'listdocumentos': ''})
+        prontuario = ''
+    finally:
+        return render(request, 'prontuario (prop).html', {'proprietario': proprietario, 'paciente': paciente, 'prontuario': prontuario, 'listdocumentos': ''})
     
 def init_prontuario(request, id):
+    proprietario = request.user.proprietario
+    user = User.objects.get(id=id)
+    paciente = Paciente.objects.get(user=user)
     if request.method == 'POST':
-        pass
+        prontuario_form = ProntuarioForm(request.POST)
+        if prontuario_form.is_valid():
+            new_prontuario = prontuario_form.save(commit=False)
+            new_prontuario.paciente = paciente
+            new_prontuario.save()
+            messages.success(request, 'Convênio do paciente cadastrado com Sucesso!')
+            return redirect('prontuario', id)
+        else:
+            messages.error(request, f"Formulário de cartão inválido: {prontuario_form.errors}")
+            return redirect('prontuario', id)   
     else:
-        return render(request, 'init_prontuario.html')
+        return render(request, 'init_prontuario.html', {'proprietario': proprietario, 'paciente': paciente})
         
     
