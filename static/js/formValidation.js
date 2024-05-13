@@ -47,7 +47,7 @@ function checkInputs() {
         const inputValue = input.value.trim()
         const classInput = input.classList.value.split(' ')
         
-        if (inputValue === '' && input.name !== 'complemento' && input.name !== 'file_documento'){
+        if (inputValue === '' && input.name !== 'complemento' && input.name !== 'file_documento' && input.name !== 'arquivos'){
             if (input.name === 'nome_responsavel' || input.name === 'rg_responsavel' || input.name === 'cpf_responsavel'){
                 if (dependenteValue === 'Independente'){
                     successValidation(input);

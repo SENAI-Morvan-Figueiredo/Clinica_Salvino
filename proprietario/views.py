@@ -175,7 +175,6 @@ def addMedico(request):
             )
             new_medico = medico_form.save(commit=False)
             new_medico.user = user
-            print(new_medico)
             new_medico.save()
             messages.success(request, 'Médico Cadastrado com Sucesso!')
             return redirect('adicionar_funcionarios')
@@ -470,10 +469,20 @@ def document_list(request, id):
     list_documents = defaultdict(list)
     user = User.objects.get(id=id)
     paciente = Paciente.objects.get(user=user)
-    prontuario = Prontuario.objects.get(paciente=paciente)
-    for document in Documentos.objects.filter(prontuario=prontuario).order_by('data'):
-        list_documents[document.data].append(document)
+    try:
+        prontuario = Prontuario.objects.get(paciente=paciente)
+        for document in Documentos.objects.filter(prontuario=prontuario).order_by('data'):
+            list_documents[document.data].append(document)
 
-    print(list_documents[document.data])
+        print(list_documents[document.data])
+        return render(request, 'prontuario (prop).html', {'list_documents': list_documents.items()})
+    except:
+        return render(request, 'prontuario (prop).html', {'listdocumentos': ''})
+    
+def init_prontuario(request, id):
+    if request.method == 'POST':
+        pass
+    else:
+        return render(request, 'init_prontuario.html')
         
-    return render(request, 'prontuario (prop).html', {'list_documents': list_documents.items()})
+    
