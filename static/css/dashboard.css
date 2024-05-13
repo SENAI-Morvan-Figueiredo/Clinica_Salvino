@@ -321,6 +321,18 @@ ul{
         padding: 10px;
         border: 1px solid #ccc;
     }
+
+    .checkb{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .check{
+        width: 15px;
+        height: 15px;
+    }
     
     .dropdown-content {
         display: none;
