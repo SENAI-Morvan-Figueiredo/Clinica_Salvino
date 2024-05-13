@@ -35,6 +35,7 @@
                     {% endfor %}
                 {% else %}
                     <a href="" class="btn btn-purple center add">Add Documento</a>
+                    <a href="{% url 'info_prontuario_prop' paciente.user.id %}" class="btn btn-purple center add">Info Prontuário</a>
                     <h3 class="aviso">Este paciente não tem documentos atribuídos a ele</h3>
                 {% endif %}    
             {% else %} 

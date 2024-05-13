@@ -42,7 +42,7 @@
             <div class="container-middle">
                 <div class="form-control checkb">
                     <label for="alergia">Tem alergia?</label>
-                    <input type="checkbox" id="alergia" class="input check" name="alergia" value="{{ prontuario.alergia }}">
+                    <input type="checkbox" id="alergia" class="input check" name="alergia" {% if prontuario.alergia %}checked{% endif %}>
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
@@ -50,7 +50,7 @@
                 </div>
                 <div class="form-control checkb">
                     <label for="doenca">Tem doença?</label>
-                    <input type="checkbox" id="doenca" class="input check" name="doenca" value="{{ prontuario.doenca }}">
+                    <input type="checkbox" id="doenca" class="input check" name="doenca" {% if prontuario.doenca %}checked{% endif %}>
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
@@ -61,7 +61,7 @@
             <div class="container-middle">
                 <div class="form-control checkb">
                     <label for="fuma">Fuma?</label>
-                    <input type="checkbox" id="fuma" class="input check" name="fuma" value="{{ prontuario.fuma }}">
+                    <input type="checkbox" id="fuma" class="input check" name="fuma" {% if prontuario.fuma %}checked{% endif %}>
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
@@ -69,7 +69,7 @@
                 </div>
                 <div class="form-control checkb">
                     <label for="bebe">Bebe?</label>
-                    <input type="checkbox" id="bebe" class="input check" name="bebe" value="{{ prontuario.bebe }}">
+                    <input type="checkbox" id="bebe" class="input check" name="bebe" {% if prontuario.bebe %}checked{% endif %}>
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
@@ -80,7 +80,7 @@
             <div class="container-middle">
                 <div class="form-control checkb">
                     <label for="uso_drogas">Usa Drogas?</label>
-                    <input type="checkbox" id="uso_drogas" class="input check" name="uso_drogas" value="{{ prontuario.uso_drogas }}">
+                    <input type="checkbox" id="uso_drogas" class="input check" name="uso_drogas" {% if prontuario.uso_drogas %}checked{% endif %}>
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 

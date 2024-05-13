@@ -502,4 +502,9 @@ def init_prontuario(request, id):
     else:
         return render(request, 'init_prontuario.html', {'proprietario': proprietario, 'paciente': paciente})
         
-    
+def info_prontuario(request, id):
+    proprietario = request.user.proprietario
+    user = User.objects.get(id=id)
+    paciente = Paciente.objects.get(user=user)
+    prontuario = Prontuario.objects.get(paciente=paciente)
+    return render(request, 'info_prontuario (prop).html', {'proprietario': proprietario, 'paciente': paciente, 'prontuario': prontuario})
