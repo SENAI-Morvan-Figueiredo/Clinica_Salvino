@@ -251,7 +251,7 @@ def marcarConsulta(request):
                 AnexoConsulta.objects.create(consulta=new_atendimento, arquivo=arquivo)
 
             messages.success(request, 'Consulta agendada com Sucesso!')
-            return redirect('agendamento')
+            return render(request,)
         else:
             messages.error(request, f"Formulário de agendamento inválido: {atendimento_form.errors}")
             return redirect('agendamento')
@@ -259,7 +259,29 @@ def marcarConsulta(request):
         pacientes = Paciente.objects.all()
         medicos = Medico.objects.all()
         return render(request, 'agendamento (prop).html', {'proprietario': proprietario, 'medicos': medicos, 'pacientes': pacientes, 'especialidades': especialidade})
-    
+
+def selectPayment(request, consulta):
+    user = User.objects.get(id=id)
+    paciente = Paciente.objects.get(user=user)
+    atendimento = Consulta.objects.get(id=consulta)
+    if request.method == 'POST':
+        pagamento = request.POST['typePayment']
+        if pagamento == 'convenio':
+            return redirect('pagamento_convenio', paciente.user.id, atendimento)
+        elif pagamento == 'cartao':
+            return redirect('pagamento_cartao', atendimento)
+        elif pagamento == 'pix':
+            return redirect('pagamento_pix', atendimento)
+        elif pagamento == 'boleto':
+            return redirect('pagamento_boleto', atendimento)
+        elif pagamento == 'pagar_dia':
+            return redirect('pagamento_dia', atendimento)
+        
+def pagamentoConvenio(request, id, consulta):
+    user = User.objects.get(id=id)
+    paciente = Paciente.objects.get(user=user)
+    atendimento = Consulta.objects.get(id=consulta)
+
 def cancelarConsulta(request, id):
     proprietario = request.user.proprietario
     consulta = Consulta.objects.get(id=id)
@@ -508,3 +530,4 @@ def info_prontuario(request, id):
     paciente = Paciente.objects.get(user=user)
     prontuario = Prontuario.objects.get(paciente=paciente)
     return render(request, 'info_prontuario (prop).html', {'proprietario': proprietario, 'paciente': paciente, 'prontuario': prontuario})
+

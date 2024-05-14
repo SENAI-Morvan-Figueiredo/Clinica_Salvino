@@ -14,14 +14,6 @@ class PlanoConvenio(models.Model):
 
     def __str__(self):
         return self.name
-
-class Tratamento(models.Model):
-    name = models.CharField(max_length=256, unique=True)
-    preco = models.DecimalField(max_digits=6, decimal_places=2)
-    descricao = models.TextField()
-
-    def __str__(self):
-        return self.name
     
 class BandeiraCartao(models.Model):
     name = models.CharField(max_length=256, unique=True)

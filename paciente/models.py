@@ -2,8 +2,8 @@ from django.db import models
 from django.core.exceptions import ValidationError
 from .const import STATUS_DEPENDENCE_CHOICE
 from django.contrib.auth.models import User
-from clinica.models import Convenio, PlanoConvenio, BandeiraCartao, Tratamento, Pix
-from medico.models import Medico, Especialidade
+from clinica.models import Convenio, PlanoConvenio, BandeiraCartao, Pix
+from medico.models import Medico, Tratamento, Especialidade
 from django.contrib import admin
 import datetime
 import os
@@ -215,7 +215,8 @@ class Pagamento(models.Model):
         if self.forma_pagamento == 'Boleto' and not self.boleto:
             raise ValidationError({'boleto':'Você não incluiu um boleto de pagamento'})
         
-
+        self.data_emissao = datetime.date.today()
+        
         if self.status_pagamento == 'Pago' or self.status_pagamento == 'Reembolsado' or self.status_pagamento == 'Cancelado':
             self.data_pagamento = datetime.date.today()
         else:

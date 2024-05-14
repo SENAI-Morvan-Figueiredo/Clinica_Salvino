@@ -30,5 +30,10 @@ class Medico(models.Model):
     def __str__(self):
         return self.user.username
     
+class Tratamento(models.Model):
+    especialidade = models.ForeignKey(Especialidade, on_delete=models.CASCADE)
+    preco = models.DecimalField(max_digits=6, decimal_places=2)
+    descricao = models.TextField()
 
-
+    def __str__(self):
+        return self.name

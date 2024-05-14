@@ -24,8 +24,11 @@
         {% csrf_token %}
         <select name="tipo_funcionario" id="register" class="register">
             <option value="" disabled selected>Selecione a forma de pagamento:</option>
-            <option value="medico">Médico</option>
-            <option value="recepcionista">Recepcionista</option>
+            <option value="convenio">Convênio</option>
+            <option value="cartao">Cartão</option>
+            <option value="pix">Pix</option>
+            <option value="boleto">Boleto</option>
+            <option value="pagar_dia">Pagar no dia</option>
         </select>
         <div class="result">
             <p class="result-text">
