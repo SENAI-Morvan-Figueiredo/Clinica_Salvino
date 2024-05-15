@@ -40,3 +40,7 @@ def contaPaciente(request):
 def pagamento(request):
     paciente = request.user.paciente
     return render(request, 'pagamento.html', {'paciente': paciente}) 
+
+def agendamento(request):
+    paciente = request.user.paciente
+    return render(request, 'agendamento(paciente).html', {'paciente': paciente}) 

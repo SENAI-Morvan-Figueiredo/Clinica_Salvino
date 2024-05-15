@@ -1,0 +1,142 @@
+{% extends 'background_paciente.html' %}
+{% load static i18n %}
+{% block head_title %}
+    {% trans 'Agendamento - Clínica Salvino' %}
+{% endblock head_title %}
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock extra_head %}
+{% block header %}
+    <header class="header bg-purple">
+        <div class="container">
+            <a href="{% url 'home' %}" class="login">
+                <img class="escalar" src="{% static 'img/Logo Branco 1.png' %}">
+            </a>
+        </div>
+    </header>
+{% endblock header %}
+{% block content %}
+    <section class="dash page bg-darkgray">
+        <h1 class="dash_title">Agendar Consulta</h1>
+        <form class="form" id="form-cad" enctype="multipart/form-data" action="{% url 'agendamento' %}" method="POST" role="form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="form-control">
+                <select name="paciente" id="paciente" class="input" form="form-cad">
+                    <option value="" disabled selected>Paciente</option>
+                    {% for paciente in pacientes %}
+                        <option value="{{ paciente.id }}">{{ paciente.name }}</option>
+                    {% endfor %}
+                </select>
+                
+                <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                <small class="message"></small>
+            </div>
+
+            <div class="container-middle">
+                <div class="form-control">
+                    <select name="tipo_consulta" id="consulta" class="input" form="form-cad">
+                        <option value="" disabled selected>Tipo de Atendimento</option>
+                        <option value="Presencial">Presencial</option>
+                        <option value="Remoto">Remota</option>
+                    </select>
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+
+                <div class="form-control">
+                    <select name="especialidade" id="especialidade" class="input" form="form-cad">
+                        <option value="" disabled selected>Especialidades</option>
+                        {% for especialidade in especialidades %}
+                            <option value="{{ especialidade.id }}">{{ especialidade.nome_especialidade }}</option>
+                        {% endfor %}
+                    </select>
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+            </div>
+
+            <div class="container-middle">
+                <div class="form-control">
+                    <select name="medico" id="medico" class="input" form="form-cad">
+                        <option value="" disabled selected>Médico</option>
+                        {% for medico in medicos %}
+                            <option value="{{ medico.id }}">{{ medico.name }}</option>
+                        {% endfor %}
+                    </select>
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+            </div>
+
+            <div class="container-middle">
+                <div class="form-control">
+                    <input type="date" id="date" class="input" name="data">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+
+                <div class="form-control">
+                    <input type="time" id="date" class="input" name="hora">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+            </div>
+
+                <div class="form-control">
+                    <input type="file" id="documentos" name="arquivos" placeholder="Documentos" class="input arquivo" multiple><label for="file-input" class="">Escolha um arquivo</label>
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+
+            <div class="captcha-box">
+                <input type="checkbox" name="Eu não sou um robô" value="Eu não sou um robô"><p class="robot">Não sou
+                    robô</p>
+            </div>
+            <div class="result">
+                <p class="result-text">
+                    {% if messages %}
+                        {% for message in messages %}
+                            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                                <div class="alert alert-danger">
+                                    <strong>Erro!</strong>
+                                    {{ message }}
+                                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                                </div>
+                            {% else %}
+                                <div class="alert alert-success">
+                                    <strong>Sucesso!</strong>
+                                    {{ message }}
+                                    <i class="fa-solid fa-circle-check icon-success hidden" style="color: #328146;"></i>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </p>
+            </div>
+            <div class="button-box">
+                <input type="submit" id="back" onclick="voltar()" class="btn-black-white" value="Voltar">
+                <button type="submit" data-button class="btn-purple">Continuar</button>
+            </div>
+        </form>
+    </section>
+{% endblock content %}
+{% block script %}
+    <script src="https://kit.fontawesome.com/fc74a91a63.js" crossorigin="anonymous"></script>
+    <script src="{% static 'js/formValidation.js' %}"></script>
+    <script src="{% static 'js/button.js' %}"></script>
+{% endblock script %}

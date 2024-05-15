@@ -18,7 +18,7 @@
 {% endblock header %}
 
 {% block content %}
-    <div class="dash bg-darkgray page">
+    <section class="dash bg-darkgray page">
         <h1 class="dash_title">Pagamento</h1>
 
         <div class="container-middle">
@@ -33,11 +33,42 @@
 
             <div>Forma de Pagamento</div>
 
-        <div class="container-middle">
-            <div class="btn-purple">Cartão</div>
-            <div class="btn-purple">Convênio</div>
-            <div class="btn-purple">Pagar no dia</div>
-        </div>
-    </div>
+        <form class="form func" action="{% url 'adicionar_funcionarios' %}" method="POST">
+            {% csrf_token %}
+            <select name="tipo_funcionario" id="register" class="register">
+                <option value="" disabled selected>Selecione a forma de pagamento:</option>
+                <option value="convenio">Convênio</option>
+                <option value="cartao">Cartão</option>
+                <option value="pix">Pix</option>
+                <option value="boleto">Boleto</option>
+                <option value="pagar_dia">Pagar no dia</option>
+            </select>
+            <div class="result">
+                <p class="result-text">
+                    {% if messages %}
+                        {% for message in messages %}
+                            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                                <div class="alert alert-danger">
+                                    <strong>Erro!</strong>
+                                    {{ message }}
+                                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                                </div>
+                            {% else %}
+                                <div class="alert alert-success">
+                                    <strong>Sucesso!</strong>
+                                    {{ message }}
+                                    <i class="fa-solid fa-circle-check icon-success hidden" style="color: #328146;"></i>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+            </form>
+    </section>
 
 {% endblock content %}
+
+{% block script %}
+    <script src="https://kit.fontawesome.com/fc74a91a63.js" crossorigin="anonymous"></script>
+    <script src="{% static 'js/select_register.js' %}"></script>
+    <script src="{% static 'js/button.js' %}"></script>
+{% endblock script %}
