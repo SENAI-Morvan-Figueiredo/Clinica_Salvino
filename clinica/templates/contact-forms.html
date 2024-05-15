@@ -1,0 +1,149 @@
+{% extends 'background_home.html'%}
+{% load static i18n %}
+{% block head_title %}
+{% trans "Fale Conosco - Clínica Salvino" %}
+{% endblock head_title %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/contact-form.css' %}">
+{% endblock extra_head %}
+
+{% block content %}
+<main class="bg-white">
+    <section class="titulo-medicos">
+        <h1>Fale Conosco</h1>
+    </section>
+
+    <section class="contato">
+        <div class="container-fluid">
+            <div class="boxes">
+                <div class="contact-info">
+                    <div class="container">
+                        <div class="division contact-box">
+                            <div class="contact">
+                                <h1 class="title-contact">Contato</h1>
+                                <p class="adress-text-speak"><b>Horário de Funcionamento:</b> Segunda-feira à
+                                    Sexta-feira - 08h às 18h.</p>
+                                <p class="adress-text-speak"><b>Atendimentos Online: </b>Das 08h às 22h.</p>
+                                <div class="contact-forms">
+                                    <img class="icon-contact right" src="{% static 'img/email-black.svg' %}">
+                                    <p class="text">E-mail: <a class="text link"
+                                            href="mailto:contato@rockefellerambiental.com.br">contato@rockefellerambiental.com.br</a>
+                                    </p>
+                                </div>
+                                <div class="contact-forms">
+                                    <img class="icon-contact right" src="{% static 'img/telefone-black.svg' %}">
+                                    <p class="text">Telefones: <a class="text link" href="tel:+551169325782">(11)
+                                            6932-5782</a> | <a class="text link" href="tel:+5511970221460">(11)
+                                            97022-1460</a></p>
+                                </div>
+                                <div class="contact-forms">
+                                    <img class="icon-contact right" src="{% static 'img/whatsapp-black.svg' %}">
+                                    <p class="text">Whatsapp: <a class="text link" href="">(11) 97022-1460</a>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="redes-sociais" id="contato">
+                                <h2 class="title-adress">Redes Sociais</h2>
+                                <div class="redes-buttons">
+                                    <ul class="d-flex justify-content-between redes">
+                                        <li class="escalar"><a href="http://" target="_blank"
+                                                rel="noopener noreferrer"><img src="{% static 'images/instagram.png' %}"
+                                                    class="icon-contact redes" alt=""></a></li>
+                                        <li class="escalar"><a href="http://" target="_blank"
+                                                rel="noopener noreferrer"><img src="{% static 'images/facebook.png' %}"
+                                                    class="icon-contact redes" alt=""></a></li>
+                                        <li class="escalar"><a href="http://" target="_blank"
+                                                rel="noopener noreferrer"><img src="{% static 'images/linkedin.png' %}"
+                                                    class="icon-contact redes" alt=""></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="division-contact">
+                            <h2 class="title-adress">Endereço</h2>
+                            <p class="adress-text-speak">R. Sampaio Viana, 277 - Paraíso, São Paulo - SP, 04004-000
+                            </p>
+                            <iframe class="map-contact"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14627.405467352028!2d-46.64645630941118!3d-23.57378110730657!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59942af036a3%3A0xbf12e8f56663c5d8!2sR.%20Sampaio%20Viana%2C%20277%20-%20Para%C3%ADso%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2004004-000!5e0!3m2!1spt-BR!2sbr!4v1692747985726!5m2!1spt-BR!2sbr"
+                                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="speak-form">
+                    <div class="container">
+                        <h2 class="title-form">Envie uma Mensagem</h2>
+                        <form action="{% url 'contact' %}" method="POST" class="form" data-form>
+                            {% csrf_token %}
+                            <div class="form-control">
+                                <label for="nome">Nome</label>
+                                <input type="text" name="nome" id="nome" class="input">
+                                <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                                <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+                                <small>Mensagem de Erro</small>
+                            </div>
+                            <div class="form-control">
+                                <label for="email">E-mail</label>
+                                <input type="email" name="email" id="email" class="input">
+                                <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                                <i class="fa-solid fa-circle-check icon-success hidden" style="color: #328146;"></i>
+                                <small>Mensagem de Erro</small>
+                            </div>
+                            <div class="form-control">
+                                <label for="subject">Assunto</label>
+                                <input type="text " name="assunto" id="subject" class="input">
+                                <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                                <i class="fa-solid fa-circle-check icon-success hidden" style="color: #328146;"></i>
+                                <small>Mensagem de Erro</small>
+                            </div>
+                            <div class="form-control">
+                                <label for="message">Mensagem</label>
+                                <textarea name="mensagem" id="message" class="input" cols="30" rows="10"
+                                    placeholder="Digite sua mensagem"></textarea>
+                                <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                                <i class="fa-solid fa-circle-check icon-success hidden" style="color: #328146;"></i>
+                                <small>Mensagem de Erro</small>
+                            </div>
+                            <button type="submit" data-button class="btn-purple">Enviar</button>
+                            <div class="result">
+                                <p class="result-text">
+                                    {% if messages %}
+                                        {% for message in messages %}
+                                            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                                                <div class="alert alert-danger">
+                                                    <strong>Erro!</strong>
+                                                    {{ message }}
+                                                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                                                </div>
+                                            {% else %}
+                                                <div class="alert alert-success">
+                                                    <strong>Sucesso!</strong>
+                                                    {{ message }}
+                                                    <i class="fa-solid fa-circle-check icon-success hidden" style="color: #328146;"></i>
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
+                                </p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-onda-purple bg-white" id="contato">
+        <button class="botaoFechar btn-white rotation" onclick="voltar()">Voltar</button>
+    </section>
+</main>
+{% endblock content %}
+{% block script %}
+<script src="https://kit.fontawesome.com/fc74a91a63.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+<script src="{% static 'js/animateHeader.js' %}"></script>
+<script src="{% static 'js/button.js' %}"></script>
+<script src="{% static 'js/formValidation.js' %}"></script>
+{% endblock script %}

@@ -1,0 +1,161 @@
+/*Estilização com linhas*/
+.line{
+    width: 150px;
+    border: 1px solid #fff;
+}
+
+.line_menu {
+    border-top: 2px solid white;                                                      /* adicionando uma borda na parte de cima da lista (sintax 'border-(direção): tamanho   tipo-de-borda   cor-da-borda')*/
+    border-bottom: 2px solid white;                                                   /* adicionando uma borda na parte de baixo da lista */                         
+    margin: 0 1.875em 0 1.875em;                                                        /* margem somente para as laterais (esquerda e direita) */
+}
+
+/*Botões*/
+.btn-white {
+    background-color: transparent;
+    border: 2px solid white;
+    padding: 10px;
+    color: white;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 1s all ease-in-out;
+    text-decoration: none;
+}
+
+.btn-white:hover {
+    border: 2px solid white;
+    background-color: #ffffff96;
+    color: #333;
+    transform: scale(1.1);
+}
+
+.btn-black {
+    color: #000;
+    background: none;
+    border: 2px solid #333;
+    padding: 10px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.btn-black:hover {
+    background-color: #eaeaea;
+}
+
+.btn-black-white{
+    border-radius: 15px;
+    border: 3px solid #000000;
+    background-color: #FFFFFF;
+    font-size: 14px;
+    width: 130px;
+    height: 40px;
+    transition: all 0.1s;
+    cursor: pointer;
+}
+
+.btn-black-white:hover{
+    background-color: #000;
+    color: #fff;
+}
+
+.btn-purple{
+    width: 130px;
+    min-height: 40px;
+    border-radius: 15px;
+    border: none;
+    background-color: #6F5BE3;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: all 0.1s;
+    border: 2px solid transparent;
+}
+
+.btn-purple:hover{
+    background-color: #F0F0F0;
+    color: #6F5BE3;
+    border: 2px solid #6F5BE3;
+}
+
+.btn-auth{
+    width: 100px;
+    height: 60px;
+}
+
+/* Background Cores */
+.bg-gray {
+    background-color: #eaeaea;
+    /* opacity: 0.78; */
+}
+
+.bg-transparent{
+    background-color: transparent;
+}
+
+.bg-darkgray{
+    background-color: #333333; 
+}
+
+.bg-white {
+    background-color: #fff;
+}
+
+.bg-green {
+    background-color: #03A678;;
+}
+
+.bg-purple {
+    background-color: #6F5BE3;
+}
+
+.bg-lightcoral{
+    background-color: #F79283;                                                      
+}
+
+.bg-yellow{
+    background-color: #FCB74A;
+}
+
+.bg-blue{
+    background-color: #266796;   
+}
+
+/* Cores */
+.white {
+    color: white;
+}
+.black {
+    color: #333;
+}
+.black-link a{
+    color: #333;
+    text-decoration: underline;
+}
+
+
+/*Estilos*/
+.escalar{
+    transition: 1s all ease;
+}
+
+.escalar:hover{
+    scale: 1.1;
+}
+
+/*Menu*/
+.menu-ab{
+    position: absolute;
+}
+
+.menu-options{
+    width: 215px;
+    min-height: 150px;
+    flex-direction: column;
+    padding: 15px 50px;
+}

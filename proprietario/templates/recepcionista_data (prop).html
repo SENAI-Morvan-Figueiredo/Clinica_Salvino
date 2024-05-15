@@ -1,0 +1,189 @@
+{% extends 'background_proprietario.html' %}
+{% load static i18n %}
+{% block head_title %}
+    {% trans 'Proprietário - Clínica Salvino' %}
+{% endblock head_title %}
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock extra_head %}
+
+{% block header %}
+    <header class="header bg-yellow">
+        <div class="container">
+            <a href="{% url 'home' %}" class="login">
+                <img class="escalar" src="{% static 'img/Logo Branco 1.png' %}">
+            </a>
+        </div>
+    </header>
+{% endblock header %}
+
+{% block content %}
+    <section class="dash page bg-darkgray">
+        <h1 class="dash_title">Recepcionista: {{ recepcionista.name }}</h1>
+        <form class="form" id="form-cad" enctype="multipart/form-data" action="{% url 'funcionario' recepcionista.user.id %}" method="POST" role="form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="form-control">
+                <input type="text" id="Name" class="input" name="name" placeholder="Nome completo" value="{{ recepcionista.name }}">
+                <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                <small class="message"></small>
+            </div>
+
+            <div class="container-middle">
+                <div class="form-control">
+                    {% if recepcionista.sexo == 'Masculino' %}
+                        <select name="sexo" id="sexo" class="input" form="form-cad">
+                            <option value="" disabled>Sexo</option>
+                            <option value="Masculino" selected>Masculino</option>
+                            <option value="Feminino">Feminino</option>
+                            <option value="Outro">Outro</option>
+                        </select>
+                    {% elif recepcionista.sexo == 'Feminino' %}
+                        <select name="sexo" id="sexo" class="input" form="form-cad">
+                            <option value="" disabled>Sexo</option>
+                            <option value="Masculino">Masculino</option>
+                            <option value="Feminino" selected>Feminino</option>
+                            <option value="Outro">Outro</option>
+                        </select>
+
+                    {% elif recepcionista.sexo == 'Outro' %}
+                        <select name="sexo" id="sexo" class="input" form="form-cad">
+                            <option value="" disabled>Sexo</option>
+                            <option value="Masculino">Masculino</option>
+                            <option value="Feminino">Feminino</option>
+                            <option value="Outro" selected>Outro</option>
+                        </select>
+                    {% else %}
+                        <select name="sexo" id="sexo" class="input" form="form-cad">
+                            <option value="" selected disabled>Sexo</option>
+                            <option value="Masculino">Masculino</option>
+                            <option value="Feminino">Feminino</option>
+                            <option value="Outro">Outro</option>
+                        </select>
+                    {% endif %}
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+
+                <div class="form-control">
+                    <input type="text" id="Genero" class="input" name="genero" placeholder="Gênero" value="{{ recepcionista.genero }}">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+            </div>
+
+            <div class="container-middle">
+                <div class="form-control">
+                    <input type="date" id="date" class="input" name="data_nascimento" value="{{ recepcionista.data_nascimento|date:'Y-m-d' }}">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+                <div class="form-control">
+                    <input type="text" maxlength="9" minlength="9" inputmode="numeric" id="RG" name="rg"
+                        placeholder="RG" class="input" value="{{ recepcionista.rg }}">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+            </div>
+
+            <div class="container-middle">
+                <div class="form-control">
+                    <input type="text" maxlength="11" minlength="11" inputmode="numeric" id="CPF" name="cpf"
+                        placeholder="CPF" class="input" value="{{ recepcionista.cpf }}">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+            </div>
+
+            <div class="container-middle">
+                <div class="form-control">
+                    <input type="tel" maxlength="14" minlength="11" class="input" id="phone" name="telefone"
+                        placeholder="(ddd) 99999-9999" value="{{ recepcionista.telefone }}">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+                <div class="form-control">
+                    <input type="text" inputmode="numeric" id="CEP" class="input" name="cep" placeholder="CEP" value="{{ recepcionista.cep }}">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+
+
+            </div>
+
+            <div class="container-middle address">
+                <div class="form-control right">
+                    <input type="text" id="Endereco" class="input" name="endereco" placeholder="Endereço" value="{{ recepcionista.endereco }}">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+
+                <div class="form-control address  mid">
+                    <input type="text" inputmode="numeric" class="input" id="Numero" name="numero" placeholder="N°" value="{{ recepcionista.numero }}">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+
+                <div class="form-control left">
+                    <input type="text" name="complemento" class="input" id="Complemento" placeholder="Complemento" value="{{ recepcionista.complemento }}">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+            </div>
+            
+            <div class="result">
+                <p class="result-text">
+                    {% if messages %}
+                        {% for message in messages %}
+                            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                                <div class="alert alert-danger">
+                                    <strong>Erro!</strong>
+                                    {{ message }}
+                                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                                </div>
+                            {% else %}
+                                <div class="alert alert-success">
+                                    <strong>Sucesso!</strong>
+                                    {{ message }}
+                                    <i class="fa-solid fa-circle-check icon-success hidden" style="color: #328146;"></i>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </p>
+            </div>
+            <div class="button-box">
+                <input type="submit" id="back" onclick="voltar()" class="btn-black-white" value="Voltar">
+                <button type="submit" data-button class="btn-purple">Salvar</button>
+            </div>
+        </form> 
+    </section>
+{% endblock content %}
+
+{% block script %}
+    <script src="https://kit.fontawesome.com/fc74a91a63.js" crossorigin="anonymous"></script>
+    <script src="{% static 'js/formValidation.js' %}"></script>
+    <script src="{% static 'js/button.js' %}"></script>
+{% endblock script %}

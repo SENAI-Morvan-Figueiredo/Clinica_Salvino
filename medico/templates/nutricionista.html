@@ -1,0 +1,86 @@
+{% extends 'background_medico.html' %}
+{% load static i18n %}
+{% block head_title %}
+    {% trans 'Nutricionista - Clínica Salvino' %}
+{% endblock head_title %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock extra_head %}
+
+{% block header %}
+    <header class="header bg-blue">
+        <div class="container">
+            <a href="{% url 'home' %}" class="login">
+                <img class="escalar" src="{% static 'img/Logo Branco 1.png' %}">
+            </a>
+        </div>
+    </header>
+{% endblock header %}
+   
+{% block content %}
+<div class="body_user bg-blue">  
+    <section class="dash_calender">
+        <div class="month">
+            <div>
+                <button> 2023 </button> 
+            </div>
+
+            <div>
+                
+            </div>
+                <button> Janeiro </button>
+            <div>
+                <button> Agendar Consulta </button>
+            </div>
+        </div>
+
+        <div class="day_week">
+            <div class="day_week_border"> Domingo </div>
+            <div class="day_week_border"> Segunda </div>
+            <div class="day_week_border"> Terça   </div>
+            <div class="day_week_border"> Quarta  </div>
+            <div class="day_week_border"> Quinta  </div>
+            <div class="day_week_border"> Sexta   </div>
+            <div class="day_week_border"> Sábado  </div>
+        </div>
+
+        <div class="date_grid">
+            <button> <time datetime="2023-01-01"> 1 </time> </button>
+            <button> <time datetime="2023-01-02"> 2 </time> </button>
+            <button> <time datetime="2023-01-03"> 3 </time> </button>
+            <button> <time datetime="2023-01-04"> 4 </time> </button>
+            <button> <time datetime="2023-01-05"> 5 </time> </button>
+            <button> <time datetime="2023-01-06"> 6 </time> </button>
+            <button> <time datetime="2023-01-07"> 7 </time> </button>
+            <button> <time datetime="2023-01-08"> 8 </time> </button>
+            <button> <time datetime="2023-01-09"> 9 </time> </button>
+            <button> <time datetime="2023-01-10"> 10 </time> </button>
+            <button> <time datetime="2023-01-11"> 11 </time> </button>
+            <button> <time datetime="2023-01-12"> 12 </time> </button>
+            <button> <time datetime="2023-01-13"> 13 </time> </button>
+            <button> <time datetime="2023-01-14"> 14 </time> </button>
+            <button> <time datetime="2023-01-15"> 15 </time> </button>
+            <button> <time datetime="2023-01-16"> 16 </time> </button>
+            <button> <time datetime="2023-01-17"> 17 </time> </button>
+            <button> <time datetime="2023-01-18"> 18 </time> </button>
+            <button> <time datetime="2023-01-19"> 19 </time> </button>
+            <button> <time datetime="2023-01-20"> 20 </time> </button>
+            <button> <time datetime="2023-01-21"> 21 </time> </button>
+            <button> <time datetime="2023-01-22"> 22 </time> </button>
+            <button> <time datetime="2023-01-23"> 23 </time> </button>
+            <button> <time datetime="2023-01-24"> 24 </time> </button>
+            <button> <time datetime="2023-01-25"> 25 </time> </button>
+            <button> <time datetime="2023-01-26"> 26 </time> </button>
+            <button> <time datetime="2023-01-27"> 27 </time> </button>
+            <button> <time datetime="2023-01-28"> 28 </time> </button>
+            <button> <time datetime="2023-01-29"> 29 </time> </button>
+            <button> <time datetime="2023-01-30"> 30 </time> </button>
+            <button> <time datetime="2023-01-31"> 31 </time> </button>
+            
+        </div>
+    
+    </section>
+</div>
+
+{% endblock content %}

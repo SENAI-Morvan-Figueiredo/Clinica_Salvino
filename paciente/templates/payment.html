@@ -1,0 +1,50 @@
+{% extends 'background.html' %}
+{% load static i18n %}
+{% block head_title %}
+    {% trans 'pagamento - Clínica Salvino' %}
+{% endblock head_title %}
+
+{% block header %}
+    <header class="header bg-purple">
+        <div class="container">
+            <a href="{% url 'home' %}" class="login">
+                <img class="escalar" src="{% static 'img/Logo Branco 1.png' %}">
+            </a>
+        </div>
+    </header>
+{% endblock header %}
+
+{% block content %}
+    <main>
+        <div class="body-container">
+            <h1 id="title">PAGAMENTO</h1>
+            <table>
+                <thead>
+                    <th class="cells">Descrição do Tratamento</th>
+                    <th class="cells">Valor</th>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+            <div id="options-payment">
+                <h3 id="total">Total:</h3>
+                <h3 id="payment-method">Forma de Pagamento</h3>
+            </div>
+            <div id="options-buttons">
+                <div class="button-box">
+                    <button id="button-card" class="btn-purple">Cartão</button>
+                    <button id="button-convenio" class="btn-purple">Convênio</button>
+                </div>
+                <div class="button-box">
+                    <button id="back" class="btn-black-white">Cancelar</button>
+                    <button id="button-payment" class="btn-purple">Pagar no Dia</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p id="Copyright">Copyright 2023 - Desenvolvido por DEV Nutri - Todos os direitos reservados.</p>
+    </footer>
+
+    {% endblock content %}

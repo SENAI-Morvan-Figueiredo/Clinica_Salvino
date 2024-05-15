@@ -1,0 +1,147 @@
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+  }
+  
+.custom-toggler.navbar-toggler {
+    border-color: rgb(255, 255, 255);
+} 
+
+.white{
+    color: #fff;
+}
+
+@media (max-width: 1440px) {
+    #dr-salvino{
+        margin-top: -80px;
+    }
+}
+
+@media (max-width: 2000px) {
+    #dr-salvino{
+        padding-top: 0;
+        padding-bottom: 160px;
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 1440px) {
+    #dr-salvino{
+        margin-top: -50px;
+    }
+}
+
+
+@media (max-width: 990px) {
+    .medico{
+        grid-template-areas: 'tmp' 'txt';
+        place-items: center;
+    }
+    .med-text{
+        top: -230px;
+        left: 0;
+        padding-top: 120px;
+    }
+    .reverse .med-text{
+        left: 0;
+    }
+    .left{
+        margin: 0;
+    }
+    .especialidade{
+        flex-direction: column;
+    }
+    .especialidadeImg{
+        width: 150px;
+        height: 120px;
+    }
+    .especialidadeTitle{
+        font-size: 20px;
+    }
+    
+    #banner-principal{
+        margin-top: 0;
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+    .nav-responsive{
+        justify-content: right;
+    }
+    .logo_branco {
+        max-width: 150px;
+    }
+    #banner-principal h1 {
+        font-size: 32px;
+        line-height: normal;
+        margin-top: 20px;
+    }
+    #banner-principal img {
+        max-width: 280px;
+    }
+    .titulo-espec {
+        margin: 0;
+    }
+    .bg-onda-top {
+        min-height: 650px;
+    }
+    .sec-dr-home {
+        max-height: none;
+        top: -240px;
+    }
+    #dr-salvino{
+        padding-bottom: 0;
+        margin-bottom: -200px;
+        margin-top: -50px;
+    }
+    #dr-salvino img {
+        max-width: 280px;
+    }
+    #convenios img {
+        margin-top: 30px;
+    }
+    .fs-small {
+        font-size: 12px;
+    }
+
+    .convenios{
+        padding: 50px 25%;
+    }
+}
+
+@media (max-width: 575px) {
+    .bord-right{
+        margin: 0
+    }
+}
+
+@media (max-width: 575.98px) { 
+    .row {
+        flex-direction: column;
+    }
+    .row-center {
+        flex-direction: column;
+    }
+    .container {
+        flex-direction: column;
+    }
+ }
+
+
+@media (max-width: 425px) {
+    .med-text{
+        top: -150px;
+        left: 0;
+        padding: 70px 10% 0;
+    }
+    .med-img{
+        width: 199px;
+    }
+    .circulo{
+        width: 200px;
+        height: 200px;
+        top: 0;
+        left: -4px;
+    }
+    .reverse .med-text{
+        left: 0;
+    }
+}

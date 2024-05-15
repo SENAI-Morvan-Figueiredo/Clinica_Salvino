@@ -1,0 +1,55 @@
+{% extends 'background.html' %}
+{% load static i18n %}
+
+{% block header %}
+    <header class="header bg-purple">
+        <div class="container">
+            <a href="{% url 'home' %}">
+                <img class="escalar" src="{% static 'img/Logo Branco 1.png' %}">
+            </a>
+        </div>
+    </header>
+{% endblock header %}
+{% block content%}
+    <main>
+        <div class="body-container">
+            <h1 class="title">Esqueci a Senha</h1>
+            <form class="form-forgot form" id="form-forgot" action="/action_page.php">
+                <div class="form-control">
+                    <input type="Email" id="email" name="Email Conta" placeholder="Email Conta" class="input">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+
+                <p id="receive">Receber por</p>
+
+                <div class="button-box">
+                    <input type="submit" id="receive-button" class="btn-purple" value="Email">
+                    <input type="submit" id="receive-button" class="btn-purple" value="SMS">
+                </div>
+
+                <div class="form-control code">
+                    <label for="Code">Código de Segurança</label>
+                    <input type="text" id="code" class="code input" name="Código de Segurança" placeholder="000">
+                </div>
+
+                <div class="captcha-box center">
+                    <input type="checkbox" name="Eu não sou um robô" value="Eu não sou um robô"><a class="robot">Não
+                        sou robô</a>
+                </div>
+                </ul>
+                <div class="button-box">
+                    <button id="back" class="btn-black-white" onclick="voltar()">Voltar</button>
+                    <input type="submit" id="save" class="btn-purple" value="Salvar">
+                </div>
+            </form>
+        </div>
+    </main>
+{% endblock content %}
+{% block script %}
+    <script src="https://kit.fontawesome.com/fc74a91a63.js" crossorigin="anonymous"></script>
+    <script src="{% static 'js/formValidation.js' %}"></script>
+    <script src="{% static 'js/button.js' %}"></script>
+{% endblock script %}

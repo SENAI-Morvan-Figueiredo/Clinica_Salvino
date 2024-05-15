@@ -1,0 +1,77 @@
+{% extends 'background.html' %}
+{% load static i18n %}
+{% block head_title %}
+    {% trans 'Cartão - Clínica Salvino' %}
+{% endblock head_title %}
+
+{% block header %}
+    <header class="header bg-purple">
+        <div class="container">
+            <a href="{% url 'home' %}" class="login">
+                <img class="escalar" src="{% static 'img/Logo Branco 1.png' %}">
+            </a>
+        </div>
+    </header>
+{% endblock header %}
+
+{% block content %}
+    <main>
+        <div class="body-container">
+            <h1 class="title">CADASTRO DE CARTÃO</h1>
+            <form id="form-cad-card" class="form" action="/action_page.php">
+                <div class="form-control">
+                    <input type="text" id="Name" class="input" name="Nome completo" placeholder="Nome completo">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+
+                <div class="container-middle">
+                    <div class="form-control card">
+                        <input type="text" id="number-card" class="input" name="Numero do cartão"
+                            placeholder="Número do Cartão">
+                        <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                        <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                        <small class="message"></small>
+                    </div>
+                    <div class="form-control cvc">
+                        <input type="text" id="CVC" class="input" name="CVC" placeholder="CVC">
+                        <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                        <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                        <small class="message"></small>
+                    </div>
+                </div>
+
+                <div class="container-middle">
+
+                    <div class="form-control">
+                        <input type="date" id="vencimento" class="input" name="vencimento"
+                            placeholder="Data de Vencimento">
+                        <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                        <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                        <small class="message"></small>
+                    </div>
+                </div>
+
+
+                <div class="captcha-box center">
+                    <input type="checkbox" name="Eu não sou um robô" value="Eu não sou um robô"><a class="robot">Não
+                        sou robô</a>
+                </div>
+
+                <div class="button-box">
+                    <input type="submit" id="back" class="btn-black-white" value="Voltar">
+                    <input type="submit" id="account" class="btn-purple" value="Criar conta">
+                </div>
+            </form>
+    </main>
+{% endblock content %}
+
+{% block script %}
+    <script src="https://kit.fontawesome.com/fc74a91a63.js" crossorigin="anonymous"></script>
+    <script src="{% static 'js/formValidation.js' %}"></script>
+{% endblock script %}

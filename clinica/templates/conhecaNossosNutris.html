@@ -1,0 +1,95 @@
+{% extends 'background_home.html' %}
+{% load static i18n %}
+{% block head_title %}
+{% trans 'Nossos Nutris - Clínica Salvino' %}
+{% endblock head_title %}
+
+{% block content %}
+    <main class="bg-white">
+        <section class="titulo-medicos">
+            <h1>Nossos Profissionais</h1>
+        </section>
+
+        <section class="medicos">
+            <div class="container">
+                <div class="medico">
+                    <div class="template-med">
+                        <div class="circulo"></div>
+                        <img class="med-img" src="{% static 'images/DrLeonor.png' %}" alt="">
+                    </div>
+
+                    <div class="med-text">
+                        <h3 class="med-title">Leonor Salvino Afonso</h3>
+                        <p class="med-info">Imigrante portugues que veio ao Brasil em 1976 com o intuito de estudar em um país que
+                            começava estar em ascensão ao mundo. formado em Medicina na Faculdade de Ciências
+                            Farmacêuticas da Universade de São Paulo no ano de 1980, graduação em Nutrologia Médica na
+                            mesma federação em 1982.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="medico reverse">
+                    <div class="template-med">
+                        <div class="circulo bg-purple"></div>
+                        <img class="med-img" src="{% static 'images/DrLeonor.png' %}" alt="">
+                    </div>
+
+                    <div class="med-text bg-purple">
+                        <h3 class="med-title">Pedro Nascimento</h3>
+                        <p class="med-info">Medico formado na UERJ e pós graduação em Nutricionista;</p>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="medico">
+                    <div class="template-med">
+                        <div class="circulo bg-purple"></div>
+                        <img class="med-img" src="{% static 'images/DrLeonor.png' %}" alt="">
+                    </div>
+
+                    <div class="med-text bg-purple">
+                        <h3 class="med-title">Helena Salvino de Oliveira</h3>
+                        <p class="med-info">Nutricionista formada na USP pós graduação em nutrição esportiva;</p>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="medico reverse">
+                    <div class="template-med">
+                        <div class="circulo bg-purple"></div>
+                        <img class="med-img" src="{% static 'images/DrLeonor.png' %}" alt="">
+                    </div>
+
+                    <div class="med-text bg-purple">
+                        <h3 class="med-title">Bruno Carvalho</h3>
+                        <p class="med-info">Endocrinologista, ex-atleta profissional. Se formou em nutrição na PUC de São Paulo em 2008.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="medico">
+                    <div class="template-med">
+                        <div class="circulo bg-purple"></div>
+                        <img class="med-img" src="{% static 'images/DrLeonor.png' %}" alt="">
+                    </div>
+
+                    <div class="med-text bg-purple">
+                        <h3 class="med-title">Ágata Aurora Fernandez de Moraes</h3>
+                        <p class="med-info">Psiquiatra formada na Faculdade ISMD e pós graduação em Transtornos Alimentares e nutrição psiquiatra.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-onda-purple bg-white" id="contato">
+            <button class="botaoFechar btn-white rotation" onclick="voltar()">Voltar</button>
+        </section>
+    </main>
+{% endblock content %}
+{% block script %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+    <script src="{% static 'js/animateHeader.js' %}"></script>
+    <script src="{% static 'js/button.js' %}"></script>
+{% endblock script %}

@@ -1,0 +1,407 @@
+
+
+/* Css da pagina do usuario */
+
+/* Css global da pagina do usuario */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* --- começo das classes da dashboard do menu do usuario --- */
+ul{
+    padding: 0;
+}
+    /* class do css do boddy da pagina do usuario */
+    .body_user {                                                                            /* cor da tela de fundo do body */
+    min-height: 6.25em;                                                                     /* valor minimo da altura da pagina */
+    display: flex;                                                                          /* Definição da exibição como flex (vai jogar todos os elementos dentro da classe para a esquerda) */
+    justify-content: space-around;    
+    padding-bottom: 80px;                                                                   /* dimencionando os items do body espaçados ao seu redor */
+    }
+
+    /* class para dashboard do menu do usuario */
+    .dash_menu_user {
+        background-color: #333333;                                                        /* cor da dashboard */
+        color: #ffffff;                                                                   /* cor da fonte da dashboard */
+        font-family: 'Kumbh-medium', Arial, Helvetica, sans-serif;                          /* fonte estilizada da dashboard */                 
+        width: 18.75em;                                                                     /* tamanho horizontal da dashboard */
+        max-height: 50em;                                                                   /* tamanho vertical da dashboard */
+        border-radius: 15px;                                                                /* curvatura da borda da dashboard */
+        position: relative;                                                                 /* define a posição da dashboard como relativa, e usa os valores top e left */
+        top: 3.25em;                                                                        /* valor da posição a partir do topo */
+        left: 3.25em;                                                                       /* valor da posição a partir da esquerda */
+    }
+
+    /* class para o botão do home */
+    .button_home {
+        position: relative;                                                                 /* posição do botão da home relativo na dashboard com os valores top e left */
+        top: 1.125em;                                                                       /* valor da posição a partir do topo */     
+        left: 16.125em;
+        margin-bottom: 20px;                                                                /* valor da posição a partir da esquerda */
+    }
+
+    /* class para a imagem do usuario */
+    .image_user {
+        display: flex;                                                                      /* exibição da imagem como flexivel */
+        justify-content: center;                                                            /* alinha a imagem no centro em comparação a dashboard */
+    }
+
+    /* estilizando a lista da class da dashboard do menu do usuario */
+    .ul_dash_menu li {
+        list-style: none;                                                                   /* estilo da lista: sem caracteres */
+        justify-content: center;                                                            /* alinhando os items no centro da dashboard */
+        flex-direction: column;                                                             /* define como os items dentro dele se organizam: em coluna */
+        text-align: center;                                                                 /* alinha os textos ao centro da dashboard */
+        margin: 1em;                                                                        /* margem dos items da lista em comparação ao seu redor */
+    }
+
+/* --- fim das classes da dashboard do menu do usuario --- */
+
+/* começo das classes da dashboard do calendario */
+    /* class para o dashboard do calendario */ 
+    .dash_prop {
+        display: grid;
+        width: 50em;                                                                    
+        min-height: 50em;                                                                                                                                                                  
+        background-color: #FCB74A;                                                        
+        border-radius: 15px;        
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;           
+        grid-gap: 3%;                                             
+    }
+
+    .info-especialidade{
+        display: grid;
+        grid-template-columns: 2.9fr 1fr 0.3fr;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        max-height: 60px;
+        border: 1px solid #ffffff;
+        border-radius: 15px;
+        padding: 1% 2% 1% 5%;
+        margin-bottom: 10px;
+    }
+
+    .modulo{
+        background-color: #333333;
+        border-radius: 15px;
+        color: #ffffff;
+    }
+
+    .next{
+        width: 100%;
+        max-height: 300px;
+        background-color: #333333;
+        border-radius: 15px;
+    }
+
+    .info-consulta{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 0.5fr 0.5fr 0.5fr 0.5fr;
+        grid-template-areas: "p m" "e d" "h s" "doc c";
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        border: 1px solid #ffffff;
+        border-radius: 15px;
+        padding: 1% 2% 1% 5%;
+        margin-bottom: 10px;
+    }
+
+    .info-consulta p{
+        border: 1px solid #ffffff;
+        padding-left: 5px;
+    }
+
+    .info-consulta a{
+        margin: 10px 0;
+        justify-self: center;
+    }
+
+    .paciente{
+        grid-area: p;
+    }
+
+    .medico{
+        grid-area: m;
+    }
+
+    .especialidade{
+        grid-area: e;
+    }
+
+    .data{
+        grid-area: d;
+    }
+
+    .hora{
+        grid-area: h;
+    }
+
+    .status{
+        grid-area: s;
+    }
+
+    .doc{
+        grid-area: doc;
+    }
+
+    .can{
+        grid-area: c;
+    }
+
+    .func{
+        justify-content: flex-start;
+    }
+
+    .dash{
+        color: #fff;
+        background-color: #333333;
+        width: 50em;                                                                    /* tamanho horizontal */                                                                  /* tamanho vertical */
+        margin: 3.25em 3.25em 0 3.25em;                                                     /* margin = margem externa relativo ao seu arredor */
+        padding: 5em;                                                                       /* padding = margem interna */
+        border-radius: 15px;                                                                /* borda da dashboard do calendario */
+        display: grid;
+        grid-template-rows: 0.4fr 2.5fr;
+        min-height: 50em;
+    }
+
+    .menu{
+        z-index: 1000;
+        display: none;
+        position: absolute;
+        right: 10px;
+        top: 55px;
+    }
+
+    .dash_nav_ul li{
+        margin: 15px;
+    }
+
+    .option{
+        text-align: center;
+    }
+
+    .dash_nav_ul{
+        display: flex;
+        justify-content:space-evenly;
+        align-items: center;
+        list-style: none;
+        font-family: "Open Sans";
+        margin-bottom: 0;
+    }
+
+    .arquivo{
+        color: #ffffff;
+    }
+
+    .container-prop{
+        display: grid;
+        grid-template-rows: 1fr 0.5fr;
+        grid-gap: 50px;
+        padding: 3.25em 3.25em 0 3.25em; 
+    }
+
+    .confirm{
+        margin: 80px 0 30px;
+        text-align: center;
+    }
+
+    p{
+        font-size: 12px;
+    }
+
+    .list{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .page{
+        padding: 5em 10em;
+    }
+
+    .center{
+        display: grid;
+        place-items: center;
+    }
+
+    .add{
+        align-self: end;
+        padding: 0;
+        margin-bottom: 20px;
+    }
+
+    .filter{
+        align-self: flex-end;
+        width: 150px;
+        margin-bottom: 20px;
+    }
+
+    .register{
+        align-self: center;
+    }
+
+    .select{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .cabecalho-card{
+        padding: 1% 2% 0 5%;
+        display: grid;
+        grid-template-columns: 2.2fr 3.7fr 1.9fr;
+    }
+
+    .cabecalho{
+        padding: 1% 2% 0 5%;
+        display: grid;
+        grid-template-columns: 3.7fr 2.2fr 1.9fr;
+    }
+
+    .delete{
+        display: grid;
+        place-items: center;
+        width: 25px;
+        height: 25px;
+    }
+
+    .info-card{
+        position: relative;
+        display: grid;
+        grid-template-columns: 1.8fr 3fr 1.2fr 0.1fr;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        max-height: 60px;
+        border: 1px solid #ffffff;
+        border-radius: 15px;
+        padding: 1% 2% 1% 5%;
+        margin-bottom: 10px;
+    }
+
+    .info-user{
+        position: relative;
+        display: grid;
+        grid-template-columns: 2.9fr 1.4fr 1.5fr 0.1fr;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        max-height: 60px;
+        border: 1px solid #ffffff;
+        border-radius: 15px;
+        padding: 1% 2% 1% 5%;
+        margin-bottom: 10px;
+    }
+
+    .aviso{
+        width: 100%;
+        text-align: center;
+        margin-top: 150px;
+    }
+
+    h3{
+        font-size: 18px;
+    }
+
+    .dash_title{
+        color: #ffffff;
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .dropdown {
+        cursor: pointer;
+        padding: 10px;
+        border: 1px solid #ccc;
+    }
+    
+    .dropdown-content {
+        display: none;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-top: none;
+        background-color: #333333;
+    }
+
+        /* grupo englobando 2 classes e pondo elas em grade */
+        .day_week,
+        .date_grid {
+            display: grid;
+            grid-gap: 10px;                                                                  /* dimencionando os items em grades */
+            grid-template-columns: repeat(7, 1fr)                                          /* templante das colunas (sintax 'grid-template-columnds: repeat(n°-de-colunas, fração do espaço disponivel)') */
+        
+        }
+
+        .date_grid {
+            margin: 10px 0;
+        }
+
+        .month {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            border-radius: 2px;
+        }
+
+        .month button {
+            color: #000;
+            
+            background-color: #ffffff;
+        }
+
+        .day_week {
+            margin-top: 1.25em;
+        }
+
+        .day_week > * {
+            font-size: 1em;
+            color: #000;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-align: center;
+            font-variant: small-caps;
+        }
+
+        .day_week_border {
+            background-color: #ffffff;
+            border-radius: 2px;
+        }
+
+        .date_grid button:first-child {
+            grid-column: 1;
+        }
+
+        .date_grid time {
+            display: flex;
+            justify-self: flex-start;
+            align-items: flex-start;
+        }
+
+        .date_grid button {
+            height: 6.75em;
+            border-radius: 2px;
+            background-color: #ffffff;
+            border: 0px solid;
+        }
+
+        .date_grid button:hover,
+        .date_grid button:focus {
+            outline: none;
+            background-color: #F2F2F2;
+        }
+
+        .date_grid button:active,
+        .date_grid button.is-selected {
+            border: 3px solid #2BAE89;
+        
+        }
+        .date_grid time{
+            margin: 0.625em;
+        }

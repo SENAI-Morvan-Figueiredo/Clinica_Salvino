@@ -1,0 +1,68 @@
+{% extends 'background_proprietario.html' %}
+{% load static i18n %}
+{% block head_title %}
+    {% trans 'Proprietário - Clínica Salvino' %}
+{% endblock head_title %}
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock extra_head %}
+
+{% block header %}
+    <header class="header bg-yellow">
+        <div class="container">
+            <a href="{% url 'home' %}" class="login">
+                <img class="escalar" src="{% static 'img/Logo Branco 1.png' %}">
+            </a>
+        </div>
+    </header>
+{% endblock header %}
+
+{% block content %}  
+    <section class="dash bg-darkgray">
+        <h1 class="dash_title">Pacientes</h1>
+        <div class="list">
+            <a href="{% url 'adicionar_pacientes' %}" class="btn btn-purple center add">Adicionar Paciente</a>
+            <div class="cabecalho">
+                <p>Nome</p>
+                <p>CPF</p>
+                <p>Informações</p>
+            </div>
+            {% if pacientes %}
+            {% for paciente in pacientes %}
+            <div class="info-user">
+                <p>{{ paciente.name }}</p>
+                <p>{{ paciente.cpf }}</p>
+                <a href="" class="btn btn-purple center open-btn">Info</a>
+                <a href="{% url 'delete_paciente' paciente.user.id %}"><img class="icon-delete escalar" src="{% static 'img/delete.svg' %}" alt=""></a>
+                <div class="bg-dark menu">
+                    <ul class="dash_nav_ul menu-options">
+                        <li class="escalar">
+                            <a href="{% url 'paciente' paciente.user.id %}" class="nav-link white bord-right escalar option">Dados do paciente</a>
+                        </li>
+                        <div class="line"></div>
+                        <li class="escalar">
+                            <a href="#" class="nav-link white bord-right escalar option">Boletos</a>
+                        </li>
+                        <div class="line"></div>
+                        <li class="escalar">
+                            <a href="{% url 'cartoes_prop' paciente.user.id %}" class="nav-link white bord-right escalar option">Cartões</a>
+                        </li>
+                        <div class="line"></div>
+                        <li class="escalar">
+                            <a href="{% url 'convenios_paciente_prop' paciente.user.id %}" class="nav-link white bord-right escalar option">Convênios</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <h3 class="aviso">Não há pacientes cadastrados.</h3> 
+        {% endif %}
+        </div>
+    </section>  
+{% endblock content %}
+{% block script %}
+    <script src="https://kit.fontawesome.com/fc74a91a63.js" crossorigin="anonymous"></script>
+    <script src="{% static 'js/button.js' %}"></script>
+    <script src="{% static 'js/open_menu.js' %}"></script>
+{% endblock script %}
