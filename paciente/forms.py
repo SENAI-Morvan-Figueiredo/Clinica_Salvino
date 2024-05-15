@@ -1,5 +1,5 @@
 from django import forms
-from .models import Paciente, Consulta, CadCartao, CadConvenio, AnexoConsulta, Prontuario
+from .models import Paciente, Consulta, CadCartao, CadConvenio, AnexoConsulta, Prontuario, Pagamento
 
 class CadPaciente(forms.ModelForm):
 
@@ -37,3 +37,9 @@ class ProntuarioForm(forms.ModelForm):
     class Meta:
         model = Prontuario
         fields = ('peso', 'altura', 'alergia', 'doenca', 'fuma', 'bebe', 'uso_drogas', 'observacoes')
+
+class PagamentoCard(forms.ModelForm):
+
+    class Meta:
+        model = Pagamento
+        fields = ('forma_pagamento', 'cartao')

@@ -1,14 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
+from clinica.models import Especialidade
 
 # Create your models here.
-class Especialidade(models.Model):
-    nome_especialidade = models.CharField(max_length=256)
-    descricao = models.TextField()
-
-    def __str__(self):
-        return self.nome_especialidade
-
 class Medico(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=256, unique=True)

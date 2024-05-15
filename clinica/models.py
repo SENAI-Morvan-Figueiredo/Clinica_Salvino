@@ -23,6 +23,14 @@ class Tratamento(models.Model):
     def __str__(self):
         return self.name
     
+class Especialidade(models.Model):
+    nome_especialidade = models.CharField(max_length=256)
+    descricao = models.TextField()
+
+    def __str__(self):
+        return self.nome_especialidade
+
+    
 class BandeiraCartao(models.Model):
     name = models.CharField(max_length=256, unique=True)
 

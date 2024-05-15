@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from clinica.models import BandeiraCartao, Convenio, PlanoConvenio
 from clinica.forms import CadBandeira, EmpresaConvenio, CadPlano
-from paciente.models import Paciente, Consulta, CadCartao, CadConvenio, AnexoConsulta, Documentos, Prontuario
-from paciente.forms import CadPaciente, AgendaConsulta, FormCartao, FormConvenio, AnexoForm, ProntuarioForm
+from paciente.models import Paciente, Consulta, CadCartao, CadConvenio, AnexoConsulta, Documentos, Prontuario, Pagamento
+from paciente.forms import CadPaciente, AgendaConsulta, FormCartao, FormConvenio, AnexoForm, ProntuarioForm, PagamentoCard
 from medico.models import Medico, Especialidade
 from medico.forms import CadMedico, CadEspecialidade
 from recept.models import Recepcionista
@@ -372,13 +372,14 @@ def deleteConvenio(request, id):
         return render(request, 'delete_convenio.html', {'proprietario': proprietario, 'convenio': convenio})
     
 def mostrarPlano(request, id):
+    proprietario = request.user.proprietario
     convenio = Convenio.objects.get(id=id)
     try:
         planos = PlanoConvenio.objects.filter(convenio=convenio)
     except:
         planos = ''
     finally:
-        return render(request, 'planos_list.html', {'planos': planos, 'convenio': convenio})
+        return render(request, 'planos_list.html', {'proprietario': proprietario, 'planos': planos, 'convenio': convenio})
 
 def addPlano(request, id):
     proprietario = request.user.proprietario
@@ -511,3 +512,24 @@ def info_prontuario(request, id):
     paciente = Paciente.objects.get(user=user)
     prontuario = Prontuario.objects.get(paciente=paciente)
     return render(request, 'info_prontuario (prop).html', {'proprietario': proprietario, 'paciente': paciente, 'prontuario': prontuario})
+
+# Sistema de pagamento
+def pagarConsultaCard(request, id):
+    proprietario = request.user.proprietario
+    consulta = Consulta.objects.get(id=id)
+    if request.method == 'POST':
+        pay_form = PagamentoCard(request.POST)
+        if pay_form.is_valid():
+            pay = pay_form.save(commit=False)
+            pay.paciente = consulta.paciente
+            pay.consulta = consulta
+            pay.tratamento = 'consulta'
+            pay.medico = consulta.medico
+            pay.forma_pagamento = 'Cartao'
+            pay.status_pagamento = 'Aguardando pagamento'
+
+            return redirect('consultas')
+        else:
+            return redirect('pay_card_prop', consulta.paciente.id)
+    else:
+        return render(request, 'pay_card (prop).html', {'proprietario': proprietario})
