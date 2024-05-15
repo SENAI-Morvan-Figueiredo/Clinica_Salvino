@@ -466,23 +466,26 @@ def abrirFicha(request, id):
     
 def document_list(request, id):
     # Agrupar documentos por data
+    proprietario = request.user.proprietario
     list_documents = defaultdict(list)
     user = User.objects.get(id=id)
     paciente = Paciente.objects.get(user=user)
-    prontuario = Prontuario.objects.get(paciente=paciente)
-    if prontuario:
-        documents = Documentos.objects.filter(prontuario=prontuario)
-        if documents:
-            for document in documents.order_by('data'):
-                list_documents[document.data].append(document)
+    try:
+        prontuario = Prontuario.objects.get(paciente=paciente)
+        if prontuario:
+            documents = Documentos.objects.filter(prontuario=prontuario)
+            if documents:
+                for document in documents.order_by('data'):
+                    list_documents[document.data].append(document)
 
-            print(list_documents[document.data])
-            return render(request, 'prontuario (prop).html', {'paciente':paciente,'prontuario': prontuario, 'list_documents': list_documents.items()})
-        else:
-            list_documents = ''
-            return render(request, 'prontuario (prop).html', {'paciente':paciente,'prontuario': prontuario, 'list_documents': list_documents})
-    else:
-        return render(request, 'prontuario (prop).html', {'paciente':paciente, 'prontuario': prontuario, 'listdocumentos': ''})
+                print(list_documents[document.data])
+                return render(request, 'prontuario (prop).html', {'proprietario': proprietario,'paciente':paciente,'prontuario': prontuario, 'list_documents': list_documents.items()})
+            else:
+                list_documents = ''
+                return render(request, 'prontuario (prop).html', {'proprietario': proprietario, 'paciente':paciente,'prontuario': prontuario, 'list_documents': list_documents})
+    except:
+        prontuario = ''
+        return render(request, 'prontuario (prop).html', {'proprietario': proprietario, 'paciente':paciente, 'prontuario': prontuario, 'listdocumentos': ''})
     
 def init_prontuario(request, id):
     proprietario = request.user.proprietario
