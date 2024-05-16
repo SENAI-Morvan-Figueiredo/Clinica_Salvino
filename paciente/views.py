@@ -44,3 +44,11 @@ def pagamento(request):
 def agendamento(request):
     paciente = request.user.paciente
     return render(request, 'agendamento(paciente).html', {'paciente': paciente}) 
+
+def add_cartao(request):
+    paciente = request.user.paciente
+    return render(request, 'add_cartao(paciente).html', {'paciente': paciente}) 
+
+def add_convenio(request):
+    paciente = request.user.paciente
+    return render(request, 'add_convenio(paciente).html', {'paciente': paciente}) 
