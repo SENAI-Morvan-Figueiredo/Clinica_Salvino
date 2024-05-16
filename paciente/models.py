@@ -4,12 +4,16 @@ from .const import STATUS_DEPENDENCE_CHOICE
 from django.contrib.auth.models import User
 from clinica.models import Convenio, PlanoConvenio, BandeiraCartao, Tratamento, Pix, Especialidade
 from medico.models import Medico
-from django.contrib import admin
 import datetime
 import os
 
 
 # Create your models here.
+import random
+import string
+from barcode import EAN13
+from barcode.writer import ImageWriter
+
 def anexo_paciente_upload(instance, filename):
     # Extraia a data da consulta
     data_consulta = instance.consulta.data
@@ -114,7 +118,7 @@ class Encaminhamento(models.Model):
     tipo_encaminhamento = models.CharField(max_length=256, choices=(('Consultas', 'Consultas'), ('Exames e Terapias', 'Exames e Terapias'), ('Outros', 'Outros')))
     area = models.CharField(max_length=256)
     descricao = models.TextField(null=True)
-    file_documento = models.FileField(upload_to='anexo_medico_upload')
+    file_documento = models.FileField(upload_to=anexo_medico_upload)
 
     def __str__(self):
         return self.tipo_encaminhamento
@@ -216,6 +220,8 @@ class Pagamento(models.Model):
             raise ValidationError({'boleto':'Você não incluiu um boleto de pagamento'})
         
         self.data_emissao = datetime.date.today()
+
+        self.cod_barras = ''.join(random.choices(string.digits, k=13))
 
         if self.status_pagamento == 'Pago' or self.status_pagamento == 'Reembolsado' or self.status_pagamento == 'Cancelado':
             self.data_pagamento = datetime.date.today()

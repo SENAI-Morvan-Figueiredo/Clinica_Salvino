@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from clinica.models import BandeiraCartao, Convenio, PlanoConvenio, Tratamento
 from clinica.forms import CadBandeira, EmpresaConvenio, CadPlano
 from paciente.models import Paciente, Consulta, CadCartao, CadConvenio, AnexoConsulta, Documentos, Prontuario
-from paciente.forms import CadPaciente, AgendaConsulta, FormCartao, FormConvenio, AnexoForm, ProntuarioForm, PagamentoCard
+from paciente.forms import CadPaciente, AgendaConsulta, FormCartao, FormConvenio, AnexoForm, ProntuarioForm, PagamentoCard, PagamentoConv
 from medico.models import Medico, Especialidade
 from medico.forms import CadMedico, CadEspecialidade
 from recept.models import Recepcionista
@@ -263,7 +263,7 @@ def marcarConsulta(request):
 
             messages.success(request, 'Consulta agendada com Sucesso!')
             request.session['show_message'] = True 
-            return redirect('pay_card_prop', new_atendimento.id)
+            return redirect('pay_prop', new_atendimento.id)
         else:
             messages.error(request, f"Formulário de agendamento inválido: {atendimento_form.errors}")
             request.session['show_message'] = True 
@@ -551,6 +551,19 @@ def info_prontuario(request, id):
     return render(request, 'info_prontuario (prop).html', {'proprietario': proprietario, 'paciente': paciente, 'prontuario': prontuario})
 
 # Sistema de pagamento
+def pagarConsulta(request, id):
+    proprietario = request.user.proprietario
+    consulta = Consulta.objects.get(id=id)
+    if request.method == 'POST':
+        select = request.POST.get('forma_pag')
+        print(consulta.id)
+        if select == 'cartao':
+            return redirect('pay_card_prop', consulta.id)
+        elif select == 'convenio':
+            return redirect('pay_conv_prop', consulta.id)
+    else:
+        return render(request, 'pagamento (prop).html', {'proprietario': proprietario, 'consulta': consulta})
+
 def pagarConsultaCard(request, id):
     proprietario = request.user.proprietario
     consulta = Consulta.objects.get(id=id)
@@ -569,9 +582,28 @@ def pagarConsultaCard(request, id):
             request.session['show_message'] = True 
             return redirect('consultas')
         else:
-            messages.error(request, f"Pagamento inválido: {pay_form.errors}")
-            request.session['show_message'] = True 
             return redirect('pay_card_prop', consulta.paciente.id)
     else:
-        show_message = request.session.pop('show_message', False)
-        return render(request, 'pay_card (prop).html', {'proprietario': proprietario, 'consulta': consulta, 'cartoes':cartoes,'message_view': show_message})
+        return render(request, 'pay_card (prop).html', {'proprietario': proprietario, 'consulta': consulta, 'cartoes':cartoes})
+    
+
+def pagarConsultaConv(request, id):
+    proprietario = request.user.proprietario
+    consulta = Consulta.objects.get(id=id)
+    cartoes = CadCartao.objects.filter(paciente=consulta.paciente)
+    if request.method == 'POST':
+        pay_form = PagamentoConv(request.POST)
+        if pay_form.is_valid():
+            pay = pay_form.save(commit=False)
+            pay.paciente = consulta.paciente
+            pay.consulta = consulta
+            pay.tratamento = Tratamento.objects.get(especialidade=consulta.especialidade)
+            pay.medico = consulta.medico
+            pay.forma_pagamento = 'Convenio'
+            pay.status_pagamento = 'Aguardando pagamento'
+            pay.save()
+            return redirect('consultas')
+        else:
+            return redirect('pay_card_prop', consulta.paciente.id)
+    else:
+        return render(request, 'pay_card (prop).html', {'proprietario': proprietario, 'consulta': consulta, 'cartoes': cartoes})

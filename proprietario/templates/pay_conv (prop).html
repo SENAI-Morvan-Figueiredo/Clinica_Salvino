@@ -19,16 +19,16 @@
 
 {% block content %}
 <section class="dash page bg-darkgray">
-    <h1 class="dash_title">Pagamento através de Cartão</h1>
-    <form class="form func" action="#" method="POST">
+    <h1 class="dash_title">Pagamento através de Convênio</h1>
+    <form class="form" action="#" method="POST">
         {% csrf_token %}
         <select name="cartao" id="register" class="register">
-            <option value="" selected disabled>Selecione o cartão que você deseja utilizar:</option>
-            {% for cartao in cartoes %}
-                <option value="{{ cartao.id }}">{{ cartao.bandeira }}: {{ cartao.numero_cartao }}</option>
+            <option value="" selected disabled>Selecione o convênio que você deseja utilizar:</option>
+            {% for convenio in convenios %}
+                <option value="{{ convenio.id }}">{{ convenio.convenio }}: {{ convenio.numero_carteirinha }}</option>
             {% endfor %}
         </select>
-       
+        
         <div class="button-box">
             <a id="back" href="{% url 'cancelar_consulta_notPay' consulta.id %}" class="btn-black-white">Cancelar</a>
             <button type="submit" data-button class="btn-purple">Salvar</button>
