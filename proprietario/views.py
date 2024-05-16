@@ -270,6 +270,15 @@ def cancelarConsulta(request, id):
     else:
         return render(request, 'cancelar_consulta (prop).html', {'proprietario': proprietario, 'consulta': consulta})
     
+def cancelarConsultaNoPay(request, id):
+    proprietario = request.user.proprietario
+    consulta = Consulta.objects.get(id=id)
+    if request.method == 'POST':
+        consulta.delete()
+        return redirect('consultas')
+    else:
+        return render(request, 'cancelar_consulta_notPay (prop).html', {'proprietario': proprietario, 'consulta': consulta})
+    
 def mostrarBandeiras(request):
     proprietario = request.user.proprietario
     bandeiras = BandeiraCartao.objects.all()
@@ -534,4 +543,4 @@ def pagarConsultaCard(request, id):
             messages.error(request, f"Pagamento inválido: {pay_form.errors}")
             return redirect('pay_card_prop', consulta.paciente.id)
     else:
-        return render(request, 'pay_card (prop).html', {'proprietario': proprietario, 'cartoes':cartoes})
+        return render(request, 'pay_card (prop).html', {'proprietario': proprietario, 'consulta': consulta, 'cartoes':cartoes})

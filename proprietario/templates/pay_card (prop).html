@@ -49,7 +49,10 @@
                 
             </p>
         </div>
-        <button type="submit" data-button class="btn-purple">Confirmar</button>
+        <div class="button-box">
+            <a id="back" href="{% url 'cancelar_consulta_notPay' consulta.id %}" class="btn-black-white">Cancelar</a>
+            <button type="submit" data-button class="btn-purple">Salvar</button>
+        </div>
     </form>
     
 </section>

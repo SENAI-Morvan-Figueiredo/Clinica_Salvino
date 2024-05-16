@@ -1,5 +1,5 @@
 from django.urls import path
-from proprietario.views import proprietyBoard, contaProprietario, mostrarPacientes, mostrarFuncionarios, dadosFuncionario, deleteFuncionario, dadosPaciente, deletePaciente, addFuncionario, addPaciente, addRecep, addMedico, mostrarEspecialidades, dadosEspecialidade, addEspecialidade, deleteEspecialidade, marcarConsulta, mostrarConsultas, cancelarConsulta, adicionarBandeira, deleteBandeira, mostrarBandeiras, mostrarCartoes, adicionarCartoes, deleteCartao, addFornecedorConvenio, mostrarConvenios, deleteConvenio, mostrarPlano, addPlano, deletePlano, mostrarPacienteConvenio, cadConvPaciente, delPacienteConv, mostrarFichas, abrirFicha, document_list, init_prontuario, info_prontuario, pagarConsultaCard
+from proprietario.views import proprietyBoard, contaProprietario, mostrarPacientes, mostrarFuncionarios, dadosFuncionario, deleteFuncionario, dadosPaciente, deletePaciente, addFuncionario, addPaciente, addRecep, addMedico, mostrarEspecialidades, dadosEspecialidade, addEspecialidade, deleteEspecialidade, marcarConsulta, mostrarConsultas, cancelarConsulta, cancelarConsultaNoPay, adicionarBandeira, deleteBandeira, mostrarBandeiras, mostrarCartoes, adicionarCartoes, deleteCartao, addFornecedorConvenio, mostrarConvenios, deleteConvenio, mostrarPlano, addPlano, deletePlano, mostrarPacienteConvenio, cadConvPaciente, delPacienteConv, mostrarFichas, abrirFicha, document_list, init_prontuario, info_prontuario, pagarConsultaCard
 
 urlpatterns = [
     path('', proprietyBoard, name='proprietario_dash'),
@@ -29,7 +29,8 @@ urlpatterns = [
     path('especialidade/<int:id>/delete/', deleteEspecialidade, name='delete_especialidade'),
     path('agendamento/', marcarConsulta, name='agendamento'),
     path('consultas', mostrarConsultas, name='consultas'),
-    path('consultas/<int:id>/cancelar/', cancelarConsulta, name='cancelar_consulta'),
+    path('consultas/<int:id>/cancelar_consulta/', cancelarConsulta, name='cancelar_consulta'),
+    path('consultas/<int:id>/cancelar_agendamento/', cancelarConsultaNoPay, name='cancelar_consulta_notPay'),
     path('bandeiras/', mostrarBandeiras, name='bandeiras'),
     path('bandeiras/add', adicionarBandeira, name='adicionar_bandeira'),
     path('bandeira/<int:id>/delete/', deleteBandeira, name='deletar_bandeira'),
