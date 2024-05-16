@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from clinica.models import BandeiraCartao, Convenio, PlanoConvenio
+from clinica.models import BandeiraCartao, Convenio, PlanoConvenio, Tratamento
 from clinica.forms import CadBandeira, EmpresaConvenio, CadPlano
-from paciente.models import Paciente, Consulta, CadCartao, CadConvenio, AnexoConsulta, Documentos, Prontuario, Pagamento
+from paciente.models import Paciente, Consulta, CadCartao, CadConvenio, AnexoConsulta, Documentos, Prontuario
 from paciente.forms import CadPaciente, AgendaConsulta, FormCartao, FormConvenio, AnexoForm, ProntuarioForm, PagamentoCard
 from medico.models import Medico, Especialidade
 from medico.forms import CadMedico, CadEspecialidade
@@ -251,7 +251,7 @@ def marcarConsulta(request):
                 AnexoConsulta.objects.create(consulta=new_atendimento, arquivo=arquivo)
 
             messages.success(request, 'Consulta agendada com Sucesso!')
-            return redirect('agendamento')
+            return redirect('pay_card_prop', new_atendimento.id)
         else:
             messages.error(request, f"Formulário de agendamento inválido: {atendimento_form.errors}")
             return redirect('agendamento')
@@ -517,19 +517,21 @@ def info_prontuario(request, id):
 def pagarConsultaCard(request, id):
     proprietario = request.user.proprietario
     consulta = Consulta.objects.get(id=id)
+    cartoes = CadCartao.objects.filter(paciente=consulta.paciente)
     if request.method == 'POST':
         pay_form = PagamentoCard(request.POST)
         if pay_form.is_valid():
             pay = pay_form.save(commit=False)
             pay.paciente = consulta.paciente
             pay.consulta = consulta
-            pay.tratamento = 'consulta'
+            pay.tratamento = Tratamento.objects.get(especialidade=consulta.especialidade)
             pay.medico = consulta.medico
             pay.forma_pagamento = 'Cartao'
             pay.status_pagamento = 'Aguardando pagamento'
-
+            pay.save()
             return redirect('consultas')
         else:
+            messages.error(request, f"Pagamento inválido: {pay_form.errors}")
             return redirect('pay_card_prop', consulta.paciente.id)
     else:
-        return render(request, 'pay_card (prop).html', {'proprietario': proprietario})
+        return render(request, 'pay_card (prop).html', {'proprietario': proprietario, 'cartoes':cartoes})
