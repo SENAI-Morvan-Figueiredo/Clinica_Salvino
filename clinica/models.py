@@ -14,14 +14,6 @@ class PlanoConvenio(models.Model):
 
     def __str__(self):
         return self.name
-
-class Tratamento(models.Model):
-    name = models.CharField(max_length=256, unique=True)
-    preco = models.DecimalField(max_digits=6, decimal_places=2)
-    descricao = models.TextField()
-
-    def __str__(self):
-        return self.name
     
 class Especialidade(models.Model):
     nome_especialidade = models.CharField(max_length=256)
@@ -30,6 +22,14 @@ class Especialidade(models.Model):
     def __str__(self):
         return self.nome_especialidade
 
+class Tratamento(models.Model):
+    name = models.CharField(max_length=256, unique=True)
+    especialidade = models.ForeignKey(Especialidade, on_delete=models.CASCADE)
+    preco = models.DecimalField(max_digits=6, decimal_places=2)
+    descricao = models.TextField()
+
+    def __str__(self):
+        return self.name
     
 class BandeiraCartao(models.Model):
     name = models.CharField(max_length=256, unique=True)
