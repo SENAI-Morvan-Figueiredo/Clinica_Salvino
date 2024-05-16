@@ -133,6 +133,7 @@ def addPaciente(request):
 
 def addFuncionario(request):
     proprietario = request.user.proprietario
+    view = False
     if request.method == 'POST':
         tipo = request.POST['tipo_funcionario']
         if tipo == 'recepcionista':
@@ -140,7 +141,8 @@ def addFuncionario(request):
         elif tipo == 'medico':
             return redirect('adicionar_medico')
     else:
-        return render(request, 'add_funcionario.html', {'proprietario': proprietario})
+        show_message = request.session.pop('show_message', False)
+        return render(request, 'add_funcionario.html', {'proprietario': proprietario, 'message_view': view, 'message_view': show_message})
 
 def addRecep(request):
     proprietario = request.user.proprietario
@@ -177,6 +179,7 @@ def addMedico(request):
             new_medico.user = user
             new_medico.save()
             messages.success(request, 'Médico Cadastrado com Sucesso!')
+            request.session['show_message'] = True  
             return redirect('adicionar_funcionarios')
         else:
             messages.error(request, f"Formulário de cadastro inválido: {medico_form.errors}")

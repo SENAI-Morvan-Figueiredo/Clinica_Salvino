@@ -109,7 +109,7 @@
             </div>
             <div class="result">
                 <p class="result-text">
-                    {% if messages %}
+                    {% if messages and request.method == 'POST' %}
                         {% for message in messages %}
                             {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
                                 <div class="alert alert-danger">

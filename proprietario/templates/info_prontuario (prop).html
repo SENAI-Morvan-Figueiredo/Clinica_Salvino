@@ -100,27 +100,7 @@
                 <input type="checkbox" name="Eu não sou um robô" value="Eu não sou um robô"><p class="robot">Não sou
                     robô</p>
             </div>
-            <div class="result">
-                <p class="result-text">
-                    {% if messages %}
-                        {% for message in messages %}
-                            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
-                                <div class="alert alert-danger">
-                                    <strong>Erro!</strong>
-                                    {{ message }}
-                                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
-                                </div>
-                            {% else %}
-                                <div class="alert alert-success">
-                                    <strong>Sucesso!</strong>
-                                    {{ message }}
-                                    <i class="fa-solid fa-circle-check icon-success hidden" style="color: #328146;"></i>
-                                </div>
-                            {% endif %}
-                        {% endfor %}
-                    {% endif %}
-                </p>
-            </div>
+            
             <div class="button-box">
                 <input type="submit" id="back" onclick="voltar()" class="btn-black-white" value="Voltar">
                 <button type="submit" data-button class="btn-purple">Cadastrar</button>

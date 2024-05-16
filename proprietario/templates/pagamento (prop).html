@@ -29,7 +29,7 @@
         </select>
         <div class="result">
             <p class="result-text">
-                {% if messages %}
+                {% if messages and message_view == True}
                     {% for message in messages %}
                         {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
                             <div class="alert alert-danger">
