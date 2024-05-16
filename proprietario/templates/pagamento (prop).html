@@ -19,17 +19,19 @@
 
 {% block content %}
 <section class="dash page bg-darkgray">
-    <h1 class="dash_title">Cadastro de Funcionário</h1>
-    <form class="form func" action="{% url 'adicionar_funcionarios' %}" method="POST">
+    <h1 class="dash_title">Forma de Pagamento</h1>
+    <form class="form func" action="{% url 'pay_prop' consulta.id %}" method="POST">
         {% csrf_token %}
-        <select name="tipo_funcionario" id="register" class="register">
+        <select name="forma_pag" id="register" class="register">
             <option value="" disabled selected>Selecione a forma de pagamento:</option>
-            <option value="medico">Médico</option>
-            <option value="recepcionista">Recepcionista</option>
+            <option value="cartao">Cartão</option>
+            <option value="convenio">Convênio</option>
+            <option value="boleto">Boleto</option>
+            <option value="Pix">Pix</option>
         </select>
         <div class="result">
             <p class="result-text">
-                {% if messages %}
+                {% if messages and message_view == True %}
                     {% for message in messages %}
                         {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
                             <div class="alert alert-danger">

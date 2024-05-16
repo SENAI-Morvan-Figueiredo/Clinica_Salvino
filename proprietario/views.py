@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from clinica.models import BandeiraCartao, Convenio, PlanoConvenio
+from clinica.models import BandeiraCartao, Convenio, PlanoConvenio, Tratamento
 from clinica.forms import CadBandeira, EmpresaConvenio, CadPlano
-from paciente.models import Paciente, Consulta, CadCartao, CadConvenio, AnexoConsulta, Documentos, Prontuario, Pagamento
-from paciente.forms import CadPaciente, AgendaConsulta, FormCartao, FormConvenio, AnexoForm, ProntuarioForm, PagamentoCard
+from paciente.models import Paciente, Consulta, CadCartao, CadConvenio, AnexoConsulta, Documentos, Prontuario
+from paciente.forms import CadPaciente, AgendaConsulta, FormCartao, FormConvenio, AnexoForm, ProntuarioForm, PagamentoCard, PagamentoConv
 from medico.models import Medico, Especialidade
 from medico.forms import CadMedico, CadEspecialidade
 from recept.models import Recepcionista
@@ -123,13 +123,16 @@ def addPaciente(request):
             new_paciente.user = user
             new_paciente.save()
             messages.success(request, 'Paciente Cadastrado com Sucesso!')
+            request.session['show_message'] = True 
             return redirect('adicionar_pacientes')
         else:
             messages.error(request, f"Formulário de cadastro inválido: {paciente_form.errors}")
+            request.session['show_message'] = True 
             return redirect('adicionar_pacientes')
         
     else:
-        return render(request, 'add_paciente (prop).html', {'proprietario': proprietario})
+        show_message = request.session.pop('show_message', False)
+        return render(request, 'add_paciente (prop).html', {'proprietario': proprietario,'message_view': show_message})
 
 def addFuncionario(request):
     proprietario = request.user.proprietario
@@ -140,7 +143,8 @@ def addFuncionario(request):
         elif tipo == 'medico':
             return redirect('adicionar_medico')
     else:
-        return render(request, 'add_funcionario.html', {'proprietario': proprietario})
+        show_message = request.session.pop('show_message', False)
+        return render(request, 'add_funcionario.html', {'proprietario': proprietario,'message_view': show_message})
 
 def addRecep(request):
     proprietario = request.user.proprietario
@@ -156,11 +160,13 @@ def addRecep(request):
             new_recep.user = user
             new_recep.save()
             messages.success(request, 'Recepcionista Cadastrado com Sucesso!')
+            request.session['show_message'] = True 
             return redirect('adicionar_funcionarios')
         else:
             messages.error(request, f"Formulário de cadastro inválido: {recepcionista_form.errors}")
+            request.session['show_message'] = True 
             return redirect('adicionar_funcionarios')     
-    else: 
+    else:
         return render(request, 'add_recepcionista.html', {'proprietario': proprietario})
     
 def addMedico(request):
@@ -177,9 +183,11 @@ def addMedico(request):
             new_medico.user = user
             new_medico.save()
             messages.success(request, 'Médico Cadastrado com Sucesso!')
+            request.session['show_message'] = True  
             return redirect('adicionar_funcionarios')
         else:
             messages.error(request, f"Formulário de cadastro inválido: {medico_form.errors}")
+            request.session['show_message'] = True 
             return redirect('adicionar_funcionarios')
     else: 
         especialidades = Especialidade.objects.all()
@@ -193,12 +201,15 @@ def addEspecialidade(request):
             new_especialidade = esp_form.save(commit=False)
             new_especialidade.save()
             messages.success(request, 'Especialidade Cadastrada com Sucesso!')
+            request.session['show_message'] = True 
             return redirect('adicionar_especialidade')
         else:
             messages.error(request, f"Formulário de cadastro inválido: {esp_form.errors}")
+            request.session['show_message'] = True 
             return redirect('adicionar_especialidade')
     else:
-        return render(request, 'add_especialidade.html', {'proprietario': proprietario})
+        show_message = request.session.pop('show_message', False)
+        return render(request, 'add_especialidade.html', {'proprietario': proprietario, 'message_view': show_message})
 
 def deletePaciente(request, id):
     proprietario = request.user.proprietario
@@ -251,9 +262,11 @@ def marcarConsulta(request):
                 AnexoConsulta.objects.create(consulta=new_atendimento, arquivo=arquivo)
 
             messages.success(request, 'Consulta agendada com Sucesso!')
-            return redirect('agendamento')
+            request.session['show_message'] = True 
+            return redirect('pay_prop', new_atendimento.id)
         else:
             messages.error(request, f"Formulário de agendamento inválido: {atendimento_form.errors}")
+            request.session['show_message'] = True 
             return redirect('agendamento')
     else:
         pacientes = Paciente.objects.all()
@@ -270,6 +283,15 @@ def cancelarConsulta(request, id):
     else:
         return render(request, 'cancelar_consulta (prop).html', {'proprietario': proprietario, 'consulta': consulta})
     
+def cancelarConsultaNoPay(request, id):
+    proprietario = request.user.proprietario
+    consulta = Consulta.objects.get(id=id)
+    if request.method == 'POST':
+        consulta.delete()
+        return redirect('consultas')
+    else:
+        return render(request, 'cancelar_consulta_notPay (prop).html', {'proprietario': proprietario, 'consulta': consulta})
+    
 def mostrarBandeiras(request):
     proprietario = request.user.proprietario
     bandeiras = BandeiraCartao.objects.all()
@@ -285,12 +307,15 @@ def adicionarBandeira(request):
             new_bandeira = bandeira.save(commit=False)
             new_bandeira.save()
             messages.success(request, 'Bandeira cadastrada com Sucesso!')
+            request.session['show_message'] = True 
             return redirect('adicionar_bandeira')
         else:
             messages.error(request, f"Cadastro de bandeira inválido: {bandeira.errors}")
+            request.session['show_message'] = True 
             return redirect('adicionar_bandeira')
     else:
-        return render(request, 'add_bandeira_cartao.html', {'proprietario': proprietario})
+        show_message = request.session.pop('show_message', False)
+        return render(request, 'add_bandeira_cartao.html', {'proprietario': proprietario,'message_view': show_message})
     
 def deleteBandeira(request, id):
     proprietario = request.user.proprietario
@@ -323,13 +348,16 @@ def adicionarCartoes(request,id):
             new_card.paciente = paciente
             new_card.save()
             messages.success(request, 'Cartão cadastrado com Sucesso!')
+            request.session['show_message'] = True 
             return redirect('adicionar_cartoes', id)
         else:
             messages.error(request, f"Formulário de cartão inválido: {card_form.errors}")
+            request.session['show_message'] = True 
             return redirect('adicionar_cartoes', id)
     else:
+        show_message = request.session.pop('show_message', False)
         bandeiras = BandeiraCartao.objects.all()
-        return render(request, 'add_cartao (prop).html', {'proprietario': proprietario, 'bandeiras': bandeiras})
+        return render(request, 'add_cartao (prop).html', {'proprietario': proprietario, 'bandeiras': bandeiras,'message_view': show_message})
     
 def deleteCartao(request, id):
     proprietario = request.user.proprietario
@@ -355,12 +383,15 @@ def addFornecedorConvenio(request):
             new_fornecedor = fornecedor.save(commit=False)
             new_fornecedor.save()
             messages.success(request, 'Fornecedor de convênio cadastrado com Sucesso!')
+            request.session['show_message'] = True 
             return redirect('adicionar_convenio')
         else:
             messages.error(request, f"Cadastro de fornecerdor de convênio inválido: {fornecedor.errors}")
+            request.session['show_message'] = True 
             return redirect('adicionar_convenio')
     else:
-        return render(request, 'add_convenio_empresa.html', {'proprietario': proprietario})
+        show_message = request.session.pop('show_message', False)
+        return render(request, 'add_convenio_empresa.html', {'proprietario': proprietario,'message_view': show_message})
     
 def deleteConvenio(request, id):
     proprietario = request.user.proprietario
@@ -391,12 +422,15 @@ def addPlano(request, id):
             new_plano.convenio = convenio
             new_plano.save()
             messages.success(request, 'Plano cadastrado com Sucesso!')
+            request.session['show_message'] = True 
             return redirect('adicionar_plano', id)
         else:
             messages.error(request, f"Formulário de plano inválido: {plano_form.errors}")
+            request.session['show_message'] = True 
             return redirect('adicionar_plano', id)
     else:
-        return render(request, 'add_plano.html', {'proprietario': proprietario, 'convenio': convenio})
+        show_message = request.session.pop('show_message', False)
+        return render(request, 'add_plano.html', {'proprietario': proprietario, 'convenio': convenio,'message_view': show_message})
 
 def deletePlano(request, id):
     proprietario = request.user.proprietario
@@ -419,14 +453,17 @@ def cadConvPaciente(request,id):
             new_conv.paciente = paciente
             new_conv.save()
             messages.success(request, 'Convênio do paciente cadastrado com Sucesso!')
+            request.session['show_message'] = True 
             return redirect('adicionar_convenio_paciente', id)
         else:
             messages.error(request, f"Formulário de cartão inválido: {conv_form.errors}")
+            request.session['show_message'] = True 
             return redirect('adicionar_convenio_paciente', id)
     else:
         convenios = Convenio.objects.all()
         planos = PlanoConvenio.objects.all()
-        return render(request, 'add_paciente_convenio (prop).html', {'proprietario': proprietario, 'convenios': convenios, 'planos':planos})
+        show_message = request.session.pop('show_message', False)
+        return render(request, 'add_paciente_convenio (prop).html', {'proprietario': proprietario, 'convenios': convenios, 'planos':planos,'message_view': show_message})
     
 def delPacienteConv(request, id):
     proprietario = request.user.proprietario
@@ -514,22 +551,59 @@ def info_prontuario(request, id):
     return render(request, 'info_prontuario (prop).html', {'proprietario': proprietario, 'paciente': paciente, 'prontuario': prontuario})
 
 # Sistema de pagamento
+def pagarConsulta(request, id):
+    proprietario = request.user.proprietario
+    consulta = Consulta.objects.get(id=id)
+    if request.method == 'POST':
+        select = request.POST.get('forma_pag')
+        print(consulta.id)
+        if select == 'cartao':
+            return redirect('pay_card_prop', consulta.id)
+        elif select == 'convenio':
+            return redirect('pay_conv_prop', consulta.id)
+    else:
+        return render(request, 'pagamento (prop).html', {'proprietario': proprietario, 'consulta': consulta})
+
 def pagarConsultaCard(request, id):
     proprietario = request.user.proprietario
     consulta = Consulta.objects.get(id=id)
+    cartoes = CadCartao.objects.filter(paciente=consulta.paciente)
     if request.method == 'POST':
         pay_form = PagamentoCard(request.POST)
         if pay_form.is_valid():
             pay = pay_form.save(commit=False)
             pay.paciente = consulta.paciente
             pay.consulta = consulta
-            pay.tratamento = 'consulta'
+            pay.tratamento = Tratamento.objects.get(especialidade=consulta.especialidade)
             pay.medico = consulta.medico
             pay.forma_pagamento = 'Cartao'
             pay.status_pagamento = 'Aguardando pagamento'
-
+            pay.save()
+            request.session['show_message'] = True 
             return redirect('consultas')
         else:
             return redirect('pay_card_prop', consulta.paciente.id)
     else:
-        return render(request, 'pay_card (prop).html', {'proprietario': proprietario})
+        return render(request, 'pay_card (prop).html', {'proprietario': proprietario, 'consulta': consulta, 'cartoes':cartoes})
+    
+
+def pagarConsultaConv(request, id):
+    proprietario = request.user.proprietario
+    consulta = Consulta.objects.get(id=id)
+    cartoes = CadCartao.objects.filter(paciente=consulta.paciente)
+    if request.method == 'POST':
+        pay_form = PagamentoConv(request.POST)
+        if pay_form.is_valid():
+            pay = pay_form.save(commit=False)
+            pay.paciente = consulta.paciente
+            pay.consulta = consulta
+            pay.tratamento = Tratamento.objects.get(especialidade=consulta.especialidade)
+            pay.medico = consulta.medico
+            pay.forma_pagamento = 'Convenio'
+            pay.status_pagamento = 'Aguardando pagamento'
+            pay.save()
+            return redirect('consultas')
+        else:
+            return redirect('pay_card_prop', consulta.paciente.id)
+    else:
+        return render(request, 'pay_card (prop).html', {'proprietario': proprietario, 'consulta': consulta, 'cartoes': cartoes})

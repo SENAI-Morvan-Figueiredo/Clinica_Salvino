@@ -102,7 +102,7 @@
             </div>
             <div class="result">
                 <p class="result-text">
-                    {% if messages %}
+                    {% if message_view and messages %}
                         {% for message in messages %}
                             {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
                                 <div class="alert alert-danger">

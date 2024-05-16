@@ -42,4 +42,10 @@ class PagamentoCard(forms.ModelForm):
 
     class Meta:
         model = Pagamento
-        fields = ('forma_pagamento', 'cartao')
+        fields = ('cartao',)
+
+class PagamentoConv(forms.ModelForm):
+
+    class Meta:
+        model = Pagamento
+        fields = ('convenio',)
