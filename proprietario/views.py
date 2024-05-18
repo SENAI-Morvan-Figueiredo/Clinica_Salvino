@@ -254,19 +254,22 @@ def marcarConsulta(request):
         atendimento_form = AgendaConsulta(request.POST, request.FILES)
         anexo_form = AnexoForm(request.POST, request.FILES)
         if atendimento_form.is_valid() and anexo_form.is_valid():
-            new_atendimento = atendimento_form.save(commit=False)
-            new_atendimento.status_consulta = 'Agendada'
-            new_atendimento.save()
+            atendimento_data = atendimento_form.cleaned_data
+            anexo_files = [arquivo.name for arquivo in request.FILES.getlist('arquivos')]
+            serializable_atendimento_data = {
+                'paciente_id': atendimento_data['paciente'].id,
+                'tipo_consulta': atendimento_data['tipo_consulta'],
+                'medico_id': atendimento_data['medico'].id,
+                'data': atendimento_data['data'].isoformat(),
+                'hora': atendimento_data['hora'].isoformat(),
+                'especialidade_id': atendimento_data['especialidade'].id,
+            }
 
-            for arquivo in request.FILES.getlist('arquivos'):
-                AnexoConsulta.objects.create(consulta=new_atendimento, arquivo=arquivo)
+            request.session['atendimento_data'] = serializable_atendimento_data
+            request.session['anexo_files'] = anexo_files
 
-            messages.success(request, 'Consulta agendada com Sucesso!')
-            request.session['show_message'] = True 
-            return redirect('pay_prop', new_atendimento.id)
+            return redirect('pay_prop')
         else:
-            messages.error(request, f"Formulário de agendamento inválido: {atendimento_form.errors}")
-            request.session['show_message'] = True 
             return redirect('agendamento')
     else:
         pacientes = Paciente.objects.all()
@@ -282,15 +285,6 @@ def cancelarConsulta(request, id):
         return redirect('consultas')
     else:
         return render(request, 'cancelar_consulta (prop).html', {'proprietario': proprietario, 'consulta': consulta})
-    
-def cancelarConsultaNoPay(request, id):
-    proprietario = request.user.proprietario
-    consulta = Consulta.objects.get(id=id)
-    if request.method == 'POST':
-        consulta.delete()
-        return redirect('consultas')
-    else:
-        return render(request, 'cancelar_consulta_notPay (prop).html', {'proprietario': proprietario, 'consulta': consulta})
     
 def mostrarBandeiras(request):
     proprietario = request.user.proprietario
@@ -551,59 +545,114 @@ def info_prontuario(request, id):
     return render(request, 'info_prontuario (prop).html', {'proprietario': proprietario, 'paciente': paciente, 'prontuario': prontuario})
 
 # Sistema de pagamento
-def pagarConsulta(request, id):
+def pagarConsulta(request):
     proprietario = request.user.proprietario
-    consulta = Consulta.objects.get(id=id)
+    atendimento_data = request.session.get('atendimento_data')
+    if not atendimento_data:
+        messages.error(request, 'Dados da consulta não encontrados. Por favor, tente agendar novamente.')
+        return redirect('agendamento')
+    
     if request.method == 'POST':
         select = request.POST.get('forma_pag')
-        print(consulta.id)
         if select == 'cartao':
-            return redirect('pay_card_prop', consulta.id)
+            return redirect('pay_card_prop')
         elif select == 'convenio':
-            return redirect('pay_conv_prop', consulta.id)
+            return redirect('pay_conv_prop')
     else:
-        return render(request, 'pagamento (prop).html', {'proprietario': proprietario, 'consulta': consulta})
+        return render(request, 'pagamento (prop).html', {'proprietario': proprietario, 'consulta': atendimento_data})
 
-def pagarConsultaCard(request, id):
+def pagarConsultaCard(request):
     proprietario = request.user.proprietario
-    consulta = Consulta.objects.get(id=id)
-    cartoes = CadCartao.objects.filter(paciente=consulta.paciente)
+    atendimento_data = request.session.get('atendimento_data')
+    anexo_files = request.session.get('anexo_files')
+    cartoes = CadCartao.objects.filter(paciente = Paciente.objects.get(id=atendimento_data['paciente_id']))
+    
+    if not atendimento_data:
+        messages.error(request, 'Dados da consulta não encontrados. Por favor, tente agendar novamente.')
+        return redirect('agendamento')
+    
     if request.method == 'POST':
         pay_form = PagamentoCard(request.POST)
         if pay_form.is_valid():
             pay = pay_form.save(commit=False)
-            pay.paciente = consulta.paciente
-            pay.consulta = consulta
-            pay.tratamento = Tratamento.objects.get(especialidade=consulta.especialidade)
-            pay.medico = consulta.medico
+            pay.paciente = Paciente.objects.get(id=atendimento_data['paciente_id'])
+            pay.medico = Medico.objects.get(id=atendimento_data['medico_id']) 
             pay.forma_pagamento = 'Cartao'
             pay.status_pagamento = 'Aguardando pagamento'
+            
+            # Criar a consulta após a confirmação do pagamento
+            new_atendimento = Consulta(
+                paciente=Paciente.objects.get(id=atendimento_data['paciente_id']),
+                tipo_consulta=atendimento_data['tipo_consulta'],
+                medico= Medico.objects.get(id=atendimento_data['medico_id']),
+                data=atendimento_data['data'],
+                hora=atendimento_data['hora'],
+                especialidade=Especialidade.objects.get(id=atendimento_data['especialidade_id']),
+                status_consulta='Agendada'
+            )
+            pay.tratamento = Tratamento.objects.get(especialidade=new_atendimento.especialidade)
+            pay.consulta = new_atendimento
+            new_atendimento.save()
             pay.save()
-            request.session['show_message'] = True 
+            
+            for arquivo_name in anexo_files:
+                arquivo = request.FILES.get(arquivo_name)
+                if arquivo:
+                    AnexoConsulta.objects.create(consulta=new_atendimento, arquivo=arquivo)
+            
+            messages.success(request, 'Consulta agendada com Sucesso!')
             return redirect('consultas')
         else:
-            return redirect('pay_card_prop', consulta.paciente.id)
+            messages.error(request, 'Erro no pagamento.')
+            return redirect('pay_card_prop')
     else:
-        return render(request, 'pay_card (prop).html', {'proprietario': proprietario, 'consulta': consulta, 'cartoes':cartoes})
+        return render(request, 'pay_card (prop).html', {'proprietario': proprietario, 'consulta': atendimento_data, 'cartoes': cartoes})
     
 
-def pagarConsultaConv(request, id):
+def pagarConsultaConv(request):
     proprietario = request.user.proprietario
-    consulta = Consulta.objects.get(id=id)
-    cartoes = CadCartao.objects.filter(paciente=consulta.paciente)
+    atendimento_data = request.session.get('atendimento_data')
+    anexo_files = request.session.get('anexo_files')
+    convenios = CadConvenio.objects.filter(paciente = Paciente.objects.get(id=atendimento_data['paciente_id']))
+    
+    if not atendimento_data:
+        messages.error(request, 'Dados da consulta não encontrados. Por favor, tente agendar novamente.')
+        return redirect('agendamento')
+    
     if request.method == 'POST':
         pay_form = PagamentoConv(request.POST)
         if pay_form.is_valid():
             pay = pay_form.save(commit=False)
-            pay.paciente = consulta.paciente
-            pay.consulta = consulta
-            pay.tratamento = Tratamento.objects.get(especialidade=consulta.especialidade)
-            pay.medico = consulta.medico
+            pay.paciente = Paciente.objects.get(id=atendimento_data['paciente_id'])
+            pay.medico = Medico.objects.get(id=atendimento_data['medico_id']) 
             pay.forma_pagamento = 'Convenio'
             pay.status_pagamento = 'Aguardando pagamento'
+            
+            # Criar a consulta após a confirmação do pagamento
+            new_atendimento = Consulta(
+                paciente=Paciente.objects.get(id=atendimento_data['paciente_id']),
+                tipo_consulta=atendimento_data['tipo_consulta'],
+                medico= Medico.objects.get(id=atendimento_data['medico_id']),
+                data=atendimento_data['data'],
+                hora=atendimento_data['hora'],
+                especialidade=Especialidade.objects.get(id=atendimento_data['especialidade_id']),
+                status_consulta='Agendada'
+            )
+            pay.tratamento = Tratamento.objects.get(especialidade=new_atendimento.especialidade)
+            pay.consulta = new_atendimento
+            new_atendimento.save()
             pay.save()
+            
+            for arquivo_name in anexo_files:
+                arquivo = request.FILES.get(arquivo_name)
+                if arquivo:
+                    AnexoConsulta.objects.create(consulta=new_atendimento, arquivo=arquivo)
+            
+            messages.success(request, 'Consulta agendada com Sucesso!')
             return redirect('consultas')
         else:
-            return redirect('pay_card_prop', consulta.paciente.id)
+            messages.error(request, 'Erro no pagamento.')
+            return redirect('pay_conv_prop')
     else:
-        return render(request, 'pay_card (prop).html', {'proprietario': proprietario, 'consulta': consulta, 'cartoes': cartoes})
+        return render(request, 'pay_conv (prop).html', {'proprietario': proprietario, 'consulta': atendimento_data, 'convenios': convenios})
+    

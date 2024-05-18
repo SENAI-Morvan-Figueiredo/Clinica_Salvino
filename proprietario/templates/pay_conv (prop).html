@@ -30,7 +30,7 @@
         </select>
         
         <div class="button-box">
-            <a id="back" href="{% url 'cancelar_consulta_notPay' consulta.id %}" class="btn-black-white">Cancelar</a>
+            <input type="submit" id="back" onclick="voltar()" class="btn-black-white" value="Cancelar">
             <button type="submit" data-button class="btn-purple">Salvar</button>
         </div>
     </form>
@@ -40,6 +40,5 @@
 
 {% block script %}
     <script src="https://kit.fontawesome.com/fc74a91a63.js" crossorigin="anonymous"></script>
-    <script src="{% static 'js/select_register.js' %}"></script>
     <script src="{% static 'js/button.js' %}"></script>
 {% endblock script %}

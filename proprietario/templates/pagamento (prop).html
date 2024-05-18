@@ -20,7 +20,7 @@
 {% block content %}
 <section class="dash page bg-darkgray">
     <h1 class="dash_title">Forma de Pagamento</h1>
-    <form class="form func" action="{% url 'pay_prop' consulta.id %}" method="POST">
+    <form class="form func" action="{% url 'pay_prop' %}" method="POST">
         {% csrf_token %}
         <select name="forma_pag" id="register" class="register">
             <option value="" disabled selected>Selecione a forma de pagamento:</option>
