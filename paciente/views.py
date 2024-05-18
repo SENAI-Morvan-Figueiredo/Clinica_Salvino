@@ -41,7 +41,7 @@ def pagamento(request):
     paciente = request.user.paciente
     return render(request, 'pagamento.html', {'paciente': paciente}) 
 
-def agendamento(request):
+def agendamento_paciente(request):
     paciente = request.user.paciente
     return render(request, 'agendamento(paciente).html', {'paciente': paciente}) 
 
