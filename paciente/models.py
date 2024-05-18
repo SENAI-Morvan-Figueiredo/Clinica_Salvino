@@ -188,6 +188,16 @@ class CadCartao(models.Model):
     class Meta:
         verbose_name_plural = 'CadCartao'
 
+class Boleto(models.Model):
+    banco = models.CharField(max_length=45)
+    cod_barras = models.CharField(max_length=13)
+
+    def clean(self):
+        self.cod_barras = ''.join(random.choices(string.digits, k=13))
+        self.banco = 'Bradesco'
+
+    def __str__(self):
+        return f'{self.banco}: {self.cod_barras}'
 
 class Pagamento(models.Model):
     paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)
@@ -199,7 +209,7 @@ class Pagamento(models.Model):
     convenio = models.ForeignKey(CadConvenio, blank=True, null=True, on_delete=models.SET_NULL)
     cartao = models.ForeignKey(CadCartao, blank=True, null=True, on_delete=models.SET_NULL)
     pix = models.ForeignKey(Pix, blank=True, null=True, on_delete=models.SET_NULL)
-    boleto = models.FileField(upload_to='boletos/', blank=True, null=True)
+    boleto = models.OneToOneField(Boleto, blank=True, null=True, on_delete=models.CASCADE)
     cod_barras =models.CharField(max_length=44, blank=True,null=True)
     status_pagamento = models.CharField(max_length=256, choices=(('Pago', 'Pago'), ('Aguardando pagamento', 'Aguardando pagamento'), ('Cancelado', 'Cancelado'), ('Aguardando reembolso', 'Aguardando reembolso'), ('Reembolsado', 'Reembolsado')))
     data_pagamento = models.CharField(max_length=256,blank=True, null=True)
