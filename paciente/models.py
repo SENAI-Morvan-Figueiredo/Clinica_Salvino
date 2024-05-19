@@ -193,8 +193,14 @@ class Boleto(models.Model):
     cod_barras = models.CharField(max_length=13)
 
     def clean(self):
-        self.cod_barras = ''.join(random.choices(string.digits, k=13))
-        self.banco = 'Bradesco'
+        if not self.cod_barras:
+            self.cod_barras = ''.join(random.choices(string.digits, k=13))
+        if not self.banco:
+            self.banco = 'Bradesco'
+
+    def save(self, *args, **kwargs):
+        self.clean()  # Ensure clean is called to set the fields
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f'{self.banco}: {self.cod_barras}'

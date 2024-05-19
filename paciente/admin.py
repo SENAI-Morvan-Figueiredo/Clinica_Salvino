@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Paciente, Prontuario,Documentos, Consulta, CadCartao, CadConvenio, Pagamento
+from .models import Paciente, Prontuario,Documentos, Consulta, CadCartao, CadConvenio, Pagamento, Boleto
 
 
 # Register your models here.
@@ -10,3 +10,5 @@ admin.site.register(Consulta)
 admin.site.register(CadConvenio)
 admin.site.register(CadCartao)
 admin.site.register(Pagamento)
+admin.site.register(Boleto)
+

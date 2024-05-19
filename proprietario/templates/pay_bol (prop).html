@@ -19,8 +19,9 @@
 
 {% block content %}
 <section class="dash page bg-darkgray">
-    <h1 class="dash_title">Pagamento através de Convênio</h1>
-    <p>Código de Barras {{ boleto.num_boleto }}</p>
+    <h1 class="dash_title">Pagamento através de Boleto</h1>
+    <p>Banco: {{ boleto.banco }}</p>
+    <p>Código de Barras: {{ boleto.cod_barras }}</p>
 </section>
 {% endblock content %}
 

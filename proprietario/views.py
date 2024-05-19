@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from clinica.models import BandeiraCartao, Convenio, PlanoConvenio, Tratamento
 from clinica.forms import CadBandeira, EmpresaConvenio, CadPlano
@@ -668,37 +668,47 @@ def pagarConsultaBol(request):
         messages.error(request, 'Dados da consulta não encontrados. Por favor, tente agendar novamente.')
     
         # Criar a consulta após a confirmação do pagamento
-    new_atendimento = Consulta(
-        paciente=Paciente.objects.get(id=atendimento_data['paciente_id']),
-        tipo_consulta=atendimento_data['tipo_consulta'],
-        medico= Medico.objects.get(id=atendimento_data['medico_id']),
-        data=atendimento_data['data'],
-        hora=atendimento_data['hora'],
-        especialidade=Especialidade.objects.get(id=atendimento_data['especialidade_id']),
-        status_consulta='Agendada'
-    )
+    consulta_existente = Consulta.objects.filter(
+            paciente=Paciente.objects.get(id=atendimento_data['paciente_id']),
+            tipo_consulta=atendimento_data['tipo_consulta'],
+            medico=Medico.objects.get(id=atendimento_data['medico_id']),
+            data=atendimento_data['data'],
+            hora=atendimento_data['hora'],
+            especialidade=Especialidade.objects.get(id=atendimento_data['especialidade_id']),
+            status_consulta='Agendada'
+        ).first()
+    print(consulta_existente)
+    if consulta_existente:
+        pagamento_existente = Pagamento.objects.get(consulta=consulta_existente)
+        return render(request, 'pay_bol (prop).html', {'proprietario': proprietario, 'consulta': consulta_existente, 'boleto': pagamento_existente.boleto}) 
+    else:
+        new_atendimento = Consulta.objects.create(
+            paciente=Paciente.objects.get(id=atendimento_data['paciente_id']),
+            tipo_consulta=atendimento_data['tipo_consulta'],
+            medico=Medico.objects.get(id=atendimento_data['medico_id']),
+            data=atendimento_data['data'],
+            hora=atendimento_data['hora'],
+            especialidade=Especialidade.objects.get(id=atendimento_data['especialidade_id']),
+            status_consulta='Agendada'
+        )
+        bol = Boleto.objects.create()
+        bol.save()
+        pay = Pagamento.objects.create(
+            paciente=Paciente.objects.get(id=atendimento_data['paciente_id']),
+            medico=Medico.objects.get(id=atendimento_data['medico_id']),
+            boleto=bol,
+            forma_pagamento='Convenio',
+            tratamento=Tratamento.objects.get(especialidade=new_atendimento.especialidade),
+            consulta=new_atendimento,
+            status_pagamento='Aguardando pagamento',
+            data_emissao=date.today()
+        )
+        pay.save()
 
-    new_atendimento.save()
-    bol = Boleto.objects.create()
-    bol.save()
+        for arquivo_name in anexo_files:
+            arquivo = request.FILES.get(arquivo_name)
+            if arquivo:
+                AnexoConsulta.objects.create(consulta=new_atendimento, arquivo=arquivo)
 
-    pay = Pagamento.objects.create(
-    paciente = Paciente.objects.get(id=atendimento_data['paciente_id']),
-    medico = Medico.objects.get(id=atendimento_data['medico_id']),
-    boleto = bol,
-    forma_pagamento = 'Convenio',
-    tratamento = Tratamento.objects.get(especialidade=new_atendimento.especialidade),
-    consulta = new_atendimento,
-    status_pagamento = 'Aguardando pagamento',
-    data_emissao = date.today()
-    ) 
-    
-    pay.save()
-    
-    for arquivo_name in anexo_files:
-        arquivo = request.FILES.get(arquivo_name)
-        if arquivo:
-            AnexoConsulta.objects.create(consulta=new_atendimento, arquivo=arquivo)
-    
-    messages.success(request, 'Consulta agendada com Sucesso!')
-    return render(request, 'pay_bol (prop).html', {'proprietario': proprietario, 'consulta': atendimento_data, 'boleto': bol})
+        messages.success(request, 'Consulta agendada com Sucesso!')
+        return render(request, 'pay_bol (prop).html', {'proprietario': proprietario, 'consulta': atendimento_data, 'boleto': bol})
