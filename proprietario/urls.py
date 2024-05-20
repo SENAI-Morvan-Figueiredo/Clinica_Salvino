@@ -1,5 +1,5 @@
 from django.urls import path
-from proprietario.views import proprietyBoard, contaProprietario, mostrarPacientes, mostrarFuncionarios, dadosFuncionario, deleteFuncionario, dadosPaciente, deletePaciente, addFuncionario, addPaciente, addRecep, addMedico, mostrarEspecialidades, dadosEspecialidade, addEspecialidade, deleteEspecialidade, marcarConsulta, mostrarConsultas, cancelarConsulta, adicionarBandeira, deleteBandeira, mostrarBandeiras, mostrarCartoes, adicionarCartoes, deleteCartao, addFornecedorConvenio, mostrarConvenios, deleteConvenio, mostrarPlano, addPlano, deletePlano, mostrarPacienteConvenio, cadConvPaciente, delPacienteConv, mostrarFichas, abrirFicha, document_list, init_prontuario, info_prontuario, pagarConsulta, pagarConsultaCard, pagarConsultaConv, pagarConsultaBol
+from proprietario.views import proprietyBoard, contaProprietario, mostrarPacientes, mostrarFuncionarios, dadosFuncionario, deleteFuncionario, dadosPaciente, deletePaciente, addFuncionario, addPaciente, addRecep, addMedico, mostrarEspecialidades, dadosEspecialidade, addEspecialidade, deleteEspecialidade, marcarConsulta, mostrarConsultas, cancelarConsulta, adicionarBandeira, deleteBandeira, mostrarBandeiras, mostrarCartoes, adicionarCartoes, deleteCartao, addFornecedorConvenio, mostrarConvenios, deleteConvenio, mostrarPlano, addPlano, deletePlano, mostrarPacienteConvenio, cadConvPaciente, delPacienteConv, mostrarFichas, abrirFicha, document_list, init_prontuario, info_prontuario, pagarConsulta, pagarConsultaCard, pagarConsultaConv, pagarConsultaBol, addTratamento, mostrarTratamentos, dadosTratamento
 
 urlpatterns = [
     path('', proprietyBoard, name='proprietario_dash'),
@@ -27,6 +27,10 @@ urlpatterns = [
     path('especialidades/add', addEspecialidade, name='adicionar_especialidade'),
     path('especialidade/<int:id>/', dadosEspecialidade, name='especialidade'),
     path('especialidade/<int:id>/delete/', deleteEspecialidade, name='delete_especialidade'),
+    path('tratamentos', mostrarTratamentos, name='tratamentos'),
+    path('tratamentos/add', addTratamento, name='adicionar_tratamento'),
+    path('tratamentos/<int:id>/', dadosTratamento, name='tratamento'),
+    path('tratamentos/<int:id>/delete/', deleteEspecialidade, name='delete_tratamento'),
     path('agendamento/', marcarConsulta, name='agendamento'),
     path('consultas', mostrarConsultas, name='consultas'),
     path('consultas/<int:id>/cancelar_consulta/', cancelarConsulta, name='cancelar_consulta'),

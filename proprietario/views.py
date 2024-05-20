@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from clinica.models import BandeiraCartao, Convenio, PlanoConvenio, Tratamento
-from clinica.forms import CadBandeira, EmpresaConvenio, CadPlano
+from clinica.forms import CadBandeira, EmpresaConvenio, CadPlano, CadTratamento
 from paciente.models import Paciente, Consulta, CadCartao, CadConvenio, AnexoConsulta, Documentos, Prontuario, Boleto, Pagamento
 from paciente.forms import CadPaciente, AgendaConsulta, FormCartao, FormConvenio, AnexoForm, ProntuarioForm, PagamentoCard, PagamentoConv
 from medico.models import Medico, Especialidade
@@ -669,15 +669,15 @@ def pagarConsultaBol(request):
     
         # Criar a consulta após a confirmação do pagamento
     consulta_existente = Consulta.objects.filter(
-            paciente=Paciente.objects.get(id=atendimento_data['paciente_id']),
-            tipo_consulta=atendimento_data['tipo_consulta'],
-            medico=Medico.objects.get(id=atendimento_data['medico_id']),
-            data=atendimento_data['data'],
-            hora=atendimento_data['hora'],
-            especialidade=Especialidade.objects.get(id=atendimento_data['especialidade_id']),
-            status_consulta='Agendada'
-        ).first()
-    print(consulta_existente)
+        paciente=Paciente.objects.get(id=atendimento_data['paciente_id']),
+        tipo_consulta=atendimento_data['tipo_consulta'],
+        medico=Medico.objects.get(id=atendimento_data['medico_id']),
+        data=atendimento_data['data'],
+        hora=atendimento_data['hora'],
+        especialidade=Especialidade.objects.get(id=atendimento_data['especialidade_id']),
+        status_consulta='Agendada'
+    ).first()
+   
     if consulta_existente:
         pagamento_existente = Pagamento.objects.get(consulta=consulta_existente)
         return render(request, 'pay_bol (prop).html', {'proprietario': proprietario, 'consulta': consulta_existente, 'boleto': pagamento_existente.boleto}) 
@@ -712,3 +712,52 @@ def pagarConsultaBol(request):
 
         messages.success(request, 'Consulta agendada com Sucesso!')
         return render(request, 'pay_bol (prop).html', {'proprietario': proprietario, 'consulta': atendimento_data, 'boleto': bol})
+    
+def addTratamento(request):
+    proprietario = request.user.proprietario
+    especialidades = Especialidade.objects.all()
+    if request.method == 'POST':
+        tra_form = CadTratamento(request.POST)
+        if tra_form.is_valid():
+            new_tratamento = tra_form.save(commit=False)
+            new_tratamento.save()
+            messages.success(request, 'Tratamento Cadastrado com Sucesso!')
+            request.session['show_message'] = True 
+            return redirect('adicionar_tratamento')
+        else:
+            messages.error(request, f"Formulário de cadastro inválido: {tra_form.errors}")
+            request.session['show_message'] = True 
+            return redirect('adicionar_tratamento')
+    else:
+        return render(request, 'add_tratamento.html', {'proprietario': proprietario, 'especialidades': especialidades})
+    
+def mostrarTratamentos(request):
+    proprietario = request.user.proprietario
+    tratamentos = Tratamento.objects.all()
+    return render(request, 'tratamentos_list.html', {'proprietario': proprietario, 'tratamentos': tratamentos})
+
+def dadosTratamento(request, id):
+    proprietario = request.user.proprietario
+    tratamento = Tratamento.objects.get(id=id)
+    especialidades = Especialidade.objects.all()
+    if request.method == 'POST':
+        edit_paciente_form = CadTratamento(request.POST, instance=tratamento)
+        if edit_paciente_form.is_valid():
+            edit_paciente_form.save(commit=False)
+            tratamento.save()
+            messages.success(request, 'Dados do tratamento editados com Sucesso!')
+            return redirect('tratamento', id=id)
+        else:
+            messages.error(request, f"Edição inválida: {edit_paciente_form.errors}")
+            return redirect('tratamento', id=id)
+    else:
+        return render(request, 'tratamento_data.html', {'proprietario': proprietario, 'tratamento': tratamento, 'especialidades': especialidades})
+    
+def deleteTratamento(request, id):
+    proprietario = request.user.proprietario
+    tratamento = Tratamento.objects.get(id=id)
+    if request.method == 'POST':
+        tratamento.delete()
+        return redirect('tratamentos')
+    else:
+        return render(request, 'delete_tratamento.html', {'proprietario': proprietario, 'tratamento': tratamento})

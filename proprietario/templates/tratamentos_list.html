@@ -1,0 +1,45 @@
+{% extends 'background_proprietario.html' %}
+{% load static i18n %}
+{% block head_title %}
+    {% trans 'Proprietário - Clínica Salvino' %}
+{% endblock head_title %}
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock extra_head %}
+
+{% block header %}
+    <header class="header bg-yellow">
+        <div class="container">
+            <a href="{% url 'home' %}" class="login">
+                <img class="escalar" src="{% static 'img/Logo Branco 1.png' %}">
+            </a>
+        </div>
+    </header>
+{% endblock header %}
+{% block content %}
+<section class="dash bg-darkgray">
+    <h1 class="dash_title">Tratamentos</h1>
+    <div class="list">
+        <a href="{% url 'adicionar_tratamento' %}" class="btn btn-purple center add">Adicionar Tratamento</a>
+        <div class="cabecalho">
+            <p>Tratamento</p>
+            <p>Informações</p>
+        </div>
+        {% if tratamentos %}
+        {% for tratamento in tratamentos %}
+            <div class="info-user">
+                <p>{{ tratamento.name }}</p>
+                <a href="{% url 'tratamento' tratamento.id %}" class="btn btn-purple center open-btn">Info</a>
+                <a href="{% url 'delete_tratamento' tratamento.id %}"><img class="icon-delete escalar" src="{% static 'img/delete.svg' %}" alt=""></a>
+            </div>
+        {% endfor %}
+        {% else %}
+            <h3 class="aviso">Não há tratamentos cadastrados.</h3> 
+        {% endif %}
+    </div>
+</section>  
+{% endblock content %}
+{% block script %}
+<script src="https://kit.fontawesome.com/fc74a91a63.js" crossorigin="anonymous"></script>
+<script src="{% static 'js/button.js' %}"></script>
+{% endblock script %}
