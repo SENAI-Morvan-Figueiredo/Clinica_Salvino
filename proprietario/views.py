@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from clinica.models import BandeiraCartao, Convenio, PlanoConvenio, Tratamento
-from clinica.forms import CadBandeira, EmpresaConvenio, CadPlano, CadTratamento
+from clinica.models import BandeiraCartao, Convenio, PlanoConvenio, Tratamento, Pix
+from clinica.forms import CadBandeira, EmpresaConvenio, CadPlano, CadTratamento, CadPix
 from paciente.models import Paciente, Consulta, CadCartao, CadConvenio, AnexoConsulta, Documentos, Prontuario, Boleto, Pagamento
 from paciente.forms import CadPaciente, AgendaConsulta, FormCartao, FormConvenio, AnexoForm, ProntuarioForm, PagamentoCard, PagamentoConv
 from medico.models import Medico, Especialidade
@@ -729,7 +729,8 @@ def addTratamento(request):
             request.session['show_message'] = True 
             return redirect('adicionar_tratamento')
     else:
-        return render(request, 'add_tratamento.html', {'proprietario': proprietario, 'especialidades': especialidades})
+        show_message = request.session.pop('show_message', False)
+        return render(request, 'add_tratamento.html', {'proprietario': proprietario, 'especialidades': especialidades,'message_view': show_message})
     
 def mostrarTratamentos(request):
     proprietario = request.user.proprietario
@@ -751,7 +752,8 @@ def dadosTratamento(request, id):
             messages.error(request, f"Edição inválida: {edit_paciente_form.errors}")
             return redirect('tratamento', id=id)
     else:
-        return render(request, 'tratamento_data.html', {'proprietario': proprietario, 'tratamento': tratamento, 'especialidades': especialidades})
+        show_message = request.session.pop('show_message', False)
+        return render(request, 'tratamento_data.html', {'proprietario': proprietario, 'tratamento': tratamento, 'especialidades': especialidades,'message_view': show_message})
     
 def deleteTratamento(request, id):
     proprietario = request.user.proprietario
@@ -761,3 +763,30 @@ def deleteTratamento(request, id):
         return redirect('tratamentos')
     else:
         return render(request, 'delete_tratamento.html', {'proprietario': proprietario, 'tratamento': tratamento})
+    
+def addChave(request):
+    proprietario = request.user.proprietario
+    if request.method == 'POST':
+        pix_form = CadPix(request.POST)
+        if pix_form.is_valid():
+            new_key = pix_form.save(commit=False)
+            new_key.save()
+            messages.success(request, 'Chave Cadastrada com Sucesso!')
+            request.session['show_message'] = True 
+            return redirect('adicionar_pix')
+        else:
+            messages.error(request, f"Formulário de chave pix inválido: {pix_form.errors}")
+            request.session['show_message'] = True 
+            return redirect('adicionar_pix')
+    else:
+        show_message = request.session.pop('show_message', False)
+        return render(request, 'add_chave.html', {'proprietario': proprietario, 'message_view': show_message})
+    
+def deletePix(request, id):
+    proprietario = request.user.proprietario
+    pix = Pix.objects.get(id=id)
+    if request.method == 'POST':
+        pix.delete()
+        return redirect('convenios')
+    else:
+        return render(request, 'delete_convenio.html', {'proprietario': proprietario, 'pix': pix})
