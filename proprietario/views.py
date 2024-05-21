@@ -796,3 +796,6 @@ def deletePix(request, id):
         return redirect('convenios')
     else:
         return render(request, 'delete_convenio.html', {'proprietario': proprietario, 'pix': pix})
+    
+def payPix(request):
+    pass
