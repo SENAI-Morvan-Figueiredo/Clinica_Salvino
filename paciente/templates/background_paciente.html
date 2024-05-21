@@ -45,11 +45,15 @@
                         </li>
     
                         <li>
-                            <a href="{% url 'conta_paciente' %}">Minha conta</a> <img src="{% static 'images/buttons/button_lapis.png' %}" alt="Editar minha conta">
+                            <a class="nav-link white bord-right escalar" href="{% url 'conta_paciente' %}"> Minha conta <img src="{% static 'images/buttons/button_lapis.png' %}" alt="Editar minha conta"></a>
                         </li>
     
                         <li>
-                            Dados do pagamento <img src="{% static 'images/buttons/button_lapis.png' %}" alt="Editar dados de pagamento">
+                            <a class="nav-link white bord-right escalar" href="{% url 'add-cartao-paciente' %}"> Meus cartões <img src="{% static 'images/buttons/button_lapis.png' %}" alt="Editar dados de pagamento"></a>
+                        </li>
+
+                        <li>
+                            <a class="nav-link white bord-right escalar" href="{% url 'add-convenio-paciente' %}"> Meus convenios <img src="{% static 'images/buttons/button_lapis.png' %}" alt="Editar dados de pagamento"> </a>
                         </li>
                     </ul>
                 </div>
@@ -73,11 +77,11 @@
                 <div  class="ul_dash_menu">
                     <ul>
                         <li>
-                            Agendar Consulta
+                            <a class="nav-link white bord-right escalar" href="{% url 'agendamento_paciente'%}">Agendar Consulta</a> 
                         </li>
 
                         <li>
-                            <a href="{% url 'logout' %}">Sair</a>
+                            <a class="nav-link white bord-right escalar" href="{% url 'logout' %}">Sair</a>
                         </li>
                     </ul>
                 </div>
