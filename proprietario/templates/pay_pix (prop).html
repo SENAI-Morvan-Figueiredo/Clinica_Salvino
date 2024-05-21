@@ -19,13 +19,13 @@
 
 {% block content %}
 <section class="dash page bg-darkgray">
-    <h1 class="dash_title">Chave Pix</h1>
+    <h1 class="dash_title">Pagamento através de Pix</h1>
     <form class="form func" action="#" method="POST">
         {% csrf_token %}
-        <select name="cartao" id="register" class="register">
-            <option value="" selected disabled>Selecione a chave pela qual você deseja pagar:</option>
+        <select name="pix" id="register" class="register">
+            <option value="" selected disabled>Selecione o pix que você deseja utilizar:</option>
             {% for chave in pix %}
-                <option value="{{ chave.id }}">{{ chave.nome_proprietario_chave }}: {{ chave.chave }}</option>
+                <option value="{{ chave.id }}">{{ chave.nome_proprietario_pix }}: {{ chave.chave }}</option>
             {% endfor %}
         </select>
        

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Paciente, Consulta, CadCartao, CadConvenio, AnexoConsulta, Prontuario, Pagamento
+from .models import Paciente, Consulta, CadCartao, CadConvenio, AnexoConsulta, Prontuario, Pagamento, Pix
 
 class CadPaciente(forms.ModelForm):
 
@@ -49,3 +49,9 @@ class PagamentoConv(forms.ModelForm):
     class Meta:
         model = Pagamento
         fields = ('convenio',)
+
+class PagamentoPix(forms.ModelForm):
+
+    class Meta:
+        model = Pagamento
+        fields = ('pix',)

@@ -18,27 +18,14 @@
 {% endblock header %}
 
 {% block content %}
-<section class="dash page bg-darkgray">
-    <h1 class="dash_title">Chave Pix</h1>
-    <form class="form func" action="#" method="POST">
-        {% csrf_token %}
-        <select name="cartao" id="register" class="register">
-            <option value="" selected disabled>Selecione a chave pela qual você deseja pagar:</option>
-            {% for chave in pix %}
-                <option value="{{ chave.id }}">{{ chave.nome_proprietario_chave }}: {{ chave.chave }}</option>
-            {% endfor %}
-        </select>
-       
-        <div class="button-box">
-            <input type="submit" id="back" onclick="voltar()" class="btn-black-white" value="Cancelar">
-            <button type="submit" data-button class="btn-purple">Salvar</button>
-        </div>
-    </form>
-    
-</section>
+    <section class="dash bg-darkgray page">
+        <h1 class="dash_title">Chave: {{ pix.nome_proprietario_pix }}</h1>
+        <p>Código da Chave: {{ pix.chave }}</p>
+    </section>
 {% endblock content %}
 
 {% block script %}
     <script src="https://kit.fontawesome.com/fc74a91a63.js" crossorigin="anonymous"></script>
+    <script src="{% static 'js/formValidation.js' %}"></script>
     <script src="{% static 'js/button.js' %}"></script>
 {% endblock script %}

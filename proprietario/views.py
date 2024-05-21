@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from clinica.models import BandeiraCartao, Convenio, PlanoConvenio, Tratamento, Pix
 from clinica.forms import CadBandeira, EmpresaConvenio, CadPlano, CadTratamento, CadPix
 from paciente.models import Paciente, Consulta, CadCartao, CadConvenio, AnexoConsulta, Documentos, Prontuario, Boleto, Pagamento
-from paciente.forms import CadPaciente, AgendaConsulta, FormCartao, FormConvenio, AnexoForm, ProntuarioForm, PagamentoCard, PagamentoConv
+from paciente.forms import CadPaciente, AgendaConsulta, FormCartao, FormConvenio, AnexoForm, ProntuarioForm, PagamentoCard, PagamentoConv, PagamentoPix
 from medico.models import Medico, Especialidade
 from medico.forms import CadMedico, CadEspecialidade
 from recept.models import Recepcionista
@@ -560,6 +560,8 @@ def pagarConsulta(request):
             return redirect('pay_conv_prop')
         elif select == 'boleto':
             return redirect('pay_bol_prop')
+        elif select == 'pix':
+            return redirect('pay_pix_prop')
     else:
         return render(request, 'pagamento (prop).html', {'proprietario': proprietario, 'consulta': atendimento_data})
 
@@ -798,4 +800,54 @@ def deletePix(request, id):
         return render(request, 'delete_convenio.html', {'proprietario': proprietario, 'pix': pix})
     
 def payPix(request):
-    pass
+    proprietario = request.user.proprietario
+    atendimento_data = request.session.get('atendimento_data')
+    anexo_files = request.session.get('anexo_files')
+    pix = Pix.objects.all()
+
+    if not atendimento_data:
+        messages.error(request, 'Dados da consulta não encontrados. Por favor, tente agendar novamente.')
+        return redirect('agendamento')
+    
+    if request.method == 'POST':
+        pay_form = PagamentoPix(request.POST)
+        if pay_form.is_valid():
+            pay = pay_form.save(commit=False)
+            pay.paciente = Paciente.objects.get(id=atendimento_data['paciente_id'])
+            pay.medico = Medico.objects.get(id=atendimento_data['medico_id']) 
+            pay.forma_pagamento = 'Pix'
+            pay.status_pagamento = 'Aguardando pagamento'
+            
+            # Criar a consulta após a confirmação do pagamento
+            new_atendimento = Consulta(
+                paciente=Paciente.objects.get(id=atendimento_data['paciente_id']),
+                tipo_consulta=atendimento_data['tipo_consulta'],
+                medico= Medico.objects.get(id=atendimento_data['medico_id']),
+                data=atendimento_data['data'],
+                hora=atendimento_data['hora'],
+                especialidade=Especialidade.objects.get(id=atendimento_data['especialidade_id']),
+                status_consulta='Agendada'
+            )
+            pay.tratamento = Tratamento.objects.get(especialidade=new_atendimento.especialidade)
+            pay.consulta = new_atendimento
+            new_atendimento.save()
+            pay.save()
+            
+            for arquivo_name in anexo_files:
+                arquivo = request.FILES.get(arquivo_name)
+                if arquivo:
+                    AnexoConsulta.objects.create(consulta=new_atendimento, arquivo=arquivo)
+            
+            messages.success(request, 'Consulta agendada com Sucesso!')
+            return redirect('pix_prop', pay.pix.id)
+        else:
+            messages.error(request, 'Erro no pagamento.')
+            return redirect('pay_pix_prop')
+    else:
+        return render(request, 'pay_pix (prop).html', {'proprietario': proprietario, 'consulta': atendimento_data, 'pix': pix})
+
+def chavePix (request, id):
+    proprietario = request.user.proprietario
+    pix = Pix.objects.get(id=id)
+
+    return render(request, 'chave.html', {'proprietario': proprietario, 'pix': pix})
