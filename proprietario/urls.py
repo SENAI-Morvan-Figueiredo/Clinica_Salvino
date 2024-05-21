@@ -1,5 +1,5 @@
 from django.urls import path
-from proprietario.views import proprietyBoard, contaProprietario, mostrarPacientes, mostrarFuncionarios, dadosFuncionario, deleteFuncionario, dadosPaciente, deletePaciente, addFuncionario, addPaciente, addRecep, addMedico, mostrarEspecialidades, dadosEspecialidade, addEspecialidade, deleteEspecialidade, marcarConsulta, mostrarConsultas, cancelarConsulta, adicionarBandeira, deleteBandeira, mostrarBandeiras, mostrarCartoes, adicionarCartoes, deleteCartao, addFornecedorConvenio, mostrarConvenios, deleteConvenio, mostrarPlano, addPlano, deletePlano, mostrarPacienteConvenio, cadConvPaciente, delPacienteConv, mostrarFichas, abrirFicha, document_list, init_prontuario, info_prontuario, pagarConsulta, pagarConsultaCard, pagarConsultaConv, pagarConsultaBol, addTratamento, mostrarTratamentos, dadosTratamento
+from proprietario.views import proprietyBoard, contaProprietario, mostrarPacientes, mostrarFuncionarios, dadosFuncionario, deleteFuncionario, dadosPaciente, deletePaciente, addFuncionario, addPaciente, addRecep, addMedico, mostrarEspecialidades, dadosEspecialidade, addEspecialidade, deleteEspecialidade, marcarConsulta, mostrarConsultas, cancelarConsulta, adicionarBandeira, deleteBandeira, mostrarBandeiras, mostrarCartoes, adicionarCartoes, deleteCartao, addFornecedorConvenio, mostrarConvenios, deleteConvenio, mostrarPlano, addPlano, deletePlano, mostrarPacienteConvenio, cadConvPaciente, delPacienteConv, mostrarFichas, abrirFicha, document_list, init_prontuario, info_prontuario, pagarConsulta, pagarConsultaCard, pagarConsultaConv, pagarConsultaBol, addTratamento, mostrarTratamentos, dadosTratamento, addChave, deletePix, mostrarPix
 
 urlpatterns = [
     path('', proprietyBoard, name='proprietario_dash'),
@@ -37,9 +37,9 @@ urlpatterns = [
     path('bandeiras/', mostrarBandeiras, name='bandeiras'),
     path('bandeiras/add', adicionarBandeira, name='adicionar_bandeira'),
     path('bandeira/<int:id>/delete/', deleteBandeira, name='deletar_bandeira'),
-    path('pix/', mostrarBandeiras, name='pix'),
-    path('pix/add', adicionarBandeira, name='adicionar_pix'),
-    path('pix/<int:id>/delete/', deleteBandeira, name='deletar_pix'),
+    path('pix/', mostrarPix, name='pix'),
+    path('pix/add', addChave, name='adicionar_chave'),
+    path('pix/<int:id>/delete/', deletePix, name='deletar_chave'),
     path('convenios/', mostrarConvenios, name='convenios'),
     path('convenios/add/', addFornecedorConvenio, name='adicionar_convenio'),
     path('convenio/<int:id>/delete/', deleteConvenio, name='deletar_convenio'),

@@ -265,6 +265,10 @@ ul{
         grid-template-columns: 3.7fr 2.2fr 1.9fr;
     }
 
+    .pix{
+        grid-template-columns: 5.2fr 0.2fr 1.9fr;
+    }
+
     .delete{
         display: grid;
         place-items: center;

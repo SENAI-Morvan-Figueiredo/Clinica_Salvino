@@ -21,6 +21,10 @@
         <h1 class="dash_title">Chaves Pix</h1>
         <div class="list">
             <a href="{% url 'adicionar_chave' %}" class="btn btn-purple center add">Adicionar Chaves</a>
+            <div class="cabecalho pix">
+                <p>Proprietário da Chave</p>
+                <p>Chave</p>
+            </div>
             {% if pix %}
                 {% for chave in pix %}
                     <div class="info-especialidade">
@@ -31,7 +35,7 @@
                 {% endfor %}
 
             {% else %}
-                <h3 class="aviso">Não há bandeiras de cartões cadastradas.</h3> 
+                <h3 class="aviso">Não há chaves Pix cadastradas.</h3> 
             {% endif %}
         </div>
     </section>

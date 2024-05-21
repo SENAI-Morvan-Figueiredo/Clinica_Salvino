@@ -764,6 +764,12 @@ def deleteTratamento(request, id):
     else:
         return render(request, 'delete_tratamento.html', {'proprietario': proprietario, 'tratamento': tratamento})
     
+def mostrarPix(request):
+    proprietario = request.user.proprietario
+    pix = Pix.objects.all()
+
+    return render(request, 'pix_list.html', {'proprietario': proprietario, 'pix': pix})
+    
 def addChave(request):
     proprietario = request.user.proprietario
     if request.method == 'POST':
@@ -773,11 +779,11 @@ def addChave(request):
             new_key.save()
             messages.success(request, 'Chave Cadastrada com Sucesso!')
             request.session['show_message'] = True 
-            return redirect('adicionar_pix')
+            return redirect('pix')
         else:
             messages.error(request, f"Formulário de chave pix inválido: {pix_form.errors}")
             request.session['show_message'] = True 
-            return redirect('adicionar_pix')
+            return redirect('pix')
     else:
         show_message = request.session.pop('show_message', False)
         return render(request, 'add_chave.html', {'proprietario': proprietario, 'message_view': show_message})
