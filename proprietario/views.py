@@ -513,7 +513,6 @@ def document_list(request, id):
                 for document in documents.order_by('data'):
                     list_documents[document.data].append(document)
 
-                print(list_documents[document.data])
                 return render(request, 'prontuario (prop).html', {'proprietario': proprietario,'paciente':paciente,'prontuario': prontuario, 'list_documents': list_documents.items()})
             else:
                 list_documents = ''
