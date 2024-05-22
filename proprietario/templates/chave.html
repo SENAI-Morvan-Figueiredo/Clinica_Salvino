@@ -1,5 +1,6 @@
 {% extends 'background_proprietario.html' %}
 {% load static i18n %}
+{% load qr_code %}
 {% block head_title %}
     {% trans 'Proprietário - Clínica Salvino' %}
 {% endblock head_title %}
@@ -20,12 +21,16 @@
 {% block content %}
     <section class="dash bg-darkgray page">
         <h1 class="dash_title">Chave: {{ pix.nome_proprietario_pix }}</h1>
-        <p>Código da Chave: {{ pix.chave }}</p>
+        <div class="pay-pix">
+            {% qr_from_text pix.chave size="M" %}
+            <br>
+            <br>
+            <h3>Código da Chave: {{ pix.chave }}</h3>
+        </div>
     </section>
 {% endblock content %}
 
 {% block script %}
     <script src="https://kit.fontawesome.com/fc74a91a63.js" crossorigin="anonymous"></script>
-    <script src="{% static 'js/formValidation.js' %}"></script>
     <script src="{% static 'js/button.js' %}"></script>
 {% endblock script %}

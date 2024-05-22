@@ -279,8 +279,11 @@ def marcarConsulta(request):
 def cancelarConsulta(request, id):
     proprietario = request.user.proprietario
     consulta = Consulta.objects.get(id=id)
+    pagameto = Pagamento.objects.get(consulta=consulta)
     if request.method == 'POST':
         consulta.status_consulta = 'Cancelada'
+        pagameto.status_pagamento = 'Cancelado'
+        pagameto.save()
         consulta.save()
         return redirect('consultas')
     else:
@@ -698,19 +701,21 @@ def pagarConsultaBol(request):
             especialidade=Especialidade.objects.get(id=atendimento_data['especialidade_id']),
             status_consulta='Agendada'
         )
-        bol = Boleto.objects.create()
-        bol.save()
+        new_atendimento.save()
+
         pay = Pagamento.objects.create(
             paciente=Paciente.objects.get(id=atendimento_data['paciente_id']),
             medico=Medico.objects.get(id=atendimento_data['medico_id']),
-            boleto=bol,
-            forma_pagamento='Convenio',
+            forma_pagamento='Boleto',
             tratamento=Tratamento.objects.get(especialidade=new_atendimento.especialidade),
             consulta=new_atendimento,
             status_pagamento='Aguardando pagamento',
             data_emissao=date.today()
         )
         pay.save()
+
+        bol = Boleto.objects.create(pagamento = pay)
+        bol.save()
 
         for arquivo_name in anexo_files:
             arquivo = request.FILES.get(arquivo_name)
@@ -822,8 +827,6 @@ def payPix(request):
             pay.medico = Medico.objects.get(id=atendimento_data['medico_id']) 
             pay.forma_pagamento = 'Pix'
             pay.status_pagamento = 'Aguardando pagamento'
-
-            print(atendimento_data['hora'])
             
             # Criar a consulta após a confirmação do pagamento
             new_atendimento = Consulta(
@@ -858,3 +861,15 @@ def chavePix (request, id):
     pix = Pix.objects.get(id=id)
 
     return render(request, 'chave.html', {'proprietario': proprietario, 'pix': pix})
+
+def mostrarContas(request, id):
+    proprietario = request.user.proprietario
+    user = User.objects.get(id=id)
+    paciente = Paciente.objects.get(user=user)
+    contas = Pagamento.objects.filter(paciente=paciente).select_related('boleto', 'cartao', 'convenio', 'pix')
+    return render(request, 'financeiro (prop).html', {'proprietario': proprietario, 'paciente': paciente,'contas': contas})
+
+def mostrarBoleto(request, id):
+    proprietario = request.user.proprietario
+    boleto = Boleto.objects.get(id=id)
+    return render(request, 'pay_bol (prop).html', {'proprietario': proprietario, 'boleto': boleto})

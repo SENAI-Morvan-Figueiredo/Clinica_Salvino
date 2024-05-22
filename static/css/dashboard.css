@@ -9,6 +9,16 @@
     box-sizing: border-box;
 }
 
+.link{
+    display: flex;
+    text-decoration: none;
+    color: #fff;
+}
+
+.link:hover{
+    scale: 1.1;
+}
+
 /* --- começo das classes da dashboard do menu do usuario --- */
 ul{
     padding: 0;
@@ -27,7 +37,7 @@ ul{
         color: #ffffff;                                                                   /* cor da fonte da dashboard */
         font-family: 'Kumbh-medium', Arial, Helvetica, sans-serif;                          /* fonte estilizada da dashboard */                 
         width: 18.75em;                                                                     /* tamanho horizontal da dashboard */
-        max-height: 50em;                                                                   /* tamanho vertical da dashboard */
+        max-height: 53em;                                                                   /* tamanho vertical da dashboard */
         border-radius: 15px;                                                                /* curvatura da borda da dashboard */
         position: relative;                                                                 /* define a posição da dashboard como relativa, e usa os valores top e left */
         top: 3.25em;                                                                        /* valor da posição a partir do topo */
@@ -64,7 +74,7 @@ ul{
     .dash_prop {
         display: grid;
         width: 50em;                                                                    
-        min-height: 50em;                                                                                                                                                                  
+        min-height: 53em;                                                                                                                                                                  
         background-color: #FCB74A;                                                        
         border-radius: 15px;        
         grid-template-columns: 1fr 1fr;
@@ -112,9 +122,33 @@ ul{
         margin-bottom: 10px;
     }
 
+    .info-financeiro{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 0.5fr 0.5fr 0.5fr 0.5fr;
+        grid-template-areas: "p m" "e d" "h s" "doc c";
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        border: 1px solid #ffffff;
+        border-radius: 15px;
+        padding: 1% 2% 1% 5%;
+        margin-bottom: 10px;
+    }
+
     .info-consulta p{
         border: 1px solid #ffffff;
         padding-left: 5px;
+    }
+
+    .info-financeiro p{
+        display: flex;
+        border: 1px solid #ffffff;
+        padding-left: 5px;
+    }
+
+    .info-financeiro p b{
+        margin-right: 5px;
     }
 
     .info-consulta a{
@@ -167,7 +201,7 @@ ul{
         border-radius: 15px;                                                                /* borda da dashboard do calendario */
         display: grid;
         grid-template-rows: 0.4fr 2.5fr;
-        min-height: 50em;
+        min-height: 53em;
     }
 
     .menu{
@@ -267,6 +301,13 @@ ul{
 
     .pix{
         grid-template-columns: 5.2fr 0.2fr 1.9fr;
+    }
+
+    .pay-pix{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 
     .delete{

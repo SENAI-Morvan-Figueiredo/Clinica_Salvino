@@ -20,7 +20,7 @@
     <section class="dash bg-darkgray">
         <h1 class="dash_title">Consultas</h1>
         <div class="list">
-            <a href="{% url 'agendamento' %}" class="btn btn-purple center add">Agendar consultas</a>
+            <a href="{% url 'agendamento_prop' %}" class="btn btn-purple center add">Agendar consultas</a>
             {% if consultas %}
                 {% for consulta in consultas %}
                     <div class="info-consulta">

@@ -34,8 +34,8 @@ class Paciente(models.Model):
     sexo = models.CharField(max_length=25, choices=(('Masculino', 'Masculino'), ('Feminino', 'Feminino'), ('Outro', 'Outro')))
     genero = models.CharField(max_length=256)
     data_nascimento = models.DateField(auto_created=False, auto_now=False, auto_now_add=False)
-    rg = models.CharField(max_length=9)
-    cpf = models.CharField(max_length=11)
+    rg = models.CharField(max_length=9, unique=True)
+    cpf = models.CharField(max_length=11, unique=True)
     status_dependencia = models.CharField(max_length=20, choices=STATUS_DEPENDENCE_CHOICE)
     nome_responsavel = models.CharField(max_length=256, blank=True, null=True)
     rg_responsavel = models.CharField(max_length=9, blank=True, null=True)
@@ -188,23 +188,6 @@ class CadCartao(models.Model):
     class Meta:
         verbose_name_plural = 'CadCartao'
 
-class Boleto(models.Model):
-    banco = models.CharField(max_length=45)
-    cod_barras = models.CharField(max_length=13)
-
-    def clean(self):
-        if not self.cod_barras:
-            self.cod_barras = ''.join(random.choices(string.digits, k=13))
-        if not self.banco:
-            self.banco = 'Bradesco'
-
-    def save(self, *args, **kwargs):
-        self.clean()  # Ensure clean is called to set the fields
-        super().save(*args, **kwargs)
-
-    def __str__(self):
-        return f'{self.banco}: {self.cod_barras}'
-
 class Pagamento(models.Model):
     paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)
     data_emissao = models.DateField(auto_created=False, auto_now=False, auto_now_add=False)
@@ -215,7 +198,6 @@ class Pagamento(models.Model):
     convenio = models.ForeignKey(CadConvenio, blank=True, null=True, on_delete=models.SET_NULL)
     cartao = models.ForeignKey(CadCartao, blank=True, null=True, on_delete=models.SET_NULL)
     pix = models.ForeignKey(Pix, blank=True, null=True, on_delete=models.SET_NULL)
-    boleto = models.OneToOneField(Boleto, blank=True, null=True, on_delete=models.CASCADE)
     cod_barras =models.CharField(max_length=44, blank=True,null=True)
     status_pagamento = models.CharField(max_length=256, choices=(('Pago', 'Pago'), ('Aguardando pagamento', 'Aguardando pagamento'), ('Cancelado', 'Cancelado'), ('Aguardando reembolso', 'Aguardando reembolso'), ('Reembolsado', 'Reembolsado')))
     data_pagamento = models.CharField(max_length=256,blank=True, null=True)
@@ -246,3 +228,20 @@ class Pagamento(models.Model):
     def __str__(self):
         return f'{self.paciente}: {self.data_emissao}'
     
+class Boleto(models.Model):
+    pagamento = models.OneToOneField(Pagamento, on_delete=models.CASCADE)
+    banco = models.CharField(max_length=45)
+    cod_barras = models.CharField(max_length=13)
+
+    def clean(self):
+        if not self.cod_barras:
+            self.cod_barras = ''.join(random.choices(string.digits, k=13))
+        if not self.banco:
+            self.banco = 'Bradesco'
+
+    def save(self, *args, **kwargs):
+        self.clean()  # Ensure clean is called to set the fields
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f'{self.banco}: {self.cod_barras}'

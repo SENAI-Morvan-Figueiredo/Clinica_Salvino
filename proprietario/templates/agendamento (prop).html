@@ -18,7 +18,7 @@
 {% block content %}
     <section class="dash page bg-darkgray">
         <h1 class="dash_title">Agendar Consulta</h1>
-        <form class="form" id="form-cad" enctype="multipart/form-data" action="{% url 'agendamento' %}" method="POST" role="form">
+        <form class="form" id="form-cad" enctype="multipart/form-data" action="{% url 'agendamento_prop' %}" method="POST" role="form">
             {% csrf_token %}
             {{ form.as_p }}
             <div class="form-control">

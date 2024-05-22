@@ -1,5 +1,5 @@
 from django.urls import path
-from proprietario.views import proprietyBoard, contaProprietario, mostrarPacientes, mostrarFuncionarios, dadosFuncionario, deleteFuncionario, dadosPaciente, deletePaciente, addFuncionario, addPaciente, addRecep, addMedico, mostrarEspecialidades, dadosEspecialidade, addEspecialidade, deleteEspecialidade, marcarConsulta, mostrarConsultas, cancelarConsulta, adicionarBandeira, deleteBandeira, mostrarBandeiras, mostrarCartoes, adicionarCartoes, deleteCartao, addFornecedorConvenio, mostrarConvenios, deleteConvenio, mostrarPlano, addPlano, deletePlano, mostrarPacienteConvenio, cadConvPaciente, delPacienteConv, mostrarFichas, abrirFicha, document_list, init_prontuario, info_prontuario, pagarConsulta, pagarConsultaCard, pagarConsultaConv, pagarConsultaBol, addTratamento, mostrarTratamentos, dadosTratamento, addChave, deletePix, mostrarPix, payPix, chavePix
+from proprietario.views import proprietyBoard, contaProprietario, mostrarPacientes, mostrarFuncionarios, dadosFuncionario, deleteFuncionario, dadosPaciente, deletePaciente, addFuncionario, addPaciente, addRecep, addMedico, mostrarEspecialidades, dadosEspecialidade, addEspecialidade, deleteEspecialidade, marcarConsulta, mostrarConsultas, cancelarConsulta, adicionarBandeira, deleteBandeira, mostrarBandeiras, mostrarCartoes, adicionarCartoes, deleteCartao, addFornecedorConvenio, mostrarConvenios, deleteConvenio, mostrarPlano, addPlano, deletePlano, mostrarPacienteConvenio, cadConvPaciente, delPacienteConv, mostrarFichas, abrirFicha, document_list, init_prontuario, info_prontuario, pagarConsulta, pagarConsultaCard, pagarConsultaConv, pagarConsultaBol, addTratamento, mostrarTratamentos, dadosTratamento, addChave, deletePix, mostrarPix, payPix, chavePix, mostrarContas, mostrarBoleto
 
 urlpatterns = [
     path('', proprietyBoard, name='proprietario_dash'),
@@ -16,6 +16,7 @@ urlpatterns = [
     path('cartao/<int:id>/delete', deleteCartao, name='deletar_cartao'),
     path('paciente/<int:id>/cadastro_convenios/', mostrarPacienteConvenio, name='convenios_paciente_prop'),
     path('paciente/<int:id>/cadastro_convenios/add', cadConvPaciente, name='adicionar_convenio_paciente'),
+    path('paciente/<int:id>/contas/', mostrarContas, name='financeiro'),
     path('cadastro_convenio/<int:id>/delete', delPacienteConv, name='deletar_convenio_paciente'),
     path('funcionarios', mostrarFuncionarios, name= 'funcionarios'),
     path('funcionarios/add', addFuncionario, name= 'adicionar_funcionarios'),
@@ -31,7 +32,7 @@ urlpatterns = [
     path('tratamentos/add', addTratamento, name='adicionar_tratamento'),
     path('tratamentos/<int:id>/', dadosTratamento, name='tratamento'),
     path('tratamentos/<int:id>/delete/', deleteEspecialidade, name='delete_tratamento'),
-    path('agendamento/', marcarConsulta, name='agendamento'),
+    path('agendamento/', marcarConsulta, name='agendamento_prop'),
     path('consultas', mostrarConsultas, name='consultas'),
     path('consultas/<int:id>/cancelar_consulta/', cancelarConsulta, name='cancelar_consulta'),
     path('bandeiras/', mostrarBandeiras, name='bandeiras'),
@@ -54,4 +55,5 @@ urlpatterns = [
     path('pagamento/boleto', pagarConsultaBol, name='pay_bol_prop'),
     path('pagamento/pix', payPix, name='pay_pix_prop'),
     path('pix/<int:id>', chavePix, name='pix_prop'),
+    path('boleto/<int:id>', mostrarBoleto, name='boleto_prop'),
 ]

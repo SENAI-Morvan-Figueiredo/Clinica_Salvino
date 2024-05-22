@@ -1,5 +1,8 @@
 {% extends 'background_proprietario.html'%}
 {% load static i18n %}
+{% block head_title %}
+    {% trans 'Proprietário - Clínica Salvino' %}
+{% endblock head_title %}
 {% block extra_head %}
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
 {% endblock extra_head %}
@@ -107,7 +110,7 @@
                         <div class="option-dependence">
                             <label for="independente">Independente</label>
                             <input type="radio" name="status_dependencia" value="Independente" class="checkbox left input"
-                                id="independente" value>
+                                id="independente" checked>
                             <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                             <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
@@ -118,6 +121,26 @@
                             <label for="dependente">Dependente</label>
                             <input type="radio" name="status_dependencia" value="Dependente" class="checkbox left input"
                                 id="dependente">
+                            <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                            <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                            <small class="message"></small>
+                        </div>
+                    {% else %}
+                        <div class="option-dependence">
+                            <label for="independente">Independente</label>
+                            <input type="radio" name="status_dependencia" value="Independente" class="checkbox left input"
+                                id="independente" checked>
+                            <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                            <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                            <small class="message"></small>
+                        </div>
+
+                        <div class="option-dependence">
+                            <label for="dependente">Dependente</label>
+                            <input type="radio" name="status_dependencia" value="Dependente" class="checkbox left input"
+                                id="dependente" checked>
                             <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                             <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 

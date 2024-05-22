@@ -36,9 +36,11 @@
                 <div class="collapse navbar-collapse nav-responsive" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
                         {% if user.is_authenticated %}
-                            <a href="{% url 'login' %}" class="btn btn-white">
-                                Agendamento de Consulta
-                            </a>
+                            {% if request.user.proprietario %}
+                                <a href="{% url 'agendamento_prop' %}" class="btn btn-white">
+                                    Agendamento de Consulta
+                                </a>
+                            {% endif%}
                             <a class="nav-link white bord-right escalar" href="{% url 'login' %}">Minha Página</a>
                             <a class="nav-link white bord-right escalar" href="{% url 'logout' %}">Sair</a>
                         {% else %}
@@ -64,9 +66,17 @@
                         </a>
                     </div>
                     <div class="col-lg-auto d-flex align-items-start">
-                        <a href="{% url 'login' %}" class="btn btn-white">
-                            Agendamento de Consulta
-                        </a>
+                        {% if user.is_authenticated %}
+                            {% if request.user.proprietario %}
+                                <a href="{% url 'agendamento_prop' %}" class="btn btn-white">
+                                    Agendamento de Consulta
+                                </a>
+                            {% endif%}
+                        {% else %}
+                            <a href="{% url 'login' %}" class="btn btn-white">
+                                Agendamento de Consulta
+                            </a>
+                        {% endif%}
                     </div>
                     {% if user.is_authenticated %}
                         <nav class="navbar navbar-dark bg-transparent btn-auth">
