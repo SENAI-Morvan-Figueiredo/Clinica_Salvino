@@ -118,6 +118,5 @@ def get_available_times(request):
     ]
     
     available_times = [time for time in all_times if time not in booked_times]
-    print(booked_times)
     
     return JsonResponse({'available_times': available_times})
