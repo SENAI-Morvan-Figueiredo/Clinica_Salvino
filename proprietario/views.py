@@ -563,7 +563,12 @@ def pagarConsulta(request):
         elif select == 'pix':
             return redirect('pay_pix_prop')
     else:
-        return render(request, 'pagamento (prop).html', {'proprietario': proprietario, 'consulta': atendimento_data})
+        tratamentos = Tratamento.objects.filter(especialidade= Especialidade.objects.get(id=atendimento_data['especialidade_id']))
+        total = 0
+        for tratamento in tratamentos:
+            total += tratamento.preco
+
+        return render(request, 'pagamento (prop).html', {'proprietario': proprietario, 'consulta': atendimento_data, 'tratamentos':tratamentos, 'total':total})
 
 def pagarConsultaCard(request):
     proprietario = request.user.proprietario

@@ -430,15 +430,31 @@ footer{
 /*Estilos Tela de Pagamento*/
 table{
     width: 40vw;
-    background-color: #FFFFFF;
     border-collapse: collapse;
     margin-top: 40px;
     max-width: 540px;
 }
 
+tr{
+    max-height: 80px;
+}
+
 .cells{
+    text-align: center;
     width: 50%;
-    border: 1px solid #000000;
+    border: 1px solid #fff;
+}
+
+.total{
+    margin: 80px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0 20%;
+}
+
+.total_value{
+    justify-self: flex-end;
+    font-size: 20px;
 }
 
 #total{

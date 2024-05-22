@@ -19,7 +19,20 @@
 
 {% block content %}
 <section class="dash page bg-darkgray">
-    <h1 class="dash_title">Forma de Pagamento</h1>
+    <h1 class="dash_title">Pagamento</h1>
+    <table>
+        <thead>
+            <th class="cells">Tratamento</th>
+            <th class="cells">Valor</th>
+        </thead>
+        <tbody>
+            {% for tratamento in tratamentos %}
+                <th class="cells">{{ tratamento.name }}</th>
+                <th class="cells">{{ tratamento.preco }}</th>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h3 class="total"><b>Total:</b> <p class="total_value">{{ total }}</p></h3>
     <form class="form func" action="{% url 'pay_prop' %}" method="POST">
         {% csrf_token %}
         <select name="forma_pag" id="register" class="register">
