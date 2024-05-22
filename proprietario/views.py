@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from clinica.models import BandeiraCartao, Convenio, PlanoConvenio, Tratamento, Pix
 from clinica.forms import CadBandeira, EmpresaConvenio, CadPlano, CadTratamento, CadPix
@@ -817,6 +817,8 @@ def payPix(request):
             pay.medico = Medico.objects.get(id=atendimento_data['medico_id']) 
             pay.forma_pagamento = 'Pix'
             pay.status_pagamento = 'Aguardando pagamento'
+
+            print(atendimento_data['hora'])
             
             # Criar a consulta após a confirmação do pagamento
             new_atendimento = Consulta(

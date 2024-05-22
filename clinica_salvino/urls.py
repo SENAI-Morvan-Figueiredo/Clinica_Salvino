@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from clinica.views import home, contact_us, nutris, login, forgot, change_email, change_password, logout_user
+from clinica.views import home, contact_us, nutris, login, forgot, change_email, change_password, logout_user, get_available_times
 from paciente.views import register, pagamento, agendamento_paciente, add_cartao, add_convenio
 from medico.views import medBoard, contaMedico
 from recept.views import receptBoard, contaRecept
@@ -31,5 +31,6 @@ urlpatterns = [
     path('paciente/agendamento/', agendamento_paciente, name='agendamento_paciente'),
     path('paciente/add-cartao/', add_cartao, name='add-cartao-paciente'),
     path('paciente/add-convenio/', add_convenio, name='add-convenio-paciente'),
+    path('get_available_times/', get_available_times, name='get_available_times'),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

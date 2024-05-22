@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as Login_django
 from django.contrib.auth import logout
-from paciente.models import Paciente
+from paciente.models import Paciente, Consulta
 from proprietario.models import Proprietario
 from medico.models import Medico
 from recept.models import Recepcionista
@@ -12,6 +12,8 @@ from proprietario.views import proprietyBoard
 from medico.views import medBoard
 from recept.views import receptBoard
 from django.http import HttpResponseBadRequest
+from django.http import JsonResponse
+from django.views.decorators.http import require_GET
 
 
 def home(request):
@@ -93,3 +95,29 @@ def change_email(request):
 def change_password(request):
     return render(request, 'change-password.html')
 
+@require_GET
+def get_available_times(request):
+    date = request.GET.get('date')
+    especialidade = request.GET.get('especialidade')
+    medico = request.GET.get('medico')
+    
+    if not date or not especialidade or not medico:
+        return JsonResponse({'error': 'Dados incompletos'}, status=400)
+    
+    consultas = Consulta.objects.filter(data=date, especialidade=especialidade, medico=medico)
+    booked_times = []
+
+    for consulta in consultas:
+        if consulta.status_consulta == 'Agendada':
+            booked_times.append(consulta.hora.strftime('%H:%M:%S'))
+    
+    all_times = [
+        "08:00:00", "08:30:00", "09:00:00", "09:30:00", "10:00:00", "10:30:00", "11:00:00", "11:30:00",
+        "12:00:00", "13:00:00", "13:30:00", "14:00:00", "14:30:00", "15:00:00", "15:30:00", "16:00:00",
+        "16:30:00", "17:00:00"
+    ]
+    
+    available_times = [time for time in all_times if time not in booked_times]
+    print(booked_times)
+    
+    return JsonResponse({'available_times': available_times})
