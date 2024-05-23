@@ -43,12 +43,12 @@ class Paciente(models.Model):
     cpf_responsavel = models.CharField(max_length=11, blank=True, null=True)
     telefone = models.CharField(max_length=14)
     cep = models.CharField(max_length=8)
+    estado = models.CharField(max_length=2)
+    cidade = models.CharField(max_length=256)
+    bairro = models.CharField(max_length=256)
     logradouro = models.CharField(max_length=512)
     numero = models.CharField(max_length=10)
     complemento = models.TextField(blank=True, null=True)
-    bairro = models.CharField(max_length=256)
-    cidade = models.CharField(max_length=256)
-    estado = models.CharField(max_length=2)
 
     def __str__(self):
         return self.user.username

@@ -7,4 +7,4 @@ class CadRecep(forms.ModelForm):
     
     class Meta:
         model = Recepcionista
-        fields = ('name', 'sexo', 'genero', 'rg', 'cpf', 'data_nascimento', 'telefone', 'cep', 'endereco', 'numero', 'complemento')
+        fields = ('name', 'sexo', 'genero', 'outro', 'rg', 'cpf', 'data_nascimento', 'telefone', 'cep', 'estado', 'cidade', 'bairro', 'logradouro', 'numero', 'complemento')

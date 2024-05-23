@@ -100,6 +100,16 @@
 
             <div class="container-middle">
                 <div class="form-control">
+                    <input type="text" id="outro" class="input" name="outro" placeholder="Outro:" value="{{ recepcionista.outro }}">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+            </div>
+
+            <div class="container-middle">
+                <div class="form-control">
                     <input type="date" id="date" class="input" name="data_nascimento" value="{{ recepcionista.data_nascimento|date:'Y-m-d' }}">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
@@ -147,9 +157,36 @@
 
             </div>
 
+            <div class="container-middle">
+                <div class="form-control">
+                    <input type="text" id="estado" class="input" name="estado" placeholder="Estado" value="{{ recepcionista.estado }}">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+                <div class="form-control">
+                    <input type="text" id="cidade" class="input" name="cidade" placeholder="Cidade" value="{{ recepcionista.cidade }}">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+            </div>
+
+            <div class="container-middle">
+                <div class="form-control">
+                    <input type="text" id="bairro" class="input" name="bairro" placeholder="Bairro" value="{{ recepcionista.bairro }}">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+            </div>
+
             <div class="container-middle address">
                 <div class="form-control right">
-                    <input type="text" id="Endereco" class="input" name="endereco" placeholder="Endereço" value="{{ recepcionista.endereco }}">
+                    <input type="text" id="logradouro" class="input" name="logradouro" placeholder="Logradouro" value="{{ recepcionista.logradouro }}">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 

@@ -7,7 +7,7 @@ class CadPaciente(forms.ModelForm):
 
     class Meta:
         model = Paciente
-        fields = ('name','data_nascimento', 'sexo', 'genero', 'data_nascimento', 'rg', 'cpf', 'status_dependencia', 'nome_responsavel', 'rg_responsavel', 'cpf_responsavel', 'telefone', 'cep', 'endereco', 'numero', 'complemento')
+        fields = ('name','data_nascimento', 'sexo', 'genero', 'outro', 'data_nascimento', 'rg', 'cpf', 'status_dependencia', 'nome_responsavel', 'rg_responsavel', 'cpf_responsavel', 'telefone', 'cep', 'estado', 'cidade', 'bairro', 'logradouro', 'numero', 'complemento')
 
 
 class AgendaConsulta(forms.ModelForm):
