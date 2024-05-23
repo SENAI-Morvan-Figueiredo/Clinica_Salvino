@@ -8,6 +8,8 @@ from medico.models import Medico, Especialidade
 from medico.forms import CadMedico, CadEspecialidade
 from recept.models import Recepcionista
 from recept.forms import CadRecep
+from .models import Proprietario
+from .forms import CadProprietario
 from itertools import chain
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -21,8 +23,23 @@ def proprietyBoard(request):
     return render(request, 'proprietario.html', {'proprietario': proprietario})
 
 def contaProprietario(request):
-    proprietario = request.user.proprietario
-    return render(request, 'myaccount_proprietario.html', {'proprietario': proprietario})
+    user = request.user
+    proprietario = Proprietario.objects.get(user=user)
+    if request.method == 'POST':
+        edit_prop_form = CadProprietario(request.POST, instance=proprietario)
+        if edit_prop_form.is_valid():
+            edit_prop_form.save(commit=False)
+            proprietario.save()
+            request.session['show_message'] = True 
+            messages.success(request, 'Seus dados foram editados com Sucesso!')
+            return redirect('conta_proprietario')
+        else:
+            request.session['show_message'] = True 
+            messages.error(request, f"Edição inválida: {edit_prop_form.errors}")
+            return redirect('conta_proprietario')
+    else:
+        show_message = request.session.pop('show_message', False)
+        return render(request, 'myaccount_proprietario.html', {'proprietario': proprietario, 'message_view': show_message})
 
 def mostrarPacientes(request):
     proprietario = request.user.proprietario
@@ -52,13 +69,16 @@ def dadosPaciente(request, id):
         if edit_paciente_form.is_valid():
             edit_paciente_form.save(commit=False)
             paciente.save()
+            request.session['show_message'] = True 
             messages.success(request, 'Dados do paciente editados com Sucesso!')
             return redirect('paciente', id=id)
         else:
+            request.session['show_message'] = True 
             messages.error(request, f"Edição inválida: {edit_paciente_form.errors}")
             return redirect('paciente', id=id)
     else:
-        return render(request, 'paciente_data (prop).html', {'proprietario': proprietario, 'paciente': paciente})
+        show_message = request.session.pop('show_message', False)
+        return render(request, 'paciente_data (prop).html', {'proprietario': proprietario, 'paciente': paciente, 'message_view': show_message})
 
 def dadosFuncionario(request, id):
     proprietario = request.user.proprietario
@@ -70,9 +90,11 @@ def dadosFuncionario(request, id):
             if edit_medico_form.is_valid():
                 edit_medico_form.save(commit=False)
                 medico.save()
+                request.session['show_message'] = True 
                 messages.success(request, 'Dados do médico editados com Sucesso!')
                 return redirect('funcionario', id=id)
             else:
+                request.session['show_message'] = True 
                 messages.error(request, f"Edição inválida: {edit_medico_form.errors}")
                 return redirect('funcionario', id=id)
         elif hasattr(user, 'recepcionista'):
@@ -81,17 +103,20 @@ def dadosFuncionario(request, id):
             if edit_recepcionista_form.is_valid():
                 edit_recepcionista_form.save(commit=False)
                 recepcionista.save()
+                request.session['show_message'] = True 
                 messages.success(request, 'Dados do recepcionista editados com Sucesso!')
                 return redirect('funcionario', id=id)
             else:
+                request.session['show_message'] = True 
                 messages.error(request, f"Edição inválida: {edit_recepcionista_form.errors}")
                 return redirect('funcionario', id=id)
     else:
+        show_message = request.session.pop('show_message', False)
         especialidades = Especialidade.objects.all()
         if hasattr(user, 'medico'):
-            return render(request, 'medico_data (prop).html', {'proprietario': proprietario, 'medico': user.medico, 'especialidades': especialidades})
+            return render(request, 'medico_data (prop).html', {'proprietario': proprietario, 'medico': user.medico, 'especialidades': especialidades, 'message_view': show_message})
         elif hasattr(user, 'recepcionista'):
-            return render(request, 'recepcionista_data (prop).html', {'proprietario': proprietario, 'recepcionista': user.recepcionista})
+            return render(request, 'recepcionista_data (prop).html', {'proprietario': proprietario, 'recepcionista': user.recepcionista, 'message_view': show_message})
         
 def dadosEspecialidade(request, id):
     proprietario = request.user.proprietario
@@ -101,13 +126,16 @@ def dadosEspecialidade(request, id):
         if edit_esp_form.is_valid():
             edit_esp_form.save(commit=False)
             especialidade.save()
+            request.session['show_message'] = True 
             messages.success(request, 'Dados da especialidade editados com Sucesso!')
             return redirect('especialidade', id=id)
         else:
+            request.session['show_message'] = True 
             messages.error(request, f"Edição inválida: {edit_esp_form.errors}")
             return redirect('especialidade', id=id)
     else:
-        return render(request, 'especialidade.html', {'proprietario': proprietario, 'especialidade': especialidade})
+        show_message = request.session.pop('show_message', False)
+        return render(request, 'especialidade.html', {'proprietario': proprietario, 'especialidade': especialidade, 'message_view': show_message})
 
 def addPaciente(request):
     proprietario = request.user.proprietario
