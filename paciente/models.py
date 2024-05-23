@@ -33,6 +33,7 @@ class Paciente(models.Model):
     name = models.CharField(max_length=256, unique=True)
     sexo = models.CharField(max_length=256, choices=(('Masculino', 'Masculino'), ('Feminino', 'Feminino'), ('Prefiro Não Dizer', 'Prefiro Não Dizer')))
     genero = models.CharField(max_length=256, choices=(('Homem Cis', 'Homem Cis'), ('Mulher Cis', 'Mulher Cis'), ('Homem Trans', 'Homem Trans'), ('Mulher Trans', 'Mulher Trans'), ('Outro', 'Outro'), ('Prefiro Não Dizer', 'Prefiro Não Dizer')))
+    outro = models.CharField(max_length=256, null=True, blank=True)
     data_nascimento = models.DateField(auto_created=False, auto_now=False, auto_now_add=False)
     rg = models.CharField(max_length=9, unique=True)
     cpf = models.CharField(max_length=11, unique=True)
@@ -42,9 +43,12 @@ class Paciente(models.Model):
     cpf_responsavel = models.CharField(max_length=11, blank=True, null=True)
     telefone = models.CharField(max_length=14)
     cep = models.CharField(max_length=8)
-    endereco = models.TextField()
+    logradouro = models.CharField(max_length=512)
     numero = models.CharField(max_length=10)
     complemento = models.TextField(blank=True, null=True)
+    bairro = models.CharField(max_length=256)
+    cidade = models.CharField(max_length=256)
+    estado = models.CharField(max_length=2)
 
     def __str__(self):
         return self.user.username
