@@ -167,6 +167,7 @@ def addRecep(request):
             request.session['show_message'] = True 
             return redirect('adicionar_funcionarios')     
     else:
+        request.session['show_message'] = False
         return render(request, 'add_recepcionista.html', {'proprietario': proprietario})
     
 def addMedico(request):
@@ -191,6 +192,7 @@ def addMedico(request):
             return redirect('adicionar_funcionarios')
     else: 
         especialidades = Especialidade.objects.all()
+        request.session['show_message'] = False
         return render(request, 'add_medico.html', {'proprietario': proprietario, 'especialidades': especialidades}) 
     
 def addEspecialidade(request):
@@ -531,13 +533,16 @@ def init_prontuario(request, id):
             new_prontuario = prontuario_form.save(commit=False)
             new_prontuario.paciente = paciente
             new_prontuario.save()
+            show_message = request.session.pop('show_message', False)
             messages.success(request, 'Convênio do paciente cadastrado com Sucesso!')
             return redirect('prontuario', id)
         else:
+            show_message = request.session.pop('show_message', False)
             messages.error(request, f"Formulário de cartão inválido: {prontuario_form.errors}")
             return redirect('prontuario', id)   
     else:
-        return render(request, 'init_prontuario.html', {'proprietario': proprietario, 'paciente': paciente})
+        show_message = request.session.pop('show_message', False)
+        return render(request, 'init_prontuario.html', {'proprietario': proprietario, 'paciente': paciente, 'message_view': show_message})
         
 def info_prontuario(request, id):
     proprietario = request.user.proprietario
@@ -611,13 +616,16 @@ def pagarConsultaCard(request):
                 if arquivo:
                     AnexoConsulta.objects.create(consulta=new_atendimento, arquivo=arquivo)
             
+            request.session['show_message'] = True 
             messages.success(request, 'Consulta agendada com Sucesso!')
             return redirect('consultas')
         else:
+            request.session['show_message'] = True 
             messages.error(request, 'Erro no pagamento.')
             return redirect('pay_card_prop')
     else:
-        return render(request, 'pay_card (prop).html', {'proprietario': proprietario, 'consulta': atendimento_data, 'cartoes': cartoes})
+        show_message = request.session.pop('show_message', False)
+        return render(request, 'pay_card (prop).html', {'proprietario': proprietario, 'consulta': atendimento_data, 'cartoes': cartoes, 'message_view': show_message})
     
 
 def pagarConsultaConv(request):
@@ -659,13 +667,16 @@ def pagarConsultaConv(request):
                 if arquivo:
                     AnexoConsulta.objects.create(consulta=new_atendimento, arquivo=arquivo)
             
+            request.session['show_message'] = True
             messages.success(request, 'Consulta agendada com Sucesso!')
             return redirect('consultas')
         else:
+            request.session['show_message'] = True 
             messages.error(request, 'Erro no pagamento.')
             return redirect('pay_conv_prop')
     else:
-        return render(request, 'pay_conv (prop).html', {'proprietario': proprietario, 'consulta': atendimento_data, 'convenios': convenios})
+        show_message = request.session.pop('show_message', False)
+        return render(request, 'pay_conv (prop).html', {'proprietario': proprietario, 'consulta': atendimento_data, 'convenios': convenios, 'message_view': show_message})
     
 
 def pagarConsultaBol(request):
@@ -721,7 +732,6 @@ def pagarConsultaBol(request):
             if arquivo:
                 AnexoConsulta.objects.create(consulta=new_atendimento, arquivo=arquivo)
 
-        messages.success(request, 'Consulta agendada com Sucesso!')
         return render(request, 'pay_bol (prop).html', {'proprietario': proprietario, 'consulta': atendimento_data, 'boleto': bol})
     
 def addTratamento(request):
@@ -757,9 +767,11 @@ def dadosTratamento(request, id):
         if edit_paciente_form.is_valid():
             edit_paciente_form.save(commit=False)
             tratamento.save()
+            request.session['show_message'] = True 
             messages.success(request, 'Dados do tratamento editados com Sucesso!')
             return redirect('tratamento', id=id)
         else:
+            request.session['show_message'] = True 
             messages.error(request, f"Edição inválida: {edit_paciente_form.errors}")
             return redirect('tratamento', id=id)
     else:
@@ -847,13 +859,16 @@ def payPix(request):
                 if arquivo:
                     AnexoConsulta.objects.create(consulta=new_atendimento, arquivo=arquivo)
             
+            request.session['show_message'] = True 
             messages.success(request, 'Consulta agendada com Sucesso!')
             return redirect('pix_prop', pay.pix.id)
         else:
+            request.session['show_message'] = True 
             messages.error(request, 'Erro no pagamento.')
             return redirect('pay_pix_prop')
     else:
-        return render(request, 'pay_pix (prop).html', {'proprietario': proprietario, 'consulta': atendimento_data, 'pix': pix})
+        show_message = request.session.pop('show_message', False)
+        return render(request, 'pay_pix (prop).html', {'proprietario': proprietario, 'consulta': atendimento_data, 'pix': pix, 'message_view': show_message})
 
 def chavePix (request, id):
     proprietario = request.user.proprietario

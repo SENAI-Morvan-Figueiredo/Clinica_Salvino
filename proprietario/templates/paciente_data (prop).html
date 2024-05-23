@@ -33,36 +33,24 @@
 
             <div class="container-middle">
                 <div class="form-control">
-                    {% if paciente.sexo == 'Masculino' %}
-                        <select name="sexo" id="sexo" class="input" form="form-cad">
-                            <option value="" disabled>Sexo</option>
+                    <select name="sexo" id="sexo" class="input" form="form-cad">
+                        <option value="" disabled>Sexo</option>
+                        {% if paciente.sexo == 'Masculino' %}
                             <option value="Masculino" selected>Masculino</option>
-                            <option value="Feminino">Feminino</option>
-                            <option value="Outro">Outro</option>
-                        </select>
-                    {% elif paciente.sexo == 'Feminino' %}
-                        <select name="sexo" id="sexo" class="input" form="form-cad">
-                            <option value="" disabled>Sexo</option>
+                        {% else%}
                             <option value="Masculino">Masculino</option>
+                        {% endif %}
+                        {% if paciente.sexo == 'Feminino' %}
                             <option value="Feminino" selected>Feminino</option>
-                            <option value="Outro">Outro</option>
-                        </select>
-
-                    {% elif paciente.sexo == 'Outro' %}
-                        <select name="sexo" id="sexo" class="input" form="form-cad">
-                            <option value="" disabled>Sexo</option>
-                            <option value="Masculino">Masculino</option>
+                        {% else%}
                             <option value="Feminino">Feminino</option>
-                            <option value="Outro" selected>Outro</option>
-                        </select>
-                    {% else %}
-                        <select name="sexo" id="sexo" class="input" form="form-cad">
-                            <option value="" selected disabled>Sexo</option>
-                            <option value="Masculino">Masculino</option>
-                            <option value="Feminino">Feminino</option>
-                            <option value="Outro">Outro</option>
-                        </select>
-                    {% endif %}
+                        {% endif %}
+                        {% if paciente.sexo == 'Prefiro Não Responder' %}
+                            <option value="Prefiro Não Responder" selected>Prefiro Não Responder</option>
+                        {% else%}
+                            <option value="Prefiro Não Responder">Prefiro Não Responder</option>
+                        {% endif %}
+                    </select>
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
@@ -70,7 +58,39 @@
                 </div>
 
                 <div class="form-control">
-                    <input type="text" id="Genero" class="input" name="genero" placeholder="Gênero" value="{{ paciente.genero }}">
+                    <select name="genero" id="genero" class="input" form="form-cad">
+                        <option value="" disabled>Gênero</option>
+                        {% if paciente.genero == 'Homem Cis' %}
+                            <option value="Homem Cis" selected>Homem Cis</option>
+                        {% else%}
+                            <option value="Homem Cis">Homem Cis</option>
+                        {% endif %}
+                        {% if paciente.genero == 'Mulher Cis' %}
+                            <option value="Mulher Cis" selected>Mulher Cis</option>
+                        {% else%}
+                            <option value="Mulher Cis">Mulher Cis</option>
+                        {% endif %}
+                        {% if paciente.genero == 'Homem Trans' %}
+                            <option value="Homem Trans" selected>Homem Trans</option>
+                        {% else%}
+                            <option value="Homem Trans">Homem Trans</option>
+                        {% endif %}
+                        {% if paciente.genero == 'Mulher Trans' %}
+                            <option value="Mulher Trans" selected>Mulher Trans</option>
+                        {% else%}
+                            <option value="Mulher Trans">Mulher Trans</option>
+                        {% endif %}
+                        {% if paciente.genero == 'Outro' %}
+                            <option value="Outro" selected>Outro</option>
+                        {% else%}
+                            <option value="Outro">Outro</option>
+                        {% endif %}
+                        {% if paciente.genero == 'Prefiro Não Responder' %}
+                            <option value="Prefiro Não Responder" selected>Prefiro Não Responder</option>
+                        {% else%}
+                            <option value="Prefiro Não Responder">Prefiro Não Responder</option>
+                        {% endif %}
+                    </select>
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
