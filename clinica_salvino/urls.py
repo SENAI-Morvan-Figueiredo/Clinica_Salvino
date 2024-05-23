@@ -1,10 +1,11 @@
 from django.contrib import admin
 from django.urls import path, include
 from clinica.views import home, contact_us, nutris, login, forgot, change_email, change_password, logout_user, get_available_times
-from paciente.views import register, pagamento, agendamento_paciente, add_cartao, add_convenio
+from paciente.views import register
 from medico.views import medBoard, contaMedico
 from recept.views import receptBoard, contaRecept
 import proprietario.urls
+import paciente.urls
 from paciente.views import pacienteBoard, contaPaciente
 from django.conf.urls.static import static
 from django.conf import settings
@@ -20,17 +21,12 @@ urlpatterns = [
     path('alterar-email/', change_email, name='alterar-email'),
     path('alterar-senha/', change_password, name='alterar-senha'),
     path('proprietario/', include(proprietario.urls)),
-    path('paciente/', pacienteBoard, name='paciente_dash'),
+    path('paciente/', include(paciente.urls)),
     path('medico/', medBoard, name='medico_dash'),
     path('recepcionista/', receptBoard, name='recepcionista_dash'),
     path('logout/', logout_user, name='logout'),
-    path('paciente/conta/', contaPaciente, name='conta_paciente'),
     path('medico/conta/', contaMedico, name='conta_medico'),
     path('recepcionista/conta', contaRecept, name='conta_recepcionista'),
-    path('paciente/pagamento/', pagamento, name='pagamento'),
-    path('paciente/agendamento/', agendamento_paciente, name='agendamento_paciente'),
-    path('paciente/add-cartao/', add_cartao, name='add-cartao-paciente'),
-    path('paciente/add-convenio/', add_convenio, name='add-convenio-paciente'),
     path('get_available_times/', get_available_times, name='get_available_times'),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
