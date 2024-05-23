@@ -155,9 +155,26 @@
 
             </div>
 
+            <div class="container-middle">
+                <div class="form-control">
+                    <input type="text" id="estado" class="input" name="estado" placeholder="Estado" value="{{ proprietario.estado }}">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+                <div class="form-control">
+                    <input type="text" id="cidade" class="input" name="cidade" placeholder="Cidade" value="{{ proprietario.cidade }}">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+            </div>
+
             <div class="container-middle address">
                 <div class="form-control right">
-                    <input type="text" id="Endereco" class="input" name="endereco" placeholder="Endereço" value="{{ proprietario.endereco }}">
+                    <input type="text" id="logradouro" class="input" name="logradouro" placeholder="Logradouro" value="{{ proprietario.logradouro }}">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
@@ -174,6 +191,16 @@
 
                 <div class="form-control left">
                     <input type="text" name="complemento" class="input" id="Complemento" placeholder="Complemento" value="{{ proprietario.complemento }}">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+            </div>
+
+            <div class="container-middle">
+                <div class="form-control">
+                    <input type="text" id="bairro" class="input" name="bairro" placeholder="Bairro" value="{{ proprietario.bairro }}">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 

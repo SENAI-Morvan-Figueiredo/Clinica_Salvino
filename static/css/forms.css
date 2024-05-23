@@ -217,6 +217,10 @@ footer{
     border: 3px solid #328146;
 }
 
+.form-control.success select {
+    border: 3px solid #328146;
+}
+
 .form-control.success textarea {
     border: 3px solid #328146;
 }

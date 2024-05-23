@@ -6,6 +6,7 @@ let password;
 let email;
 let check = []
 let dependenteValue;
+let gender;
 
 document.addEventListener('DOMContentLoaded', function() {
     form.addEventListener('keydown', function(event) {
@@ -46,6 +47,10 @@ function checkInputs() {
     inputs.forEach(input => {
         const inputValue = input.value.trim()
         const classInput = input.classList.value.split(' ')
+
+        if(input.name === "genero"){
+            gender = input.value.trim()
+        }
         
         if (inputValue === '' && input.name !== 'complemento' && input.name !== 'file_documento' && input.name !== 'arquivos'){
             if (input.name === 'nome_responsavel' || input.name === 'rg_responsavel' || input.name === 'cpf_responsavel'){
@@ -56,34 +61,26 @@ function checkInputs() {
                     errorValidation(input, 'Preencha esse campo');
                     validate.push(false)
                 }
+            } else if (input.name === 'outro'){
+                console.log(gender)
+                if (gender === 'Outro' || gender=== ''){
+                    errorValidation(input, 'Preencha esse campo');
+                    validate.push(false)
+                } else{
+                    successValidation(input);
+                    validate.push(true)
+                }
             } else{
                 errorValidation(input, 'Preencha esse campo');
                 validate.push(false)
             }
-        }
-
-        else if(classInput.includes("passwordConfirm") && input.value.trim() !== password){
+        } else if(classInput.includes("passwordConfirm") && input.value.trim() !== password){
             errorValidation(passwordCheck, 'As senhas não correspondem');
             validate.push(false)
-        }
-        else if(classInput.includes("emailConfirm") && input.value.trim() !== email){
+        } else if(classInput.includes("emailConfirm") && input.value.trim() !== email){
             errorValidation(emailCheck, 'Os e-mails não correspondem');
             validate.push(false)
-        }
-        /*
-        else if (classInput.includes("checkbox")) {
-            let isChecked = Array.from(inputs).some(input => input.type === 'checkbox' && input.checked);
-            if (isChecked) {
-                successValidation(input);
-                validate.push(true);
-                console.log(input.value)
-            } else {
-                errorValidation(input, 'Preencha este campo');
-                validate.push(false);
-            }
-        }
-        */
-        else if (classInput.includes("checkbox")) {
+        } else if (classInput.includes("checkbox")) {
             check.push(input)
             let isChecked
             
@@ -100,11 +97,10 @@ function checkInputs() {
                 errorValidation(check[0], 'Preencha esse campo');
                 validate.push(false)
             };
-        }
-        else{
+        } else{
             if(classInput.includes("email")){
                 email = inputValue
-            }
+            } 
             if(classInput.includes("password")){
                 password = inputValue
             }
