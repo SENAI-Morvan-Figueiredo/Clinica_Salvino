@@ -1,9 +1,8 @@
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.contrib import messages
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, update_session_auth_hash, logout
 from django.contrib.auth import login as Login_django
-from django.contrib.auth import logout
 from paciente.models import Paciente, Consulta
 from proprietario.models import Proprietario
 from medico.models import Medico
@@ -14,6 +13,8 @@ from recept.views import receptBoard
 from django.http import HttpResponseBadRequest
 from django.http import JsonResponse
 from django.views.decorators.http import require_GET
+from django.contrib.auth.decorators import login_required
+from .forms import CustomPasswordChangeForm
 
 
 def home(request):
@@ -92,8 +93,25 @@ def forgot(request):
 def change_email(request):
     return render(request, 'change-email.html')
 
+@login_required
 def change_password(request):
-    return render(request, 'change-password.html')
+    if request.method == 'POST':
+        form = CustomPasswordChangeForm(request.POST, user=request.user)
+        if form.is_valid():
+            user = request.user
+            user.set_password(form.cleaned_data['new_password1'])
+            user.save()
+            update_session_auth_hash(request, user)  # Importante para manter o usuário logado após a troca de senha
+            return redirect('login')
+        else:
+            messages.error(request, f"Formulário de cadastro inválido: {form.errors}")
+            request.session['show_message'] = True 
+            return redirect('login')
+    else:
+        show_message = request.session.pop('show_message', False)
+        form = CustomPasswordChangeForm(user=request.user)
+    
+    return render(request, 'registration/change_password.html', {'form': form,'message_view': show_message})
 
 @require_GET
 def get_available_times(request):

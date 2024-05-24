@@ -40,6 +40,10 @@
                                 <a href="{% url 'agendamento_prop' %}" class="btn btn-white">
                                     Agendamento de Consulta
                                 </a>
+                            {% elif request.user.paciente %}
+                                <a href="{% url 'agendamento_paciente' %}" class="btn btn-white">
+                                    Agendamento de Consulta
+                                </a>
                             {% endif%}
                             <a class="nav-link white bord-right escalar" href="{% url 'login' %}">Minha Página</a>
                             <a class="nav-link white bord-right escalar" href="{% url 'logout' %}">Sair</a>

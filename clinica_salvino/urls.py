@@ -19,7 +19,7 @@ urlpatterns = [
     path('cadastro/', register, name='cadastro'),
     path('esqueci-senha/', forgot, name='esqueci-senha'),
     path('alterar-email/', change_email, name='alterar-email'),
-    path('alterar-senha/', change_password, name='alterar-senha'),
+    path('alterar_senha/', change_password, name='alterar_senha'),
     path('proprietario/', include(proprietario.urls)),
     path('paciente/', include(paciente.urls)),
     path('medico/', medBoard, name='medico_dash'),
