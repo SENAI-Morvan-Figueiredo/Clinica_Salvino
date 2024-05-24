@@ -21,7 +21,7 @@
     <section class="dash bg-darkgray">
         <h1 class="dash_title">Cartões: {{ paciente.name }}</h1>
         <div class="list">
-            <a href="{% url 'adicionar_cartoes' paciente.user.id %}" class="btn btn-purple center add">Adicionar Cartão</a>
+            <a href="{% url 'add_cartao_paciente' %}" class="btn btn-purple center add">Adicionar Cartão</a>
             <div class="cabecalho-card">
                 <p>Bandeira</p>
                 <p>Número</p>
@@ -33,7 +33,7 @@
                     <p>{{ cartao.bandeira_cartao }}</p>
                     <p>{{ cartao.numero_cartao }}</p>
                     <p>{{ cartao.data_vencimento }}</p>
-                    <a href="{% url 'deletar_cartao' cartao.id %}"><img class="icon-delete escalar" src="{% static 'img/delete.svg' %}" alt=""></a>
+                    <a href="{% url 'delete_cartao_paciente' cartao.id %}"><img class="icon-delete escalar" src="{% static 'img/delete.svg' %}" alt=""></a>
                 </div>
             {% endfor %}
         {% else %}

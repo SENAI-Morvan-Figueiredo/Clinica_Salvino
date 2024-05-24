@@ -48,11 +48,11 @@ def contaPaciente(request):
             paciente.save()
             request.session['show_message'] = True 
             messages.success(request, 'Seus dados foram editados com Sucesso!')
-            return redirect('conta_proprietario')
+            return redirect('conta_paciente')
         else:
             request.session['show_message'] = True 
             messages.error(request, f"Edição inválida: {edit_paciente_form.errors}")
-            return redirect('conta_proprietario')
+            return redirect('conta_paciente')
     else:
         show_message = request.session.pop('show_message', False)
         return render(request, 'myaccount_paciente.html', {'paciente': paciente, 'message_view': show_message})
@@ -65,39 +65,7 @@ def mostrarCartoes(request):
         cartoes = ''
     finally:
         return render(request, 'cartoes_list (paciente).html', {'paciente': paciente, 'cartoes': cartoes})
-
-def cadConvPaciente(request,id):
-    proprietario = request.user.proprietario
-    user = User.objects.get(id=id)
-    paciente = Paciente.objects.get(user=user)
-    if request.method == 'POST':
-        conv_form = FormConvenio(request.POST)
-        if conv_form.is_valid():
-            new_conv = conv_form.save(commit=False)
-            new_conv.paciente = paciente
-            new_conv.save()
-            messages.success(request, 'Convênio do paciente cadastrado com Sucesso!')
-            request.session['show_message'] = True 
-            return redirect('adicionar_convenio_paciente', id)
-        else:
-            messages.error(request, f"Formulário de cartão inválido: {conv_form.errors}")
-            request.session['show_message'] = True 
-            return redirect('adicionar_convenio_paciente', id)
-    else:
-        convenios = Convenio.objects.all()
-        planos = PlanoConvenio.objects.all()
-        show_message = request.session.pop('show_message', False)
-        return render(request, 'add_paciente_convenio (prop).html', {'proprietario': proprietario, 'convenios': convenios, 'planos':planos,'message_view': show_message})
     
-def delPacienteConv(request, id):
-    proprietario = request.user.proprietario
-    convenio = CadConvenio.objects.get(id=id)
-    paciente_conv = convenio.paciente
-    if request.method == 'POST':
-        convenio.delete()
-        return redirect('convenios_paciente_prop', paciente_conv.user.id)
-    else:
-        return render(request, 'delete_paciente_convenio (prop).html', {'proprietario': proprietario, 'convenio': convenio})
     
 def mostrarPacienteConvenio(request):
     paciente = request.user.paciente
@@ -110,8 +78,6 @@ def mostrarPacienteConvenio(request):
 
 def add_cartao(request):
     paciente = request.user.paciente
-    user = User.objects.get(id=id)
-    paciente = Paciente.objects.get(user=user)
     if request.method == 'POST':
         card_form = FormCartao(request.POST)
         if card_form.is_valid():
@@ -120,29 +86,55 @@ def add_cartao(request):
             new_card.save()
             messages.success(request, 'Cartão cadastrado com Sucesso!')
             request.session['show_message'] = True 
-            return redirect('adicionar_cartoes', id)
+            return redirect('add_cartao_paciente')
         else:
             messages.error(request, f"Formulário de cartão inválido: {card_form.errors}")
             request.session['show_message'] = True 
-            return redirect('adicionar_cartoes', id)
+            return redirect('add_cartao_paciente')
     else:
         show_message = request.session.pop('show_message', False)
         bandeiras = BandeiraCartao.objects.all()
         return render(request, 'add_cartao (paciente).html', {'paciente': paciente, 'bandeiras': bandeiras,'message_view': show_message})
 
 def delete_cartao(request, id):
-    proprietario = request.user.proprietario
+    paciente = request.user.paciente
     cartao = CadCartao.objects.get(id=id)
-    paciente_card = cartao.paciente
     if request.method == 'POST':
         cartao.delete()
-        return redirect('cartoes_prop', paciente_card.user.id)
+        return redirect('cartoes_paciente')
     else:
-        return render(request, 'delete_cartao (prop).html', {'proprietario': proprietario, 'cartao': cartao})
+        return render(request, 'delete_cartao (paciente).html', {'paciente': paciente, 'cartao': cartao})
 
 def add_convenio(request):
     paciente = request.user.paciente
-    return render(request, 'add_convenio(paciente).html', {'paciente': paciente}) 
+    if request.method == 'POST':
+        conv_form = FormConvenio(request.POST)
+        if conv_form.is_valid():
+            new_conv = conv_form.save(commit=False)
+            new_conv.paciente = paciente
+            new_conv.save()
+            messages.success(request, 'Convênio do paciente cadastrado com Sucesso!')
+            request.session['show_message'] = True 
+            return redirect('add_convenio_paciente')
+        else:
+            messages.error(request, f"Formulário de cartão inválido: {conv_form.errors}")
+            request.session['show_message'] = True 
+            return redirect('add_convenio_paciente')
+    else:
+        convenios = Convenio.objects.all()
+        planos = PlanoConvenio.objects.all()
+        show_message = request.session.pop('show_message', False)
+        return render(request, 'add_convenio (paciente).html', {'paciente': paciente, 'convenios': convenios, 'planos':planos,'message_view': show_message})
+
+def delete_convenio(request, id):
+    paciente = request.user.paciente
+    convenio = CadConvenio.objects.get(id=id)
+    if request.method == 'POST':
+        convenio.delete()
+        return redirect('convenios_paciente')
+    else:
+        return render(request, 'delete_convenio (paciente).html', {'paciente': paciente, 'convenio': convenio})
+    
 
 def agendamento_paciente(request):
     paciente = request.user.paciente
@@ -171,7 +163,7 @@ def agendamento_paciente(request):
     else:
         pacientes = Paciente.objects.all()
         medicos = Medico.objects.all()
-        return render(request, 'agendamento (prop).html', {'paciente': paciente, 'medicos': medicos, 'pacientes': pacientes, 'especialidades': especialidade})
+        return render(request, 'agendamento (paciente).html', {'paciente': paciente, 'medicos': medicos, 'pacientes': pacientes, 'especialidades': especialidade})
 
 def pagamento_paciente(request):
     paciente = request.user.paciente
