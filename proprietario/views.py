@@ -274,7 +274,7 @@ def deleteEspecialidade(request, id):
 
 def mostrarConsultas(request):
     proprietario = request.user.proprietario
-    consultas = Consulta.objects.all()
+    consultas = Consulta.objects.all().order_by('status_consulta')
     return render(request, 'consultas (prop).html', {'proprietario': proprietario, 'consultas': consultas})
 
 def marcarConsulta(request):
@@ -884,9 +884,6 @@ def payPix(request):
                 arquivo = request.FILES.get(arquivo_name)
                 if arquivo:
                     AnexoConsulta.objects.create(consulta=new_atendimento, arquivo=arquivo)
-            
-            request.session['show_message'] = True 
-            messages.success(request, 'Consulta agendada com Sucesso!')
             return redirect('pix_prop', pay.pix.id)
         else:
             request.session['show_message'] = True 

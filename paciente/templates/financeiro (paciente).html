@@ -1,0 +1,48 @@
+{% extends 'background_paciente.html' %}
+{% load static i18n %}
+{% block head_title %}
+    {% trans 'Paciente - Clínica Salvino' %}
+{% endblock head_title %}
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock extra_head %}
+
+{% block header %}
+    <header class="header bg-purple">
+        <div class="container">
+            <a href="{% url 'home' %}" class="login">
+                <img class="escalar" src="{% static 'img/Logo Branco 1.png' %}">
+            </a>
+        </div>
+    </header>
+{% endblock header %}
+{% block content %}
+    <section class="dash bg-darkgray">
+        <h1 class="dash_title">Financeiro: {{ paciente.name }}</h1>
+        <div class="list">
+            {% if contas %}
+                {% for conta in contas %}
+                    <div class="info-financeiro">
+                        <p class="paciente"><b>Data de Emissão:</b> {{ conta.data_emissao|date:'d/m/Y' }}</p>
+                        <p class="medico"><b>Tratamento:</b> {{ conta.tratamento }}</p>
+                        <p class="especialidade"><b>Médico:</b> {{ conta.medico.name }}</p>
+                        <p class="data"><b>Forma de Pagamento:</b> {{ conta.forma_pagamento }}</p>
+                        {% if conta.forma_pagamento == 'Cartao' %}
+                            <p class="hora"><b>Cartão:</b> {{ conta.cartao }}</p>
+                        {% elif conta.forma_pagamento == 'Convenio' %}
+                            <p class="hora"><b>Convênio:</b> {{ conta.convenio }}</p>
+                        {% elif conta.forma_pagamento == 'Boleto' %}
+                            <p class="hora"><b>Boleto:</b> <a class="link white bord-right escalar option" href="{% url 'boleto_paciente' conta.boleto.id %}">{{ conta.boleto.banco }} - {{ conta.boleto.cod_barras }}</a></p>
+                        {% elif conta.forma_pagamento == 'Pix' %}
+                            <p class="hora"><b>Pix:</b><a class="link white bord-right escalar option" href="{% url 'pix_paciente' conta.pix.id %}">{{ conta.pix }}</a></p>
+                        {% endif %}
+                        <p class="status"><b>Status:</b> {{ conta.status_pagamento }}</p>
+                        <p class="doc"><b>Data de Pagamento:</b> {{ conta.data_pagamento|date:'d/m/Y' }}</p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <h3 class="aviso">Não há contas cadastradas.</h3> 
+            {% endif %}
+        </div>
+    </section>
+{% endblock content %}

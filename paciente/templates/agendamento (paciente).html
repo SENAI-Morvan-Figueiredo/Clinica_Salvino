@@ -22,7 +22,7 @@
             {% csrf_token %}
             {{ form.as_p }}
             <div class="form-control">
-                <input type="text" class="paciente_agenda" value="{{ paciente }}" hidden>
+                <input type="text" name="paciente" value="{{ paciente.id }}" hidden>
                 
                 <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                 <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
@@ -82,7 +82,27 @@
                 </div>
 
                 <div class="form-control">
-                    <input type="time" id="date" class="input" name="hora">
+                    <select name="hora" id="hora" class="input" form="form-cad">
+                        <option value="" disabled selected>Horas</option>
+                        <option value="08:00:00">08:00</option>
+                        <option value="08:30:00">08:30</option>
+                        <option value="09:00:00">09:00</option>
+                        <option value="09:30:00">09:30</option>
+                        <option value="10:00:00">10:00</option>
+                        <option value="10:30:00">10:30</option>
+                        <option value="11:00:00">11:00</option>
+                        <option value="11:30:00">11:30</option>
+                        <option value="12:00:00">12:00</option>
+                        <option value="13:00:00">13:00</option>
+                        <option value="13:30:00">13:30</option>
+                        <option value="14:00:00">14:00</option>
+                        <option value="14:30:00">14:30</option>
+                        <option value="15:00:00">15:00</option>
+                        <option value="15:30:00">15:30</option>
+                        <option value="16:00:00">16:00</option>
+                        <option value="16:30:00">16:30</option>
+                        <option value="17:00:00">17:00</option>
+                    </select>
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
@@ -104,7 +124,7 @@
             </div>
             <div class="result">
                 <p class="result-text">
-                    {% if messages %}
+                    {% if message_view and messages %}
                         {% for message in messages %}
                             {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
                                 <div class="alert alert-danger">
@@ -125,7 +145,7 @@
             </div>
             <div class="button-box">
                 <input type="submit" id="back" onclick="voltar()" class="btn-black-white" value="Voltar">
-                <button type="submit" data-button class="btn-purple">Continuar</button>
+                <button type="submit" data-button class="btn-purple">Cadastrar</button>
             </div>
         </form>
     </section>
@@ -134,4 +154,38 @@
     <script src="https://kit.fontawesome.com/fc74a91a63.js" crossorigin="anonymous"></script>
     <script src="{% static 'js/formValidation.js' %}"></script>
     <script src="{% static 'js/button.js' %}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const dateInput = document.getElementById('date');
+            const horaSelect = document.getElementById('hora');
+            const especialidadeSelect = document.getElementById('especialidade');
+            const medicoSelect = document.getElementById('medico');
+
+            dateInput.addEventListener('change', function() {
+                const selectedDate = this.value;
+                const especialidadeId = especialidadeSelect.value;
+                const medicoId = medicoSelect.value;
+
+                if (selectedDate && especialidadeId && medicoId) {
+                    fetch(`/get_available_times?date=${selectedDate}&especialidade=${especialidadeId}&medico=${medicoId}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            // Limpa as opções anteriores
+                            horaSelect.innerHTML = '<option value="" disabled selected>Horas</option>';
+
+                            // Adiciona as novas opções
+                            data.available_times.forEach(time => {
+                                const option = document.createElement('option');
+                                option.value = time;
+                                option.textContent = time.slice(0, 5);
+                                horaSelect.appendChild(option);
+                            });
+                        })
+                        .catch(error => {
+                            console.error('Erro ao buscar horários disponíveis:', error);
+                        });
+                }
+            });
+        });
+    </script>
 {% endblock script %}

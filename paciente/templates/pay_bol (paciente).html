@@ -1,0 +1,32 @@
+{% extends 'background_paciente.html' %}
+{% load static i18n %}
+{% block head_title %}
+    {% trans 'Paciente - Clínica Salvino' %}
+{% endblock head_title %}
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock extra_head %}
+
+{% block header %}
+    <header class="header bg-purple">
+        <div class="container">
+            <a href="{% url 'home' %}" class="login">
+                <img class="escalar" src="{% static 'img/Logo Branco 1.png' %}">
+            </a>
+        </div>
+    </header>
+{% endblock header %}
+
+{% block content %}
+<section class="dash page bg-darkgray">
+    <h1 class="dash_title">Pagamento através de Boleto</h1>
+    <p>Tratamento: {{ boleto.pagamento.tratamento }}</p>
+    <p>Banco: {{ boleto.banco }}</p>
+    <p>Código de Barras: {{ boleto.cod_barras }}</p>
+</section>
+{% endblock content %}
+
+{% block script %}
+    <script src="https://kit.fontawesome.com/fc74a91a63.js" crossorigin="anonymous"></script>
+    <script src="{% static 'js/button.js' %}"></script>
+{% endblock script %}

@@ -1,14 +1,14 @@
-{% extends 'background_proprietario.html' %}
+{% extends 'background_paciente.html' %}
 {% load static i18n %}
 {% block head_title %}
-    {% trans 'Proprietário - Clínica Salvino' %}
+    {% trans 'Paciente - Clínica Salvino' %}
 {% endblock head_title %}
 {% block extra_head %}
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
 {% endblock extra_head %}
 
 {% block header %}
-    <header class="header bg-yellow">
+    <header class="header bg-purple">
         <div class="container">
             <a href="{% url 'home' %}" class="login">
                 <img class="escalar" src="{% static 'img/Logo Branco 1.png' %}">
@@ -19,16 +19,16 @@
 
 {% block content %}
 <section class="dash page bg-darkgray">
-    <h1 class="dash_title">Pagamento através de Convênio</h1>
-    <form class="form" action="#" method="POST">
+    <h1 class="dash_title">Pagamento através de Pix</h1>
+    <form class="form func" action="#" method="POST">
         {% csrf_token %}
-        <select name="convenio" id="register" class="register">
-            <option value="" selected disabled>Selecione o convênio que você deseja utilizar:</option>
-            {% for convenio in convenios %}
-                <option value="{{ convenio.id }}">{{ convenio.convenio }}: {{ convenio.numero_carteirinha }}</option>
+        <select name="pix" id="register" class="register">
+            <option value="" selected disabled>Selecione o pix que você deseja utilizar:</option>
+            {% for chave in pix %}
+                <option value="{{ chave.id }}">{{ chave.nome_proprietario_pix }}: {{ chave.chave }}</option>
             {% endfor %}
         </select>
-        
+       
         <div class="button-box">
             <input type="submit" id="back" onclick="voltar()" class="btn-black-white" value="Cancelar">
             <button type="submit" data-button class="btn-purple">Salvar</button>

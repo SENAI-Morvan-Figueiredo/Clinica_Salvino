@@ -1,7 +1,7 @@
-{% extends 'background_paciente.html'%}
+{% extends 'background_paciente.html' %}
 {% load static i18n %}
 {% block head_title %}
-    {% trans 'Pagamento - Clínica Salvino' %}
+    {% trans 'Paciente - Clínica Salvino' %}
 {% endblock head_title %}
 {% block extra_head %}
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
@@ -18,53 +18,54 @@
 {% endblock header %}
 
 {% block content %}
-    <section class="dash bg-darkgray page">
-        <h1 class="dash_title">Pagamento</h1>
-
-        <div class="container-middle">
-            <div class="cells">Descrição do Tratamento</div>
-            <div class="cells">Valor</div>
-        </div> 
-
-        <div class="container-middle">
-            <div class="cells">Total:</div>
-            <div class="cells">R$</div>
+<section class="dash page bg-darkgray">
+    <h1 class="dash_title">Pagamento</h1>
+    <table>
+        <thead>
+            <th class="cells">Tratamento</th>
+            <th class="cells">Valor</th>
+        </thead>
+        <tbody>
+            {% for tratamento in tratamentos %}
+                <th class="cells">{{ tratamento.name }}</th>
+                <th class="cells">{{ tratamento.preco }}</th>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h3 class="total"><b>Total:</b> <p class="total_value">{{ total }}</p></h3>
+    <form class="form func" action="{% url 'pagamento_paciente' %}" method="POST">
+        {% csrf_token %}
+        <select name="forma_pag" id="register" class="register">
+            <option value="" disabled selected>Selecione a forma de pagamento:</option>
+            <option value="cartao">Cartão</option>
+            <option value="convenio">Convênio</option>
+            <option value="boleto">Boleto</option>
+            <option value="pix">Pix</option>
+        </select>
+        <div class="result">
+            <p class="result-text">
+                {% if messages and message_view == True %}
+                    {% for message in messages %}
+                        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                            <div class="alert alert-danger">
+                                <strong>Erro!</strong>
+                                {{ message }}
+                                <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                            </div>
+                        {% else %}
+                            <div class="alert alert-success">
+                                <strong>Sucesso!</strong>
+                                {{ message }}
+                                <i class="fa-solid fa-circle-check icon-success hidden" style="color: #328146;"></i>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </p>
         </div>
-
-            <div>Forma de Pagamento</div>
-
-        <form class="form func" action="{% url 'adicionar_funcionarios' %}" method="POST">
-            {% csrf_token %}
-            <select name="tipo_funcionario" id="register" class="register">
-                <option value="" disabled selected>Selecione a forma de pagamento:</option>
-                <option value="convenio">Convênio</option>
-                <option value="cartao">Cartão</option>
-                <option value="pix">Pix</option>
-                <option value="boleto">Boleto</option>
-                <option value="pagar_dia">Pagar no dia</option>
-            </select>
-            <div class="result">
-                <p class="result-text">
-                    {% if messages %}
-                        {% for message in messages %}
-                            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
-                                <div class="alert alert-danger">
-                                    <strong>Erro!</strong>
-                                    {{ message }}
-                                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
-                                </div>
-                            {% else %}
-                                <div class="alert alert-success">
-                                    <strong>Sucesso!</strong>
-                                    {{ message }}
-                                    <i class="fa-solid fa-circle-check icon-success hidden" style="color: #328146;"></i>
-                                </div>
-                            {% endif %}
-                        {% endfor %}
-                    {% endif %}
-            </form>
-    </section>
-
+    </form>
+    
+</section>
 {% endblock content %}
 
 {% block script %}

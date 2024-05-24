@@ -35,7 +35,7 @@ def register(request):
 @login_required   
 def pacienteBoard(request):
     paciente = request.user.paciente
-    consultas = Consulta.objects.filter(paciente=paciente)
+    consultas = Consulta.objects.filter(paciente=paciente).order_by('data')[:5]
     return render(request, 'paciente.html', {'paciente': paciente, 'consultas': consultas})
 
 def contaPaciente(request):
@@ -135,7 +135,6 @@ def delete_convenio(request, id):
     else:
         return render(request, 'delete_convenio (paciente).html', {'paciente': paciente, 'convenio': convenio})
     
-
 def agendamento_paciente(request):
     paciente = request.user.paciente
     especialidade = Especialidade.objects.all()
@@ -157,13 +156,15 @@ def agendamento_paciente(request):
             request.session['atendimento_data'] = serializable_atendimento_data
             request.session['anexo_files'] = anexo_files
 
-            return redirect('pay_prop')
+            return redirect('pagamento_paciente')
         else:
-            return redirect('agendamento')
+            messages.error(request, f"Formulário de cartão inválido: {atendimento_form.errors}")
+            request.session['show_message'] = True 
+            return redirect('agendamento_paciente')
     else:
-        pacientes = Paciente.objects.all()
+        show_message = request.session.pop('show_message', False)
         medicos = Medico.objects.all()
-        return render(request, 'agendamento (paciente).html', {'paciente': paciente, 'medicos': medicos, 'pacientes': pacientes, 'especialidades': especialidade})
+        return render(request, 'agendamento (paciente).html', {'paciente': paciente, 'medicos': medicos, 'especialidades': especialidade, 'message_view': show_message})
 
 def pagamento_paciente(request):
     paciente = request.user.paciente
@@ -188,10 +189,10 @@ def pagamento_paciente(request):
         for tratamento in tratamentos:
             total += tratamento.preco
 
-        return render(request, 'pagamento (prop).html', {'paciente': paciente, 'consulta': atendimento_data, 'tratamentos':tratamentos, 'total':total})
+        return render(request, 'pagamento.html', {'paciente': paciente, 'consulta': atendimento_data, 'tratamentos':tratamentos, 'total':total})
 
 def pagarConsultaCard(request):
-    paciente = request.user.proprietario
+    paciente = request.user.paciente
     atendimento_data = request.session.get('atendimento_data')
     anexo_files = request.session.get('anexo_files')
     cartoes = CadCartao.objects.filter(paciente = paciente)
@@ -229,16 +230,14 @@ def pagarConsultaCard(request):
                 if arquivo:
                     AnexoConsulta.objects.create(consulta=new_atendimento, arquivo=arquivo)
             
-            request.session['show_message'] = True 
-            messages.success(request, 'Consulta agendada com Sucesso!')
-            return redirect('consultas')
+            return redirect('consultas_paciente')
         else:
             request.session['show_message'] = True 
             messages.error(request, 'Erro no pagamento.')
             return redirect('pay_card_paciente')
     else:
         show_message = request.session.pop('show_message', False)
-        return render(request, 'pay_card (prop).html', {'paciente': paciente, 'consulta': atendimento_data, 'cartoes': cartoes, 'message_view': show_message})
+        return render(request, 'pay_card (paciente).html', {'paciente': paciente, 'consulta': atendimento_data, 'cartoes': cartoes, 'message_view': show_message})
     
 
 def pagarConsultaConv(request):
@@ -280,16 +279,14 @@ def pagarConsultaConv(request):
                 if arquivo:
                     AnexoConsulta.objects.create(consulta=new_atendimento, arquivo=arquivo)
             
-            request.session['show_message'] = True
-            messages.success(request, 'Consulta agendada com Sucesso!')
-            return redirect('consultas')
+            return redirect('consultas_paciente')
         else:
             request.session['show_message'] = True 
             messages.error(request, 'Erro no pagamento.')
             return redirect('pay_conv_prop')
     else:
         show_message = request.session.pop('show_message', False)
-        return render(request, 'pay_conv (prop).html', {'paciente': paciente, 'consulta': atendimento_data, 'convenios': convenios, 'message_view': show_message})
+        return render(request, 'pay_conv (paciente).html', {'paciente': paciente, 'consulta': atendimento_data, 'convenios': convenios, 'message_view': show_message})
     
 
 def pagarConsultaBol(request):
@@ -313,7 +310,7 @@ def pagarConsultaBol(request):
    
     if consulta_existente:
         pagamento_existente = Pagamento.objects.get(consulta=consulta_existente)
-        return render(request, 'pay_bol (prop).html', {'paciente': paciente, 'consulta': consulta_existente, 'boleto': pagamento_existente.boleto}) 
+        return render(request, 'pay_bol (paciente).html', {'paciente': paciente, 'consulta': consulta_existente, 'boleto': pagamento_existente.boleto}) 
     else:
         new_atendimento = Consulta.objects.create(
             paciente=Paciente.objects.get(id=atendimento_data['especialidade_id']),
@@ -345,7 +342,7 @@ def pagarConsultaBol(request):
             if arquivo:
                 AnexoConsulta.objects.create(consulta=new_atendimento, arquivo=arquivo)
 
-        return render(request, 'pay_bol (prop).html', {'paciente': paciente, 'consulta': atendimento_data, 'boleto': bol})
+        return render(request, 'pay_bol (paciente).html', {'paciente': paciente, 'consulta': atendimento_data, 'boleto': bol})
     
 def payPix(request):
     paciente = request.user.paciente
@@ -386,13 +383,45 @@ def payPix(request):
                 if arquivo:
                     AnexoConsulta.objects.create(consulta=new_atendimento, arquivo=arquivo)
             
-            request.session['show_message'] = True 
-            messages.success(request, 'Consulta agendada com Sucesso!')
-            return redirect('pix_prop', pay.pix.id)
+            return redirect('pix_paciente', pay.pix.id)
         else:
             request.session['show_message'] = True 
             messages.error(request, 'Erro no pagamento.')
-            return redirect('pay_pix_prop')
+            return redirect('pay_pix_paciente')
     else:
         show_message = request.session.pop('show_message', False)
-        return render(request, 'pay_pix (prop).html', {'paciente': paciente, 'consulta': atendimento_data, 'pix': pix, 'message_view': show_message})
+        return render(request, 'pay_pix (paciente).html', {'paciente': paciente, 'consulta': atendimento_data, 'pix': pix, 'message_view': show_message})
+
+def mostrarConsultas(request):
+    paciente = request.user.paciente
+    consultas = Consulta.objects.filter(paciente=paciente).order_by('status_consulta')
+    return render(request, 'consultas (paciente).html', {'paciente': paciente, 'consultas': consultas})
+
+def cancelarConsulta(request, id):
+    paciente = request.user.paciente
+    consulta = Consulta.objects.get(id=id)
+    pagameto = Pagamento.objects.get(consulta=consulta)
+    if request.method == 'POST':
+        consulta.status_consulta = 'Cancelada'
+        pagameto.status_pagamento = 'Cancelado'
+        pagameto.save()
+        consulta.save()
+        return redirect('consultas_paciente')
+    else:
+        return render(request, 'cancelar_consulta (paciente).html', {'paciente': paciente, 'consulta': consulta})
+    
+def chavePix (request, id):
+    paciente = request.user.paciente
+    pix = Pix.objects.get(id=id)
+
+    return render(request, 'chave (paciente).html', {'paciente': paciente, 'pix': pix})
+
+def mostrarContas(request):
+    paciente = request.user.paciente
+    contas = Pagamento.objects.filter(paciente=paciente).select_related('boleto', 'cartao', 'convenio', 'pix')
+    return render(request, 'financeiro (paciente).html', {'paciente': paciente,'contas': contas})
+
+def mostrarBoleto(request, id):
+    paciente = request.user.paciente
+    boleto = Boleto.objects.get(id=id)
+    return render(request, 'pay_bol (paciente).html', {'paciente': paciente, 'boleto': boleto})
