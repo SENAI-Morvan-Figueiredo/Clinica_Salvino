@@ -1,7 +1,7 @@
 {% extends 'background_paciente.html' %}
 {% load static i18n %}
 {% block head_title %}
-    {% trans 'Adicionar cartão - Clínica Salvino' %}
+    {% trans 'Paciente - Clínica Salvino' %}
 {% endblock head_title %}
 {% block extra_head %}
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
@@ -47,7 +47,7 @@
 
             <div class="container-middle">
                 <div class="form-control">
-                    <input type="text" id="cvc" class="input" name="cvc" placeholder="CVC">
+                    <input type="text" maxlength="3" minlength="3" id="cvc" class="input" name="cvc" placeholder="CVC">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
     
@@ -64,7 +64,7 @@
 
             <div class="result">
                 <p class="result-text">
-                    {% if messages %}
+                    {% if message_view and messages %}
                         {% for message in messages %}
                             {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
                                 <div class="alert alert-danger">

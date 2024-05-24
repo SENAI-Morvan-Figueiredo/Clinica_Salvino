@@ -828,13 +828,11 @@ def addChave(request):
         if pix_form.is_valid():
             new_key = pix_form.save(commit=False)
             new_key.save()
-            messages.success(request, 'Chave Cadastrada com Sucesso!')
-            request.session['show_message'] = True 
             return redirect('pix')
         else:
             messages.error(request, f"Formulário de chave pix inválido: {pix_form.errors}")
             request.session['show_message'] = True 
-            return redirect('pix')
+            return redirect('adicionar_chave')
     else:
         show_message = request.session.pop('show_message', False)
         return render(request, 'add_chave.html', {'proprietario': proprietario, 'message_view': show_message})

@@ -33,7 +33,7 @@
                     <p>{{ convenio.convenio }}</p>
                     <p>{{ convenio.plano_convenio }}</p>
                     <p>{{ convenio.numero_carteirinha }}</p>
-                    <a href="{% url 'deletar_convenio_paciente' convenio.id %}"><img class="icon-delete escalar" src="{% static 'img/delete.svg' %}" alt=""></a>
+                    <a href="{% url 'deletar_convenio_prop' convenio.id %}"><img class="icon-delete escalar" src="{% static 'img/delete.svg' %}" alt=""></a>
                 </div>
             {% endfor %}
         {% else %}

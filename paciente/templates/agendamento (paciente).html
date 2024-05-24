@@ -1,7 +1,7 @@
 {% extends 'background_paciente.html' %}
 {% load static i18n %}
 {% block head_title %}
-    {% trans 'Agendamento - Clínica Salvino' %}
+    {% trans 'Paciente - Clínica Salvino' %}
 {% endblock head_title %}
 {% block extra_head %}
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
@@ -18,16 +18,11 @@
 {% block content %}
     <section class="dash page bg-darkgray">
         <h1 class="dash_title">Agendar Consulta</h1>
-        <form class="form" id="form-cad" enctype="multipart/form-data" action="{% url 'agendamento' %}" method="POST" role="form">
+        <form class="form" id="form-cad" enctype="multipart/form-data" action="{% url 'agendamento_paciente' %}" method="POST" role="form">
             {% csrf_token %}
             {{ form.as_p }}
             <div class="form-control">
-                <select name="paciente" id="paciente" class="input" form="form-cad">
-                    <option value="" disabled selected>Paciente</option>
-                    {% for paciente in pacientes %}
-                        <option value="{{ paciente.id }}">{{ paciente.name }}</option>
-                    {% endfor %}
-                </select>
+                <input type="text" class="paciente_agenda" value="{{ paciente }}" hidden>
                 
                 <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                 <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
