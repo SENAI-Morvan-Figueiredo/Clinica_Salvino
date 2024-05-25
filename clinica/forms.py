@@ -56,3 +56,6 @@ class CustomPasswordChangeForm(forms.Form):
             if new_password1 != new_password2:
                 raise forms.ValidationError('As novas senhas não coincidem')
         return cleaned_data
+
+class PasswordResetRequestForm(forms.Form):
+    email = forms.EmailField(max_length=254, widget=forms.EmailInput(attrs={'class': 'input', 'placeholder': 'Email'}), required=False)

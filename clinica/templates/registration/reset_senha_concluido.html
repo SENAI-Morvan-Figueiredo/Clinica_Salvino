@@ -1,0 +1,25 @@
+{% extends 'background.html' %}
+{% load static i18n %}
+
+{% block head_title %}
+    {% trans 'Alteração de Senha Concluída - Clínica Salvino' %}
+{% endblock head_title %}
+
+{% block header %}
+    <header class="header bg-purple">
+        <div class="container">
+            <a href="{% url 'home' %}" class="login">
+                <img class="escalar" src="{% static 'img/Logo Branco 1.png' %}">
+            </a>
+        </div>
+    </header>
+{% endblock header %}
+
+{% block content %}
+    <main>
+        <div class="body-container">
+            <h1 class="title">Senha Alterada</h1>
+            <p>Sua senha foi alterada com sucesso.</p>
+        </div>
+    </main>
+{% endblock content %}

@@ -1,37 +1,23 @@
 {% extends 'background.html' %}
 {% load static i18n %}
-{% block head_title %}
-{% trans 'Alterar Senha - Clínica Salvino' %}
-{% endblock head_title %}
 
 {% block header %}
     <header class="header bg-purple">
         <div class="container">
-            <a href="{% url 'home' %}" class="login">
+            <a href="{% url 'home' %}">
                 <img class="escalar" src="{% static 'img/Logo Branco 1.png' %}">
             </a>
         </div>
     </header>
 {% endblock header %}
-
-{% block content %}
+{% block content%}
     <main>
-
         <div class="body-container">
-
-            <h1 class="title">Alterar Senha</h1>
-
-            <form id="form-changePassword" class="form-changePassword form" method="post" action="#">
+            <h1 class="title">Esqueci a Senha</h1>
+            <form class="form-forgot form" id="form-forgot" action="{% url 'password_reset' %}" method="post">
                 {% csrf_token %}
                 <div class="form-control">
-                    <input type="password" id="id_new_password1" name="new_password1" class="input password" placeholder="Nova Senha">
-                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
-                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
-
-                    <small class="message"></small>
-                </div>
-                <div class="form-control">
-                    <input type="password" id="passwordCheck" name="new_password2" class="input passwordConfirm" placeholder="Confirmar Senha">
+                    {{ form.as_p }}
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
@@ -39,9 +25,10 @@
                 </div>
 
                 <div class="captcha-box center">
-                    <input type="checkbox" name="Eu não sou um robô" value="Eu não sou um robô"><a class="robot">Não sou
-                        robô</a>
+                    <input type="checkbox" name="Eu não sou um robô" value="Eu não sou um robô"><a class="robot">Não
+                        sou robô</a>
                 </div>
+
                 <div class="result">
                     <p class="result-text">
                         {% if messages %}
@@ -63,15 +50,15 @@
                         {% endif %}
                     </p>
                 </div>
+                
                 <div class="button-box">
                     <input type="submit" id="back" onclick="voltar()" class="btn-black-white" value="Voltar">
-                    <button type="submit" data-button class="btn-purple">Salvar</button>
+                    <button type="submit" data-button class="btn-purple">Enviar</button>
                 </div>
             </form>
         </div>
     </main>
 {% endblock content %}
-
 {% block script %}
     <script src="https://kit.fontawesome.com/fc74a91a63.js" crossorigin="anonymous"></script>
     <script src="{% static 'js/formValidation.js' %}"></script>

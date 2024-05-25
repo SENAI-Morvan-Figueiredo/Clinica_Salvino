@@ -1,0 +1,25 @@
+{% extends 'background.html' %}
+{% load static i18n %}
+
+{% block head_title %}
+    {% trans 'Email Enviado - Clínica Salvino' %}
+{% endblock head_title %}
+
+{% block header %}
+    <header class="header bg-purple">
+        <div class="container">
+            <a href="{% url 'home' %}" class="login">
+                <img class="escalar" src="{% static 'img/Logo Branco 1.png' %}">
+            </a>
+        </div>
+    </header>
+{% endblock header %}
+
+{% block content %}
+    <main>
+        <div class="body-container">
+            <h1 class="title">Email Enviado</h1>
+            <p>Um email com instruções para redefinir sua senha foi enviado. Por favor, verifique seu email.</p>
+        </div>
+    </main>
+{% endblock content %}
