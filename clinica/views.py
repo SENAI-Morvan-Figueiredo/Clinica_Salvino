@@ -17,7 +17,7 @@ from proprietario.models import Proprietario
 from medico.models import Medico
 from recept.models import Recepcionista
 from .forms import CustomPasswordChangeForm, PasswordResetRequestForm
-
+from datetime import datetime
 
 def home(request):
     return render(request, 'index.html')
@@ -182,15 +182,21 @@ def change_password(request):
     return render(request, 'registration/change_password.html', {'form': form,'message_view': show_message})
 
 @require_GET
+@require_GET
 def get_available_times(request):
-    date = request.GET.get('date')
+    date_str = request.GET.get('date')
     especialidade = request.GET.get('especialidade')
     medico = request.GET.get('medico')
     
-    if not date or not especialidade or not medico:
+    if not date_str or not especialidade or not medico:
         return JsonResponse({'error': 'Dados incompletos'}, status=400)
     
-    consultas = Consulta.objects.filter(data=date, especialidade=especialidade, medico=medico)
+    try:
+        requested_date = datetime.strptime(date_str, '%Y-%m-%d').date()
+    except ValueError:
+        return JsonResponse({'error': 'Data inválida'}, status=400)
+    
+    consultas = Consulta.objects.filter(data=requested_date, especialidade=especialidade, medico=medico)
     booked_times = []
 
     for consulta in consultas:
@@ -203,6 +209,19 @@ def get_available_times(request):
         "16:30:00", "17:00:00"
     ]
     
-    available_times = [time for time in all_times if time not in booked_times]
+    # Hora atual
+    now = datetime.now()
+    current_time = now.time()
+    current_date = now.date()
+    
+    available_times = []
+    
+    for time in all_times:
+        time_obj = datetime.strptime(time, '%H:%M:%S').time()
+        
+        # Adiciona o horário se for após a hora atual no mesmo dia ou em qualquer horário futuro
+        if (requested_date > current_date) or (requested_date == current_date and time_obj > current_time):
+            if time not in booked_times:
+                available_times.append(time)
     
     return JsonResponse({'available_times': available_times})

@@ -297,14 +297,22 @@ def marcarConsulta(request):
 
             request.session['atendimento_data'] = serializable_atendimento_data
             request.session['anexo_files'] = anexo_files
-
-            return redirect('pay_prop')
+            tratamentos = Tratamento.objects.all()
+            if tratamentos:
+                return redirect('pay_prop')
+            else:
+                messages.error(request, f"Não há tratamentos cadastrados")
+                request.session['show_message'] = True 
+                return redirect('agendamento_prop')
         else:
-            return redirect('agendamento')
+            messages.error(request, f"Agendamento inválido: {atendimento_form.errors}")
+            request.session['show_message'] = True 
+            return redirect('agendamento_prop')
     else:
         pacientes = Paciente.objects.all()
         medicos = Medico.objects.all()
-        return render(request, 'agendamento (prop).html', {'proprietario': proprietario, 'medicos': medicos, 'pacientes': pacientes, 'especialidades': especialidade})
+        show_message = request.session.pop('show_message', False)
+        return render(request, 'agendamento (prop).html', {'proprietario': proprietario, 'medicos': medicos, 'pacientes': pacientes, 'especialidades': especialidade,'message_view': show_message})
     
 def cancelarConsulta(request, id):
     proprietario = request.user.proprietario

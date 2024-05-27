@@ -155,10 +155,15 @@ def agendamento_paciente(request):
 
             request.session['atendimento_data'] = serializable_atendimento_data
             request.session['anexo_files'] = anexo_files
-
-            return redirect('pagamento_paciente')
+            tratamentos = Tratamento.objects.all()
+            if tratamentos:
+                return redirect('pagamento_paciente')
+            else:
+                messages.error(request, f"Não há tratamentos cadastrados pelo proprietário da clínica")
+                request.session['show_message'] = True 
+                return redirect('agendamento_paciente')
         else:
-            messages.error(request, f"Formulário de cartão inválido: {atendimento_form.errors}")
+            messages.error(request, f"Agendamento inválido: {atendimento_form.errors}")
             request.session['show_message'] = True 
             return redirect('agendamento_paciente')
     else:
