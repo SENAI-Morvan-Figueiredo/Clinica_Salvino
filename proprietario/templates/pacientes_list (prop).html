@@ -24,14 +24,14 @@
             <a href="{% url 'adicionar_pacientes' %}" class="btn btn-purple center add">Adicionar Paciente</a>
             <div class="cabecalho">
                 <p>Nome</p>
-                <p>CPF</p>
+                <p class="cpf">CPF</p>
                 <p>Informações</p>
             </div>
             {% if pacientes %}
             {% for paciente in pacientes %}
             <div class="info-user">
                 <p>{{ paciente.name }}</p>
-                <p>{{ paciente.cpf }}</p>
+                <p class="cpf">{{ paciente.cpf }}</p>
                 <a href="" class="btn btn-purple center open-btn">Info</a>
                 <a href="{% url 'delete_paciente' paciente.user.id %}"><img class="icon-delete escalar" src="{% static 'img/delete.svg' %}" alt=""></a>
                 <div class="bg-dark menu">

@@ -11,98 +11,102 @@
     </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'css/formatados.css' %}">
-    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
-
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap');
     </style>
     {% block extra_head %}
     {% endblock extra_head %}
+    <link rel="stylesheet" href="{% static 'css/formatados.css' %}">
+    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
+    <link rel="stylesheet" href="{% static 'css/globais.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsivo.css' %}">
 </head>
 <body>
     {% block header %}
     {% endblock header %}
     <div class="body_user bg-yellow">
-        <nav  class="dash_menu_user">
-            <div>
-                <div class="button_home">
-                    <a class="" href="{% url 'proprietario_dash' %}"><img class="escalar" src="{% static 'imagens/buttons/button_home.png' %}" alt=""></a>
-                </div>
+        <div class="nav_menu">
+            <nav  class="dash_menu_user">
+                <div>
+                    <div class="button_home">
+                        <a class="" href="{% url 'proprietario_dash' %}"><img class="escalar" src="{% static 'imagens/buttons/button_home.png' %}" alt=""></a>
+                    </div>
+        
+                    <div class="image_user">
+                        <img src="{% static 'images/icon_usuario.png' %}" alt="Icone do Usuário">
+                    </div>
+                    
+                    <div class="ul_dash_menu">
+                        <ul>
+                            <li>
+                                Bem vindo(a)
+                            </li>
+        
+                            <li>
+                                {{ proprietario.name }}
+                            </li>
+        
+                            <li>
+                               <a class="nav-link white bord-right escalar" href="{% url 'conta_proprietario' %}">Minha conta   <img src="{% static 'images/buttons/button_lapis.png' %}" alt="Editar minha conta"></a> 
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="line_menu"></div>
+                    <div class="ul_dash_menu">
+                        <ul>
+                            <li>
+                               <a class="nav-link white bord-right escalar" href="{% url 'pacientes' %}">Dados de Pacientes</a> 
+                            </li>
     
-                <div class="image_user">
-                    <img src="{% static 'images/icon_usuario.png' %}" alt="Icone do Usuário">
-                </div>
-                
-                <div class="ul_dash_menu">
-                    <ul>
-                        <li>
-                            Bem vindo(a)
-                        </li>
+                            <li>
+                                <a class="nav-link white bord-right escalar" href="{% url 'funcionarios' %}">Dados de Funcionários</a>
+                            </li>
     
-                        <li>
-                            {{ proprietario.name }}
-                        </li>
+                            <li>
+                                <a class="nav-link white bord-right escalar" href="{% url 'especialidades' %}">Especialidades</a> 
+                            </li>
     
-                        <li>
-                           <a class="nav-link white bord-right escalar" href="{% url 'conta_proprietario' %}">Minha conta   <img src="{% static 'images/buttons/button_lapis.png' %}" alt="Editar minha conta"></a> 
-                        </li>
-                    </ul>
+                            <li>
+                                <a class="nav-link white bord-right escalar" href="{% url 'tratamentos' %}">Tratamentos</a> 
+                            </li>
+    
+                            <li>
+                                <a class="nav-link white bord-right escalar" href="{% url 'bandeiras' %}">Bandeiras de Cartões</a> 
+                            </li>
+    
+                            <li>
+                                <a class="nav-link white bord-right escalar" href="{% url 'convenios' %}">Convênios</a> 
+                            </li>
+    
+                            <li>
+                                <a class="nav-link white bord-right escalar" href="{% url 'pix' %}">Pix</a> 
+                            </li>
+    
+                            <li>
+                                <a class="nav-link white bord-right escalar" href="{% url 'fichas_prop' %}">Abrir Ficha</a> 
+                            </li>
+                        </ul>      
+                    </div>
+                    <div class="line_menu"></div>
+                    <div  class="ul_dash_menu">
+                        <ul>
+                            <li>
+                                <a class="nav-link white bord-right escalar" href="{% url 'agendamento_prop' %}">Agendar Consulta</a> 
+                            </li>
+    
+                            <li>
+                                <a class="nav-link white bord-right escalar" href="{% url 'consultas'%}">Consultas</a> 
+                            </li>
+    
+                            <li>
+                                <a class="nav-link white bord-right escalar" href="{% url 'logout' %}">Sair</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="line_menu"></div>
-                <div class="ul_dash_menu">
-                    <ul>
-                        <li>
-                           <a class="nav-link white bord-right escalar" href="{% url 'pacientes' %}">Dados de Pacientes</a> 
-                        </li>
-
-                        <li>
-                            <a class="nav-link white bord-right escalar" href="{% url 'funcionarios' %}">Dados de Funcionários</a>
-                        </li>
-
-                        <li>
-                            <a class="nav-link white bord-right escalar" href="{% url 'especialidades' %}">Especialidades</a> 
-                        </li>
-
-                        <li>
-                            <a class="nav-link white bord-right escalar" href="{% url 'tratamentos' %}">Tratamentos</a> 
-                        </li>
-
-                        <li>
-                            <a class="nav-link white bord-right escalar" href="{% url 'bandeiras' %}">Bandeiras de Cartões</a> 
-                        </li>
-
-                        <li>
-                            <a class="nav-link white bord-right escalar" href="{% url 'convenios' %}">Convênios</a> 
-                        </li>
-
-                        <li>
-                            <a class="nav-link white bord-right escalar" href="{% url 'pix' %}">Pix</a> 
-                        </li>
-
-                        <li>
-                            <a class="nav-link white bord-right escalar" href="{% url 'fichas_prop' %}">Abrir Ficha</a> 
-                        </li>
-                    </ul>      
-                </div>
-                <div class="line_menu"></div>
-                <div  class="ul_dash_menu">
-                    <ul>
-                        <li>
-                            <a class="nav-link white bord-right escalar" href="{% url 'agendamento_prop' %}">Agendar Consulta</a> 
-                        </li>
-
-                        <li>
-                            <a class="nav-link white bord-right escalar" href="{% url 'consultas'%}">Consultas</a> 
-                        </li>
-
-                        <li>
-                            <a class="nav-link white bord-right escalar" href="{% url 'logout' %}">Sair</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+            </nav>
+        </div>
+        
         {% block content %}
         {% endblock content %}
     </div>
@@ -110,6 +114,7 @@
         <p id="Copyright">Copyright 2023 - Desenvolvido por DEV Nutri - Todos os direitos reservados.</p>
     </footer>
 </body>
+<script src="{% static 'js/open_nav.js' %}"></script>
 {% block script %}
 {% endblock script %}
 </html>

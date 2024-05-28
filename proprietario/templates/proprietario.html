@@ -14,6 +14,13 @@
             <a href="{% url 'home' %}" class="login">
                 <img class="escalar" src="{% static 'img/Logo Branco 1.png' %}">
             </a>
+            <nav class="navbar navbar-dark bg-transparent btn-nav">
+                <div class="container-fluid">
+                <button class="navbar-toggler custom-toggler white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                </div>
+            </nav>
         </div>
     </header>
 {% endblock header %}
@@ -27,6 +34,7 @@
         <div class="modulo"></div>
         <div class="modulo"></div>
     </section>
+    <section class="next"></section>
 </div>
 
 {% endblock content %}

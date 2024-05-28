@@ -30,6 +30,12 @@
     }
 }
 
+@media (max-width: 1024px) {
+    .cpf{
+        display: none;
+    }
+}
+
 
 @media (max-width: 990px) {
     .medico{
@@ -105,11 +111,40 @@
     .convenios{
         padding: 50px 25%;
     }
+    .initial_dash{
+        justify-content: space-between;
+    }
+    .container-prop{
+        height: 60%;
+    }
+    .next{
+        height: 25%;
+    }
 }
 
-@media (max-width: 575px) {
-    .bord-right{
-        margin: 0
+@media (max-width:880px) {
+    .dash_menu_user{
+        width: 33%;
+        min-width: 245px;
+        max-height: 990px;
+    }
+    .nav_menu{
+        padding: 10% 10% 10% 0;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 225vh;
+        background-color: rgba(10,23,55,0.5);
+        display: none;
+        position: absolute;
+        z-index: 1000;
+        overflow-y: auto;
+    }
+    .body_user{
+        display: block; 
+    }
+    .btn-nav{
+        display: inline;
     }
 }
 
@@ -123,10 +158,26 @@
     .container {
         flex-direction: column;
     }
+    .bord-right{
+        margin: 0
+    }
+    .container-prop{
+        display: flex;
+        flex-direction: column
+    }
+    .nav_menu{
+        height: 355vh;
+    }
  }
 
 
 @media (max-width: 425px) {
+    .body_user{
+        padding: 5%
+    }
+    .page{
+        padding: 15% 5%;
+    }
     .med-text{
         top: -150px;
         left: 0;

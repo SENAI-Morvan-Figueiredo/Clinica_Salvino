@@ -25,14 +25,13 @@ ul{
 }
     /* class do css do boddy da pagina do usuario */
     .body_user {                                                                            /* cor da tela de fundo do body */
-    min-height: 80%;                                                                     /* valor minimo da altura da pagina */
     width: 100%;                                                             
     display: grid;                                                                          /* Definição da exibição como flex (vai jogar todos os elementos dentro da classe para a esquerda) */
     justify-content: flex-end;                                                                 /* dimencionando os items do body espaçados ao seu redor */
     padding: 0 10% 10% 10%;
-    grid-template-columns: 1fr 3fr;
-    grid-template-rows: 3fr 1fr;  
-    grid-gap: 50px;
+    grid-template-columns: 1fr 3fr; 
+    grid-gap: 3%;
+    min-height: 990px;
 }
 
     .initial_dash{
@@ -50,13 +49,13 @@ ul{
         color: #ffffff;                                                                   /* cor da fonte da dashboard */
         font-family: 'Kumbh-medium', Arial, Helvetica, sans-serif;                          /* fonte estilizada da dashboard */                 
         width: 100%;                                                                     /* tamanho horizontal da dashboard */
-        height: 100%;                                                                /* curvatura da borda da dashboard */
         padding: 20px;
         border-radius: 15px;
     }
 
     /* class para o botão do home */
     .button_home {
+        width: 20px;
         position: relative;                                                                 /* posição do botão da home relativo na dashboard com os valores top e left */
         top: 15%;                                                                       /* valor da posição a partir do topo */     
         left: 85%;
@@ -105,20 +104,25 @@ ul{
         padding: 1% 2% 1% 5%;
         margin-bottom: 10px;
     }
+    .btn-nav{
+        display: none;
+    }
 
     .modulo{
         background-color: #333333;
         border-radius: 15px;
         color: #ffffff;
         min-height: 50%;
+        min-height: 350px;
     }
 
     .next{
-        width: 85%;
-        min-height: 300px;
+        width: 100%;
+        height: 33%;
         background-color: #333333;
         border-radius: 15px;
         align-self: flex-end;
+        min-height: 200px;
     }
 
     .info-consulta{
@@ -208,9 +212,8 @@ ul{
     .dash{
         color: #fff;
         background-color: #333333;
-        width: 50%;                                                                    /* tamanho horizontal */                                                                  /* tamanho vertical */
-        margin: 3.25em 3.25em 0 3.25em;                                                     /* margin = margem externa relativo ao seu arredor */
-        padding: 5em;                                                                       /* padding = margem interna */
+        width: 100%;                                                                    /* tamanho horizontal */                                  
+        padding: 15%;                                                                       /* padding = margem interna */
         border-radius: 15px;                                                                /* borda da dashboard do calendario */
         display: grid;
         grid-template-rows: 0.4fr 2.5fr;
@@ -250,11 +253,12 @@ ul{
         display: grid;
         grid-template-rows: 1fr 1fr;
         grid-template-columns: 1fr 1fr;
-        grid-gap: 50px;
+        grid-gap: 15px;
         width: 100%;
         height: 100%;
+        min-height: 533px;
         align-self: flex-end;
-        min-height: 1020px;
+        margin-bottom: 50px;
     }
 
     .confirm{
@@ -272,7 +276,7 @@ ul{
     }
 
     .page{
-        padding: 5em 10em;
+        padding: 15%;
     }
 
     .center{
