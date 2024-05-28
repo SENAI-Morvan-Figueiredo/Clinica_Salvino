@@ -25,30 +25,41 @@ ul{
 }
     /* class do css do boddy da pagina do usuario */
     .body_user {                                                                            /* cor da tela de fundo do body */
-    min-height: 6.25em;                                                                     /* valor minimo da altura da pagina */
-    display: flex;                                                                          /* Definição da exibição como flex (vai jogar todos os elementos dentro da classe para a esquerda) */
-    justify-content: space-around;    
-    padding-bottom: 80px;                                                                   /* dimencionando os items do body espaçados ao seu redor */
+    min-height: 80%;                                                                     /* valor minimo da altura da pagina */
+    width: 100%;                                                             
+    display: grid;                                                                          /* Definição da exibição como flex (vai jogar todos os elementos dentro da classe para a esquerda) */
+    justify-content: flex-end;                                                                 /* dimencionando os items do body espaçados ao seu redor */
+    padding: 0 10% 10% 10%;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 3fr 1fr;  
+    grid-gap: 50px;
+}
+
+    .initial_dash{
+        min-height: 80%;                                                                     
+        width: 100%;                                                             
+        display: flex;                                                                         
+        justify-content: flex-end; 
+        flex-direction: column;                                                               
     }
+    
 
     /* class para dashboard do menu do usuario */
     .dash_menu_user {
         background-color: #333333;                                                        /* cor da dashboard */
         color: #ffffff;                                                                   /* cor da fonte da dashboard */
         font-family: 'Kumbh-medium', Arial, Helvetica, sans-serif;                          /* fonte estilizada da dashboard */                 
-        width: 18.75em;                                                                     /* tamanho horizontal da dashboard */
-        max-height: 53em;                                                                   /* tamanho vertical da dashboard */
-        border-radius: 15px;                                                                /* curvatura da borda da dashboard */
-        position: relative;                                                                 /* define a posição da dashboard como relativa, e usa os valores top e left */
-        top: 3.25em;                                                                        /* valor da posição a partir do topo */
-        left: 3.25em;                                                                       /* valor da posição a partir da esquerda */
+        width: 100%;                                                                     /* tamanho horizontal da dashboard */
+        height: 100%;                                                                /* curvatura da borda da dashboard */
+        padding: 20px;
+        border-radius: 15px;
     }
 
     /* class para o botão do home */
     .button_home {
         position: relative;                                                                 /* posição do botão da home relativo na dashboard com os valores top e left */
-        top: 1.125em;                                                                       /* valor da posição a partir do topo */     
-        left: 16.125em;
+        top: 15%;                                                                       /* valor da posição a partir do topo */     
+        left: 85%;
         margin-bottom: 20px;                                                                /* valor da posição a partir da esquerda */
     }
 
@@ -64,7 +75,7 @@ ul{
         justify-content: center;                                                            /* alinhando os items no centro da dashboard */
         flex-direction: column;                                                             /* define como os items dentro dele se organizam: em coluna */
         text-align: center;                                                                 /* alinha os textos ao centro da dashboard */
-        margin: 1em;                                                                        /* margem dos items da lista em comparação ao seu redor */
+        margin: 10%;                                                                        /* margem dos items da lista em comparação ao seu redor */
     }
 
 /* --- fim das classes da dashboard do menu do usuario --- */
@@ -73,8 +84,8 @@ ul{
     /* class para o dashboard do calendario */ 
     .dash_prop {
         display: grid;
-        width: 50em;                                                                    
-        min-height: 53em;                                                                                                                                                                  
+        width: 100%;                                                                    
+        min-height: 53%;                                                                                                                                                                  
         background-color: #FCB74A;                                                        
         border-radius: 15px;        
         grid-template-columns: 1fr 1fr;
@@ -99,13 +110,15 @@ ul{
         background-color: #333333;
         border-radius: 15px;
         color: #ffffff;
+        min-height: 50%;
     }
 
     .next{
-        width: 100%;
-        max-height: 300px;
+        width: 85%;
+        min-height: 300px;
         background-color: #333333;
         border-radius: 15px;
+        align-self: flex-end;
     }
 
     .info-consulta{
@@ -195,7 +208,7 @@ ul{
     .dash{
         color: #fff;
         background-color: #333333;
-        width: 50em;                                                                    /* tamanho horizontal */                                                                  /* tamanho vertical */
+        width: 50%;                                                                    /* tamanho horizontal */                                                                  /* tamanho vertical */
         margin: 3.25em 3.25em 0 3.25em;                                                     /* margin = margem externa relativo ao seu arredor */
         padding: 5em;                                                                       /* padding = margem interna */
         border-radius: 15px;                                                                /* borda da dashboard do calendario */
@@ -235,9 +248,13 @@ ul{
 
     .container-prop{
         display: grid;
-        grid-template-rows: 1fr 0.5fr;
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
         grid-gap: 50px;
-        padding: 3.25em 3.25em 0 3.25em; 
+        width: 100%;
+        height: 100%;
+        align-self: flex-end;
+        min-height: 1020px;
     }
 
     .confirm{
