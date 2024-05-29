@@ -27,7 +27,7 @@
         <nav  class="dash_menu_user">
             <div>
                 <div class="button_home">
-                    <a href="{% url 'medico' %}"><img src="{% static 'imagens/buttons/button_home.png' %}" alt=""></a>
+                    <a href="{% url 'medico_dash' %}"><img src="{% static 'imagens/buttons/button_home.png' %}" alt=""></a>
                 </div>
     
                 <div class="image_user">
@@ -45,7 +45,7 @@
                         </li>
     
                         <li>
-                           <a href="{% url 'conta_medico' %}">Minha conta</a> <img src="{% static 'images/buttons/button_lapis.png' %}" alt="Editar minha conta">
+                           <a class="nav-link white bord-right escalar" href="{% url 'conta_medico' %}">Minha conta</a> <img src="{% static 'images/buttons/button_lapis.png' %}" alt="Editar minha conta">
                         </li>
                     </ul>
                 </div>
@@ -53,11 +53,11 @@
                 <div class="ul_dash_menu line_menu">
                     <ul>
                         <li>
-                            Meus Pacientes
+                            <a class="nav-link white bord-right escalar" href="{% url 'meus_pacientes' %}">Meus Pacientes</a>
                         </li>
 
                         <li>
-                            Meus Atendimentos
+                            <a class="nav-link white bord-right escalar" href="{% url 'medico_dash' %}"> Agendamento </a> 
                         </li>
                     </ul>      
                 </div>
@@ -65,7 +65,7 @@
                 <div  class="ul_dash_menu">
                     <ul>
                         <li>
-                            <a href="{% url 'logout' %}">Sair</a>
+                            <a class="nav-link white bord-right escalar" href="{% url 'logout' %}">Sair</a>
                         </li>
                     </ul>
                 </div>
