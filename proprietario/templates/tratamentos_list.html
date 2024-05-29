@@ -12,13 +12,13 @@
     <h1 class="dash_title">Tratamentos</h1>
     <div class="list">
         <a href="{% url 'adicionar_tratamento' %}" class="btn btn-purple center add">Adicionar Tratamento</a>
-        <div class="cabecalho">
+        <div class="tri-cabecalho">
             <p>Tratamento</p>
-            <p class="info-title">Informações</p>
+            <p>Informações</p>
         </div>
         {% if tratamentos %}
         {% for tratamento in tratamentos %}
-            <div class="info-especialidade">
+            <div class="tri-info">
                 <p>{{ tratamento.name }}</p>
                 <a href="{% url 'tratamento' tratamento.id %}" class="btn btn-purple center open-btn">Info</a>
                 <a class="delete-button" href="{% url 'delete_tratamento' tratamento.id %}"><img class="icon-delete escalar" src="{% static 'img/delete.svg' %}" alt=""></a>

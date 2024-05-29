@@ -12,14 +12,15 @@
         <h1 class="dash_title">Planos {{convenio.name}}</h1>
         <div class="list">
             <a href="{% url 'adicionar_plano' convenio.id %}" class="btn btn-purple center add">Adicionar Plano</a>
-            <div class="cabecalho">
+            <div class="tri-cabecalho">
                 <p>Plano</p>
-                <p>Informações</p>
+                <p></p>
             </div>
             {% if planos %}
             {% for plano in planos %}
-                <div class="info-user">
+                <div class="tri-info">
                     <p>{{ plano.name }}</p>
+                    <div></div>
                     <a href="{% url 'deletar_plano' plano.id %}"><img class="icon-delete escalar" src="{% static 'img/delete.svg' %}" alt=""></a>
                 </div>
             {% endfor %}

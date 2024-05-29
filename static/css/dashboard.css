@@ -31,7 +31,6 @@ ul{
     padding: 0 10% 10% 10%;
     grid-template-columns: 1fr 3fr; 
     grid-gap: 3%;
-    min-height: 990px;
 }
 
     .initial_dash{
@@ -45,12 +44,21 @@ ul{
 
     /* class para dashboard do menu do usuario */
     .dash_menu_user {
+        display: block;
         background-color: #333333;                                                        /* cor da dashboard */
         color: #ffffff;                                                                   /* cor da fonte da dashboard */
         font-family: 'Kumbh-medium', Arial, Helvetica, sans-serif;                          /* fonte estilizada da dashboard */                 
         width: 100%;                                                                     /* tamanho horizontal da dashboard */
         padding: 20px;
         border-radius: 15px;
+        min-height: 89vh;
+        max-height: 89vh;
+        overflow-y: auto;
+    }
+
+    .dash_menu_user::-webkit-scrollbar {
+        width: 1px; /* Largura da barra de rolagem vertical */
+        height: 1px; /* Altura da barra de rolagem horizontal */
     }
 
     .nav_menu{
@@ -101,10 +109,11 @@ ul{
         grid-gap: 3%;                                             
     }
 
-    .info-especialidade{
+    .tri-info{
         display: grid;
-        grid-template-columns: 2.9fr 1fr 0.5fr;
+        grid-template-columns: 1fr 1.5fr 0.5fr;
         justify-content: space-between;
+        justify-items: center;
         align-items: center;
         width: 100%;
         max-height: 60px;
@@ -122,15 +131,14 @@ ul{
         border-radius: 15px;
         color: #ffffff;
         min-height: 50%;
-        min-height: 350px;
     }
 
     .next{
-        width: 100%;
+        width: 80%;
         height: 33%;
         background-color: #333333;
         border-radius: 15px;
-        align-self: flex-end;
+        align-self: center;
         min-height: 200px;
     }
 
@@ -222,12 +230,17 @@ ul{
         color: #fff;
         background-color: #333333;
         width: 100%;                                                                    /* tamanho horizontal */                                  
-        padding: 15%;                                                                       /* padding = margem interna */
+        padding: 7% 10%;                                                                       /* padding = margem interna */
         border-radius: 15px;                                                                /* borda da dashboard do calendario */
-        display: grid;
-        grid-template-rows: 0.4fr 2.5fr;
-        min-height: 53em;
+        display: flex;
+        flex-direction: column;
+        min-height: 90vh;
+        max-height: 90vh;
         overflow-y: auto;
+    }
+    .dash::-webkit-scrollbar {
+        width: 12px; /* Largura da barra de rolagem vertical */
+        height: 12px; /* Altura da barra de rolagem horizontal */
     }
 
     .menu{
@@ -264,10 +277,10 @@ ul{
         grid-template-rows: 1fr 1fr;
         grid-template-columns: 1fr 1fr;
         grid-gap: 15px;
-        width: 100%;
+        width: 80%;
         height: 100%;
-        min-height: 533px;
-        align-self: flex-end;
+        min-height: 89vh;
+        align-self: center;
         margin-bottom: 50px;
     }
 
@@ -324,15 +337,12 @@ ul{
         grid-template-columns: 2.2fr 3.7fr 1.9fr;
     }
 
-    .cabecalho{
+    .tri-cabecalho{
         padding: 1% 0;
         display: grid;
-        grid-template-columns: 2.9fr 1fr 0.5fr;
+        grid-template-columns: 1fr 1.5fr 0.5fr;
         padding: 1% 2% 1% 5%;
-    }
-
-    .info-title{
-        justify-self: center;
+        justify-items: center;
     }
 
     .blank{
@@ -389,7 +399,7 @@ ul{
     .aviso{
         width: 100%;
         text-align: center;
-        margin-top: 150px;
+        margin-top: 17%;
     }
 
     h3{

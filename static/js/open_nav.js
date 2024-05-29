@@ -8,7 +8,21 @@ btn_nav.addEventListener('click', ()=>{
 })
 
 background.addEventListener('click', ()=>{
-    console.log(nav_menu)
     background.style.display = 'none'
     nav_menu.style.display = 'none'
 })
+
+function resetStylesOnHeightChange() {
+    if (window.innerWidth > 880) {
+        background.style.display = 'none';
+        nav_menu.style.display = 'block';
+    } else {
+        background.style.display = 'none';
+        nav_menu.style.display = 'none';
+    }
+}
+
+window.addEventListener('resize', resetStylesOnHeightChange);
+
+// Chama a função para garantir o estado inicial correto
+resetStylesOnHeightChange();
