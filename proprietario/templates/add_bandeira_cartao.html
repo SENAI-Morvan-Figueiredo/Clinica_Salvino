@@ -7,16 +7,6 @@
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
 {% endblock extra_head %}
 
-{% block header %}
-    <header class="header bg-yellow">
-        <div class="container">
-            <a href="{% url 'home' %}" class="login">
-                <img class="escalar" src="{% static 'img/Logo Branco 1.png' %}">
-            </a>
-        </div>
-    </header>
-{% endblock header %}
-
 {% block content %}
     <section class="dash bg-darkgray page">
         <h1 class="dash_title">Cadastro de Bandeira</h1>

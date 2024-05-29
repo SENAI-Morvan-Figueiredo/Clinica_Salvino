@@ -1,10 +1,14 @@
 const btn_nav = document.querySelector('.btn-nav')
-const nav_menu = document.querySelector('.nav_menu')
+const background = document.querySelector('.nav_menu')
+const nav_menu = document.querySelector('.dash_menu_user')
 
 btn_nav.addEventListener('click', ()=>{
+    background.style.display = 'flex'
     nav_menu.style.display = 'flex'
 })
 
-nav_menu.addEventListener('click', ()=>{
+background.addEventListener('click', ()=>{
+    console.log(nav_menu)
+    background.style.display = 'none'
     nav_menu.style.display = 'none'
 })

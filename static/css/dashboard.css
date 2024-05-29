@@ -53,11 +53,15 @@ ul{
         border-radius: 15px;
     }
 
+    .nav_menu{
+        display: none;
+    }
+
     /* class para o botão do home */
     .button_home {
         width: 20px;
         position: relative;                                                                 /* posição do botão da home relativo na dashboard com os valores top e left */
-        top: 15%;                                                                       /* valor da posição a partir do topo */     
+        top: 0;                                                                       /* valor da posição a partir do topo */     
         left: 85%;
         margin-bottom: 20px;                                                                /* valor da posição a partir da esquerda */
     }
@@ -66,6 +70,11 @@ ul{
     .image_user {
         display: flex;                                                                      /* exibição da imagem como flexivel */
         justify-content: center;                                                            /* alinha a imagem no centro em comparação a dashboard */
+    }
+
+    .delete-button{
+        width: 30px;
+        justify-self: center;
     }
 
     /* estilizando a lista da class da dashboard do menu do usuario */
@@ -94,7 +103,7 @@ ul{
 
     .info-especialidade{
         display: grid;
-        grid-template-columns: 2.9fr 1fr 0.3fr;
+        grid-template-columns: 2.9fr 1fr 0.5fr;
         justify-content: space-between;
         align-items: center;
         width: 100%;
@@ -218,6 +227,7 @@ ul{
         display: grid;
         grid-template-rows: 0.4fr 2.5fr;
         min-height: 53em;
+        overflow-y: auto;
     }
 
     .menu{
@@ -315,9 +325,19 @@ ul{
     }
 
     .cabecalho{
-        padding: 1% 2% 0 5%;
+        padding: 1% 0;
         display: grid;
-        grid-template-columns: 3.7fr 2.2fr 1.9fr;
+        grid-template-columns: 2.9fr 1fr 0.5fr;
+        padding: 1% 2% 1% 5%;
+    }
+
+    .info-title{
+        justify-self: center;
+    }
+
+    .blank{
+        width: 30px;
+        height: 30px;
     }
 
     .pix{
