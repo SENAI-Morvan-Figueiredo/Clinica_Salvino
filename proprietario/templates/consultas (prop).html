@@ -11,18 +11,18 @@
     <section class="dash bg-darkgray">
         <h1 class="dash_title">Consultas</h1>
         <div class="list">
-            <a href="{% url 'agendamento_prop' %}" class="btn btn-purple center add">Agendar consultas</a>
+            <a href="{% url 'agendamento_prop' %}" class="btn btn-purple center add btn-dash">Agendar consultas</a>
             {% if consultas %}
                 {% for consulta in consultas %}
-                    <div class="info-consulta">
+                    <div class="info-card">
                         <p class="paciente"><b>Paciente:</b> {{ consulta.paciente.name }}</p>
                         <p class="medico"><b>Médico:</b> {{ consulta.medico.name }}</p>
-                        <p class="especialidade"><b>Especialidade</b> {{ consulta.especialidade }}</p>
+                        <p class="especialidade"><b>Especialidade: </b> {{ consulta.especialidade }}</p>
                         <p class="data"><b>Data:</b> {{ consulta.data|date:'d/m/Y' }}</p>
                         <p class="hora"><b>Hora:</b> {{ consulta.hora|time:"H:i" }}</p>
                         <p class="status"><b>Status:</b> {{ consulta.status_consulta }}</p>
-                        <a href="" class="btn btn-purple center add doc">Documentos</a>
-                        <a class="btn btn-purple center add can" href="{% url 'cancelar_consulta' consulta.id %}">Cancelar consulta</a>
+                        <a href="" class="btn btn-purple center add doc btn-dash">Documentos</a>
+                        <a class="btn btn-purple center add can btn-dash" href="{% url 'cancelar_consulta' consulta.id %}">Cancelar consulta</a>
                     </div>
                 {% endfor %}
 

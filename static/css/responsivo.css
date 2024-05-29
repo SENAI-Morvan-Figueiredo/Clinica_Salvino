@@ -37,6 +37,12 @@
     .btn-dash{
         scale: 0.75;
     }
+    .tetra-cabecalho{
+        grid-template-columns: 1fr 1.5fr 0.5fr;
+    }
+    .tetra-info{
+        grid-template-columns: 1fr 1.5fr 0.5fr;
+    }
 }
 
 
@@ -186,6 +192,9 @@
 }
 
 @media (max-width: 425px) {
+    .dash{
+        padding: 7% 5%;
+    }
     .body_user{
         padding: 5%
     }
@@ -208,5 +217,20 @@
     }
     .reverse .med-text{
         left: 0;
+    }
+}
+
+@media (max-width: 325px) {
+    .info-card{
+        grid-template-columns: 1fr;
+        grid-template-rows: 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
+        grid-template-areas:
+        "p p"
+        "m m"
+        "e e"
+        "d d"
+        "h h"
+        "s s"
+        "doc c";
     }
 }

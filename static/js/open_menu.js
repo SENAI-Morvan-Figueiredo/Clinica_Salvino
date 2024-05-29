@@ -11,12 +11,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     openButtons.forEach(button => {
         button.addEventListener('click', function(event) {
-            event.preventDefault(); // Previne comportamento padrão do link (caso tenha um href='#')
 
             // Encontra o menu relacionado a este botão
             const menu = this.nextElementSibling.nextElementSibling;
 
-            closeAllMenus()
+            console.log(button)
 
             // Alterna a visibilidade do menu
             if (menu.style.display === 'none' || menu.style.display === '') {

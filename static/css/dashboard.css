@@ -142,7 +142,7 @@ ul{
         min-height: 200px;
     }
 
-    .info-consulta{
+    .info-card{
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 0.5fr 0.5fr 0.5fr 0.5fr;
@@ -154,6 +154,7 @@ ul{
         border-radius: 15px;
         padding: 1% 2% 1% 5%;
         margin-bottom: 10px;
+        gap: 5px 0;
     }
 
     .info-financeiro{
@@ -170,7 +171,7 @@ ul{
         margin-bottom: 10px;
     }
 
-    .info-consulta p{
+    .info-card p{
         border: 1px solid #ffffff;
         padding-left: 5px;
     }
@@ -185,33 +186,51 @@ ul{
         margin-right: 5px;
     }
 
-    .info-consulta a{
+    .info-card a{
         margin: 10px 0;
         justify-self: center;
     }
 
     .paciente{
         grid-area: p;
+        height: 100%;
     }
 
     .medico{
         grid-area: m;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        gap: 3px;
     }
 
     .especialidade{
         grid-area: e;
+        height: 100%;
     }
 
     .data{
         grid-area: d;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        gap: 3px;
     }
 
     .hora{
         grid-area: h;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        gap: 3px;
     }
 
     .status{
         grid-area: s;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        gap: 3px;
     }
 
     .doc{
@@ -299,7 +318,7 @@ ul{
     }
 
     .page{
-        padding: 15%;
+        padding: 10% 15%;
     }
 
     .center{
@@ -345,6 +364,14 @@ ul{
         justify-items: center;
     }
 
+    .tetra-cabecalho{
+        padding: 1% 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 0.5fr;
+        padding: 1% 2% 1% 5%;
+        justify-items: center;
+    }
+
     .blank{
         width: 30px;
         height: 30px;
@@ -368,25 +395,12 @@ ul{
         height: 25px;
     }
 
-    .info-card{
+    .tetra-info{
         position: relative;
         display: grid;
-        grid-template-columns: 1.8fr 3fr 1.2fr 0.1fr;
+        grid-template-columns: 1fr 1fr 1fr 0.5fr;
         justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        max-height: 60px;
-        border: 1px solid #ffffff;
-        border-radius: 15px;
-        padding: 1% 2% 1% 5%;
-        margin-bottom: 10px;
-    }
-
-    .info-user{
-        position: relative;
-        display: grid;
-        grid-template-columns: 2.9fr 1.4fr 1.5fr 0.1fr;
-        justify-content: space-between;
+        justify-items: center;
         align-items: center;
         width: 100%;
         max-height: 60px;

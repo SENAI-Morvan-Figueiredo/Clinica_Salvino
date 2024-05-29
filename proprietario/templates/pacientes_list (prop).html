@@ -11,19 +11,19 @@
     <section class="dash bg-darkgray">
         <h1 class="dash_title">Pacientes</h1>
         <div class="list">
-            <a href="{% url 'adicionar_pacientes' %}" class="btn btn-purple center add">Adicionar Paciente</a>
-            <div class="cabecalho">
+            <a href="{% url 'adicionar_pacientes' %}" class="btn btn-purple center add btn-dash">Adicionar Paciente</a>
+            <div class="tetra-cabecalho">
                 <p>Nome</p>
                 <p class="cpf">CPF</p>
                 <p>Informações</p>
             </div>
             {% if pacientes %}
             {% for paciente in pacientes %}
-            <div class="info-user">
+            <div class="tetra-info">
                 <p>{{ paciente.name }}</p>
                 <p class="cpf">{{ paciente.cpf }}</p>
                 <a href="" class="btn btn-purple center open-btn">Info</a>
-                <a href="{% url 'delete_paciente' paciente.user.id %}"><img class="icon-delete escalar" src="{% static 'img/delete.svg' %}" alt=""></a>
+                <a class="btn-dash" href="{% url 'delete_paciente' paciente.user.id %}"><img class="icon-delete escalar" src="{% static 'img/delete.svg' %}" alt=""></a>
                 <div class="bg-dark menu">
                     <ul class="dash_nav_ul menu-options">
                         <li class="escalar">

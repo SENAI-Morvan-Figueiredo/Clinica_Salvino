@@ -17,14 +17,14 @@
                 <option value="medicos">Médicos</option>
                 <option value="recepcionistas">Recepcionistas</option>
             </select>
-            <div class="cabecalho">
+            <div class="tetra-cabecalho">
                 <p>Nome</p>
                 <p>Tipo de funcionário</p>
                 <p>Informações</p>
             </div>
             {% if funcionarios %}
                 {% for funcionario in funcionarios %}
-                    <div class="info-user">
+                    <div class="tetra-info">
                         <p>{{ funcionario.name }}</p>
                         {% if funcionario in recepcionistas %}
                         <div class="func recep"><p>Recepcionista</p></div>
