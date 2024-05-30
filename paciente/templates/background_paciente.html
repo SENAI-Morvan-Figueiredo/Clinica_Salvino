@@ -19,11 +19,28 @@
     </style>
     {% block extra_head %}
     {% endblock extra_head %}
+    <link rel="stylesheet" href="{% static 'css/formatados.css' %}">
+    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
+    <link rel="stylesheet" href="{% static 'css/globais.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsivo.css' %}">
 </head>
 <body>
-    {% block header %}
-    {% endblock header %}
+    <header class="header bg-purple">
+        <div class="container">
+            <a href="{% url 'home' %}" class="login">
+                <img class="escalar" src="{% static 'img/Logo Branco 1.png' %}">
+            </a>
+            <nav class="navbar navbar-dark bg-transparent btn-nav">
+                <div class="container-fluid">
+                <button class="navbar-toggler custom-toggler white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                </div>
+            </nav>
+        </div>
+    </header>
     <div class="body_user bg-purple">
+        <div class="nav_menu"></div>
         <nav  class="dash_menu_user">
             <div>
                 <div class="button_home">
@@ -102,6 +119,7 @@
         <p id="Copyright">Copyright 2023 - Desenvolvido por DEV Nutri - Todos os direitos reservados.</p>
     </footer>
 </body>
+<script src="{% static 'js/open_nav.js' %}"></script>
 {% block script %}
 {% endblock script %}
 </html>
