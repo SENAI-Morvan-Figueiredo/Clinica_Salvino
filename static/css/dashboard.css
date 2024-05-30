@@ -28,7 +28,7 @@ ul{
     width: 100%;                                                             
     display: grid;                                                                          /* Definição da exibição como flex (vai jogar todos os elementos dentro da classe para a esquerda) */
     justify-content: flex-end;                                                                 /* dimencionando os items do body espaçados ao seu redor */
-    padding: 0 10% 10% 10%;
+    padding: 0 10% 5% 10%;
     grid-template-columns: 1fr 3fr; 
     grid-gap: 3%;
 }
@@ -249,17 +249,18 @@ ul{
         color: #fff;
         background-color: #333333;
         width: 100%;                                                                    /* tamanho horizontal */                                  
-        padding: 7% 10%;                                                                       /* padding = margem interna */
+        padding: 7% 10%;
+        align-items: center;                                                                       /* padding = margem interna */
         border-radius: 15px;                                                                /* borda da dashboard do calendario */
-        display: flex;
+        display: block;
         flex-direction: column;
         min-height: 90vh;
         max-height: 90vh;
         overflow-y: auto;
     }
     .dash::-webkit-scrollbar {
-        width: 12px; /* Largura da barra de rolagem vertical */
-        height: 12px; /* Altura da barra de rolagem horizontal */
+        width: 1px; /* Largura da barra de rolagem vertical */
+        height: 1px; /* Altura da barra de rolagem horizontal */
     }
 
     .menu{
@@ -313,6 +314,7 @@ ul{
     }
 
     .list{
+        width: 100%;
         display: flex;
         flex-direction: column;
     }
@@ -417,7 +419,7 @@ ul{
     }
 
     h3{
-        font-size: 18px;
+        font-size: 14px;
     }
 
     .dash_title{

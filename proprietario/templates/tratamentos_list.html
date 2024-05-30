@@ -11,7 +11,7 @@
 <section class="dash bg-darkgray">
     <h1 class="dash_title">Tratamentos</h1>
     <div class="list">
-        <a href="{% url 'adicionar_tratamento' %}" class="btn btn-purple center add">Adicionar Tratamento</a>
+        <a href="{% url 'adicionar_tratamento' %}" class="btn btn-purple center add btn-dash">Adicionar Tratamento</a>
         <div class="tri-cabecalho">
             <p>Tratamento</p>
             <p>Informações</p>
@@ -20,8 +20,8 @@
         {% for tratamento in tratamentos %}
             <div class="tri-info">
                 <p>{{ tratamento.name }}</p>
-                <a href="{% url 'tratamento' tratamento.id %}" class="btn btn-purple center open-btn">Info</a>
-                <a class="delete-button" href="{% url 'delete_tratamento' tratamento.id %}"><img class="icon-delete escalar" src="{% static 'img/delete.svg' %}" alt=""></a>
+                <a href="{% url 'tratamento' tratamento.id %}" class="btn btn-purple center btn-dash">Info</a>
+                <a class="delete-button btn-dash" href="{% url 'delete_tratamento' tratamento.id %}"><img class="icon-delete escalar" src="{% static 'img/delete.svg' %}" alt=""></a>
             </div>
         {% endfor %}
         {% else %}

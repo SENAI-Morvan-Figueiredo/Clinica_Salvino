@@ -24,10 +24,10 @@
                         </div>
                     {% endfor %}
                 {% else %}
-                    <h3 class="aviso">Não há documentos atribuídos a esse paciente</h3>
+                    <h4 class="aviso">Não há documentos atribuídos a esse paciente</h4>
                 {% endif %}
             {% else %} 
-                <a href="{% url 'init_prontuario_prop' paciente.user.id %}" class="btn btn-purple center add">Iniciar Prontuário</a>
+                <a href="{% url 'init_prontuario_prop' paciente.user.id %}" class="btn btn-purple center add btn-dash">Iniciar Prontuário</a>
                 <h3 class="aviso">Este paciente não teve seu prontuário iniciado</h3>
             {% endif %}
         </div>

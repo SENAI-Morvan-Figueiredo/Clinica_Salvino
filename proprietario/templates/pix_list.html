@@ -11,7 +11,7 @@
     <section class="dash bg-darkgray">
         <h1 class="dash_title">Chaves Pix</h1>
         <div class="list">
-            <a href="{% url 'adicionar_chave' %}" class="btn btn-purple center add">Adicionar Chaves</a>
+            <a href="{% url 'adicionar_chave' %}" class="btn btn-purple center add btn-dash">Adicionar Chaves</a>
             <div class="tri-cabecalho">
                 <p>Proprietário da Chave</p>
                 <p>Chave</p>
@@ -21,7 +21,7 @@
                     <div class="tri-info">
                         <p>{{ chave.nome_proprietario_pix }}</p>
                         <p>{{ chave.chave }}</p>
-                        <a href="{% url 'deletar_chave' chave.id %}"><img class="icon-delete escalar" src="{% static 'img/delete.svg' %}" alt=""></a>
+                        <a class="btn-dash" href="{% url 'deletar_chave' chave.id %}"><img class="icon-delete escalar" src="{% static 'img/delete.svg' %}" alt=""></a>
                     </div>
                 {% endfor %}
 

@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+
     // Pega todos os botões que têm a classe 'open-btn'
     const openButtons = document.querySelectorAll('.open-btn');
 
@@ -11,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     openButtons.forEach(button => {
         button.addEventListener('click', function(event) {
+            event.preventDefault(); // Previne comportamento padrão do link (caso tenha um href='#')
 
             // Encontra o menu relacionado a este botão
             const menu = this.nextElementSibling.nextElementSibling;
@@ -27,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     document.addEventListener('click', function(event) {
-        const isClickInsideMenu = event.target.closest('.info-user');
+        const isClickInsideMenu = event.target.closest('.tetra-info');
         
         if (!isClickInsideMenu) {
             closeAllMenus();

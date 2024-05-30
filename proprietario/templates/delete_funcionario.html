@@ -25,8 +25,8 @@
             <h3 class="text confirm">Tem certeza que deseja excluir o recepcionista "{{ recepcionista.name }}"?</h3>
             {% csrf_token %}
             <div class="button-box">
-                <input type="submit" id="back" onclick="voltar()" class="btn-black-white" value="Voltar">
-                <button type="submit" data-button class="btn-purple">Confirmar</button>
+                <input type="submit" id="back" onclick="voltar()" class="btn-black-white btn-dash" value="Voltar">
+                <button type="submit" data-button class="btn-purple btn-dash">Confirmar</button>
             </div>
         </form>
         {% endif %}

@@ -31,7 +31,7 @@
 }
 
 @media (max-width: 1024px) {
-    .cpf{
+    .apagar{
         display: none;
     }
     .btn-dash{
@@ -222,7 +222,8 @@
 
 @media (max-width: 325px) {
     .info-card{
-        grid-template-columns: 1fr;
+        padding: 3%;
+        grid-template-columns: 0.5fr;
         grid-template-rows: 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
         grid-template-areas:
         "p p"

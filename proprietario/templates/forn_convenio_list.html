@@ -11,7 +11,7 @@
     <section class="dash bg-darkgray">
         <h1 class="dash_title">Convênios</h1>
         <div class="list">
-            <a href="{% url 'adicionar_convenio' %}" class="btn btn-purple center add">Adicionar Convênio</a>
+            <a href="{% url 'adicionar_convenio' %}" class="btn btn-purple center add btn-dash">Adicionar Convênio</a>
             <div class="tri-cabecalho">
                 <p>Fornecedor</p>
                 <p>Planos</p>
@@ -20,8 +20,8 @@
                 {% for convenio in convenios %}
                     <div class="tri-info">
                         <p>{{ convenio.name }}</p>
-                        <a href="{% url 'planos_convenio' convenio.id %}" class="btn btn-purple center open-btn">Planos</a>
-                        <a href="{% url 'deletar_convenio' convenio.id %}"><img class="icon-delete escalar" src="{% static 'img/delete.svg' %}" alt=""></a>
+                        <a href="{% url 'planos_convenio' convenio.id %}" class="btn btn-purple center open-btn btn-dash">Planos</a>
+                        <a class="btn-dash" href="{% url 'deletar_convenio' convenio.id %}"><img class="icon-delete escalar" src="{% static 'img/delete.svg' %}" alt=""></a>
                     </div>
                 {% endfor %}
 

@@ -12,14 +12,14 @@
         <h1 class="dash_title">Funcionários</h1>
         <div class="list">
             <a href="{% url 'adicionar_funcionarios' %}" class="btn btn-purple center add">Adicionar Funcionário</a>
-            <select name="filter" id="filter" class="filter">
+            <select name="filter" id="filter" class="filter btn-dash">
                 <option value="" selected>Filtro:</option>
                 <option value="medicos">Médicos</option>
                 <option value="recepcionistas">Recepcionistas</option>
             </select>
             <div class="tetra-cabecalho">
                 <p>Nome</p>
-                <p>Tipo de funcionário</p>
+                <p class="apagar">Tipo de funcionário</p>
                 <p>Informações</p>
             </div>
             {% if funcionarios %}
@@ -27,12 +27,12 @@
                     <div class="tetra-info">
                         <p>{{ funcionario.name }}</p>
                         {% if funcionario in recepcionistas %}
-                        <div class="func recep"><p>Recepcionista</p></div>
+                        <div class="func recep apagar"><p>Recepcionista</p></div>
                         {% else %}
-                        <div class="func med"><p>Médico</p></div>
+                        <div class="func med apagar"><p>Médico</p></div>
                         {% endif %}
-                        <a href="{% url 'funcionario' funcionario.user.id %}" class="btn btn-purple center">Info</a>
-                        <a href="{% url 'delete_funcionario' funcionario.user.id %}"><img class="icon-delete escalar" src="{% static 'img/delete.svg' %}" alt=""></a>
+                        <a href="{% url 'funcionario' funcionario.user.id %}" class="btn btn-purple center btn-dash">Info</a>
+                        <a class="btn-dash" href="{% url 'delete_funcionario' funcionario.user.id %}"><img class="icon-delete escalar" src="{% static 'img/delete.svg' %}" alt=""></a>
                     </div>
                 {% endfor %}
             {% else %}

@@ -11,7 +11,7 @@
     <section class="dash bg-darkgray">
         <h1 class="dash_title">Especialidades</h1>
         <div class="list">
-            <a href="{% url 'adicionar_especialidade' %}" class="btn btn-purple center add">Adicionar Especialidade</a>
+            <a href="{% url 'adicionar_especialidade' %}" class="btn btn-purple center add btn-dash">Adicionar Especialidade</a>
             <div class="tri-cabecalho">
                 <p>Especialidade</p>
                 <p>Informações</p>
@@ -20,7 +20,7 @@
                 {% for especialidade in especialidades %}
                     <div class="tri-info">
                         <p>{{ especialidade.nome_especialidade }}</p>
-                        <a href="{% url 'especialidade' especialidade.id %}" class="btn btn-purple center">Info</a>
+                        <a href="{% url 'especialidade' especialidade.id %}" class="btn btn-purple center btn-dash">Info</a>
                         <a href="{% url 'delete_especialidade' especialidade.id %}"><img class="icon-delete escalar" src="{% static 'img/delete.svg' %}" alt=""></a>
                     </div>
                 {% endfor %}

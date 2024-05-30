@@ -11,7 +11,7 @@
     <section class="dash bg-darkgray">
         <h1 class="dash_title">Bandeiras de Cartões</h1>
         <div class="list">
-            <a href="{% url 'adicionar_bandeira' %}" class="btn btn-purple center add">Adicionar Bandeira</a>
+            <a href="{% url 'adicionar_bandeira' %}" class="btn btn-purple center add btn-dash">Adicionar Bandeira</a>
             <div class="tri-cabecalho">
                 <p>Bandeira</p>
                 <p></p>
@@ -21,7 +21,7 @@
                     <div class="tri-info">
                         <p>{{ bandeira.name }}</p>
                         <div></div>
-                        <a href="{% url 'deletar_bandeira' bandeira.id %}"><img class="icon-delete escalar" src="{% static 'img/delete.svg' %}" alt=""></a>
+                        <a href="{% url 'deletar_bandeira' bandeira.id %}"><img class="icon-delete escalar btn-dash" src="{% static 'img/delete.svg' %}" alt=""></a>
                     </div>
                 {% endfor %}
 

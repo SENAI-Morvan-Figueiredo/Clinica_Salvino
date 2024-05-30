@@ -20,7 +20,7 @@
                             <p class="especialidade"><b>Especialidade</b> {{ consulta.especialidade }}</p>
                             <p class="hora"><b>Hora:</b> {{ consulta.hora|time:"H:i" }}</p>
                             <p class="status"><b>Status:</b> {{ consulta.status_consulta }}</p>
-                            <a class="btn btn-purple center add can" href="{% url 'abrir_ficha_prop' consulta.id %}">Abrir Ficha</a>
+                            <a class="btn btn-purple center add can btn-dash" href="{% url 'abrir_ficha_prop' consulta.id %}">Abrir Ficha</a>
                         </div>
                     {% endif %}
                 {% endfor %}
