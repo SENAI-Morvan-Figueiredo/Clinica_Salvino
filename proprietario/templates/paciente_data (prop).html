@@ -14,6 +14,7 @@
             {% csrf_token %}
             {{ form.as_p }}
             <div class="form-control">
+                <label for="name">Nome</label>
                 <input type="text" id="Name" class="input" name="name" placeholder="Nome completo" value="{{ paciente.name }}">
                 <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                 <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
@@ -23,6 +24,7 @@
 
             <div class="container-middle">
                 <div class="form-control">
+                    <label for="sexo">Sexo</label>
                     <select name="sexo" id="sexo" class="input" form="form-cad">
                         <option value="" disabled>Sexo</option>
                         {% if paciente.sexo == 'Masculino' %}
@@ -48,6 +50,7 @@
                 </div>
 
                 <div class="form-control">
+                    <label for="genero">Gênero</label>
                     <select name="genero" id="genero" class="input" form="form-cad">
                         <option value="" disabled>Gênero</option>
                         {% if paciente.genero == 'Homem Cis' %}
@@ -90,6 +93,7 @@
 
             <div class="container-middle">
                 <div class="form-control">
+                    <label for="outro">Outro:</label>
                     <input type="text" id="outro" class="input" name="outro" placeholder="Outro:" value="{{ paciente.outro }}">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
@@ -100,6 +104,7 @@
 
             <div class="container-middle">
                 <div class="form-control">
+                    <label for="data_nascimento">Data de Nascimento</label>
                     <input type="date" id="date" class="input" name="data_nascimento" value="{{ paciente.data_nascimento|date:'Y-m-d' }}">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
@@ -107,6 +112,7 @@
                     <small class="message"></small>
                 </div>
                 <div class="form-control">
+                    <label for="rg">RG</label>
                     <input type="text" maxlength="9" minlength="9" inputmode="numeric" id="RG" name="rg"
                         placeholder="RG" class="input" value="{{ paciente.rg }}">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
@@ -118,6 +124,7 @@
 
             <div class="container-middle">
                 <div class="form-control">
+                    <label for="cpf">CPF</label>
                     <input type="text" maxlength="11" minlength="11" inputmode="numeric" id="CPF" name="cpf"
                         placeholder="CPF" class="input" value="{{ paciente.cpf }}">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
@@ -171,6 +178,7 @@
             </div>
 
             <div class="form-control">
+                <label for="nome_responsavel">Nome do Responsável</label>
                 <input type="text" id="responsavel" class="input" name="nome_responsavel"
                     placeholder="Nome Responsável" value="{{ paciente.nome_responsavel }}">
                 <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
@@ -181,6 +189,7 @@
 
             <div class="container-middle">
                 <div class="form-control">
+                    <label for="rg_responsavel">RG do Responsável</label>
                     <input type="text" maxlength="9" minlength="9" inputmode="numeric" id="RGResponsavel"
                         name="rg_responsavel" placeholder="RG do Responsável" class="input" value="{{ paciente.rg_responsavel }}">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
@@ -189,6 +198,7 @@
                     <small class="message"></small>
                 </div>
                 <div class="form-control">
+                    <label for="cpf_responsavel">CPF do Responsável</label>
                     <input type="text" maxlength="11" minlength="11" inputmode="numeric" id="CPFResponsavel" class="input"
                         name="cpf_responsavel" placeholder="CPF do Responsável" value="{{ paciente.cpf_responsavel }}">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
@@ -200,6 +210,7 @@
 
             <div class="container-middle">
                 <div class="form-control">
+                    <label for="telefone">Telefone</label>
                     <input type="tel" maxlength="14" minlength="11" class="input" id="phone" name="telefone"
                         placeholder="(ddd) 99999-9999" value="{{ paciente.telefone }}">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
@@ -208,6 +219,7 @@
                     <small class="message"></small>
                 </div>
                 <div class="form-control">
+                    <label for="cep">CEP</label>
                     <input type="text" maxlength="8" minlength="8" inputmode="numeric" id="CEP" class="input" name="cep" placeholder="CEP" value="{{ paciente.cep }}">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
@@ -220,6 +232,7 @@
 
             <div class="container-middle">
                 <div class="form-control">
+                    <label for="estado">UF</label>
                     <input type="text" id="estado" class="input" name="estado" placeholder="Estado" value="{{ paciente.estado }}">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
@@ -227,6 +240,7 @@
                     <small class="message"></small>
                 </div>
                 <div class="form-control">
+                    <label for="cidade">Cidade</label>
                     <input type="text" id="cidade" class="input" name="cidade" placeholder="Cidade" value="{{ paciente.cidade }}">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
@@ -235,8 +249,9 @@
                 </div>
             </div>
 
-            <div class="container-middle address">
+            <div class="container-middle address dash-address">
                 <div class="form-control right">
+                    <label for="logradouro">Logradouro</label>
                     <input type="text" id="logradouro" class="input" name="logradouro" placeholder="Logradouro" value="{{ paciente.logradouro }}">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
@@ -245,6 +260,7 @@
                 </div>
 
                 <div class="form-control address  mid">
+                    <label for="numero">Nº</label>
                     <input type="text" inputmode="numeric" class="input" id="Numero" name="numero" placeholder="N°" value="{{ paciente.numero }}">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
@@ -253,6 +269,7 @@
                 </div>
 
                 <div class="form-control left">
+                    <label for="complemento">Complemento</label>
                     <input type="text" name="complemento" class="input" id="Complemento" placeholder="Complemento" value="{{ paciente.complemento }}">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
@@ -263,6 +280,7 @@
 
             <div class="container-middle">
                 <div class="form-control">
+                    <label for="bairro">Bairro</label>
                     <input type="text" id="bairro" class="input" name="bairro" placeholder="Bairro" value="{{ paciente.bairro }}">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>

@@ -25,6 +25,7 @@
             {{ form.as_p }}
             <div class="container-middle">
                 <div class="form-control">
+                    <label for="convenio">Fornecedor de Convênio</label>
                     <select id="convenio" class="input" name="convenio" form="form-cad">
                         <option value="" selected disabled>Convenio</option>
                         {% for convenio in convenios %}
@@ -38,6 +39,7 @@
                 </div>
                 
                 <div class="form-control">
+                    <label for="plano_convenio">Plano</label>
                     <select id="plano_convenio" class="input" name="plano_convenio" form="form-cad">
                         <option value="" selected disabled>Plano do Convenio</option>
                         {% for plano in planos %}
@@ -52,6 +54,7 @@
             </div>
 
             <div class="form-control">
+                <label for="numero_carteirinha">Número da Carteirinha</label>
                 <input type="text" id="numero_carteirinha" class="input" name="numero_carteirinha" placeholder="Número da Carteirinha">
                 <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                 <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>

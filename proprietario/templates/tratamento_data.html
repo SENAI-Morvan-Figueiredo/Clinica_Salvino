@@ -14,6 +14,7 @@
             {% csrf_token %}
             {{ form.as_p }}
             <div class="form-control">
+                <label for="name">Nome do Tratamento</label>
                 <input type="text" id="Name-esp" class="input" name="name" placeholder="Nome do Tratamento" value="{{ tratamento.name }}">
                 <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                 <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
@@ -22,6 +23,7 @@
             </div>
 
             <div class="form-control">
+                <label for="especialidade">Especialidade</label>
                 <select name="especialidade" id="especialidade" class="input">
                     <option value="" disabled>Especialidade</option>
                     {% for especialidade in especialidades %}
@@ -39,6 +41,7 @@
             </div>
 
             <div class="form-control">
+                <label for="preco">Preço</label>
                 <input type="number" min="0" id="Preco" class="input" name="preco" placeholder="Preço" step="0.01" value="{{ tratamento.preco }}">
                 <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                 <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
@@ -47,6 +50,7 @@
             </div>
 
             <div class="form-control">
+                <label for="descricao">Descrição</label>
                 <textarea name="descricao" id="descricao" class="input" cols="57" rows="10"
                     placeholder="Descrição">{{ tratamento.descricao }}</textarea>
                 <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>

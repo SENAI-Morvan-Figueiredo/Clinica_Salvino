@@ -14,7 +14,8 @@
             {% csrf_token %}
             {{ form.as_p }}
             <div class="form-control">
-                <input type="text" id="empresa_convenio" class="input" name="name" placeholder="Nome do Plano">
+                <label for="name">Plano</label>
+                <input type="text" id="plano_convenio" class="input" name="name" placeholder="Nome do Plano">
                 <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                 <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 

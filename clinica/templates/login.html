@@ -23,6 +23,7 @@
                     <form id="form-login" class="form" action="" method="post">
                         {% csrf_token %}
                         <div class="form-control">
+                            <label for="username">E-mail</label>
                             <input type="text" id="email" name="username" placeholder="E-mail" class="input">
                             <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                             <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
@@ -30,6 +31,7 @@
                             <small class="message"></small>
                         </div>
                         <div class="form-control">
+                            <label for="password">Senha</label>
                             <input type="password" id="password" name="password" placeholder="Senha" class="input">
                             <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                             <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>

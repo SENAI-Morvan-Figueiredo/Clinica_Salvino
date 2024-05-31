@@ -8,7 +8,7 @@
     <header class="header bg-purple">
         <div class="container">
             <a href="{% url 'home' %}"><img class="logo_branco escalar" src="{% static 'img/Logo Branco 1.png' %}"></a>
-            <button id="Login" class="btn-white" onclick="redirect()">Fazer Login</button>
+            <a id="Login" class="btn-white" href="{% url 'login' %}">Fazer Login</a>
         </div>
     </header>
 {% endblock header %}

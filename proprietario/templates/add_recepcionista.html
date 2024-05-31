@@ -11,12 +11,14 @@
     <section class="dash page bg-darkgray">
         <h1 class="dash_title">Cadastro de Funcionário</h1>
         <div class="select register">
-            <input type="text" placeholder="Selecione o tipo de funcionário" value="Recepcionista" disabled>
+            <label for="tipo_funcionario">Tipo de Funcionário</label>
+            <input type="text" placeholder="Selecione o tipo de funcionário" name="tipo_funcionario" value="Recepcionista" disabled>
         </div>
         <form class="form" id="form-cad" enctype="multipart/form-data" action="{% url 'adicionar_recep' %}" method="POST" role="form">
             {% csrf_token %}
             {{ form.as_p }}
             <div class="form-control">
+                <label for="name">Nome</label>
                 <input type="text" id="Name" class="input" name="name" placeholder="Nome completo">
                 <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                 <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
@@ -26,11 +28,12 @@
 
             <div class="container-middle">
                 <div class="form-control">
+                    <label for="sexo">Sexo</label>
                     <select name="sexo" id="sexo" class="input" form="form-cad">
                         <option value="" disabled selected>Sexo (Biológico)</option>
                         <option value="Masculino">Masculino</option>
                         <option value="Feminino">Feminino</option>
-                        <option value="Outro">Prefiro Não Dizer</option>
+                        <option value="Prefiro Não Dizer">Prefiro Não Dizer</option>
                     </select>
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
@@ -39,6 +42,7 @@
                 </div>
 
                 <div class="form-control">
+                    <label for="genero">Gênero</label>
                     <select name="genero" id="genero" class="input" form="form-cad">
                         <option value="" disabled selected>Gênero:</option>
                         <option value="Homem Cis">Homem Cis</option>
@@ -57,6 +61,7 @@
 
             <div class="container-middle">
                 <div class="form-control">
+                    <label for="outro">Outro:</label>
                     <input type="text" id="outro" class="input" name="outro" placeholder="Outro:">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
@@ -67,6 +72,7 @@
 
             <div class="container-middle">
                 <div class="form-control">
+                    <label for="data_nascimento">Data de Nascimento</label>
                     <input type="date" id="date" class="input" name="data_nascimento">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
@@ -74,6 +80,7 @@
                     <small class="message"></small>
                 </div>
                 <div class="form-control">
+                    <label for="rg">RG</label>
                     <input type="text" maxlength="9" minlength="9" inputmode="numeric" id="RG" name="rg"
                         placeholder="RG" class="input">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
@@ -85,6 +92,7 @@
 
             <div class="container-middle">
                 <div class="form-control">
+                    <label for="cpf">CPF</label>
                     <input type="text" maxlength="11" minlength="11" inputmode="numeric" id="CPF" name="cpf"
                         placeholder="CPF" class="input">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
@@ -96,6 +104,7 @@
 
             <div class="container-middle">
                 <div class="form-control">
+                    <label for="telefone">Telefone</label>
                     <input type="tel" maxlength="14" minlength="11" class="input" id="phone" name="telefone"
                         placeholder="(ddd) 99999-9999">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
@@ -104,6 +113,7 @@
                     <small class="message"></small>
                 </div>
                 <div class="form-control">
+                    <label for="cep">CEP</label>
                     <input type="text" maxlength="8" minlength="8" inputmode="numeric" id="CEP" class="input" name="cep" placeholder="CEP">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
@@ -114,6 +124,7 @@
 
             <div class="container-middle">
                 <div class="form-control">
+                    <label for="estado">UF</label>
                     <input type="text" maxlength="2" minlength="2" id="estado" class="input" name="estado" placeholder="UF">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
@@ -121,6 +132,7 @@
                     <small class="message"></small>
                 </div>
                 <div class="form-control">
+                    <label for="cidade">Cidade</label>
                     <input type="text" id="cidade" class="input" name="cidade" placeholder="Cidade">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
@@ -129,8 +141,9 @@
                 </div>
             </div>
 
-            <div class="container-middle address">
+            <div class="container-middle address dash-address">
                 <div class="form-control right">
+                    <label for="logradouro">Logradouro</label>
                     <input type="text" id="logradouro" class="input" name="logradouro" placeholder="Logradouro">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
@@ -139,6 +152,7 @@
                 </div>
 
                 <div class="form-control address  mid">
+                    <label for="numero">Nº</label>
                     <input type="text" inputmode="numeric" class="input" id="Numero" name="numero" placeholder="N°">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
@@ -147,6 +161,7 @@
                 </div>
 
                 <div class="form-control left">
+                    <label for="complemento">Complemento</label>
                     <input type="text" name="complemento" class="input" id="Complemento" placeholder="Complemento">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
@@ -157,6 +172,7 @@
 
             <div class="container-middle">
                 <div class="form-control">
+                    <label for="bairro">Bairro</label>
                     <input type="text" id="bairro" class="input" name="bairro" placeholder="Bairro">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
@@ -167,6 +183,7 @@
 
             <div class="container-middle">
                 <div class="form-control">
+                    <label for="username">E-mail</label>
                     <input type="Email" id="email" name="username" class="input email" placeholder="E-mail">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
@@ -174,6 +191,7 @@
                     <small class="message"></small>
                 </div>
                 <div class="form-control">
+                    <label for="Confirmar E-mail">Confirmar E-mail</label>
                     <input type="Confirmar Email" id="emailCheck" name="Confirmar E-mail"
                         placeholder="Confirmar E-mail" class="input emailConfirm">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
@@ -185,6 +203,7 @@
 
             <div class="container-middle">
                 <div class="form-control">
+                    <label for="password1">Senha</label>
                     <input type="password" id="password" name="password1" placeholder="Senha" class="input password">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
@@ -192,6 +211,7 @@
                     <small class="message"></small>
                 </div>
                 <div class="form-control">
+                    <label for="password">Confirmar Senha</label>
                     <input type="password" id="passwordCheck" name="password" placeholder="Confirmar Senha" class="input passwordConfirm">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>

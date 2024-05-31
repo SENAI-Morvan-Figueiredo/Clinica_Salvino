@@ -1,5 +1,8 @@
 /*Funções JS*/
 .form-control {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     border: none;
     margin-bottom: 10px;
     padding-bottom: 20px;

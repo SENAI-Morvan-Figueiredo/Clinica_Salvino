@@ -111,6 +111,7 @@ footer{
 }
 
 .header .container {
+    align-items: center;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -160,6 +161,7 @@ footer{
 
 /*Classes JS*/
 .form-control {
+    display: flex;
     padding: 0;
     background: transparent;
     border: none;
@@ -167,6 +169,8 @@ footer{
     margin-bottom: 10px;
     padding-bottom: 20px;
     position: relative;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .form-control textarea {
@@ -255,7 +259,7 @@ footer{
 }
 .form-control i {
     position: absolute;
-    top: 21px;
+    top: 50px;
     right: 10px;
     visibility: hidden;
 }
@@ -270,7 +274,7 @@ footer{
 
 .message{
     position: absolute;
-    top: 50px;
+    top: 85px;
     left: 0;
 }
 
@@ -402,6 +406,7 @@ footer{
     grid-template-areas: 'r c l';
     grid-gap: 0;
     justify-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
 }  
 
 
@@ -489,45 +494,6 @@ tr{
 }
 
 /*Responsividade das páginas*/
-@media (max-width: 790px) {
-    .btn-purple{
-        width: 100px;
-    }
-
-    .btn-black-white{
-        width: 100px;
-    }
-
-    table{
-        width: 100%;
-        font-size: 12px;
-    }
-
-    .container-middle.address {
-        width: 100%;
-        display: grid;
-        justify-content: space-between;
-        align-items: center;
-        align-content: center;
-        margin-bottom: 2.38%;
-        grid-template-areas: 'r c' 'l l';
-        justify-items: stretch;
-    }  
-
-    .right{
-        width: 140%;
-        margin-right: 0;
-    }
-
-    .left{
-        margin-left: 0;
-    }
-
-    .mid{
-        margin-left: 50%;
-    }
-}
-
 @media (max-width: 690px) {
     .btn.btn-white{
         display: none;

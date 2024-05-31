@@ -12,8 +12,9 @@
     <h1 class="dash_title">Pagamento através de Pix</h1>
     <form class="form func" action="#" method="POST">
         {% csrf_token %}
+        <label for="pix">Selecione um pix:</label>
         <select name="pix" id="register" class="register">
-            <option value="" selected disabled>Selecione o pix que você deseja utilizar:</option>
+            <option value="" selected disabled>Selecione a chave pela qual você deseja pagar:</option>
             {% for chave in pix %}
                 <option value="{{ chave.id }}">{{ chave.nome_proprietario_pix }}: {{ chave.chave }}</option>
             {% endfor %}

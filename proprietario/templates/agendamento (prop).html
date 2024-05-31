@@ -14,6 +14,7 @@
             {% csrf_token %}
             {{ form.as_p }}
             <div class="form-control">
+                <label for="paciente">Paciente</label>
                 <select name="paciente" id="paciente" class="input" form="form-cad">
                     <option value="" disabled selected>Paciente</option>
                     {% for paciente in pacientes %}
@@ -29,6 +30,7 @@
 
             <div class="container-middle">
                 <div class="form-control">
+                    <label for="tipo_consulta">Tipo de Atendimento</label>
                     <select name="tipo_consulta" id="consulta" class="input" form="form-cad">
                         <option value="" disabled selected>Tipo de Atendimento</option>
                         <option value="Presencial">Presencial</option>
@@ -41,6 +43,7 @@
                 </div>
 
                 <div class="form-control">
+                    <label for="especialidade">Especialidade</label>
                     <select name="especialidade" id="especialidade" class="input" form="form-cad">
                         <option value="" disabled selected>Especialidades</option>
                         {% for especialidade in especialidades %}
@@ -56,6 +59,7 @@
 
             <div class="container-middle">
                 <div class="form-control">
+                    <label for="medico">Médico</label>
                     <select name="medico" id="medico" class="input" form="form-cad">
                         <option value="" disabled selected>Médico</option>
                         {% for medico in medicos %}
@@ -71,6 +75,7 @@
 
             <div class="container-middle">
                 <div class="form-control">
+                    <label for="data">Data</label>
                     <input type="date" id="date" class="input" name="data">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
@@ -79,6 +84,7 @@
                 </div>
 
                 <div class="form-control">
+                    <label for="hora">Hora</label>
                     <select name="hora" id="hora" class="input" form="form-cad">
                         <option value="" disabled selected>Horas</option>
                         <option value="08:00:00">08:00</option>
@@ -108,6 +114,7 @@
             </div>
 
                 <div class="form-control">
+                    <label for="arquivos">Anexos</label>
                     <input type="file" id="documentos" name="arquivos" placeholder="Documentos" class="input arquivo" multiple><label for="file-input" class="">Escolha um arquivo</label>
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>

@@ -12,6 +12,7 @@
     <h1 class="dash_title">Pagamento através de Convênio</h1>
     <form class="form" action="#" method="POST">
         {% csrf_token %}
+        <label for="convenio">Selecione um convênio:</label>
         <select name="convenio" id="register" class="register">
             <option value="" selected disabled>Selecione o convênio que você deseja utilizar:</option>
             {% for convenio in convenios %}

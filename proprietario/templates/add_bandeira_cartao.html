@@ -14,6 +14,7 @@
             {% csrf_token %}
             {{ form.as_p }}
             <div class="form-control">
+                <label for="bandeira_cartao">Bandeira do Cartão</label>
                 <input type="text" id="bandeira_cartao" class="input" name="name" placeholder="Bandeira do Cartão">
                 <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                 <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>

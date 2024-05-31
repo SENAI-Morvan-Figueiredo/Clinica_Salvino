@@ -12,6 +12,7 @@
     <h1 class="dash_title">Pagamento através de Cartão</h1>
     <form class="form func" action="#" method="POST">
         {% csrf_token %}
+        <label for="cartao">Selecione um cartão:</label>
         <select name="cartao" id="register" class="register">
             <option value="" selected disabled>Selecione o cartão que você deseja utilizar:</option>
             {% for cartao in cartoes %}

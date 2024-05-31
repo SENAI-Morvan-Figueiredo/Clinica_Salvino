@@ -12,6 +12,7 @@
     <h1 class="dash_title">Cadastro de Funcionário</h1>
     <form class="form func" action="{% url 'adicionar_funcionarios' %}" method="POST">
         {% csrf_token %}
+        <label for="tipo_funcionario">Tipo de Funcionário</label>
         <select name="tipo_funcionario" id="register" class="register btn-dash">
             <option value="" disabled selected>Selecione o tipo de funcionário</option>
             <option value="medico">Médico</option>

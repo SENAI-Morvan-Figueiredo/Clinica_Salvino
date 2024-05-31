@@ -25,6 +25,7 @@
     <h3 class="total"><b>Total:</b> <p class="total_value">{{ total }}</p></h3>
     <form class="form func" action="{% url 'pay_prop' %}" method="POST">
         {% csrf_token %}
+        <label for="forma_pag">Forma de Pagamento</label>
         <select name="forma_pag" id="register" class="register">
             <option value="" disabled selected>Selecione a forma de pagamento:</option>
             <option value="cartao">Cartão</option>
