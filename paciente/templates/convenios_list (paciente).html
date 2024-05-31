@@ -22,18 +22,18 @@
         <h1 class="dash_title">Convênios: {{ paciente.name }}</h1>
         <div class="list">
             <a href="{% url 'add_convenio_paciente' %}" class="btn btn-purple center add">Adicionar Convênio</a>
-            <div class="cabecalho-card">
-                <p>Convênio</p>
+            <div class="tetra-cabecalho">
+                <p class="apagar">Convênio</p>
                 <p>Plano</p>
                 <p>Carteirinha</p>
             </div>
             {% if convenios %}
             {% for convenio in convenios %}
-                <div class="info-card">
-                    <p>{{ convenio.convenio }}</p>
+                <div class="tetra-info">
+                    <p class="apagar">{{ convenio.convenio }}</p>
                     <p>{{ convenio.plano_convenio }}</p>
                     <p>{{ convenio.numero_carteirinha }}</p>
-                    <a href="{% url 'delete_convenio_paciente' convenio.id %}"><img class="icon-delete escalar" src="{% static 'img/delete.svg' %}" alt=""></a>
+                    <a class="btn-dash" href="{% url 'delete_convenio_paciente' convenio.id %}"><img class="icon-delete escalar" src="{% static 'img/delete.svg' %}" alt=""></a>
                 </div>
             {% endfor %}
         {% else %}

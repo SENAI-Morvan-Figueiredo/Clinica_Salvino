@@ -12,17 +12,17 @@
         <h1 class="dash_title">Cartões: {{ paciente.name }}</h1>
         <div class="list">
             <a href="{% url 'adicionar_cartoes' paciente.user.id %}" class="btn btn-purple center add btn-dash">Adicionar Cartão</a>
-            <div class="cabecalho-card">
+            <div class="tetra-cabecalho">
                 <p>Bandeira</p>
                 <p>Número</p>
-                <p>Vencimento</p>
+                <p class="apagar">Vencimento</p>
             </div>
             {% if cartoes %}
             {% for cartao in cartoes %}
-                <div class="info-card">
+                <div class="tetra-info">
                     <p>{{ cartao.bandeira_cartao }}</p>
                     <p>{{ cartao.numero_cartao }}</p>
-                    <p>{{ cartao.data_vencimento }}</p>
+                    <p class="apagar">{{ cartao.data_vencimento }}</p>
                     <a class="btn-dash" href="{% url 'deletar_cartao' cartao.id %}"><img class="icon-delete escalar" src="{% static 'img/delete.svg' %}" alt=""></a>
                 </div>
             {% endfor %}

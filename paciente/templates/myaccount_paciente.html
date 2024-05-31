@@ -143,27 +143,36 @@
                     <small class="message"></small>
                 </div>
                 <div class="form-control Dependente">
-                    {% if paciente.status_dependencia == 'Independente' %}
-                        <div class="option-dependence">
-                            <label for="independente">Independente</label>
+                    <div class="option-dependence">
+                        <label for="independente">Independente</label>
+                        {% if paciente.status_dependencia == 'Independente' %}
                             <input type="radio" name="status_dependencia" value="Independente" class="checkbox left input"
-                                id="independente" value>
-                            <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
-                            <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+                                id="independente" checked>
+                        {% else %}
+                            <input type="radio" name="status_dependencia" value="Independente" class="checkbox left input"
+                                id="independente">
+                        {% endif %}
+                        <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                        <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
-                            <small class="message"></small>
-                        </div>
+                        <small class="message"></small>
+                    </div>
 
-                        <div class="option-dependence">
-                            <label for="dependente">Dependente</label>
+                    <div class="option-dependence">
+                        <label for="dependente">Dependente</label>
+                        {% if paciente.status_dependencia == 'Dependente' %}
+                            <input type="radio" name="status_dependencia" value="Dependente" class="checkbox left input"
+                                id="dependente" checked>
+                        {% else %}
                             <input type="radio" name="status_dependencia" value="Dependente" class="checkbox left input"
                                 id="dependente">
-                            <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
-                            <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+                        {% endif %}
+                        
+                        <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                        <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
-                            <small class="message"></small>
-                        </div>
-                    {% endif %}
+                        <small class="message"></small>
+                    </div>
                 </div>
             </div>
 
@@ -301,11 +310,11 @@
                 </p>
             </div>
             <div class="button-box">
-                <a href="{% url 'alterar_senha' %}" class="btn btn-purple center add">Alterar Senha</a>
+                <a href="{% url 'alterar_senha' %}" class="btn btn-purple center add btn-dash">Alterar Senha</a>
             </div>
             <div class="button-box">
-                <input type="submit" id="back" onclick="voltar()" class="btn-black-white" value="Voltar">
-                <button type="submit" data-button class="btn-purple">Enviar</button>
+                <input type="submit" id="back" onclick="voltar()" class="btn-black-white btn-dash value="Voltar">
+                <button type="submit" data-button class="btn-purple btn-dash">Enviar</button>
             </div>
         </form>
     </section>  

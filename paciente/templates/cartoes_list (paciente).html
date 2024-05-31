@@ -21,19 +21,19 @@
     <section class="dash bg-darkgray">
         <h1 class="dash_title">Cartões: {{ paciente.name }}</h1>
         <div class="list">
-            <a href="{% url 'add_cartao_paciente' %}" class="btn btn-purple center add">Adicionar Cartão</a>
-            <div class="cabecalho-card">
+            <a href="{% url 'add_cartao_paciente' %}" class="btn btn-purple center add btn-dash">Adicionar Cartão</a>
+            <div class="tetra-cabecalho">
                 <p>Bandeira</p>
                 <p>Número</p>
-                <p>Vencimento</p>
+                <p class="apagar">Vencimento</p>
             </div>
             {% if cartoes %}
             {% for cartao in cartoes %}
-                <div class="info-card">
+                <div class="tetra-info">
                     <p>{{ cartao.bandeira_cartao }}</p>
                     <p>{{ cartao.numero_cartao }}</p>
-                    <p>{{ cartao.data_vencimento }}</p>
-                    <a href="{% url 'delete_cartao_paciente' cartao.id %}"><img class="icon-delete escalar" src="{% static 'img/delete.svg' %}" alt=""></a>
+                    <p class="apagar">{{ cartao.data_vencimento }}</p>
+                    <a class="btn-dash" href="{% url 'delete_cartao_paciente' cartao.id %}"><img class="icon-delete escalar" src="{% static 'img/delete.svg' %}" alt=""></a>
                 </div>
             {% endfor %}
         {% else %}

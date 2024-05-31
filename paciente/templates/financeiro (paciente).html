@@ -22,7 +22,7 @@
         <div class="list">
             {% if contas %}
                 {% for conta in contas %}
-                    <div class="info-financeiro">
+                    <div class="info-card">
                         <p class="paciente"><b>Data de Emissão:</b> {{ conta.data_emissao|date:'d/m/Y' }}</p>
                         <p class="medico"><b>Tratamento:</b> {{ conta.tratamento }}</p>
                         <p class="especialidade"><b>Médico:</b> {{ conta.medico.name }}</p>

@@ -58,6 +58,17 @@
     .tetra-info{
         grid-template-columns: 1fr 1.5fr 0.5fr;
     }
+    .container-middle.address {
+        width: 100%;
+        display: grid;
+        justify-content: space-between;
+        align-items: center;
+        align-content: center;
+        margin-bottom: 2.38%;
+        grid-template-areas: 'r c' 'l l';
+        justify-items: flex-end;
+        grid-template-columns: 1fr 1fr;
+    } 
 }
 
 
@@ -182,6 +193,9 @@
 }
 
 @media (max-width: 790px) {
+    .container-middle.address {
+        justify-items: stretch;
+    } 
     .btn-purple{
         width: 100px;
     }
@@ -193,19 +207,7 @@
     table{
         width: 100%;
         font-size: 12px;
-    }
-
-    .container-middle.address {
-        width: 100%;
-        display: grid;
-        justify-content: space-between;
-        align-items: center;
-        align-content: center;
-        margin-bottom: 2.38%;
-        grid-template-areas: 'r c' 'l l';
-        justify-items: stretch;
-        grid-template-columns: 1fr 1fr;
-    }  
+    } 
 
     .right{
         width: 140%;
