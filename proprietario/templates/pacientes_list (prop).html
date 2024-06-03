@@ -19,7 +19,7 @@
             </div>
             {% if pacientes %}
             {% for paciente in pacientes %}
-            <div class="tetra-info">
+            <div class="tetra-info info">
                 <p>{{ paciente.name }}</p>
                 <p class="apagar">{{ paciente.cpf }}</p>
                 <a href="" class="btn btn-purple center open-btn btn-dash">Info</a>
@@ -43,7 +43,7 @@
                         </li>
                         <div class="line"></div>
                         <li class="escalar">
-                            <a href="{% url 'prontuario' paciente.user.id %}" class="nav-link white bord-right escalar option">Prontuario</a>
+                            <a href="{% url 'prontuario' paciente.user.id %}" class="nav-link white bord-right escalar option">Prontuário</a>
                         </li>
                     </ul>
                 </div>

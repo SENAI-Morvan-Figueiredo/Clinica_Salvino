@@ -21,30 +21,26 @@
     <section class="dash bg-darkgray">
         <h1 class="dash_title">Pacientes</h1>
         <div class="list">
-            <div class="cabecalho">
+            <div class="tri-cabecalho med">
                 <p>Nome</p>
-                <p class="cpf">CPF</p>
+                <p >CPF</p>
                 <p>Informações</p>
             </div>
             {% if pacientes %}
             {% for paciente in pacientes %}
-            <div class="info-user">
+            <div class="tri-info info med">
                 <p>{{ paciente.name }}</p>
-                <p class="cpf">{{ paciente.cpf }}</p>
-                <a href="" class="btn btn-purple center open-btn">Info</a>
+                <p>{{ paciente.cpf }}</p>
+                <a href="" class="btn btn-purple center open-btn btn-dash">Info</a>
+                <div></div>
                 <div class="bg-dark menu">
                     <ul class="dash_nav_ul menu-options">
                         <li class="escalar">
-                            <a href="{% url 'paciente' paciente.user.id %}" class="nav-link white bord-right escalar option">Prontuario</a>
+                            <a href="{% url 'paciente_med' paciente.user.id %}" class="nav-link white bord-right escalar option">Dados do paciente</a>
                         </li>
+                        <div class="line"></div>
                         <li class="escalar">
-                            <a href="{% url 'paciente' paciente.user.id %}" class="nav-link white bord-right escalar option">Bio</a>
-                        </li>
-                        <li class="escalar">
-                            <a href="{% url 'paciente' paciente.user.id %}" class="nav-link white bord-right escalar option">Dieta</a>
-                        </li>
-                        <li class="escalar">
-                            <a href="{% url 'paciente' paciente.user.id %}" class="nav-link white bord-right escalar option">Encaminhameto</a>
+                            <a href="{% url 'prontuario_med' paciente.user.id %}" class="nav-link white bord-right escalar option">Prontuário</a>
                         </li>
                     </ul>
                 </div>

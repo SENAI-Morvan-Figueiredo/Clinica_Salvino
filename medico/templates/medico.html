@@ -8,30 +8,14 @@
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
 {% endblock extra_head %}
 
-{% block header %}
-    <header class="header bg-blue">
-        <div class="container">
-            <a href="{% url 'home' %}" class="login">
-                <img class="escalar" src="{% static 'img/Logo Branco 1.png' %}">
-            </a>
-            <nav class="navbar navbar-dark bg-transparent btn-nav">
-                <div class="container-fluid">
-                <button class="navbar-toggler custom-toggler white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                </div>
-            </nav>
-        </div>
-    </header>
-{% endblock header %}
 
 {% block content %}  
 <section class="dash">
-    <h1 class="dash_title">Próximas consultas:</h1>
+    <h1 class="dash_title">Fichas Abertas:</h1>
     <div class="list">
         {% if consultas %}
             {% for consulta in consultas %}
-                <div class="info-consulta">
+                <div class="info-card">
                     <p class="paciente"><b>Paciente:</b> {{ consulta.paciente.name }}</p>
                     <p class="medico"><b>Médico:</b> {{ consulta.medico.name }}</p>
                     <p class="especialidade"><b>Especialidade</b> {{ consulta.especialidade }}</p>
@@ -42,7 +26,7 @@
             {% endfor %}
 
         {% else %}
-            <h3 class="aviso">Não há consultas marcadas.</h3> 
+            <h3 class="aviso">Não há consultas marcadas para hoje.</h3> 
         {% endif %}
     </div>
 

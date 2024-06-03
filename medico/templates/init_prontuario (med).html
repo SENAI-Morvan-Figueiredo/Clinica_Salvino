@@ -1,0 +1,126 @@
+{% extends 'background_medico.html' %}
+{% load static i18n %}
+{% block head_title %}
+    {% trans 'Médico - Clínica Salvino' %}
+{% endblock head_title %}
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock extra_head %}
+
+{% block content %}
+    <section class="dash page bg-darkgray">
+        <h1 class="dash_title">Informações Básicas: {{ paciente.name }}</h1>
+        <form class="form" id="form-cad" enctype="multipart/form-data" action="#" method="POST" role="form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="container-middle">
+                <div class="form-control">
+                    <label for="peso">Peso</label>
+                    <input type="number" min="0" id="peso" class="input" name="peso" placeholder="Peso" step="0.01">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+
+                <div class="form-control">
+                    <label for="altura">Altura</label>
+                    <input type="number" min="0" id="altura" class="input" name="altura" placeholder="Altura" step="0.01">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+            </div>
+
+            <div class="container-middle">
+                <div class="form-control checkb">
+                    <label for="alergia">Tem alergia?</label>
+                    <input type="checkbox" id="alergia" class="input check" name="alergia">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+                <div class="form-control checkb">
+                    <label for="doenca">Tem doença?</label>
+                    <input type="checkbox" id="doenca" class="input check" name="doenca">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+            </div>
+
+            <div class="container-middle">
+                <div class="form-control checkb">
+                    <label for="fuma">Fuma?</label>
+                    <input type="checkbox" id="fuma" class="input check" name="fuma">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+                <div class="form-control checkb">
+                    <label for="bebe">Bebe?</label>
+                    <input type="checkbox" id="bebe" class="input check" name="bebe">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+            </div>
+
+            <div class="container-middle">
+                <div class="form-control checkb">
+                    <label for="uso_drogas">Faz uso de alguma outra substância psicoativa?</label>
+                    <input type="checkbox" id="uso_drogas" class="input check" name="uso_drogas">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+
+                    <small class="message"></small>
+                </div>
+            </div>
+
+            <div class="form-control">
+                <label for="observacoes">Observações</label>
+                <textarea name="observacoes" id="observacoes" class="input" cols="30" rows="10"
+                    placeholder="Observações"></textarea>
+                <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                <i class="fa-solid fa-circle-check icon-success hidden" style="color: #328146;"></i>
+                <small class="message"></small>
+            </div>
+
+            <div class="result">
+                <p class="result-text">
+                    {% if message_view and messages %}
+                        {% for message in messages %}
+                            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                                <div class="alert alert-danger">
+                                    <strong>Erro!</strong>
+                                    {{ message }}
+                                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                                </div>
+                            {% else %}
+                                <div class="alert alert-success">
+                                    <strong>Sucesso!</strong>
+                                    {{ message }}
+                                    <i class="fa-solid fa-circle-check icon-success hidden" style="color: #328146;"></i>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </p>
+            </div>
+            <div class="button-box">
+                <input type="submit" id="back" onclick="voltar()" class="btn-black-white btn-dash" value="Voltar">
+                <button type="submit" data-button class="btn-purple btn-dash">Iniciar</button>
+            </div>
+        </form>
+    </section>
+{% endblock content %}
+{% block script %}
+    <script src="https://kit.fontawesome.com/fc74a91a63.js" crossorigin="anonymous"></script>
+    <script src="{% static 'js/formValidation.js' %}"></script>
+    <script src="{% static 'js/button.js' %}"></script>
+{% endblock script %}

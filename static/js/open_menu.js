@@ -17,8 +17,6 @@ document.addEventListener('DOMContentLoaded', function() {
             // Encontra o menu relacionado a este botão
             const menu = this.nextElementSibling.nextElementSibling;
 
-            console.log(button)
-
             // Alterna a visibilidade do menu
             if (menu.style.display === 'none' || menu.style.display === '') {
                 menu.style.display = 'block';
@@ -29,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     document.addEventListener('click', function(event) {
-        const isClickInsideMenu = event.target.closest('.tetra-info');
+        const isClickInsideMenu = event.target.closest('.info');
         
         if (!isClickInsideMenu) {
             closeAllMenus();

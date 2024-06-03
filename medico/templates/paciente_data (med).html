@@ -1,0 +1,61 @@
+{% extends 'background_medico.html'%}
+{% load static i18n %}
+{% block head_title %}
+    {% trans 'Médico - Clínica Salvino' %}
+{% endblock head_title %}
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock extra_head %}
+
+{% block content %}
+<div class="dash page bg-darkgray">
+    <h1 class="dash_title">Paciente: {{ paciente.name }}</h1>
+        <div class="ficha">
+            <p class="ficha-line">Nome: {{ paciente.name }}</p>
+            <div class="ficha-line">
+                <p>Sexo: {{ paciente.sexo }}</p>
+                <p>Gênero: {{ paciente.genero }}</p>
+            </div>
+            <div class="ficha-line">
+                <p>Outro: {{ paciente.outro }}</p>
+            </div>
+            <div class="ficha-line">
+                <p>Data de Nascimento: {{ paciente.data_nascimento }}</p>
+                <p>RG: {{ paciente.rg }}</p>
+            </div>
+            <div class="ficha-line">
+                <p>CPF: {{ paciente.cpf }}</p>
+                <p>Dependência: {{ paciente.status_dependencia }}</p>
+            </div>
+            <p class="ficha-line">Nome do Responsável: {{ paciente.nome_responsavel }}</p>
+            <div class="ficha-line">
+                <p>RG do Responsável: {{ paciente.rg_responsavel }}</p>
+                <p>CPF do Responsável: {{ paciente.cpf_responsavel }}</p>
+            </div>
+            <div class="ficha-line">
+                <p>Telefone: {{ paciente.telefone }}</p>
+                <p>CEP: {{ paciente.cep }}</p>
+            </div>
+            <div class="ficha-line">
+                <p>Estado: {{ paciente.estado }}</p>
+                <p>Cidade: {{ paciente.cidade }}</p>
+            </div>
+            <div class="address dash-address ficha-line">
+                <p>Logradouro: {{ paciente.logradouro }}</p>
+                <p>Número: {{ paciente.numero }}</p>
+                <p>Complemento: {{ paciente.complemento }}</p>
+            </div>
+            <div class="ficha-line">
+                <p>Bairro: {{ paciente.bairro }}</p>
+            </div>
+        </div>
+        <div class="button-box">
+            <input type="submit" id="back" onclick="voltar()" class="btn-black-white btn-dash" value="Voltar">
+        </div>
+    </div>
+{% endblock content %}
+
+{% block script %}
+    <script src="https://kit.fontawesome.com/fc74a91a63.js" crossorigin="anonymous"></script>
+    <script src="{% static 'js/button.js' %}"></script>
+{% endblock script %}
