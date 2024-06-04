@@ -97,3 +97,8 @@ def concluirConsulta(request, id):
         return redirect('consultas')
     else:
         return render(request, 'concluir_consulta.html', {'medico': medico, 'consulta': consulta})
+    
+def addDocument(request, id):
+    medico = request.user.medico
+    prontuario = Prontuario.objects.get(id=id)
+    return render(request, 'add_documento (med).html', {'medico': medico, 'prontuario': prontuario})
