@@ -280,7 +280,7 @@ ul{
         padding: 7% 10%;
         align-items: center;                                                                       /* padding = margem interna */
         border-radius: 15px;                                                                /* borda da dashboard do calendario */
-        display: block;
+        display: flex;
         flex-direction: column;
         min-height: 90vh;
         max-height: 90vh;

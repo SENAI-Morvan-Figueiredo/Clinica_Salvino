@@ -5,6 +5,7 @@ from paciente.forms import CadPaciente, AgendaConsulta, FormCartao, FormConvenio
 from collections import defaultdict
 from django.contrib.auth.models import User
 from django.contrib import messages
+from datetime import date
 
 # Create your views here.
 @login_required 
@@ -81,3 +82,18 @@ def info_prontuario(request, id):
     prontuario = Prontuario.objects.get(paciente=paciente)
     return render(request, 'info_prontuario (med).html', {'medico': medico, 'paciente': paciente, 'prontuario': prontuario})
 
+def mostrarConsultas(request):
+    medico = request.user.medico
+    consultas = Consulta.objects.filter(medico=medico).order_by('status_consulta')
+    data = date.today()
+    return render(request, 'consultas (med).html', {'medico': medico, 'consultas': consultas, 'data': data})
+
+def concluirConsulta(request, id):
+    medico = request.user.medico
+    consulta = Consulta.objects.get(id=id)
+    if request.method == 'POST':
+        consulta.status_consulta = 'Concluida'
+        consulta.save()
+        return redirect('consultas')
+    else:
+        return render(request, 'concluir_consulta.html', {'medico': medico, 'consulta': consulta})

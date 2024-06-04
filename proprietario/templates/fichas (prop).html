@@ -9,12 +9,12 @@
 
 {% block content %}
     <section class="dash bg-darkgray">
-        <h1 class="dash_title">Consultas</h1>
+        <h1 class="dash_title">Abrir Ficha</h1>
         <div class="list">
             {% if consultas %}
                 {% for consulta in consultas %}
                     {% if consulta.status_consulta == 'Agendada' %}
-                        <div class="info-consulta">
+                        <div class="info-card">
                             <p class="paciente"><b>Paciente:</b> {{ consulta.paciente.name }}</p>
                             <p class="medico"><b>Médico:</b> {{ consulta.medico.name }}</p>
                             <p class="especialidade"><b>Especialidade</b> {{ consulta.especialidade }}</p>

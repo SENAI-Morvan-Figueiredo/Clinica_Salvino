@@ -22,6 +22,8 @@
                     <p class="data"><b>Data:</b> {{ consulta.data|date:'d/m/Y' }}</p>
                     <p class="hora"><b>Hora:</b> {{ consulta.hora|time:"H:i" }}</p>
                     <p class="status"><b>Status:</b> {{ consulta.status_consulta }}</p>
+                    <a href="{% url 'prontuario_med' consulta.paciente.user.id %}" class="btn btn-purple center add doc btn-dash">Prontuário</a>
+                    <a class="btn btn-purple center add can btn-dash" href="{% url 'concluir_consulta' consulta.id %}">Concluir atendimento</a>
                 </div>
             {% endfor %}
 

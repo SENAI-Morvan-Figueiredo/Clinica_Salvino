@@ -317,11 +317,11 @@ def marcarConsulta(request):
 def cancelarConsulta(request, id):
     proprietario = request.user.proprietario
     consulta = Consulta.objects.get(id=id)
-    pagameto = Pagamento.objects.get(consulta=consulta)
+    pagamento = Pagamento.objects.get(consulta=consulta)
     if request.method == 'POST':
         consulta.status_consulta = 'Cancelada'
-        pagameto.status_pagamento = 'Cancelado'
-        pagameto.save()
+        pagamento.status_pagamento = 'Cancelado'
+        pagamento.save()
         consulta.save()
         return redirect('consultas')
     else:
