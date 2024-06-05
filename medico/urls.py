@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from medico.views import medBoard, contaMedico, mostrarPacientes, document_list, info_prontuario, init_prontuario, dadosPaciente, concluirConsulta, mostrarConsultas, addDocument
+from medico.views import medBoard, contaMedico, mostrarPacientes, document_list, info_prontuario, init_prontuario, dadosPaciente, concluirConsulta, mostrarConsultas, addDocument, document
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -14,5 +14,6 @@ urlpatterns = [
     path('paciente/<int:id>/', dadosPaciente, name='paciente_med'),
     path('consultas', mostrarConsultas, name='consultas_med'),
     path('consulta/<int:id>/cancelar_consulta/', concluirConsulta, name='concluir_consulta'),
-    path('paciente/documento/add/', addDocument, name='add_doc_med'),
+    path('paciente/<int:id>/documento/add/', addDocument, name='add_doc_med'),
+    path('documento/<int:id>/', document, name='doc_med'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -12,6 +12,10 @@
         <h1 class="dash_title">Prontuário: {{ paciente.name }}</h1>
         
         {% if prontuario %}
+            <div class="button-box">
+                <a href="" class="btn btn-purple center btn-dash">Adicionar Bioimpedância</a>
+                <a href="{% url 'add_doc_med' paciente.user.id %}" class="btn btn-purple center btn-dash">Adicionar Documento</a>
+            </div>
             {% if list_documents %}
                 {% for data, documents in list_documents %}
                     <div class="dropdown" onclick="toggleDropdown('{{ data }}')">
@@ -19,15 +23,11 @@
                     </div>
                     <div id="content-{{ data }}" class="dropdown-content">
                         {% for document in documents %}
-                            <a href="{{ document.file_documento.url }}"><h3>{{ document.nome_documento }}</h3></a>
+                            <a href="{% url 'doc_med' document.id %}"><h3>{{ document.nome_documento }}</h3></a>
                         {% endfor %}
                     </div>
                 {% endfor %}
             {% else %}
-            <div class="button-box">
-                <a href="" class="btn btn-purple center btn-dash">Adicionar Bioimpedância</a>
-                <a href="" class="btn btn-purple center btn-dash">Adicionar Documento</a>
-            </div>
                 <h3 class="aviso">Não há documentos atribuídos a esse paciente</h3>
             {% endif %}
         {% else %} 

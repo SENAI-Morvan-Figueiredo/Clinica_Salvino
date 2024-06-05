@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from paciente.models import Paciente, Consulta, CadCartao, CadConvenio, AnexoConsulta, Documentos, Prontuario, Boleto, Pagamento
-from paciente.forms import CadPaciente, AgendaConsulta, FormCartao, FormConvenio, AnexoForm, ProntuarioForm, PagamentoCard, PagamentoConv, PagamentoPix
+from paciente.forms import CadPaciente, AgendaConsulta, FormCartao, FormConvenio, AnexoForm, ProntuarioForm, PagamentoCard, PagamentoConv, PagamentoPix, addDocumento
 from collections import defaultdict
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -38,22 +38,19 @@ def document_list(request, id):
     list_documents = defaultdict(list)
     user = User.objects.get(id=id)
     paciente = Paciente.objects.get(user=user)
-    try:
-        prontuario = Prontuario.objects.get(paciente=paciente)
-        if prontuario:
-            documents = Documentos.objects.filter(prontuario=prontuario)
-            if documents:
-                for document in documents.order_by('data'):
-                    list_documents[document.data].append(document)
 
-                return render(request, 'prontuario (med).html', {'medico': medico,'paciente':paciente,'prontuario': prontuario, 'list_documents': list_documents.items()})
-            else:
-                list_documents = ''
-                return render(request, 'prontuario (med).html', {'medico': medico, 'paciente':paciente,'prontuario': prontuario, 'list_documents': list_documents})
-    except:
-        prontuario = ''
-        return render(request, 'prontuario (med).html', {'medico': medico, 'paciente':paciente, 'prontuario': prontuario, 'listdocumentos': ''})
-    
+    prontuario = Prontuario.objects.get(paciente=paciente)
+    if prontuario:
+        documents = Documentos.objects.filter(prontuario=prontuario)
+        if documents:
+            for document in documents.order_by('data'):
+                list_documents[document.data].append(document)
+
+            return render(request, 'prontuario (med).html', {'medico': medico,'paciente':paciente,'prontuario': prontuario, 'list_documents': list_documents.items()})
+        else:
+            list_documents = ''
+            return render(request, 'prontuario (med).html', {'medico': medico, 'paciente':paciente,'prontuario': prontuario, 'list_documents': list_documents})
+
 def init_prontuario(request, id):
     medico = request.user.medico
     user = User.objects.get(id=id)
@@ -100,5 +97,26 @@ def concluirConsulta(request, id):
     
 def addDocument(request, id):
     medico = request.user.medico
-    prontuario = Prontuario.objects.get(id=id)
-    return render(request, 'add_documento (med).html', {'medico': medico, 'prontuario': prontuario})
+    user = User.objects.get(id=id)
+    paciente = Paciente.objects.get(user=user)
+    prontuario = Prontuario.objects.get(paciente=paciente)
+    if request.method == "POST":
+        doc_form = addDocumento(request.POST, request.FILES)
+        if doc_form.is_valid():
+            new_doc = doc_form.save(commit=False)
+            new_doc.prontuario = prontuario
+            new_doc.medico = medico
+            new_doc.save()
+            return redirect('prontuario_med', id) 
+        else:
+            messages.error(request, f"Erro ao salvar o arquivo: {doc_form.errors}")
+            request.session['show_message'] = True
+            return redirect('add_doc_med', id) 
+    else:
+        return render(request, 'add_documento (med).html', {'medico': medico, 'prontuario': prontuario})
+    
+def document(request, id):
+    medico = request.user.medico
+    documento = Documentos.objects.get(id=id)
+    
+    return render(request, 'documento (med).html', {'medico': medico, 'documento': documento})
