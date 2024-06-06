@@ -1,0 +1,155 @@
+{% extends 'background_medico.html' %}
+{% load static i18n %}
+{% block head_title %}
+    {% trans 'Médico - Clínica Salvino' %}
+{% endblock head_title %}
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock extra_head %}
+
+{% block content %}
+    <section class="dash bg-darkgray page">
+        <h1 class="dash_title">Adicionar Bioimpedância</h1>
+        <form class="form" id="form-cad" enctype="multipart/form-data" action="#" method="POST" role="form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="container-middle">
+                <div class="form-control">
+                    <label for="data">Data</label>
+                    <input type="date" id="date" class="input" name="data">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+    
+                    <small class="message"></small>
+                </div>
+    
+                <div class="form-control">
+                    <label for="peso">Peso</label>
+                    <input type="number" min="0" id="peso" class="input" name="peso" placeholder="Peso" step="0.01">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+    
+                    <small class="message"></small>
+                </div>
+            </div>
+            <div class="container-middle">
+                <div class="form-control">
+                    <label for="altura">Altura</label>
+                    <input type="number" min="0" id="altura" class="input" name="altura" placeholder="Altura" step="0.01">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+    
+                    <small class="message"></small>
+                </div>
+    
+                <div class="form-control">
+                    <label for="massa_magra">Massa Magra</label>
+                    <input type="number" min="0" id="massa_magra" class="input" name="massa_magra" placeholder="Massa Magra" step="0.01">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+    
+                    <small class="message"></small>
+                </div>
+            </div>
+            <div class="container-middle">
+                <div class="form-control">
+                    <label for="massa_muscular">Massa Muscular</label>
+                    <input type="number" min="0" id="massa_muscular" class="input" name="massa_muscular" placeholder="Massa Muscular" step="0.01">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+    
+                    <small class="message"></small>
+                </div>
+    
+                <div class="form-control">
+                    <label for="agua_corporal">Água Corporal</label>
+                    <input type="number" min="0" id="agua_corporal" class="input" name="agua_corporal" placeholder="Água Corporal" step="0.01">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+    
+                    <small class="message"></small>
+                </div>
+            </div>
+            <div class="container-middle">
+                <div class="form-control">
+                    <label for="densidade_ossea">Densidade Óssea</label>
+                    <input type="number" min="0" id="densidade_ossea" class="input" name="densidade_ossea" placeholder="Densidade Óssea" step="0.01">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+    
+                    <small class="message"></small>
+                </div>
+    
+                <div class="form-control">
+                    <label for="gordura_visceral">Gordura Visceral</label>
+                    <input type="number" min="0" id="gordura_visceral" class="input" name="gordura_visceral" placeholder="Gordura Visceral" step="0.01">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+    
+                    <small class="message"></small>
+                </div>
+            </div>
+            <div class="container-middle">
+                <div class="form-control">
+                    <label for="gordura_corporal">Gordura Corporal</label>
+                    <input type="number" min="0" id="gordura_corporal" class="input" name="gordura_corporal" placeholder="Gordura Corporal" step="0.01">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+    
+                    <small class="message"></small>
+                </div>
+    
+                <div class="form-control">
+                    <label for="taxa_metabolica">Taxa Metabólica</label>
+                    <input type="number" min="0" id="taxa_metabolica" class="input" name="taxa_metabolica" placeholder="Taxa Metabólica" step="0.01">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+    
+                    <small class="message"></small>
+                </div>
+            </div>
+            <div class="container-middle">
+                <div class="form-control">
+                    <label for="imc">IMC</label>
+                    <input type="number" min="0" id="imc" class="input" name="imc" placeholder="IMC" step="0.01">
+                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                    <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
+    
+                    <small class="message"></small>
+                </div>
+            </div>
+            <div class="result">
+                <p class="result-text">
+                    {% if message_view and messages %}
+                        {% for message in messages %}
+                            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                                <div class="alert alert-danger">
+                                    <strong>Erro!</strong>
+                                    {{ message }}
+                                    <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
+                                </div>
+                            {% else %}
+                                <div class="alert alert-success">
+                                    <strong>Sucesso!</strong>
+                                    {{ message }}
+                                    <i class="fa-solid fa-circle-check icon-success hidden" style="color: #328146;"></i>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </p>
+            </div>
+            
+            <div class="button-box">
+                <input type="submit" id="back-med" onclick="voltar()" class="btn-black-white btn-dash" value="Voltar">
+                <button type="submit" data-button class="btn-purple btn-dash">Cadastrar</button>
+            </div>
+        </form>
+    </section>
+{% endblock content %}
+
+{% block script %}
+    <script src="https://kit.fontawesome.com/fc74a91a63.js" crossorigin="anonymous"></script>
+    <script src="{% static 'js/formValidation.js' %}"></script>
+    <script src="{% static 'js/button.js' %}"></script>
+{% endblock script %}

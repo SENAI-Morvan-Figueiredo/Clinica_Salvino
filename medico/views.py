@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from paciente.models import Paciente, Consulta, Documentos, Prontuario, Encaminhamento
-from paciente.forms import ProntuarioForm, addDocumento, addEncaminhamento
+from paciente.models import Paciente, Consulta, Documentos, Prontuario, Encaminhamento, Bioimpedância
+from paciente.forms import ProntuarioForm, addDocumento, addEncaminhamento, addBioimpedância
 from collections import defaultdict
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -44,15 +44,14 @@ def document_list(request, id):
         if prontuario:
             documentos = Documentos.objects.filter(prontuario=prontuario).order_by('data')
             encaminhamentos = Encaminhamento.objects.filter(prontuario=prontuario).order_by('data')
-            documents_list = list(chain(documentos, encaminhamentos))
-            for d in documents_list:
-                print(d in encaminhamentos)
+            bioimpedancia = Bioimpedância.objects.filter(prontuario=prontuario).order_by('data')
+            documents_list = list(chain(documentos, encaminhamentos, bioimpedancia))
             if documents_list:
                 documents_list.sort(key=lambda x: x.data)
                 for document in documents_list:
                     list_documents[document.data].append(document)
 
-                return render(request, 'prontuario (med).html', {'medico': medico,'paciente':paciente,'prontuario': prontuario, 'list_documents': list_documents.items(), 'documentos' : documentos, 'encaminhamentos': encaminhamentos})
+                return render(request, 'prontuario (med).html', {'medico': medico,'paciente':paciente,'prontuario': prontuario, 'list_documents': list_documents.items(), 'documentos' : documentos, 'encaminhamentos': encaminhamentos, 'bioimpedancia': bioimpedancia})
             else:
                 list_documents = ''
                 return render(request, 'prontuario (med).html', {'medico': medico, 'paciente':paciente,'prontuario': prontuario, 'list_documents': list_documents})
@@ -164,6 +163,26 @@ def addEncaminha(request, id):
             return redirect('add_doc_med', id) 
     else:
         return render(request, 'add_encaminhamento (med).html', {'medico': medico, 'prontuario': prontuario})
+    
+def addBio(request, id):
+    medico = request.user.medico
+    user = User.objects.get(id=id)
+    paciente = Paciente.objects.get(user=user)
+    prontuario = Prontuario.objects.get(paciente=paciente)
+    if request.method == "POST":
+        doc_form = addBioimpedância(request.POST, request.FILES)
+        if doc_form.is_valid():
+            new_doc = doc_form.save(commit=False)
+            new_doc.prontuario = prontuario
+            new_doc.medico = medico
+            new_doc.save()
+            return redirect('prontuario_med', id) 
+        else:
+            messages.error(request, f"Erro ao salvar o arquivo: {doc_form.errors}")
+            request.session['show_message'] = True
+            return redirect('add_bio_med', id) 
+    else:
+        return render(request, 'add_bioimpedancia (med).html', {'medico': medico, 'prontuario': prontuario})
 
 def delete_en(request, id):
     medico = request.user.medico

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Paciente, Consulta, CadCartao, CadConvenio, AnexoConsulta, Prontuario, Pagamento, Documentos, Encaminhamento
+from .models import Paciente, Consulta, CadCartao, CadConvenio, AnexoConsulta, Prontuario, Pagamento, Documentos, Encaminhamento, Bioimpedância
 
 class CadPaciente(forms.ModelForm):
 
@@ -65,3 +65,8 @@ class addEncaminhamento(forms.ModelForm):
     class Meta:
         model = Encaminhamento
         fields = ('data', 'tipo_encaminhamento', 'area', 'file_documento', 'descricao')
+
+class addBioimpedância(forms.ModelForm):
+    class Meta:
+        model = Bioimpedância
+        fields = ('data', 'peso', 'altura', 'massa_magra', 'massa_muscular', 'agua_corporal', 'densidade_ossea', 'gordura_visceral', 'gordura_corporal', 'taxa_metabolica', 'imc')

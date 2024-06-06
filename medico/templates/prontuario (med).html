@@ -16,7 +16,7 @@
                 <a href="{% url 'info_prontuario_med' paciente.user.id %}" class="btn btn-purple center btn-dash">Info Prontuário</a>
                 <a href="{% url 'add_doc_med' paciente.user.id %}" class="btn btn-purple center btn-dash">Adicionar Documento</a>
                 <a href="{% url 'add_en_med' paciente.user.id %}" class="btn btn-purple center btn-dash btn-en">Adicionar Encaminhamento</a>
-                <a href="{% url 'add_doc_med' paciente.user.id %}" class="btn btn-purple center btn-dash btn-en">Adicionar Bioimpedância</a>
+                <a href="{% url 'add_bio_med' paciente.user.id %}" class="btn btn-purple center btn-dash btn-en">Adicionar Bioimpedância</a>
             </div>
             {% if list_documents %}
                 {% for data, documents in list_documents %}
@@ -25,11 +25,13 @@
                     </div>
                     <div id="content-{{ data }}" class="dropdown-content">
                         {% for document in documents %}
-                        {% if document in documentos %}
-                            <a href="{% url 'doc_med' document.id %}"><h3>{{ document.nome_documento }}</h3></a>
-                        {% elif document in encaminhamentos %}
-                            <a href="{% url 'en_med' document.id %}"><h3>{{ document.area }}</h3></a>
-                        {% endif %}
+                            {% if document in documentos %}
+                                <a href="{% url 'doc_med' document.id %}"><h3>{{ document.nome_documento }}</h3></a>
+                            {% elif document in encaminhamentos %}
+                                <a href="{% url 'en_med' document.id %}"><h3>{{ document.area }}</h3></a>
+                            {% elif document in bioimpedancia %}
+                                <a href=""><h3>Bioimpedância: {{ document.data }}</h3></a>
+                            {% endif %}
                         {% endfor %}
                     </div>
                 {% endfor %}
