@@ -9,20 +9,20 @@
 
 {% block content %}
 <div class="dash page bg-darkgray">
-    <h1 class="dash_title">Documento: {{ documento.nome_documento }}</h1>
+    <h1 class="dash_title">Encaminhamento: {{ encaminhamento.area }}</h1>
         <div class="ficha">
-            <p class="ficha-line">Nome: {{ documento.prontuario.paciente.name }}</p>
+            <p class="ficha-line">Nome: {{ encaminhamento.prontuario.paciente.name }}</p>
             <div class="ficha-line">
-                <p>Sexo: {{ documento.data }}</p>
-                <p>Gênero: {{ documento.tipo_documento }}</p>
+                <p>Sexo: {{ encaminhamento.data }}</p>
+                <p>Gênero: {{ encaminhamento.tipo_encaminhamento }}</p>
             </div>
-            <p class="ficha-line border">Nome: {{ documento.medico.name }}</p>
-            <p class="ficha-line border">Descrição: {{ documento.descricao }}</p>
-            <p class="ficha-line border">Documento: <a href="{{ documento.file_documento.url }}">{{ documento.file_documento.name }}</a></p>
+            <p class="ficha-line border">Nome: {{ encaminhamento.medico.name }}</p>
+            <p class="ficha-line border">Descrição: {{ encaminhamento.descricao }}</p>
+            <p class="ficha-line border">Documento: <a href="{{ encaminhamento.file_documento.url }}">{{ encaminhamento.file_documento.name }}</a></p>
         </div>
         <div class="button-box">
             <input type="submit" id="back" onclick="voltar()" class="btn-black-white btn-dash" value="Voltar">
-            <a href="{% url 'delete_doc_med' documento.id %}" class="btn btn-purple center add btn-dash">Deletar</a>
+            <a href="{% url 'delete_en_med' encaminhamento.id %}" class="btn btn-purple center add btn-dash">Deletar</a>
         </div>
     </div>
 {% endblock content %}

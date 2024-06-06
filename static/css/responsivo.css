@@ -200,6 +200,10 @@
         width: 100px;
     }
 
+    .btn-en{
+        width: min-content;
+    }
+
     .btn-black-white{
         width: 100px;
     }

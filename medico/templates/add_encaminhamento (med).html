@@ -9,7 +9,7 @@
 
 {% block content %}
     <section class="dash bg-darkgray page">
-        <h1 class="dash_title">Adicionar Documento</h1>
+        <h1 class="dash_title">Adicionar Encaminhamento</h1>
         <form class="form" id="form-cad" enctype="multipart/form-data" action="#" method="POST" role="form">
             {% csrf_token %}
             {{ form.as_p }}
@@ -24,12 +24,12 @@
                 </div>
     
                 <div class="form-control">
-                    <label for="tipo_documento">Tipo de Documento</label>
-                    <select name="tipo_documento" id="consulta" class="input" form="form-cad">
-                        <option value="" disabled selected>Tipo de Documento</option>
-                        <option value="Descrição de Atendimento">Descrição de Atendimento</option>
-                        <option value="Receita">Receita</option>
-                        <option value="Dieta">Dieta</option>
+                    <label for="tipo_encaminhamento">Tipo de Encaminhamento</label>
+                    <select name="tipo_encaminhamento" id="consulta" class="input" form="form-cad">
+                        <option value="" disabled selected>Tipo de Encaminhamento</option>
+                        <option value="Consultas">Consultas</option>
+                        <option value="Exames e Terapias">Exames e Terapias</option>
+                        <option value="Outros">Outros</option>
                     </select>
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
@@ -39,8 +39,8 @@
             </div>
 
             <div class="form-control">
-                <label for="nome_documento">Nome do Documento</label>
-                <input type="text" id="Name-esp" class="input" name="nome_documento" placeholder="Nome do Documento">
+                <label for="area">Área</label>
+                <input type="text" id="Name-esp" class="input" name="area" placeholder="Área">
                 <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                 <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 

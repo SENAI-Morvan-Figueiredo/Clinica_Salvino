@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from paciente.models import Paciente, Consulta, CadCartao, CadConvenio, AnexoConsulta, Documentos, Prontuario, Boleto, Pagamento
-from paciente.forms import CadPaciente, AgendaConsulta, FormCartao, FormConvenio, AnexoForm, ProntuarioForm, PagamentoCard, PagamentoConv, PagamentoPix, addDocumento
+from paciente.models import Paciente, Consulta, Documentos, Prontuario, Encaminhamento
+from paciente.forms import ProntuarioForm, addDocumento, addEncaminhamento
 from collections import defaultdict
 from django.contrib.auth.models import User
 from django.contrib import messages
 from datetime import date
+from itertools import chain
 
 # Create your views here.
 @login_required 
@@ -38,19 +39,27 @@ def document_list(request, id):
     list_documents = defaultdict(list)
     user = User.objects.get(id=id)
     paciente = Paciente.objects.get(user=user)
+    try:
+        prontuario = Prontuario.objects.get(paciente=paciente)
+        if prontuario:
+            documentos = Documentos.objects.filter(prontuario=prontuario).order_by('data')
+            encaminhamentos = Encaminhamento.objects.filter(prontuario=prontuario).order_by('data')
+            documents_list = list(chain(documentos, encaminhamentos))
+            for d in documents_list:
+                print(d in encaminhamentos)
+            if documents_list:
+                documents_list.sort(key=lambda x: x.data)
+                for document in documents_list:
+                    list_documents[document.data].append(document)
 
-    prontuario = Prontuario.objects.get(paciente=paciente)
-    if prontuario:
-        documents = Documentos.objects.filter(prontuario=prontuario)
-        if documents:
-            for document in documents.order_by('data'):
-                list_documents[document.data].append(document)
-
-            return render(request, 'prontuario (med).html', {'medico': medico,'paciente':paciente,'prontuario': prontuario, 'list_documents': list_documents.items()})
-        else:
-            list_documents = ''
-            return render(request, 'prontuario (med).html', {'medico': medico, 'paciente':paciente,'prontuario': prontuario, 'list_documents': list_documents})
-
+                return render(request, 'prontuario (med).html', {'medico': medico,'paciente':paciente,'prontuario': prontuario, 'list_documents': list_documents.items(), 'documentos' : documentos, 'encaminhamentos': encaminhamentos})
+            else:
+                list_documents = ''
+                return render(request, 'prontuario (med).html', {'medico': medico, 'paciente':paciente,'prontuario': prontuario, 'list_documents': list_documents})
+    except:
+        prontuario = ''
+        return render(request, 'prontuario (med).html', {'medico': medico, 'paciente':paciente, 'prontuario': prontuario, 'listdocumentos': ''})
+    
 def init_prontuario(request, id):
     medico = request.user.medico
     user = User.objects.get(id=id)
@@ -61,8 +70,6 @@ def init_prontuario(request, id):
             new_prontuario = prontuario_form.save(commit=False)
             new_prontuario.paciente = paciente
             new_prontuario.save()
-            show_message = request.session.pop('show_message', False)
-            messages.success(request, 'Convênio do paciente cadastrado com Sucesso!')
             return redirect('prontuario_med', id)
         else:
             show_message = request.session.pop('show_message', False)
@@ -77,7 +84,18 @@ def info_prontuario(request, id):
     user = User.objects.get(id=id)
     paciente = Paciente.objects.get(user=user)
     prontuario = Prontuario.objects.get(paciente=paciente)
-    return render(request, 'info_prontuario (med).html', {'medico': medico, 'paciente': paciente, 'prontuario': prontuario})
+    if request.method == 'POST':
+        edit_prontuario_form = ProntuarioForm(request.POST, instance=prontuario)
+        if edit_prontuario_form.is_valid():
+            edit_prontuario_form.save(commit=False)
+            prontuario.save()
+            return redirect('prontuario_med', id)
+        else:
+            request.session['show_message'] = True 
+            messages.error(request, f"Edição inválida: {edit_prontuario_form.errors}")
+            return redirect('info_prontuario_med', id)
+    else:
+        return render(request, 'info_prontuario (med).html', {'medico': medico, 'paciente': paciente, 'prontuario': prontuario})
 
 def mostrarConsultas(request):
     medico = request.user.medico
@@ -120,3 +138,48 @@ def document(request, id):
     documento = Documentos.objects.get(id=id)
     
     return render(request, 'documento (med).html', {'medico': medico, 'documento': documento})
+
+def encaminha(request, id):
+    medico = request.user.medico
+    encaminhamento = Encaminhamento.objects.get(id=id)
+    
+    return render(request, 'encaminhamento (med).html', {'medico': medico, 'encaminhamento': encaminhamento})
+
+def addEncaminha(request, id):
+    medico = request.user.medico
+    user = User.objects.get(id=id)
+    paciente = Paciente.objects.get(user=user)
+    prontuario = Prontuario.objects.get(paciente=paciente)
+    if request.method == "POST":
+        doc_form = addEncaminhamento(request.POST, request.FILES)
+        if doc_form.is_valid():
+            new_doc = doc_form.save(commit=False)
+            new_doc.prontuario = prontuario
+            new_doc.medico = medico
+            new_doc.save()
+            return redirect('prontuario_med', id) 
+        else:
+            messages.error(request, f"Erro ao salvar o arquivo: {doc_form.errors}")
+            request.session['show_message'] = True
+            return redirect('add_doc_med', id) 
+    else:
+        return render(request, 'add_encaminhamento (med).html', {'medico': medico, 'prontuario': prontuario})
+
+def delete_en(request, id):
+    medico = request.user.medico
+    encaminhamento = Encaminhamento.objects.get(id=id)
+    if request.method == 'POST':
+        encaminhamento.delete()
+        return redirect('prontuario_med', encaminhamento.prontuario.paciente.user.id)
+    else:
+        return render(request, 'delete_encaminhamento (med).html', {'medico': medico, 'encaminhamento': encaminhamento})
+
+def delete_doc(request, id):
+    medico = request.user.medico
+    documento = Documentos.objects.get(id=id)
+    if request.method == 'POST':
+        documento.delete()
+        return redirect('prontuario_med', documento.prontuario.paciente.user.id)
+    else:
+        return render(request, 'delete_documento (med).html', {'medico': medico, 'documento': documento})
+    

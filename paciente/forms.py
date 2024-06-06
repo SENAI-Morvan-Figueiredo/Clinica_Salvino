@@ -1,5 +1,5 @@
 from django import forms
-from .models import Paciente, Consulta, CadCartao, CadConvenio, AnexoConsulta, Prontuario, Pagamento, Pix, Documentos
+from .models import Paciente, Consulta, CadCartao, CadConvenio, AnexoConsulta, Prontuario, Pagamento, Documentos, Encaminhamento
 
 class CadPaciente(forms.ModelForm):
 
@@ -60,3 +60,8 @@ class addDocumento(forms.ModelForm):
     class Meta:
         model = Documentos
         fields = ('data', 'tipo_documento', 'nome_documento', 'file_documento', 'descricao')
+
+class addEncaminhamento(forms.ModelForm):
+    class Meta:
+        model = Encaminhamento
+        fields = ('data', 'tipo_encaminhamento', 'area', 'file_documento', 'descricao')

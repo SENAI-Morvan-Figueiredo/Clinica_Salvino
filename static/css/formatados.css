@@ -88,6 +88,10 @@
     height: 60px;
 }
 
+.btn-en{
+    width: min-content;
+}
+
 /* Background Cores */
 .bg-gray {
     background-color: #eaeaea;
