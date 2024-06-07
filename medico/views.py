@@ -130,7 +130,8 @@ def addDocument(request, id):
             request.session['show_message'] = True
             return redirect('add_doc_med', id) 
     else:
-        return render(request, 'add_documento (med).html', {'medico': medico, 'prontuario': prontuario})
+        show_message = request.session.pop('show_message', False)
+        return render(request, 'add_documento (med).html', {'medico': medico, 'prontuario': prontuario, 'message_view': show_message})
     
 def document(request, id):
     medico = request.user.medico
@@ -162,8 +163,15 @@ def addEncaminha(request, id):
             request.session['show_message'] = True
             return redirect('add_doc_med', id) 
     else:
-        return render(request, 'add_encaminhamento (med).html', {'medico': medico, 'prontuario': prontuario})
+        show_message = request.session.pop('show_message', False)
+        return render(request, 'add_encaminhamento (med).html', {'medico': medico, 'prontuario': prontuario, 'message_view': show_message})
+
+def bio(request, id):
+    medico = request.user.medico
+    bioimpedancia = Bioimpedância.objects.get(id=id)
     
+    return render(request, 'bioimpedancia (med).html', {'medico': medico, 'bioimpedancia': bioimpedancia})
+
 def addBio(request, id):
     medico = request.user.medico
     user = User.objects.get(id=id)
@@ -182,7 +190,8 @@ def addBio(request, id):
             request.session['show_message'] = True
             return redirect('add_bio_med', id) 
     else:
-        return render(request, 'add_bioimpedancia (med).html', {'medico': medico, 'prontuario': prontuario})
+        show_message = request.session.pop('show_message', False)
+        return render(request, 'add_bioimpedancia (med).html', {'medico': medico, 'prontuario': prontuario, 'message_view': show_message})
 
 def delete_en(request, id):
     medico = request.user.medico
@@ -201,4 +210,13 @@ def delete_doc(request, id):
         return redirect('prontuario_med', documento.prontuario.paciente.user.id)
     else:
         return render(request, 'delete_documento (med).html', {'medico': medico, 'documento': documento})
+
+def delete_bio(request, id):
+    medico = request.user.medico
+    bioimpedancia = Bioimpedância.objects.get(id=id)
+    if request.method == 'POST':
+        bioimpedancia.delete()
+        return redirect('prontuario_med', bioimpedancia.prontuario.paciente.user.id)
+    else:
+        return render(request, 'delete_bioimpedancia (med).html', {'medico': medico, 'bioimpedancia': bioimpedancia})
     

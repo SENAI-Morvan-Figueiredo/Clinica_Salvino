@@ -20,7 +20,7 @@
                 <p>Outro: {{ paciente.outro }}</p>
             </div>
             <div class="ficha-line">
-                <p>Data de Nascimento: {{ paciente.data_nascimento }}</p>
+                <p>Data de Nascimento: {{ paciente.data_nascimento|date:'d/m/Y' }}</p>
                 <p>RG: {{ paciente.rg }}</p>
             </div>
             <div class="ficha-line">

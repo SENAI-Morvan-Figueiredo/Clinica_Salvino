@@ -1,0 +1,25 @@
+{% extends 'background_medico.html' %}
+{% load static i18n %}
+{% block head_title %}
+    {% trans 'Médico - Clínica Salvino' %}
+{% endblock head_title %}
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock extra_head %}
+
+{% block content %}  
+    <div class="dash bg-darkgray page">
+        <form class="form" action="{% url 'delete_bio_med' bioimpedancia.id %}" method="post">
+            <h1 class="dash_title">Confirmar Exclusão</h1>
+            <h3 class="text confirm">Tem certeza que deseja excluir a bioimpedância do dia "{{ bioimpedancia.data|date:'d/m/Y' }}"?</h3>
+            {% csrf_token %}
+            <div class="button-box">
+                <input type="submit" id="back" onclick="voltar()" class="btn-black-white btn-dash" value="Voltar">
+                <button type="submit" data-button class="btn-purple btn-dash">Confirmar</button>
+            </div>
+        </form>
+    </div>
+{% endblock content %}
+{% block script %}
+    <script src="{% static 'js/button.js' %}"></script>
+{% endblock script %}

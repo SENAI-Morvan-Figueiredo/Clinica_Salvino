@@ -21,7 +21,7 @@
             {% if list_documents %}
                 {% for data, documents in list_documents %}
                     <div class="dropdown" onclick="toggleDropdown('{{ data }}')">
-                        {{ data }}
+                        {{ data|date:'d/m/Y' }}
                     </div>
                     <div id="content-{{ data }}" class="dropdown-content">
                         {% for document in documents %}
@@ -30,7 +30,7 @@
                             {% elif document in encaminhamentos %}
                                 <a href="{% url 'en_med' document.id %}"><h3>{{ document.area }}</h3></a>
                             {% elif document in bioimpedancia %}
-                                <a href=""><h3>Bioimpedância: {{ document.data }}</h3></a>
+                                <a href="{% url 'bio_med' document.id %}"><h3>Bioimpedância: {{ document.data|date:'d/m/Y' }}</h3></a>
                             {% endif %}
                         {% endfor %}
                     </div>
