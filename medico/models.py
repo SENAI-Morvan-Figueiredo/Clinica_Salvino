@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from clinica.models import Especialidade
+from django.contrib.auth.models import Group
 
 # Create your models here.
 class Medico(models.Model):
@@ -22,6 +23,14 @@ class Medico(models.Model):
     logradouro = models.CharField(max_length=512)
     numero = models.CharField(max_length=10)
     complemento = models.TextField(blank=True, null=True)
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        grupo, created = Group.objects.get_or_create(name='Medico')
+        self.user.groups.add(grupo)
+
+    def __str__(self):
+        return self.user.username
 
     def __str__(self):
         return self.user.username

@@ -2,6 +2,7 @@ from django.db import models
 from django.core.exceptions import ValidationError
 from .const import STATUS_DEPENDENCE_CHOICE
 from django.contrib.auth.models import User
+from django.contrib.auth.models import Group
 from clinica.models import Convenio, PlanoConvenio, BandeiraCartao, Tratamento, Pix, Especialidade
 from medico.models import Medico
 import datetime
@@ -62,6 +63,14 @@ class Paciente(models.Model):
         
         if self.status_dependencia == 'Dependente' and not self.cpf_responsavel:
             raise ValidationError({'nome_responsavel': 'O nome do responsável é obrigatório para pacientes dependentes.'})
+        
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        grupo, created = Group.objects.get_or_create(name='Paciente')
+        self.user.groups.add(grupo)
+
+    def __str__(self):
+        return self.user.username
 
 class AnexoConsulta(models.Model):
     consulta = models.ForeignKey('Consulta', related_name='documentos', on_delete=models.CASCADE)

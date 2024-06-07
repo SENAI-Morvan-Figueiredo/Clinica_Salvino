@@ -26,9 +26,9 @@
                     <div id="content-{{ data }}" class="dropdown-content">
                         {% for document in documents %}
                             {% if document in documentos %}
-                                <a href="{% url 'doc_med' document.id %}"><h3>{{ document.nome_documento }}</h3></a>
+                                <a href="{% url 'doc_med' document.id %}"><h3>{{ document.tipo_documento }}: {{ document.nome_documento }}</h3></a>
                             {% elif document in encaminhamentos %}
-                                <a href="{% url 'en_med' document.id %}"><h3>{{ document.area }}</h3></a>
+                                <a href="{% url 'en_med' document.id %}"><h3>{{ document.tipo_encaminhamento }}: {{ document.area }}</h3></a>
                             {% elif document in bioimpedancia %}
                                 <a href="{% url 'bio_med' document.id %}"><h3>Bioimpedância: {{ document.data|date:'d/m/Y' }}</h3></a>
                             {% endif %}

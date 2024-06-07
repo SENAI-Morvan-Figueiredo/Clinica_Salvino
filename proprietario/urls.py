@@ -1,5 +1,7 @@
 from django.urls import path
-from proprietario.views import proprietyBoard, contaProprietario, mostrarPacientes, mostrarFuncionarios, dadosFuncionario, deleteFuncionario, dadosPaciente, deletePaciente, addFuncionario, addPaciente, addRecep, addMedico, mostrarEspecialidades, dadosEspecialidade, addEspecialidade, deleteEspecialidade, marcarConsulta, mostrarConsultas, cancelarConsulta, adicionarBandeira, deleteBandeira, mostrarBandeiras, mostrarCartoes, adicionarCartoes, deleteCartao, addFornecedorConvenio, mostrarConvenios, deleteConvenio, mostrarPlano, addPlano, deletePlano, mostrarPacienteConvenio, cadConvPaciente, delPacienteConv, mostrarFichas, abrirFicha, document_list, init_prontuario, info_prontuario, pagarConsulta, pagarConsultaCard, pagarConsultaConv, pagarConsultaBol, addTratamento, mostrarTratamentos, dadosTratamento, addChave, deletePix, mostrarPix, payPix, chavePix, mostrarContas, mostrarBoleto
+from proprietario.views import proprietyBoard, contaProprietario, mostrarPacientes, mostrarFuncionarios, dadosFuncionario, deleteFuncionario, dadosPaciente, deletePaciente, addFuncionario, addPaciente, addRecep, addMedico, mostrarEspecialidades, dadosEspecialidade, addEspecialidade, deleteEspecialidade, marcarConsulta, mostrarConsultas, cancelarConsulta, adicionarBandeira, deleteBandeira, mostrarBandeiras, mostrarCartoes, adicionarCartoes, deleteCartao, addFornecedorConvenio, mostrarConvenios, deleteConvenio, mostrarPlano, addPlano, deletePlano, mostrarPacienteConvenio, cadConvPaciente, delPacienteConv, mostrarFichas, abrirFicha, document_list, init_prontuario, info_prontuario, pagarConsulta, pagarConsultaCard, pagarConsultaConv, pagarConsultaBol, addTratamento, mostrarTratamentos, dadosTratamento, addChave, deletePix, mostrarPix, payPix, chavePix, mostrarContas, mostrarBoleto, document, bio, encaminha
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('', proprietyBoard, name='proprietario_dash'),
@@ -56,4 +58,7 @@ urlpatterns = [
     path('pagamento/pix', payPix, name='pay_pix_prop'),
     path('pix/<int:id>', chavePix, name='pix_prop'),
     path('boleto/<int:id>', mostrarBoleto, name='boleto_prop'),
-]
+    path('documento/<int:id>/', document, name='doc_prop'),
+    path('encaminhamento/<int:id>/', encaminha, name='en_prop'),
+    path('bioimpedancia/<int:id>/', bio, name='bio_prop'),
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

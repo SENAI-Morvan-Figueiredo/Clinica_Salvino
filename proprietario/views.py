@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from clinica.models import BandeiraCartao, Convenio, PlanoConvenio, Tratamento, Pix
 from clinica.forms import CadBandeira, EmpresaConvenio, CadPlano, CadTratamento, CadPix
-from paciente.models import Paciente, Consulta, CadCartao, CadConvenio, AnexoConsulta, Documentos, Prontuario, Boleto, Pagamento
+from paciente.models import Paciente, Consulta, CadCartao, CadConvenio, AnexoConsulta, Documentos, Prontuario, Boleto, Pagamento, Encaminhamento, Bioimpedância
 from paciente.forms import CadPaciente, AgendaConsulta, FormCartao, FormConvenio, AnexoForm, ProntuarioForm, PagamentoCard, PagamentoConv, PagamentoPix
 from medico.models import Medico, Especialidade
 from medico.forms import CadMedico, CadEspecialidade
@@ -15,13 +15,17 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from datetime import date
 from collections import defaultdict
+from clinica_salvino.decorators import group_required
 
 # Create your views here.
+@group_required('Proprietario')
 @login_required 
 def proprietyBoard(request):
     proprietario = request.user.proprietario
     return render(request, 'proprietario.html', {'proprietario': proprietario})
 
+@group_required('Proprietario')
+@login_required 
 def contaProprietario(request):
     user = request.user
     proprietario = Proprietario.objects.get(user=user)
@@ -41,11 +45,15 @@ def contaProprietario(request):
         show_message = request.session.pop('show_message', False)
         return render(request, 'myaccount_proprietario.html', {'proprietario': proprietario, 'message_view': show_message})
 
+@group_required('Proprietario')
+@login_required 
 def mostrarPacientes(request):
     proprietario = request.user.proprietario
     pacientes = Paciente.objects.all()
     return render(request, 'pacientes_list (prop).html', {'proprietario': proprietario, 'pacientes': pacientes})
 
+@group_required('Proprietario')
+@login_required 
 def mostrarFuncionarios(request):
     proprietario = request.user.proprietario
     medicos = Medico.objects.all()
@@ -55,11 +63,15 @@ def mostrarFuncionarios(request):
 
     return render(request, 'funcionarios_list (prop).html', {'proprietario': proprietario, 'funcionarios': funcionarios, 'medicos': medicos, 'recepcionistas': recepcionistas})
 
+@group_required('Proprietario')
+@login_required 
 def mostrarEspecialidades(request):
     proprietario = request.user.proprietario
     especialidades = Especialidade.objects.all()
     return render(request, 'especialidades_list.html', {'proprietario': proprietario, 'especialidades': especialidades})
 
+@group_required('Proprietario')
+@login_required 
 def dadosPaciente(request, id):
     proprietario = request.user.proprietario
     user = User.objects.get(id=id)
@@ -80,6 +92,8 @@ def dadosPaciente(request, id):
         show_message = request.session.pop('show_message', False)
         return render(request, 'paciente_data (prop).html', {'proprietario': proprietario, 'paciente': paciente, 'message_view': show_message})
 
+@group_required('Proprietario')
+@login_required 
 def dadosFuncionario(request, id):
     proprietario = request.user.proprietario
     user = User.objects.get(id=id)
@@ -117,7 +131,9 @@ def dadosFuncionario(request, id):
             return render(request, 'medico_data (prop).html', {'proprietario': proprietario, 'medico': user.medico, 'especialidades': especialidades, 'message_view': show_message})
         elif hasattr(user, 'recepcionista'):
             return render(request, 'recepcionista_data (prop).html', {'proprietario': proprietario, 'recepcionista': user.recepcionista, 'message_view': show_message})
-        
+
+@group_required('Proprietario')
+@login_required       
 def dadosEspecialidade(request, id):
     proprietario = request.user.proprietario
     especialidade = Especialidade.objects.get(id=id)
@@ -137,6 +153,8 @@ def dadosEspecialidade(request, id):
         show_message = request.session.pop('show_message', False)
         return render(request, 'especialidade.html', {'proprietario': proprietario, 'especialidade': especialidade, 'message_view': show_message})
 
+@group_required('Proprietario')
+@login_required 
 def addPaciente(request):
     proprietario = request.user.proprietario
     if request.method == 'POST':
@@ -162,6 +180,8 @@ def addPaciente(request):
         show_message = request.session.pop('show_message', False)
         return render(request, 'add_paciente (prop).html', {'proprietario': proprietario,'message_view': show_message})
 
+@group_required('Proprietario')
+@login_required 
 def addFuncionario(request):
     proprietario = request.user.proprietario
     if request.method == 'POST':
@@ -174,6 +194,8 @@ def addFuncionario(request):
         show_message = request.session.pop('show_message', False)
         return render(request, 'add_funcionario.html', {'proprietario': proprietario,'message_view': show_message})
 
+@group_required('Proprietario')
+@login_required 
 def addRecep(request):
     proprietario = request.user.proprietario
     if request.method == 'POST':
@@ -197,7 +219,9 @@ def addRecep(request):
     else:
         request.session['show_message'] = False
         return render(request, 'add_recepcionista.html', {'proprietario': proprietario})
-    
+
+@group_required('Proprietario')
+@login_required     
 def addMedico(request):
     proprietario = request.user.proprietario
     if request.method == 'POST':
@@ -222,7 +246,9 @@ def addMedico(request):
         especialidades = Especialidade.objects.all()
         request.session['show_message'] = False
         return render(request, 'add_medico.html', {'proprietario': proprietario, 'especialidades': especialidades}) 
-    
+
+@group_required('Proprietario')
+@login_required 
 def addEspecialidade(request):
     proprietario = request.user.proprietario
     if request.method == 'POST':
@@ -241,6 +267,8 @@ def addEspecialidade(request):
         show_message = request.session.pop('show_message', False)
         return render(request, 'add_especialidade.html', {'proprietario': proprietario, 'message_view': show_message})
 
+@group_required('Proprietario')
+@login_required 
 def deletePaciente(request, id):
     proprietario = request.user.proprietario
     paciente = User.objects.get(id=id)
@@ -250,6 +278,8 @@ def deletePaciente(request, id):
     else:
         return render(request, 'delete_paciente (prop).html', {'proprietario': proprietario, 'paciente': paciente.paciente})
 
+@group_required('Proprietario')
+@login_required 
 def deleteFuncionario(request, id):
     proprietario = request.user.proprietario
     funcionario = User.objects.get(id=id)
@@ -261,7 +291,9 @@ def deleteFuncionario(request, id):
             return render(request, 'delete_funcionario.html', {'proprietario': proprietario, 'medico': funcionario.medico})
         elif hasattr(funcionario, 'recepcionista'):
             return render(request, 'delete_funcionario.html', {'proprietario': proprietario, 'recepcionista': funcionario.recepcionista})
-        
+
+@group_required('Proprietario')
+@login_required       
 def deleteEspecialidade(request, id):
     proprietario = request.user.proprietario
     especialidade = Especialidade.objects.get(id=id)
@@ -271,12 +303,15 @@ def deleteEspecialidade(request, id):
     else:
         return render(request, 'delete_especialidade.html', {'proprietario': proprietario, 'especialidade': especialidade})
 
-
+@group_required('Proprietario')
+@login_required 
 def mostrarConsultas(request):
     proprietario = request.user.proprietario
     consultas = Consulta.objects.all().order_by('status_consulta')
     return render(request, 'consultas (prop).html', {'proprietario': proprietario, 'consultas': consultas})
 
+@group_required('Proprietario')
+@login_required 
 def marcarConsulta(request):
     proprietario = request.user.proprietario
     especialidade = Especialidade.objects.all()
@@ -313,7 +348,9 @@ def marcarConsulta(request):
         medicos = Medico.objects.all()
         show_message = request.session.pop('show_message', False)
         return render(request, 'agendamento (prop).html', {'proprietario': proprietario, 'medicos': medicos, 'pacientes': pacientes, 'especialidades': especialidade,'message_view': show_message})
-    
+
+@group_required('Proprietario')
+@login_required  
 def cancelarConsulta(request, id):
     proprietario = request.user.proprietario
     consulta = Consulta.objects.get(id=id)
@@ -326,14 +363,17 @@ def cancelarConsulta(request, id):
         return redirect('consultas')
     else:
         return render(request, 'cancelar_consulta (prop).html', {'proprietario': proprietario, 'consulta': consulta})
-    
+
+@group_required('Proprietario')
+@login_required   
 def mostrarBandeiras(request):
     proprietario = request.user.proprietario
     bandeiras = BandeiraCartao.objects.all()
 
     return render(request, 'bandeiras_cartao_list.html', {'proprietario': proprietario, 'bandeiras': bandeiras})
 
-    
+@group_required('Proprietario')
+@login_required    
 def adicionarBandeira(request):
     proprietario = request.user.proprietario
     if request.method == 'POST':
@@ -351,7 +391,9 @@ def adicionarBandeira(request):
     else:
         show_message = request.session.pop('show_message', False)
         return render(request, 'add_bandeira_cartao.html', {'proprietario': proprietario,'message_view': show_message})
-    
+
+@group_required('Proprietario')
+@login_required    
 def deleteBandeira(request, id):
     proprietario = request.user.proprietario
     bandeira = BandeiraCartao.objects.get(id=id)
@@ -360,7 +402,9 @@ def deleteBandeira(request, id):
         return redirect('bandeiras')
     else:
         return render(request, 'delete_bandeira.html', {'proprietario': proprietario, 'bandeira': bandeira})
-    
+
+@group_required('Proprietario')
+@login_required  
 def mostrarCartoes(request, id):
     proprietario = request.user.proprietario
     user = User.objects.get(id=id)
@@ -372,6 +416,8 @@ def mostrarCartoes(request, id):
     finally:
         return render(request, 'cartoes_list (prop).html', {'proprietario': proprietario, 'paciente': paciente, 'cartoes': cartoes})
 
+@group_required('Proprietario')
+@login_required 
 def adicionarCartoes(request,id):
     proprietario = request.user.proprietario
     user = User.objects.get(id=id)
@@ -393,7 +439,9 @@ def adicionarCartoes(request,id):
         show_message = request.session.pop('show_message', False)
         bandeiras = BandeiraCartao.objects.all()
         return render(request, 'add_cartao (prop).html', {'proprietario': proprietario, 'bandeiras': bandeiras,'message_view': show_message})
-    
+
+@group_required('Proprietario')
+@login_required    
 def deleteCartao(request, id):
     proprietario = request.user.proprietario
     cartao = CadCartao.objects.get(id=id)
@@ -403,13 +451,17 @@ def deleteCartao(request, id):
         return redirect('cartoes_prop', paciente_card.user.id)
     else:
         return render(request, 'delete_cartao (prop).html', {'proprietario': proprietario, 'cartao': cartao})
-    
+
+@group_required('Proprietario')
+@login_required  
 def mostrarConvenios(request):
     proprietario = request.user.proprietario
     convenios = Convenio.objects.all()
 
     return render(request, 'forn_convenio_list.html', {'proprietario': proprietario, 'convenios': convenios})
-    
+
+@group_required('Proprietario')
+@login_required     
 def addFornecedorConvenio(request):
     proprietario = request.user.proprietario
     if request.method == 'POST':
@@ -427,7 +479,9 @@ def addFornecedorConvenio(request):
     else:
         show_message = request.session.pop('show_message', False)
         return render(request, 'add_convenio_empresa.html', {'proprietario': proprietario,'message_view': show_message})
-    
+
+@group_required('Proprietario')
+@login_required    
 def deleteConvenio(request, id):
     proprietario = request.user.proprietario
     convenio = Convenio.objects.get(id=id)
@@ -436,7 +490,9 @@ def deleteConvenio(request, id):
         return redirect('convenios')
     else:
         return render(request, 'delete_convenio.html', {'proprietario': proprietario, 'convenio': convenio})
-    
+
+@group_required('Proprietario')
+@login_required    
 def mostrarPlano(request, id):
     proprietario = request.user.proprietario
     convenio = Convenio.objects.get(id=id)
@@ -447,6 +503,8 @@ def mostrarPlano(request, id):
     finally:
         return render(request, 'planos_list.html', {'proprietario': proprietario, 'planos': planos, 'convenio': convenio})
 
+@group_required('Proprietario')
+@login_required 
 def addPlano(request, id):
     proprietario = request.user.proprietario
     convenio = Convenio.objects.get(id=id)
@@ -467,6 +525,8 @@ def addPlano(request, id):
         show_message = request.session.pop('show_message', False)
         return render(request, 'add_plano.html', {'proprietario': proprietario, 'convenio': convenio,'message_view': show_message})
 
+@group_required('Proprietario')
+@login_required 
 def deletePlano(request, id):
     proprietario = request.user.proprietario
     plano = PlanoConvenio.objects.get(id=id)
@@ -476,7 +536,9 @@ def deletePlano(request, id):
         return redirect('planos_convenio', convenio.id)
     else:
         return render(request, 'delete_plano.html', {'proprietario': proprietario, 'plano': plano})
-    
+
+@group_required('Proprietario')
+@login_required     
 def cadConvPaciente(request,id):
     proprietario = request.user.proprietario
     user = User.objects.get(id=id)
@@ -499,7 +561,9 @@ def cadConvPaciente(request,id):
         planos = PlanoConvenio.objects.all()
         show_message = request.session.pop('show_message', False)
         return render(request, 'add_paciente_convenio (prop).html', {'proprietario': proprietario, 'convenios': convenios, 'planos':planos,'message_view': show_message})
-    
+
+@group_required('Proprietario')
+@login_required     
 def delPacienteConv(request, id):
     proprietario = request.user.proprietario
     convenio = CadConvenio.objects.get(id=id)
@@ -509,7 +573,9 @@ def delPacienteConv(request, id):
         return redirect('convenios_paciente_prop', paciente_conv.user.id)
     else:
         return render(request, 'delete_paciente_convenio (prop).html', {'proprietario': proprietario, 'convenio': convenio})
-    
+
+@group_required('Proprietario')
+@login_required     
 def mostrarPacienteConvenio(request, id):
     proprietario = request.user.proprietario
     user = User.objects.get(id=id)
@@ -520,13 +586,17 @@ def mostrarPacienteConvenio(request, id):
         convenios = ''
     finally:
         return render(request, 'convenios_list (prop).html', {'proprietario': proprietario, 'paciente': paciente, 'convenios': convenios})
-    
+
+@group_required('Proprietario')
+@login_required    
 def mostrarFichas(request):
     proprietario = request.user.proprietario
     consultas = Consulta.objects.filter(data=date.today())
 
     return render(request, 'fichas (prop).html', {'proprietario': proprietario, 'consultas': consultas})
 
+@group_required('Proprietario')
+@login_required 
 def abrirFicha(request, id):
     proprietario = request.user.proprietario
     consulta = Consulta.objects.get(id=id)
@@ -536,9 +606,10 @@ def abrirFicha(request, id):
         return redirect('fichas_prop')
     else:
         return render(request, 'abrir_ficha (prop).html', {'proprietario': proprietario, 'consulta': consulta})
-    
+
+@group_required('Proprietario')
+@login_required    
 def document_list(request, id):
-    # Agrupar documentos por data
     proprietario = request.user.proprietario
     list_documents = defaultdict(list)
     user = User.objects.get(id=id)
@@ -546,19 +617,25 @@ def document_list(request, id):
     try:
         prontuario = Prontuario.objects.get(paciente=paciente)
         if prontuario:
-            documents = Documentos.objects.filter(prontuario=prontuario)
-            if documents:
-                for document in documents.order_by('data'):
+            documentos = Documentos.objects.filter(prontuario=prontuario).order_by('data')
+            encaminhamentos = Encaminhamento.objects.filter(prontuario=prontuario).order_by('data')
+            bioimpedancia = Bioimpedância.objects.filter(prontuario=prontuario).order_by('data')
+            documents_list = list(chain(documentos, encaminhamentos, bioimpedancia))
+            if documents_list:
+                documents_list.sort(key=lambda x: x.data)
+                for document in documents_list:
                     list_documents[document.data].append(document)
 
-                return render(request, 'prontuario (prop).html', {'proprietario': proprietario,'paciente':paciente,'prontuario': prontuario, 'list_documents': list_documents.items()})
+                return render(request, 'prontuario (prop).html', {'proprietario': proprietario,'paciente':paciente,'prontuario': prontuario, 'list_documents': list_documents.items(), 'documentos' : documentos, 'encaminhamentos': encaminhamentos, 'bioimpedancia': bioimpedancia})
             else:
                 list_documents = ''
                 return render(request, 'prontuario (prop).html', {'proprietario': proprietario, 'paciente':paciente,'prontuario': prontuario, 'list_documents': list_documents})
     except:
         prontuario = ''
         return render(request, 'prontuario (prop).html', {'proprietario': proprietario, 'paciente':paciente, 'prontuario': prontuario, 'listdocumentos': ''})
-    
+
+@group_required('Proprietario')
+@login_required    
 def init_prontuario(request, id):
     proprietario = request.user.proprietario
     user = User.objects.get(id=id)
@@ -579,7 +656,9 @@ def init_prontuario(request, id):
     else:
         show_message = request.session.pop('show_message', False)
         return render(request, 'init_prontuario.html', {'proprietario': proprietario, 'paciente': paciente, 'message_view': show_message})
-        
+
+@group_required('Proprietario')
+@login_required         
 def info_prontuario(request, id):
     proprietario = request.user.proprietario
     user = User.objects.get(id=id)
@@ -588,6 +667,8 @@ def info_prontuario(request, id):
     return render(request, 'info_prontuario (prop).html', {'proprietario': proprietario, 'paciente': paciente, 'prontuario': prontuario})
 
 # Sistema de pagamento
+@group_required('Proprietario')
+@login_required 
 def pagarConsulta(request):
     proprietario = request.user.proprietario
     atendimento_data = request.session.get('atendimento_data')
@@ -613,6 +694,8 @@ def pagarConsulta(request):
 
         return render(request, 'pagamento (prop).html', {'proprietario': proprietario, 'consulta': atendimento_data, 'tratamentos':tratamentos, 'total':total})
 
+@group_required('Proprietario')
+@login_required 
 def pagarConsultaCard(request):
     proprietario = request.user.proprietario
     atendimento_data = request.session.get('atendimento_data')
@@ -662,8 +745,9 @@ def pagarConsultaCard(request):
     else:
         show_message = request.session.pop('show_message', False)
         return render(request, 'pay_card (prop).html', {'proprietario': proprietario, 'consulta': atendimento_data, 'cartoes': cartoes, 'message_view': show_message})
-    
 
+@group_required('Proprietario')  
+@login_required 
 def pagarConsultaConv(request):
     proprietario = request.user.proprietario
     atendimento_data = request.session.get('atendimento_data')
@@ -713,8 +797,9 @@ def pagarConsultaConv(request):
     else:
         show_message = request.session.pop('show_message', False)
         return render(request, 'pay_conv (prop).html', {'proprietario': proprietario, 'consulta': atendimento_data, 'convenios': convenios, 'message_view': show_message})
-    
 
+@group_required('Proprietario')
+@login_required 
 def pagarConsultaBol(request):
     proprietario = request.user.proprietario
     atendimento_data = request.session.get('atendimento_data')
@@ -769,7 +854,9 @@ def pagarConsultaBol(request):
                 AnexoConsulta.objects.create(consulta=new_atendimento, arquivo=arquivo)
 
         return render(request, 'pay_bol (prop).html', {'proprietario': proprietario, 'consulta': atendimento_data, 'boleto': bol})
-    
+
+@group_required('Proprietario')
+@login_required    
 def addTratamento(request):
     proprietario = request.user.proprietario
     especialidades = Especialidade.objects.all()
@@ -788,12 +875,16 @@ def addTratamento(request):
     else:
         show_message = request.session.pop('show_message', False)
         return render(request, 'add_tratamento.html', {'proprietario': proprietario, 'especialidades': especialidades,'message_view': show_message})
-    
+
+@group_required('Proprietario')
+@login_required    
 def mostrarTratamentos(request):
     proprietario = request.user.proprietario
     tratamentos = Tratamento.objects.all()
     return render(request, 'tratamentos_list.html', {'proprietario': proprietario, 'tratamentos': tratamentos})
 
+@group_required('Proprietario')
+@login_required 
 def dadosTratamento(request, id):
     proprietario = request.user.proprietario
     tratamento = Tratamento.objects.get(id=id)
@@ -813,7 +904,9 @@ def dadosTratamento(request, id):
     else:
         show_message = request.session.pop('show_message', False)
         return render(request, 'tratamento_data.html', {'proprietario': proprietario, 'tratamento': tratamento, 'especialidades': especialidades,'message_view': show_message})
-    
+
+@group_required('Proprietario')
+@login_required     
 def deleteTratamento(request, id):
     proprietario = request.user.proprietario
     tratamento = Tratamento.objects.get(id=id)
@@ -822,13 +915,17 @@ def deleteTratamento(request, id):
         return redirect('tratamentos')
     else:
         return render(request, 'delete_tratamento.html', {'proprietario': proprietario, 'tratamento': tratamento})
-    
+
+@group_required('Proprietario')
+@login_required    
 def mostrarPix(request):
     proprietario = request.user.proprietario
     pix = Pix.objects.all()
 
     return render(request, 'pix_list.html', {'proprietario': proprietario, 'pix': pix})
-    
+
+@group_required('Proprietario')
+@login_required     
 def addChave(request):
     proprietario = request.user.proprietario
     if request.method == 'POST':
@@ -844,7 +941,9 @@ def addChave(request):
     else:
         show_message = request.session.pop('show_message', False)
         return render(request, 'add_chave.html', {'proprietario': proprietario, 'message_view': show_message})
-    
+
+@group_required('Proprietario')
+@login_required     
 def deletePix(request, id):
     proprietario = request.user.proprietario
     pix = Pix.objects.get(id=id)
@@ -853,7 +952,9 @@ def deletePix(request, id):
         return redirect('convenios')
     else:
         return render(request, 'delete_convenio.html', {'proprietario': proprietario, 'pix': pix})
-    
+
+@group_required('Proprietario')
+@login_required     
 def payPix(request):
     proprietario = request.user.proprietario
     atendimento_data = request.session.get('atendimento_data')
@@ -901,12 +1002,16 @@ def payPix(request):
         show_message = request.session.pop('show_message', False)
         return render(request, 'pay_pix (prop).html', {'proprietario': proprietario, 'consulta': atendimento_data, 'pix': pix, 'message_view': show_message})
 
+@group_required('Proprietario')
+@login_required 
 def chavePix (request, id):
     proprietario = request.user.proprietario
     pix = Pix.objects.get(id=id)
 
     return render(request, 'chave.html', {'proprietario': proprietario, 'pix': pix})
 
+@group_required('Proprietario')
+@login_required 
 def mostrarContas(request, id):
     proprietario = request.user.proprietario
     user = User.objects.get(id=id)
@@ -914,7 +1019,33 @@ def mostrarContas(request, id):
     contas = Pagamento.objects.filter(paciente=paciente).select_related('boleto', 'cartao', 'convenio', 'pix')
     return render(request, 'financeiro (prop).html', {'proprietario': proprietario, 'paciente': paciente,'contas': contas})
 
+@group_required('Proprietario')
+@login_required 
 def mostrarBoleto(request, id):
     proprietario = request.user.proprietario
     boleto = Boleto.objects.get(id=id)
     return render(request, 'pay_bol (prop).html', {'proprietario': proprietario, 'boleto': boleto})
+
+@group_required('Proprietario')
+@login_required 
+def document(request, id):
+    proprietario = request.user.proprietario
+    documento = Documentos.objects.get(id=id)
+    
+    return render(request, 'documento (prop).html', {'proprietario': proprietario, 'documento': documento})
+
+@group_required('Proprietario')
+@login_required 
+def encaminha(request, id):
+    proprietario = request.user.proprietario
+    encaminhamento = Encaminhamento.objects.get(id=id)
+    
+    return render(request, 'encaminhamento (prop).html', {'proprietario': proprietario, 'encaminhamento': encaminhamento})
+
+@group_required('Proprietario')
+@login_required 
+def bio(request, id):
+    proprietario = request.user.proprietario
+    bioimpedancia = Bioimpedância.objects.get(id=id)
+    
+    return render(request, 'bioimpedancia (prop).html', {'proprietario': proprietario, 'bioimpedancia': bioimpedancia})   

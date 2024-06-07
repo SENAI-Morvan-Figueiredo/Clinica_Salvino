@@ -1,7 +1,7 @@
-{% extends 'background_proprietario.html' %}
+{% extends 'background_paciente.html' %}
 {% load static i18n %}
 {% block head_title %}
-    {% trans 'Proprietário - Clínica Salvino' %}
+    {% trans 'Paciente - Clínica Salvino' %}
 {% endblock head_title %}
 {% block extra_head %}
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
@@ -20,11 +20,11 @@
                     <div id="content-{{ data }}" class="dropdown-content">
                         {% for document in documents %}
                             {% if document in documentos %}
-                                <a href="{% url 'doc_prop' document.id %}"><h3>{{ document.tipo_documento }}: {{ document.nome_documento }}</h3></a>
+                                <a href="{% url 'doc_paciente' document.id %}"><h3>{{ document.tipo_documento }}: {{ document.nome_documento }}</h3></a>
                             {% elif document in encaminhamentos %}
-                                <a href="{% url 'en_prop' document.id %}"><h3>{{ document.tipo_encaminhamento }}: {{ document.area }}</h3></a>
+                                <a href="{% url 'en_paciente' document.id %}"><h3>{{ document.tipo_encaminhamento }}: {{ document.area }}</h3></a>
                             {% elif document in bioimpedancia %}
-                                <a href="{% url 'bio_prop' document.id %}"><h3>Bioimpedância: {{ document.data|date:'d/m/Y' }}</h3></a>
+                                <a href="{% url 'bio_paciente' document.id %}"><h3>Bioimpedância: {{ document.data|date:'d/m/Y' }}</h3></a>
                             {% endif %}
                         {% endfor %}
                     </div>

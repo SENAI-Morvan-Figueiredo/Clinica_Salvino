@@ -7,18 +7,23 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from datetime import date
 from itertools import chain
+from clinica_salvino.decorators import group_required
 
 # Create your views here.
-@login_required 
+@group_required('Medico')
 def medBoard(request):
     medico = request.user.medico
     consultas = Consulta.objects.filter(medico=medico, status_consulta = 'Ficha Aberta')
     return render(request, 'medico.html', {'medico': medico, 'consultas': consultas})
-    
+
+@group_required('Medico')
+@login_required   
 def contaMedico(request):
     medico = request.user.medico
     return render(request, 'myaccount_medico.html', {'medico': medico})
 
+@group_required('Medico')
+@login_required 
 def mostrarPacientes(request):
     medico = request.user.medico
     consultas = Consulta.objects.filter(medico=medico)
@@ -26,13 +31,16 @@ def mostrarPacientes(request):
 
     return render(request, 'pacientes_list(med).html', {'medico': medico, 'pacientes': pacientes})
 
+@group_required('Medico')
+@login_required 
 def dadosPaciente(request, id):
     medico = request.user.medico
     user = User.objects.get(id=id)
     paciente = Paciente.objects.get(user=user)
     return render(request, 'paciente_data (med).html', {'medico': medico, 'paciente': paciente})
 
-
+@group_required('Medico')
+@login_required 
 def document_list(request, id):
     # Agrupar documentos por data
     medico = request.user.medico
@@ -58,7 +66,9 @@ def document_list(request, id):
     except:
         prontuario = ''
         return render(request, 'prontuario (med).html', {'medico': medico, 'paciente':paciente, 'prontuario': prontuario, 'listdocumentos': ''})
-    
+
+@group_required('Medico')
+@login_required    
 def init_prontuario(request, id):
     medico = request.user.medico
     user = User.objects.get(id=id)
@@ -78,6 +88,8 @@ def init_prontuario(request, id):
         show_message = request.session.pop('show_message', False)
         return render(request, 'init_prontuario (med).html', {'medico': medico, 'paciente': paciente, 'message_view': show_message})
 
+@group_required('Medico')
+@login_required 
 def info_prontuario(request, id):
     medico = request.user.medico
     user = User.objects.get(id=id)
@@ -96,12 +108,16 @@ def info_prontuario(request, id):
     else:
         return render(request, 'info_prontuario (med).html', {'medico': medico, 'paciente': paciente, 'prontuario': prontuario})
 
+@group_required('Medico')
+@login_required 
 def mostrarConsultas(request):
     medico = request.user.medico
     consultas = Consulta.objects.filter(medico=medico).order_by('status_consulta')
     data = date.today()
     return render(request, 'consultas (med).html', {'medico': medico, 'consultas': consultas, 'data': data})
 
+@group_required('Medico')
+@login_required 
 def concluirConsulta(request, id):
     medico = request.user.medico
     consulta = Consulta.objects.get(id=id)
@@ -111,7 +127,9 @@ def concluirConsulta(request, id):
         return redirect('consultas')
     else:
         return render(request, 'concluir_consulta.html', {'medico': medico, 'consulta': consulta})
-    
+
+@group_required('Medico')
+@login_required     
 def addDocument(request, id):
     medico = request.user.medico
     user = User.objects.get(id=id)
@@ -132,19 +150,17 @@ def addDocument(request, id):
     else:
         show_message = request.session.pop('show_message', False)
         return render(request, 'add_documento (med).html', {'medico': medico, 'prontuario': prontuario, 'message_view': show_message})
-    
+
+@group_required('Medico')
+@login_required     
 def document(request, id):
     medico = request.user.medico
     documento = Documentos.objects.get(id=id)
     
     return render(request, 'documento (med).html', {'medico': medico, 'documento': documento})
 
-def encaminha(request, id):
-    medico = request.user.medico
-    encaminhamento = Encaminhamento.objects.get(id=id)
-    
-    return render(request, 'encaminhamento (med).html', {'medico': medico, 'encaminhamento': encaminhamento})
-
+@group_required('Medico')
+@login_required 
 def addEncaminha(request, id):
     medico = request.user.medico
     user = User.objects.get(id=id)
@@ -166,12 +182,16 @@ def addEncaminha(request, id):
         show_message = request.session.pop('show_message', False)
         return render(request, 'add_encaminhamento (med).html', {'medico': medico, 'prontuario': prontuario, 'message_view': show_message})
 
-def bio(request, id):
+@group_required('Medico')
+@login_required 
+def encaminha(request, id):
     medico = request.user.medico
-    bioimpedancia = Bioimpedância.objects.get(id=id)
+    encaminhamento = Encaminhamento.objects.get(id=id)
     
-    return render(request, 'bioimpedancia (med).html', {'medico': medico, 'bioimpedancia': bioimpedancia})
+    return render(request, 'encaminhamento (med).html', {'medico': medico, 'encaminhamento': encaminhamento})
 
+@group_required('Medico')
+@login_required 
 def addBio(request, id):
     medico = request.user.medico
     user = User.objects.get(id=id)
@@ -193,6 +213,16 @@ def addBio(request, id):
         show_message = request.session.pop('show_message', False)
         return render(request, 'add_bioimpedancia (med).html', {'medico': medico, 'prontuario': prontuario, 'message_view': show_message})
 
+@group_required('Medico')
+@login_required 
+def bio(request, id):
+    medico = request.user.medico
+    bioimpedancia = Bioimpedância.objects.get(id=id)
+    
+    return render(request, 'bioimpedancia (med).html', {'medico': medico, 'bioimpedancia': bioimpedancia})
+
+@group_required('Medico')
+@login_required 
 def delete_en(request, id):
     medico = request.user.medico
     encaminhamento = Encaminhamento.objects.get(id=id)
@@ -202,6 +232,8 @@ def delete_en(request, id):
     else:
         return render(request, 'delete_encaminhamento (med).html', {'medico': medico, 'encaminhamento': encaminhamento})
 
+@group_required('Medico')
+@login_required 
 def delete_doc(request, id):
     medico = request.user.medico
     documento = Documentos.objects.get(id=id)
@@ -211,6 +243,8 @@ def delete_doc(request, id):
     else:
         return render(request, 'delete_documento (med).html', {'medico': medico, 'documento': documento})
 
+@group_required('Medico')
+@login_required 
 def delete_bio(request, id):
     medico = request.user.medico
     bioimpedancia = Bioimpedância.objects.get(id=id)

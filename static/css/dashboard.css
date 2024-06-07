@@ -480,7 +480,15 @@ ul{
         border: 1px solid #ccc;
         border-top: none;
         background-color: #333333;
-        margin-bottom: 30px;
+        margin-bottom: 10px;
+    }
+
+    .arq-line{
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        height: 100%;
+        gap: 2px;
     }
 
         /* grupo englobando 2 classes e pondo elas em grade */

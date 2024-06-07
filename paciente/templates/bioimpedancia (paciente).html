@@ -1,0 +1,49 @@
+{% extends 'background_paciente.html'%}
+{% load static i18n %}
+{% block head_title %}
+    {% trans 'Paciente - Clínica Salvino' %}
+{% endblock head_title %}
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock extra_head %}
+
+{% block content %}
+<div class="dash page bg-darkgray">
+    <h1 class="dash_title">Bioimpedância: {{ bioimpedancia.data|date:'d/m/Y' }}</h1>
+        <div class="ficha">
+            <p class="ficha-line border">Nome: {{ bioimpedancia.prontuario.paciente.name }}</p>
+            <p class="ficha-line border">Nome: {{ bioimpedancia.medico.name }}</p>
+            <div class="ficha-line">
+                <p>Data: {{ bioimpedancia.data|date:'d/m/Y' }}</p>
+                <p>Peso: {{ bioimpedancia.peso }}</p>
+            </div>
+            <div class="ficha-line">
+                <p class="altura">Altura: {{ bioimpedancia.altura }}</p>
+                <p>Massa Magra: {{ bioimpedancia.massa_magra }}</p>
+            </div>
+            <div class="ficha-line">
+                <p>Massa Muscular: {{ bioimpedancia.massa_muscular }}</p>
+                <p>Água Corporal: {{ bioimpedancia.agua_corporal }}</p>
+            </div>
+            <div class="ficha-line">
+                <p>Densidade Óssea: {{ bioimpedancia.densidade_ossea }}</p>
+                <p>Gordura Visceral: {{ bioimpedancia.gordura_visceral }}</p>
+            </div>
+            <div class="ficha-line">
+                <p>Gordura Corporal: {{ bioimpedancia.gordura_corporal }}</p>
+                <p>Taxa Metabólica: {{ bioimpedancia.taxa_metabolica }}</p>
+            </div>
+            <div class="ficha-line">
+                <p>IMC: {{ bioimpedancia.imc }}</p>
+            </div>
+        </div>
+        <div class="button-box">
+            <input type="submit" id="back" onclick="voltar()" class="btn-black-white btn-dash" value="Voltar">
+        </div>
+    </div>
+{% endblock content %}
+
+{% block script %}
+    <script src="https://kit.fontawesome.com/fc74a91a63.js" crossorigin="anonymous"></script>
+    <script src="{% static 'js/button.js' %}"></script>
+{% endblock script %}

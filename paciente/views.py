@@ -4,10 +4,13 @@ from .forms import CadPaciente, FormCartao, FormConvenio, PagamentoCard, Pagamen
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import Paciente, Consulta, CadCartao, CadConvenio, Pagamento, Boleto, AnexoConsulta
+from .models import Paciente, Consulta, CadCartao, CadConvenio, Pagamento, Boleto, AnexoConsulta, Bioimpedância, Documentos, Encaminhamento, Prontuario
 from medico.models import Medico
 from clinica.models import BandeiraCartao, Tratamento, Especialidade, Pix, PlanoConvenio, Convenio
 from datetime import date
+from collections import defaultdict
+from itertools import chain
+from clinica_salvino.decorators import group_required
 
 logger = logging.getLogger(__name__)
 
@@ -32,12 +35,15 @@ def register(request):
     else:
         return render(request, 'register.html')
 
+@group_required('Paciente')
 @login_required   
 def pacienteBoard(request):
     paciente = request.user.paciente
     consultas = Consulta.objects.filter(paciente=paciente).order_by('data')[:5]
     return render(request, 'paciente.html', {'paciente': paciente, 'consultas': consultas})
 
+@group_required('Paciente')
+@login_required 
 def contaPaciente(request):
     user = request.user
     paciente = Paciente.objects.get(user=user)
@@ -57,6 +63,8 @@ def contaPaciente(request):
         show_message = request.session.pop('show_message', False)
         return render(request, 'myaccount_paciente.html', {'paciente': paciente, 'message_view': show_message})
 
+@group_required('Paciente')
+@login_required 
 def mostrarCartoes(request):
     paciente = request.user.paciente
     try:
@@ -65,8 +73,9 @@ def mostrarCartoes(request):
         cartoes = ''
     finally:
         return render(request, 'cartoes_list (paciente).html', {'paciente': paciente, 'cartoes': cartoes})
-    
-    
+
+@group_required('Paciente')
+@login_required    
 def mostrarPacienteConvenio(request):
     paciente = request.user.paciente
     try:
@@ -76,6 +85,8 @@ def mostrarPacienteConvenio(request):
     finally:
         return render(request, 'convenios_list (paciente).html', {'paciente': paciente, 'convenios': convenios})
 
+@group_required('Paciente')
+@login_required 
 def add_cartao(request):
     paciente = request.user.paciente
     if request.method == 'POST':
@@ -96,6 +107,8 @@ def add_cartao(request):
         bandeiras = BandeiraCartao.objects.all()
         return render(request, 'add_cartao (paciente).html', {'paciente': paciente, 'bandeiras': bandeiras,'message_view': show_message})
 
+@group_required('Paciente')
+@login_required 
 def delete_cartao(request, id):
     paciente = request.user.paciente
     cartao = CadCartao.objects.get(id=id)
@@ -105,6 +118,8 @@ def delete_cartao(request, id):
     else:
         return render(request, 'delete_cartao (paciente).html', {'paciente': paciente, 'cartao': cartao})
 
+@group_required('Paciente')
+@login_required 
 def add_convenio(request):
     paciente = request.user.paciente
     if request.method == 'POST':
@@ -126,6 +141,8 @@ def add_convenio(request):
         show_message = request.session.pop('show_message', False)
         return render(request, 'add_convenio (paciente).html', {'paciente': paciente, 'convenios': convenios, 'planos':planos,'message_view': show_message})
 
+@group_required('Paciente')
+@login_required 
 def delete_convenio(request, id):
     paciente = request.user.paciente
     convenio = CadConvenio.objects.get(id=id)
@@ -134,7 +151,9 @@ def delete_convenio(request, id):
         return redirect('convenios_paciente')
     else:
         return render(request, 'delete_convenio (paciente).html', {'paciente': paciente, 'convenio': convenio})
-    
+
+@group_required('Paciente')
+@login_required    
 def agendamento_paciente(request):
     paciente = request.user.paciente
     especialidade = Especialidade.objects.all()
@@ -171,6 +190,8 @@ def agendamento_paciente(request):
         medicos = Medico.objects.all()
         return render(request, 'agendamento (paciente).html', {'paciente': paciente, 'medicos': medicos, 'especialidades': especialidade, 'message_view': show_message})
 
+@group_required('Paciente')
+@login_required 
 def pagamento_paciente(request):
     paciente = request.user.paciente
     atendimento_data = request.session.get('atendimento_data')
@@ -196,6 +217,8 @@ def pagamento_paciente(request):
 
         return render(request, 'pagamento.html', {'paciente': paciente, 'consulta': atendimento_data, 'tratamentos':tratamentos, 'total':total})
 
+@group_required('Paciente')
+@login_required 
 def pagarConsultaCard(request):
     paciente = request.user.paciente
     atendimento_data = request.session.get('atendimento_data')
@@ -243,8 +266,9 @@ def pagarConsultaCard(request):
     else:
         show_message = request.session.pop('show_message', False)
         return render(request, 'pay_card (paciente).html', {'paciente': paciente, 'consulta': atendimento_data, 'cartoes': cartoes, 'message_view': show_message})
-    
 
+@group_required('Paciente')   
+@login_required 
 def pagarConsultaConv(request):
     paciente = request.user.paciente
     atendimento_data = request.session.get('atendimento_data')
@@ -292,8 +316,9 @@ def pagarConsultaConv(request):
     else:
         show_message = request.session.pop('show_message', False)
         return render(request, 'pay_conv (paciente).html', {'paciente': paciente, 'consulta': atendimento_data, 'convenios': convenios, 'message_view': show_message})
-    
 
+@group_required('Paciente')  
+@login_required 
 def pagarConsultaBol(request):
     paciente = request.user.paciente
     atendimento_data = request.session.get('atendimento_data')
@@ -348,7 +373,9 @@ def pagarConsultaBol(request):
                 AnexoConsulta.objects.create(consulta=new_atendimento, arquivo=arquivo)
 
         return render(request, 'pay_bol (paciente).html', {'paciente': paciente, 'consulta': atendimento_data, 'boleto': bol})
-    
+
+@group_required('Paciente')
+@login_required     
 def payPix(request):
     paciente = request.user.paciente
     atendimento_data = request.session.get('atendimento_data')
@@ -397,11 +424,15 @@ def payPix(request):
         show_message = request.session.pop('show_message', False)
         return render(request, 'pay_pix (paciente).html', {'paciente': paciente, 'consulta': atendimento_data, 'pix': pix, 'message_view': show_message})
 
+@group_required('Paciente')
+@login_required 
 def mostrarConsultas(request):
     paciente = request.user.paciente
     consultas = Consulta.objects.filter(paciente=paciente).order_by('status_consulta')
     return render(request, 'consultas (paciente).html', {'paciente': paciente, 'consultas': consultas})
 
+@group_required('Paciente')
+@login_required 
 def cancelarConsulta(request, id):
     paciente = request.user.paciente
     consulta = Consulta.objects.get(id=id)
@@ -414,19 +445,75 @@ def cancelarConsulta(request, id):
         return redirect('consultas_paciente')
     else:
         return render(request, 'cancelar_consulta (paciente).html', {'paciente': paciente, 'consulta': consulta})
-    
+
+@group_required('Paciente')
+@login_required    
 def chavePix (request, id):
     paciente = request.user.paciente
     pix = Pix.objects.get(id=id)
 
     return render(request, 'chave (paciente).html', {'paciente': paciente, 'pix': pix})
 
+@group_required('Paciente')
+@login_required 
 def mostrarContas(request):
     paciente = request.user.paciente
     contas = Pagamento.objects.filter(paciente=paciente).select_related('boleto', 'cartao', 'convenio', 'pix')
     return render(request, 'financeiro (paciente).html', {'paciente': paciente,'contas': contas})
 
+@group_required('Paciente')
+@login_required 
 def mostrarBoleto(request, id):
     paciente = request.user.paciente
     boleto = Boleto.objects.get(id=id)
     return render(request, 'pay_bol (paciente).html', {'paciente': paciente, 'boleto': boleto})
+
+@group_required('Paciente')
+@login_required 
+def document_list(request):
+    # Agrupar documentos por data
+    paciente = request.user.paciente
+    list_documents = defaultdict(list)
+    try:
+        prontuario = Prontuario.objects.get(paciente=paciente)
+        if prontuario:
+            documentos = Documentos.objects.filter(prontuario=prontuario).order_by('data')
+            encaminhamentos = Encaminhamento.objects.filter(prontuario=prontuario).order_by('data')
+            bioimpedancia = Bioimpedância.objects.filter(prontuario=prontuario).order_by('data')
+            documents_list = list(chain(documentos, encaminhamentos, bioimpedancia))
+            if documents_list:
+                documents_list.sort(key=lambda x: x.data)
+                for document in documents_list:
+                    list_documents[document.data].append(document)
+
+                return render(request, 'prontuario (paciente).html', {'paciente': paciente,'prontuario': prontuario, 'list_documents': list_documents.items(), 'documentos' : documentos, 'encaminhamentos': encaminhamentos, 'bioimpedancia': bioimpedancia})
+            else:
+                list_documents = ''
+                return render(request, 'prontuario (paciente).html', {'paciente': paciente,'prontuario': prontuario, 'list_documents': list_documents})
+    except:
+        prontuario = ''
+        return render(request, 'prontuario (paciente).html', {'paciente': paciente, 'prontuario': prontuario, 'listdocumentos': ''})
+
+@group_required('Paciente')
+@login_required   
+def document(request, id):
+    paciente = request.user.paciente
+    documento = Documentos.objects.get(id=id)
+    
+    return render(request, 'documento (paciente).html', {'paciente':paciente, 'documento': documento})
+
+@group_required('Paciente')
+@login_required 
+def encaminha(request, id):
+    paciente = request.user.paciente
+    encaminhamento = Encaminhamento.objects.get(id=id)
+    
+    return render(request, 'encaminhamento (paciente).html', {'paciente': paciente, 'encaminhamento': encaminhamento})
+
+@group_required('Paciente')
+@login_required 
+def bio(request, id):
+    paciente = request.user.paciente
+    bioimpedancia = Bioimpedância.objects.get(id=id)
+    
+    return render(request, 'bioimpedancia (paciente).html', {'paciente': paciente, 'bioimpedancia': bioimpedancia})    
