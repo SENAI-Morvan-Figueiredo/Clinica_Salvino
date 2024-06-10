@@ -11,6 +11,11 @@ from datetime import date
 from collections import defaultdict
 from itertools import chain
 from clinica_salvino.decorators import group_required
+from django.core.files.storage import FileSystemStorage
+from django.core.files import File
+from django.conf import settings
+import os
+import tempfile
 
 logger = logging.getLogger(__name__)
 
@@ -162,7 +167,16 @@ def agendamento_paciente(request):
         anexo_form = AnexoForm(request.POST, request.FILES)
         if atendimento_form.is_valid() and anexo_form.is_valid():
             atendimento_data = atendimento_form.cleaned_data
-            anexo_files = [arquivo.name for arquivo in request.FILES.getlist('arquivos')]
+            anexo_files = request.FILES.getlist('arquivos')
+            
+            # Salvando os arquivos temporariamente
+            temp_dir = settings.TEMP_DIR
+            saved_files = []
+            for arquivo in anexo_files:
+                fs = FileSystemStorage(location=temp_dir)
+                filename = fs.save(arquivo.name, arquivo)
+                saved_files.append(fs.path(filename))
+                
             serializable_atendimento_data = {
                 'paciente_id': atendimento_data['paciente'].id,
                 'tipo_consulta': atendimento_data['tipo_consulta'],
@@ -173,7 +187,7 @@ def agendamento_paciente(request):
             }
 
             request.session['atendimento_data'] = serializable_atendimento_data
-            request.session['anexo_files'] = anexo_files
+            request.session['anexo_files'] = saved_files
             tratamentos = Tratamento.objects.all()
             if tratamentos:
                 return redirect('pagamento_paciente')
@@ -240,7 +254,7 @@ def pagarConsultaCard(request):
             
             # Criar a consulta após a confirmação do pagamento
             new_atendimento = Consulta(
-                paciente=Paciente.objects.get(id=atendimento_data['especialidade_id']),
+                paciente=Paciente.objects.get(id=atendimento_data['paciente_id']),
                 tipo_consulta=atendimento_data['tipo_consulta'],
                 medico= Medico.objects.get(id=atendimento_data['medico_id']),
                 data=atendimento_data['data'],
@@ -253,10 +267,11 @@ def pagarConsultaCard(request):
             new_atendimento.save()
             pay.save()
             
-            for arquivo_name in anexo_files:
-                arquivo = request.FILES.get(arquivo_name)
-                if arquivo:
-                    AnexoConsulta.objects.create(consulta=new_atendimento, arquivo=arquivo)
+            for arquivo_path in anexo_files:
+                with open(arquivo_path, 'rb') as f:
+                    django_file = File(f, name=os.path.basename(arquivo_path))
+                    AnexoConsulta.objects.create(consulta=new_atendimento, arquivo=django_file)
+                os.remove(arquivo_path)  # Deletar arquivo temporário
             
             return redirect('consultas_paciente')
         else:
@@ -289,10 +304,10 @@ def pagarConsultaConv(request):
             pay.status_pagamento = 'Aguardando pagamento'
             
             # Criar a consulta após a confirmação do pagamento
-            new_atendimento = Consulta(
-                paciente=Paciente.objects.get(id=atendimento_data['especialidade_id']),
+            new_atendimento = Consulta.objects.create(
+                paciente=Paciente.objects.get(id=atendimento_data['paciente_id']),
                 tipo_consulta=atendimento_data['tipo_consulta'],
-                medico= Medico.objects.get(id=atendimento_data['medico_id']),
+                medico=Medico.objects.get(id=atendimento_data['medico_id']),
                 data=atendimento_data['data'],
                 hora=atendimento_data['hora'],
                 especialidade=Especialidade.objects.get(id=atendimento_data['especialidade_id']),
@@ -303,10 +318,11 @@ def pagarConsultaConv(request):
             new_atendimento.save()
             pay.save()
             
-            for arquivo_name in anexo_files:
-                arquivo = request.FILES.get(arquivo_name)
-                if arquivo:
-                    AnexoConsulta.objects.create(consulta=new_atendimento, arquivo=arquivo)
+            for arquivo_path in anexo_files:
+                with open(arquivo_path, 'rb') as f:
+                    django_file = File(f, name=os.path.basename(arquivo_path))
+                    AnexoConsulta.objects.create(consulta=new_atendimento, arquivo=django_file)
+                os.remove(arquivo_path)  # Deletar arquivo temporário
             
             return redirect('consultas_paciente')
         else:
@@ -343,7 +359,7 @@ def pagarConsultaBol(request):
         return render(request, 'pay_bol (paciente).html', {'paciente': paciente, 'consulta': consulta_existente, 'boleto': pagamento_existente.boleto}) 
     else:
         new_atendimento = Consulta.objects.create(
-            paciente=Paciente.objects.get(id=atendimento_data['especialidade_id']),
+            paciente=Paciente.objects.get(id=atendimento_data['paciente_id']),
             tipo_consulta=atendimento_data['tipo_consulta'],
             medico=Medico.objects.get(id=atendimento_data['medico_id']),
             data=atendimento_data['data'],
@@ -354,7 +370,7 @@ def pagarConsultaBol(request):
         new_atendimento.save()
 
         pay = Pagamento.objects.create(
-            paciente=Paciente.objects.get(id=atendimento_data['especialidade_id']),
+            paciente=Paciente.objects.get(id=atendimento_data['paciente_id']),
             medico=Medico.objects.get(id=atendimento_data['medico_id']),
             forma_pagamento='Boleto',
             tratamento=Tratamento.objects.get(especialidade=new_atendimento.especialidade),
@@ -367,10 +383,11 @@ def pagarConsultaBol(request):
         bol = Boleto.objects.create(pagamento = pay)
         bol.save()
 
-        for arquivo_name in anexo_files:
-            arquivo = request.FILES.get(arquivo_name)
-            if arquivo:
-                AnexoConsulta.objects.create(consulta=new_atendimento, arquivo=arquivo)
+        for arquivo_path in anexo_files:
+            with open(arquivo_path, 'rb') as f:
+                django_file = File(f, name=os.path.basename(arquivo_path))
+                AnexoConsulta.objects.create(consulta=new_atendimento, arquivo=django_file)
+            os.remove(arquivo_path)  # Deletar arquivo temporário
 
         return render(request, 'pay_bol (paciente).html', {'paciente': paciente, 'consulta': atendimento_data, 'boleto': bol})
 
@@ -410,10 +427,11 @@ def payPix(request):
             new_atendimento.save()
             pay.save()
             
-            for arquivo_name in anexo_files:
-                arquivo = request.FILES.get(arquivo_name)
-                if arquivo:
-                    AnexoConsulta.objects.create(consulta=new_atendimento, arquivo=arquivo)
+            for arquivo_path in anexo_files:
+                with open(arquivo_path, 'rb') as f:
+                    django_file = File(f, name=os.path.basename(arquivo_path))
+                    AnexoConsulta.objects.create(consulta=new_atendimento, arquivo=django_file)
+                os.remove(arquivo_path)  # Deletar arquivo temporário
             
             return redirect('pix_paciente', pay.pix.id)
         else:

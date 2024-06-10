@@ -132,6 +132,9 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/media/'  # Caminho para acessar arquivos de mídia
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+TEMP_DIR = os.path.join(MEDIA_ROOT, 'temp')
+if not os.path.exists(TEMP_DIR):
+    os.makedirs(TEMP_DIR)
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 

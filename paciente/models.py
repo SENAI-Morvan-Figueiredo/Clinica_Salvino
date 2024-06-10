@@ -17,7 +17,7 @@ def anexo_paciente_upload(instance, filename):
     # Extraia a data da consulta
     data_consulta = instance.consulta.data
     # Formate a data como string (ex: "2024-05-10")
-    data_str = data_consulta.strftime('%Y-%m-%d')
+    data_str = data_consulta
     # Determine o caminho do arquivo usando a pasta 'anexos' e a data da consulta
     return os.path.join(data_str, 'anexos_paciente', filename)
 
