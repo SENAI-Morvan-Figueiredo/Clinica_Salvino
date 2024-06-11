@@ -41,6 +41,7 @@
     width: 100%;
     padding: 15px;
     position: relative;
+    margin-bottom: 15px;
 }
 
 .form-control.error input {
@@ -73,7 +74,6 @@
 .form-control small {
     visibility: hidden;
     position: absolute;
-    margin-top: 5px;
     font-size: 14px;
     color: #b22c2c;
 
@@ -280,6 +280,12 @@ p.text{
     justify-content: space-evenly;
     flex-direction: row;
     width: 100%;
+}
+
+.message{
+    position: absolute;
+    top: 93%;
+    left: 10px;
 }
 
 
