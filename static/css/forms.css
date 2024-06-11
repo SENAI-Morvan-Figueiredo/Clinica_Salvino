@@ -267,15 +267,14 @@ footer{
 .form-control small {
     visibility: hidden;
     position: absolute;
-    margin-top: 5px;
     font-size: 12px;
     color: #b22c2c;
 }
 
 .message{
     position: absolute;
-    top: 85px;
-    left: 0;
+    top: 93%;
+    left: 1%;
 }
 
 @keyframes shake {

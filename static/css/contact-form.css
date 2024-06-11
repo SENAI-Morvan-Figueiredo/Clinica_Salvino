@@ -41,7 +41,7 @@
     width: 100%;
     padding: 15px;
     position: relative;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .form-control.error input {
@@ -285,7 +285,7 @@ p.text{
 .message{
     position: absolute;
     top: 93%;
-    left: 10px;
+    left: 1%;
 }
 
 
