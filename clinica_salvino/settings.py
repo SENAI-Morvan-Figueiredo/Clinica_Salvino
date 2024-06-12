@@ -63,7 +63,7 @@ ROOT_URLCONF = 'clinica_salvino.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['127.0.0.1', 'GabrielAvelino.pythonanywhere.com'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
