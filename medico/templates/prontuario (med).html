@@ -31,6 +31,8 @@
                                 <a href="{% url 'en_med' document.id %}"><h3>{{ document.tipo_encaminhamento }}: {{ document.area }}</h3></a>
                             {% elif document in bioimpedancia %}
                                 <a href="{% url 'bio_med' document.id %}"><h3>Bioimpedância: {{ document.data|date:'d/m/Y' }}</h3></a>
+                            {% elif document in anexos %}
+                                <a href="{% url 'an_med' document.id %}"><h3>Anexo: {{ document.data|date:'d/m/Y' }}</h3></a>
                             {% endif %}
                         {% endfor %}
                     </div>
@@ -42,6 +44,9 @@
             <a href="{% url 'init_prontuario_med' paciente.user.id %}" class="btn btn-purple center add btn-dash">Iniciar Prontuário</a>
             <h3 class="aviso">Este paciente não teve seu prontuário iniciado</h3>
         {% endif %}
+        <div class="button-box">
+            <input type="submit" id="back" onclick="voltar()" class="btn-black-white btn-dash" value="Voltar">
+        </div>
     </section>  
 {% endblock content %}
 {% block script %}

@@ -1,5 +1,5 @@
 from django.urls import path
-from proprietario.views import proprietyBoard, contaProprietario, mostrarPacientes, mostrarFuncionarios, dadosFuncionario, deleteFuncionario, dadosPaciente, deletePaciente, addFuncionario, addPaciente, addRecep, addMedico, mostrarEspecialidades, dadosEspecialidade, addEspecialidade, deleteEspecialidade, marcarConsulta, mostrarConsultas, cancelarConsulta, adicionarBandeira, deleteBandeira, mostrarBandeiras, mostrarCartoes, adicionarCartoes, deleteCartao, addFornecedorConvenio, mostrarConvenios, deleteConvenio, mostrarPlano, addPlano, deletePlano, mostrarPacienteConvenio, cadConvPaciente, delPacienteConv, mostrarFichas, abrirFicha, document_list, init_prontuario, info_prontuario, pagarConsulta, pagarConsultaCard, pagarConsultaConv, pagarConsultaBol, addTratamento, mostrarTratamentos, dadosTratamento, addChave, deletePix, mostrarPix, payPix, chavePix, mostrarContas, mostrarBoleto, document, bio, encaminha
+from proprietario.views import proprietyBoard, contaProprietario, mostrarPacientes, mostrarFuncionarios, dadosFuncionario, deleteFuncionario, dadosPaciente, deletePaciente, addFuncionario, addPaciente, addRecep, addMedico, mostrarEspecialidades, dadosEspecialidade, addEspecialidade, deleteEspecialidade, marcarConsulta, mostrarConsultas, cancelarConsulta, adicionarBandeira, deleteBandeira, mostrarBandeiras, mostrarCartoes, adicionarCartoes, deleteCartao, addFornecedorConvenio, mostrarConvenios, deleteConvenio, mostrarPlano, addPlano, deletePlano, mostrarPacienteConvenio, cadConvPaciente, delPacienteConv, mostrarFichas, abrirFicha, document_list, init_prontuario, info_prontuario, pagarConsulta, pagarConsultaCard, pagarConsultaConv, pagarConsultaBol, addTratamento, mostrarTratamentos, dadosTratamento, addChave, deletePix, mostrarPix, payPix, chavePix, mostrarContas, mostrarBoleto, document, bio, encaminha, anexo, anexos_list
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -37,6 +37,7 @@ urlpatterns = [
     path('agendamento/', marcarConsulta, name='agendamento_prop'),
     path('consultas', mostrarConsultas, name='consultas'),
     path('consulta/<int:id>/cancelar_consulta/', cancelarConsulta, name='cancelar_consulta'),
+    path('consulta/<int:id>/anexos/', anexos_list, name='an_list_prop'),
     path('bandeiras/', mostrarBandeiras, name='bandeiras'),
     path('bandeiras/add', adicionarBandeira, name='adicionar_bandeira'),
     path('bandeira/<int:id>/delete/', deleteBandeira, name='deletar_bandeira'),
@@ -61,4 +62,5 @@ urlpatterns = [
     path('documento/<int:id>/', document, name='doc_prop'),
     path('encaminhamento/<int:id>/', encaminha, name='en_prop'),
     path('bioimpedancia/<int:id>/', bio, name='bio_prop'),
+    path('anexo/<int:id>/', anexo, name='an_prop'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

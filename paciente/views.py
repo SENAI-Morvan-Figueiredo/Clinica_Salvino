@@ -492,25 +492,31 @@ def document_list(request):
     # Agrupar documentos por data
     paciente = request.user.paciente
     list_documents = defaultdict(list)
-    try:
-        prontuario = Prontuario.objects.get(paciente=paciente)
-        if prontuario:
-            documentos = Documentos.objects.filter(prontuario=prontuario).order_by('data')
-            encaminhamentos = Encaminhamento.objects.filter(prontuario=prontuario).order_by('data')
-            bioimpedancia = Bioimpedância.objects.filter(prontuario=prontuario).order_by('data')
-            documents_list = list(chain(documentos, encaminhamentos, bioimpedancia))
-            if documents_list:
-                documents_list.sort(key=lambda x: x.data)
-                for document in documents_list:
-                    list_documents[document.data].append(document)
 
-                return render(request, 'prontuario (paciente).html', {'paciente': paciente,'prontuario': prontuario, 'list_documents': list_documents.items(), 'documentos' : documentos, 'encaminhamentos': encaminhamentos, 'bioimpedancia': bioimpedancia})
-            else:
-                list_documents = ''
-                return render(request, 'prontuario (paciente).html', {'paciente': paciente,'prontuario': prontuario, 'list_documents': list_documents})
-    except:
-        prontuario = ''
-        return render(request, 'prontuario (paciente).html', {'paciente': paciente, 'prontuario': prontuario, 'listdocumentos': ''})
+    prontuario = Prontuario.objects.get(paciente=paciente)
+    if prontuario:
+        documentos = Documentos.objects.filter(prontuario=prontuario).order_by('data')
+        encaminhamentos = Encaminhamento.objects.filter(prontuario=prontuario).order_by('data')
+        bioimpedancia = Bioimpedância.objects.filter(prontuario=prontuario).order_by('data')
+        consultas = Consulta.objects.filter(paciente = paciente)
+        anexos = []
+
+        for consulta in consultas:
+            arquivos = AnexoConsulta.objects.filter(consulta=consulta)
+            for arquivo in arquivos:
+                arquivo.data = consulta.data
+                anexos.append(arquivo)
+
+        documents_list = list(chain(documentos, encaminhamentos, bioimpedancia, anexos))
+        if documents_list:
+            documents_list.sort(key=lambda x: x.data)
+            for document in documents_list:
+                list_documents[document.data].append(document)
+
+            return render(request, 'prontuario (paciente).html', {'paciente': paciente,'prontuario': prontuario, 'list_documents': list_documents.items(), 'documentos' : documentos, 'encaminhamentos': encaminhamentos, 'bioimpedancia': bioimpedancia, 'anexos': anexos})
+        else:
+            list_documents = ''
+            return render(request, 'prontuario (paciente).html', {'paciente': paciente,'prontuario': prontuario, 'list_documents': list_documents})
 
 @group_required('Paciente')
 @login_required   
@@ -534,4 +540,21 @@ def bio(request, id):
     paciente = request.user.paciente
     bioimpedancia = Bioimpedância.objects.get(id=id)
     
-    return render(request, 'bioimpedancia (paciente).html', {'paciente': paciente, 'bioimpedancia': bioimpedancia})    
+    return render(request, 'bioimpedancia (paciente).html', {'paciente': paciente, 'bioimpedancia': bioimpedancia})
+
+@group_required('Paciente')
+@login_required 
+def anexo(request, id):
+    paciente = request.user.paciente
+    anexo = AnexoConsulta.objects.get(id=id)
+    
+    return render(request, 'anexo (paciente).html', {'paciente': paciente, 'documento': anexo})
+
+@group_required('Paciente')
+@login_required 
+def anexos_list(request, id):
+    paciente = request.user.paciente
+    consulta = Consulta.objects.get(id=id)
+    anexos = AnexoConsulta.objects.filter(consulta=consulta)
+    
+    return render(request, 'anexos_list (paciente).html', {'paciente': paciente, 'anexos': anexos})        

@@ -21,7 +21,7 @@
                         <p class="data"><b>Data:</b> {{ consulta.data|date:'d/m/Y' }}</p>
                         <p class="hora"><b>Hora:</b> {{ consulta.hora|time:"H:i" }}</p>
                         <p class="status"><b>Status:</b> {{ consulta.status_consulta }}</p>
-                        <a href="" class="btn btn-purple center add doc btn-dash">Documentos</a>
+                        <a href="{% url 'an_list_prop' consulta.id %}" class="btn btn-purple center add doc btn-dash">Documentos</a>
                         <a class="btn btn-purple center add can btn-dash" href="{% url 'cancelar_consulta' consulta.id %}">Cancelar consulta</a>
                     </div>
                 {% endfor %}
@@ -29,6 +29,9 @@
             {% else %}
                 <h3 class="aviso">Não há consultas marcadas.</h3> 
             {% endif %}
+        </div>
+        <div class="button-box">
+            <input type="submit" id="back" onclick="voltar()" class="btn-black-white btn-dash" value="Voltar">
         </div>
     </section>
 {% endblock content %}

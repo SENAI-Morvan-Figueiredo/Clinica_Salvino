@@ -23,6 +23,10 @@
     <p>Tratamento: {{ boleto.pagamento.tratamento }}</p>
     <p>Banco: {{ boleto.banco }}</p>
     <p>Código de Barras: {{ boleto.cod_barras }}</p>
+
+    <div class="button-box">
+        <a href="{% url 'paciente_dash' %}" class="btn-black-white btn-dash">Voltar</a>
+    </div>
 </section>
 {% endblock content %}
 

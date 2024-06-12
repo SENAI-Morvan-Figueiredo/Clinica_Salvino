@@ -1,0 +1,29 @@
+{% extends 'background_proprietario.html' %}
+{% load static i18n %}
+{% block head_title %}
+    {% trans 'Proprietário - Clínica Salvino' %}
+{% endblock head_title %}
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock extra_head %}
+
+{% block content %}  
+    <section class="dash bg-darkgray">
+        <h1 class="dash_title">Anexos: {{ anexo.consulta.data }}</h1>
+        <div class="ficha">
+            {% if anexos %}
+                {% for anexo in anexos %}
+                    <a href="{% url 'an_prop' anexo.id %}" class="ficha-line"><h3>Anexo: {{ anexo.consulta.data|date:'d/m/Y' }} [{{ forloop.counter }}]</h3></a>
+                {% endfor %}
+            {% else %}
+                <h3 class="aviso">Não há anexos atribuídos a esse paciente</h3>
+            {% endif %}
+        </div>
+    </section>  
+{% endblock content %}
+{% block script %}
+    <script src="https://kit.fontawesome.com/fc74a91a63.js" crossorigin="anonymous"></script>
+    <script src="{% static 'js/button.js' %}"></script>
+    <script src="{% static 'js/open_menu.js' %}"></script>
+    <script src="{% static 'js/open_list.js' %}"></script>
+{% endblock script %}

@@ -634,13 +634,22 @@ def document_list(request, id):
             documentos = Documentos.objects.filter(prontuario=prontuario).order_by('data')
             encaminhamentos = Encaminhamento.objects.filter(prontuario=prontuario).order_by('data')
             bioimpedancia = Bioimpedância.objects.filter(prontuario=prontuario).order_by('data')
-            documents_list = list(chain(documentos, encaminhamentos, bioimpedancia))
+            consultas = Consulta.objects.filter(paciente = paciente)
+            anexos = []
+
+            for consulta in consultas:
+                arquivos = AnexoConsulta.objects.filter(consulta=consulta)
+                for arquivo in arquivos:
+                    arquivo.data = consulta.data
+                    anexos.append(arquivo)
+
+            documents_list = list(chain(documentos, encaminhamentos, bioimpedancia, anexos))
             if documents_list:
                 documents_list.sort(key=lambda x: x.data)
                 for document in documents_list:
                     list_documents[document.data].append(document)
 
-                return render(request, 'prontuario (prop).html', {'proprietario': proprietario,'paciente':paciente,'prontuario': prontuario, 'list_documents': list_documents.items(), 'documentos' : documentos, 'encaminhamentos': encaminhamentos, 'bioimpedancia': bioimpedancia})
+                return render(request, 'prontuario (prop).html', {'proprietario': proprietario,'paciente':paciente,'prontuario': prontuario, 'list_documents': list_documents.items(), 'documentos' : documentos, 'encaminhamentos': encaminhamentos, 'bioimpedancia': bioimpedancia, 'anexos': anexos})
             else:
                 list_documents = ''
                 return render(request, 'prontuario (prop).html', {'proprietario': proprietario, 'paciente':paciente,'prontuario': prontuario, 'list_documents': list_documents})
@@ -1067,4 +1076,21 @@ def bio(request, id):
     proprietario = request.user.proprietario
     bioimpedancia = Bioimpedância.objects.get(id=id)
     
-    return render(request, 'bioimpedancia (prop).html', {'proprietario': proprietario, 'bioimpedancia': bioimpedancia})   
+    return render(request, 'bioimpedancia (prop).html', {'proprietario': proprietario, 'bioimpedancia': bioimpedancia})  
+
+@group_required('Proprietario')
+@login_required 
+def anexo(request, id):
+    proprietario = request.user.proprietario
+    anexo = AnexoConsulta.objects.get(id=id)
+    
+    return render(request, 'anexo (prop).html', {'proprietario': proprietario, 'documento': anexo})
+
+@group_required('Proprietario')
+@login_required 
+def anexos_list(request, id):
+    proprietario = request.user.proprietario
+    consulta = Consulta.objects.get(id=id)
+    anexos = AnexoConsulta.objects.filter(consulta=consulta)
+    
+    return render(request, 'anexos_list (prop).html', {'proprietario': proprietario, 'anexos': anexos})       

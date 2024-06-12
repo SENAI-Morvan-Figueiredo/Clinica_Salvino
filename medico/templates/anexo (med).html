@@ -1,26 +1,24 @@
-{% extends 'background_proprietario.html' %}
+{% extends 'background_medico.html'%}
 {% load static i18n %}
-{% load qr_code %}
 {% block head_title %}
-    {% trans 'Proprietário - Clínica Salvino' %}
+    {% trans 'Médico - Clínica Salvino' %}
 {% endblock head_title %}
 {% block extra_head %}
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
 {% endblock extra_head %}
 
 {% block content %}
-    <section class="dash bg-darkgray page">
-        <h1 class="dash_title">Chave: {{ pix.nome_proprietario_pix }}</h1>
-        <div class="pay-pix">
-            {% qr_from_text pix.chave size="M" %}
-            <br>
-            <br>
-            <h3>Código da Chave: {{ pix.chave }}</h3>
+<div class="dash page bg-darkgray">
+    <h1 class="dash_title">Anexo: {{ documento.consulta.data|date:'d/m/Y' }}</h1>
+        <div class="ficha">
+            <p class="ficha-line">Nome: {{ documento.consulta.paciente.name }}</p>
+            <p class="ficha-line border">Médico: {{ documento.consulta.medico.name }}</p>
+            <p class="arq-line border">Documento: <a href="{{ documento.arquivo.url }}">Abrir Arquivo</a></p>
         </div>
         <div class="button-box">
             <input type="submit" id="back" onclick="voltar()" class="btn-black-white btn-dash" value="Voltar">
         </div>
-    </section>
+    </div>
 {% endblock content %}
 
 {% block script %}

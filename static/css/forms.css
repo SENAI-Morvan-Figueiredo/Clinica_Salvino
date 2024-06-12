@@ -233,6 +233,10 @@ footer{
     border: 3px solid #b22c2c;
 }
 
+.form-control.error textarea {
+    border: 3px solid #b22c2c;
+}
+
 .form-control.error select {
     border: 3px solid #b22c2c;
 }

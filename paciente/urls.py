@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from paciente.views import pacienteBoard, contaPaciente, mostrarPacienteConvenio, pagamento_paciente, agendamento_paciente, add_cartao, add_convenio, mostrarCartoes, delete_cartao, delete_convenio, pagarConsultaBol, pagarConsultaCard, pagarConsultaConv, payPix, mostrarConsultas, cancelarConsulta, mostrarContas, mostrarBoleto, chavePix, document_list, document, encaminha, bio
+from paciente.views import pacienteBoard, contaPaciente, mostrarPacienteConvenio, pagamento_paciente, agendamento_paciente, add_cartao, add_convenio, mostrarCartoes, delete_cartao, delete_convenio, pagarConsultaBol, pagarConsultaCard, pagarConsultaConv, payPix, mostrarConsultas, cancelarConsulta, mostrarContas, mostrarBoleto, chavePix, document_list, document, encaminha, bio, anexo, anexos_list
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -22,6 +22,7 @@ urlpatterns = [
     path('pagamento/pix', payPix, name='pay_pix_paciente'),
     path('consultas', mostrarConsultas, name='consultas_paciente'),
     path('consultas/<int:id>/cancelar_consulta/', cancelarConsulta, name='cancelar_consulta_paciente'),
+    path('consulta/<int:id>/anexos/', anexos_list, name='an_list_paciente'),
     path('pix/<int:id>', chavePix, name='pix_paciente'),
     path('boleto/<int:id>', mostrarBoleto, name='boleto_paciente'),
     path('contas/', mostrarContas, name='financeiro_paciente'),
@@ -29,4 +30,5 @@ urlpatterns = [
     path('documento/<int:id>/', document, name='doc_paciente'),
     path('encaminhamento/<int:id>/', encaminha, name='en_paciente'),
     path('bioimpedancia/<int:id>/', bio, name='bio_paciente'),
+    path('anexo/<int:id>/', anexo, name='an_paciente'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

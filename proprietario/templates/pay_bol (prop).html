@@ -13,6 +13,9 @@
     <p>Tratamento: {{ boleto.pagamento.tratamento }}</p>
     <p>Banco: {{ boleto.banco }}</p>
     <p>Código de Barras: {{ boleto.cod_barras }}</p>
+    <div class="button-box">
+        <input type="submit" id="back" onclick="voltar()" class="btn-black-white btn-dash" value="Voltar">
+    </div>
 </section>
 {% endblock content %}
 

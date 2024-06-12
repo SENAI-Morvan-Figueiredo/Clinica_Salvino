@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from paciente.models import Paciente, Consulta, Documentos, Prontuario, Encaminhamento, Bioimpedância
+from paciente.models import Paciente, Consulta, Documentos, Prontuario, Encaminhamento, Bioimpedância, AnexoConsulta
 from paciente.forms import ProntuarioForm, addDocumento, addEncaminhamento, addBioimpedância
 from collections import defaultdict
 from django.contrib.auth.models import User
@@ -53,13 +53,22 @@ def document_list(request, id):
             documentos = Documentos.objects.filter(prontuario=prontuario).order_by('data')
             encaminhamentos = Encaminhamento.objects.filter(prontuario=prontuario).order_by('data')
             bioimpedancia = Bioimpedância.objects.filter(prontuario=prontuario).order_by('data')
-            documents_list = list(chain(documentos, encaminhamentos, bioimpedancia))
+            consultas = Consulta.objects.filter(paciente = paciente)
+            anexos = []
+
+            for consulta in consultas:
+                arquivos = AnexoConsulta.objects.filter(consulta=consulta)
+                for arquivo in arquivos:
+                    arquivo.data = consulta.data
+                    anexos.append(arquivo)
+
+            documents_list = list(chain(documentos, encaminhamentos, bioimpedancia, anexos))
             if documents_list:
                 documents_list.sort(key=lambda x: x.data)
                 for document in documents_list:
                     list_documents[document.data].append(document)
 
-                return render(request, 'prontuario (med).html', {'medico': medico,'paciente':paciente,'prontuario': prontuario, 'list_documents': list_documents.items(), 'documentos' : documentos, 'encaminhamentos': encaminhamentos, 'bioimpedancia': bioimpedancia})
+                return render(request, 'prontuario (med).html', {'medico': medico,'paciente':paciente,'prontuario': prontuario, 'list_documents': list_documents.items(), 'documentos' : documentos, 'encaminhamentos': encaminhamentos, 'bioimpedancia': bioimpedancia, 'anexos': anexos})
             else:
                 list_documents = ''
                 return render(request, 'prontuario (med).html', {'medico': medico, 'paciente':paciente,'prontuario': prontuario, 'list_documents': list_documents})
@@ -253,4 +262,12 @@ def delete_bio(request, id):
         return redirect('prontuario_med', bioimpedancia.prontuario.paciente.user.id)
     else:
         return render(request, 'delete_bioimpedancia (med).html', {'medico': medico, 'bioimpedancia': bioimpedancia})
+    
+@group_required('Medico')
+@login_required 
+def anexo(request, id):
+    medico = request.user.medico
+    anexo = AnexoConsulta.objects.get(id=id)
+    
+    return render(request, 'anexo (med).html', {'medico': medico, 'documento': anexo})
     
