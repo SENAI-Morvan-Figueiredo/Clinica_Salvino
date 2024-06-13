@@ -73,6 +73,7 @@
 
 
 @media (max-width: 990px) {
+
     .medico{
         grid-template-areas: 'tmp' 'txt';
         place-items: center;
@@ -101,11 +102,16 @@
     
     #banner-principal{
         margin-top: 0;
-        padding-top: 50px;
+        padding-top: 134px;
         padding-bottom: 50px;
     }
     .nav-responsive{
         justify-content: right;
+    }
+    .header_responsivo{
+        position: fixed;
+        z-index: 1000;
+        width: 100%;
     }
     .logo_branco {
         max-width: 150px;
