@@ -31,3 +31,7 @@ window.addEventListener('resize', resetStylesOnHeightChange);
 
 // Chama a função para garantir o estado inicial correto
 resetStylesOnHeightChange();
+
+nav_menu.addEventListener('touchmove', function (event) {
+    event.stopPropagation();
+}, false);
