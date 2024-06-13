@@ -165,7 +165,7 @@
     }
     .dash_menu_user{
         position: absolute;
-        top: 10%;
+        top: 15%;
         left: 0;
         display: none;
         width: 30%;
@@ -224,6 +224,14 @@
 
     .mid{
         margin-left: 50%;
+    }
+
+    .btn-white{
+        transform: scale(0.75);
+    }
+
+    .btn-black{
+        transform: scale(0.75);
     }
 }
 

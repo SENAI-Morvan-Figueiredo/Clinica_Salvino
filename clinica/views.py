@@ -35,8 +35,8 @@ def contact_us(request):
             send_mail(
                 f'Mensagem de {nome}: {assunto}',
                 f'Nome: {nome} \nEmail: {email} \nAssunto:{assunto} \n{mensagem}',
-                "avelinogabrieldossantos@gmail.com",
-                ["aluno103.23187221gabriel@gmail.com"],
+                "aluno103.23187221gabriel@gmail.com",
+                ["avelinogabrieldossantos@gmail.com"],
                 fail_silently=False,
             )
             messages.success(request, 'Formulário enviado com sucesso!')
@@ -110,7 +110,7 @@ def password_reset_request(request):
                     }
                     email_content = render_to_string(email_template_name, c)
                     try:
-                        send_mail(subject, email_content, 'avelinogabrieldossantos@gmail.com', [user.email], fail_silently=False)
+                        send_mail(subject, email_content, 'aluno103.23187221gabriel@gmail.com', [user.email], fail_silently=False)
                     except Exception as e:
                         messages.error(request, f"Ocorreu um erro ao enviar o e-mail: {str(e)}")
                         return redirect('/email/falhou/')

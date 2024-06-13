@@ -17,7 +17,8 @@
             <form class="form-forgot form" id="form-forgot" action="{% url 'password_reset' %}" method="post">
                 {% csrf_token %}
                 <div class="form-control">
-                    {{ form.as_p }}
+                    {{ form.email.label_tag }}
+                    {{ form.email }}
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
