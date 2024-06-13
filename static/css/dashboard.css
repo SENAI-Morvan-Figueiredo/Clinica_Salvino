@@ -63,6 +63,15 @@ ul{
 
     .nav_menu{
         display: none;
+        padding: 10% 10% 10% 0;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(10,23,55,0.5);
+        display: none;
+        position: fixed;
+        z-index: 999;
     }
 
     /* class para o botão do home */
@@ -576,4 +585,16 @@ ul{
         }
         .date_grid time{
             margin: 0.625em;
+        }
+
+        .nav_menu.ativo {
+            display: flex;
+        }
+
+        .dash_menu_user.ativo {
+            display: block;
+        }
+
+        .close_button.ativo {
+            display: block;
         }

@@ -4,26 +4,26 @@ const nav_menu = document.querySelector('.dash_menu_user')
 const close_button = document.querySelector('.close_button')
 
 btn_nav.addEventListener('click', ()=>{
-    background.style.display = 'flex'
-    nav_menu.style.display = 'flex'
-    close_button.style.display = 'block'
-})
+    background.classList.add('ativo');
+    nav_menu.classList.add('ativo');
+    close_button.classList.add('ativo');
+});
 
 close_button.addEventListener('click', ()=>{
-    background.style.display = 'none'
-    nav_menu.style.display = 'none'
-    close_button.style.display = 'none'
-})
+    background.classList.remove('ativo');
+    nav_menu.classList.remove('ativo');
+    close_button.classList.remove('ativo');
+});
 
 function resetStylesOnHeightChange() {
     if (window.innerWidth > 880) {
-        background.style.display = 'none';
-        nav_menu.style.display = 'block';
-        close_button.style.display = 'none'
+        background.classList.remove('ativo');
+        nav_menu.classList.add('ativo');
+        close_button.classList.remove('ativo');
     } else {
-        background.style.display = 'none';
-        nav_menu.style.display = 'none';
-        close_button.style.display = 'none'
+        background.classList.remove('ativo');
+        nav_menu.classList.remove('ativo');
+        close_button.classList.remove('ativo');
     }
 }
 
