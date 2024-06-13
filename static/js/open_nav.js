@@ -5,12 +5,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const close_button = document.querySelector('.close_button');
 
     btn_nav.addEventListener('click', () => {
+        console.log('Menu aberto');
         background.classList.add('ativo');
         nav_menu.classList.add('ativo');
         close_button.classList.add('ativo');
     });
 
     close_button.addEventListener('click', () => {
+        console.log('Menu fechado');
         background.classList.remove('ativo');
         nav_menu.classList.remove('ativo');
         close_button.classList.remove('ativo');
@@ -18,10 +20,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function resetStylesOnResize() {
         if (window.innerWidth > 880) {
+            console.log('Largura maior que 880px, ajustando estilos');
             background.classList.remove('ativo');
             nav_menu.classList.add('ativo');
             close_button.classList.remove('ativo');
         } else {
+            console.log('Largura menor ou igual a 880px, ajustando estilos');
             background.classList.remove('ativo');
             nav_menu.classList.remove('ativo');
             close_button.classList.remove('ativo');
@@ -35,6 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Previne o fechamento ao scroll dentro do menu
     nav_menu.addEventListener('touchmove', function (event) {
+        console.log('Touchmove no menu');
         event.stopPropagation();
     }, false);
 });
