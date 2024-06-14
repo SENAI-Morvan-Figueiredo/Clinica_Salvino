@@ -557,4 +557,11 @@ def anexos_list(request, id):
     consulta = Consulta.objects.get(id=id)
     anexos = AnexoConsulta.objects.filter(consulta=consulta)
     
-    return render(request, 'anexos_list (paciente).html', {'paciente': paciente, 'anexos': anexos})        
+    return render(request, 'anexos_list (paciente).html', {'paciente': paciente, 'anexos': anexos})   
+
+@group_required('Paciente')
+@login_required         
+def info_prontuario(request):
+    paciente = request.user.paciente
+    prontuario = Prontuario.objects.get(paciente=paciente)
+    return render(request, 'info_prontuario (paciente).html', {'paciente': paciente, 'prontuario': prontuario})

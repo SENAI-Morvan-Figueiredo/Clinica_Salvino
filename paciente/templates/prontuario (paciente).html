@@ -10,7 +10,9 @@
 {% block content %}  
     <section class="dash bg-darkgray">
         <h1 class="dash_title">Prontuário: {{ paciente.name }}</h1>
-        
+        <div class="button-box">
+            <a href="{% url 'info_prontuario_paciente' %}" class="btn btn-purple center btn-dash">Info Prontuário</a>
+        </div>
         {% if prontuario %}
             {% if list_documents %}
                 {% for data, documents in list_documents %}

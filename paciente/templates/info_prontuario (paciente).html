@@ -1,7 +1,7 @@
-{% extends 'background_proprietario.html' %}
+{% extends 'background_paciente.html' %}
 {% load static i18n %}
 {% block head_title %}
-    {% trans 'Proprietário - Clínica Salvino' %}
+    {% trans 'Paciente - Clínica Salvino' %}
 {% endblock head_title %}
 {% block extra_head %}
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
@@ -17,7 +17,7 @@
             </div>
 
             <div class="ficha-line">
-                <p>Tem alergia?: {% if prontuario.alergia %}Sim{% else %}Não{% endif %}</p>
+                <p>Alergia?: {% if prontuario.alergia %}Sim{% else %}Não{% endif %}</p>
                 <p>Tem doença?: {% if prontuario.doenca %}Sim{% else %}Não{% endif %}</p>
             </div>
 

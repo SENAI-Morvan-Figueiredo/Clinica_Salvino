@@ -1,5 +1,5 @@
 from django.urls import path
-from proprietario.views import proprietyBoard, contaProprietario, mostrarPacientes, mostrarFuncionarios, dadosFuncionario, deleteFuncionario, dadosPaciente, deletePaciente, addFuncionario, addPaciente, addRecep, addMedico, mostrarEspecialidades, dadosEspecialidade, addEspecialidade, deleteEspecialidade, marcarConsulta, mostrarConsultas, cancelarConsulta, adicionarBandeira, deleteBandeira, mostrarBandeiras, mostrarCartoes, adicionarCartoes, deleteCartao, addFornecedorConvenio, mostrarConvenios, deleteConvenio, mostrarPlano, addPlano, deletePlano, mostrarPacienteConvenio, cadConvPaciente, delPacienteConv, mostrarFichas, abrirFicha, document_list, init_prontuario, info_prontuario, pagarConsulta, pagarConsultaCard, pagarConsultaConv, pagarConsultaBol, addTratamento, mostrarTratamentos, dadosTratamento, addChave, deletePix, mostrarPix, payPix, chavePix, mostrarContas, mostrarBoleto, document, bio, encaminha, anexo, anexos_list
+from proprietario.views import proprietyBoard, contaProprietario, mostrarPacientes, mostrarFuncionarios, dadosFuncionario, deleteFuncionario, dadosPaciente, deletePaciente, addFuncionario, addPaciente, addRecep, addMedico, mostrarEspecialidades, dadosEspecialidade, addEspecialidade, deleteEspecialidade, marcarConsulta, mostrarConsultas, cancelarConsulta, adicionarBandeira, deleteBandeira, mostrarBandeiras, mostrarCartoes, adicionarCartoes, deleteCartao, addFornecedorConvenio, mostrarConvenios, deleteConvenio, mostrarPlano, addPlano, deletePlano, mostrarPacienteConvenio, cadConvPaciente, delPacienteConv, mostrarFichas, abrirFicha, document_list, info_prontuario, pagarConsulta, pagarConsultaCard, pagarConsultaConv, pagarConsultaBol, addTratamento, mostrarTratamentos, dadosTratamento, addChave, deletePix, mostrarPix, payPix, chavePix, mostrarContas, mostrarBoleto, document, bio, encaminha, anexo, anexos_list
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -12,7 +12,6 @@ urlpatterns = [
     path('paciente/<int:id>/delete/', deletePaciente, name='delete_paciente'),
     path('paciente/<int:id>/cartoes/', mostrarCartoes, name='cartoes_prop'),
     path('paciente/<int:id>/prontuario/', document_list, name='prontuario'),
-    path('paciente/<int:id>/prontuario/init', init_prontuario, name='init_prontuario_prop'),
     path('paciente/<int:id>/prontuario/info', info_prontuario, name='info_prontuario_prop'),
     path('paciente/<int:id>/cartoes/add', adicionarCartoes, name='adicionar_cartoes'),
     path('cartao/<int:id>/delete', deleteCartao, name='deletar_cartao'),

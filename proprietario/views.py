@@ -658,29 +658,6 @@ def document_list(request, id):
         return render(request, 'prontuario (prop).html', {'proprietario': proprietario, 'paciente':paciente, 'prontuario': prontuario, 'listdocumentos': ''})
 
 @group_required('Proprietario')
-@login_required    
-def init_prontuario(request, id):
-    proprietario = request.user.proprietario
-    user = User.objects.get(id=id)
-    paciente = Paciente.objects.get(user=user)
-    if request.method == 'POST':
-        prontuario_form = ProntuarioForm(request.POST)
-        if prontuario_form.is_valid():
-            new_prontuario = prontuario_form.save(commit=False)
-            new_prontuario.paciente = paciente
-            new_prontuario.save()
-            show_message = request.session.pop('show_message', False)
-            messages.success(request, 'Convênio do paciente cadastrado com Sucesso!')
-            return redirect('prontuario', id)
-        else:
-            show_message = request.session.pop('show_message', False)
-            messages.error(request, f"Formulário de cartão inválido: {prontuario_form.errors}")
-            return redirect('prontuario', id)   
-    else:
-        show_message = request.session.pop('show_message', False)
-        return render(request, 'init_prontuario.html', {'proprietario': proprietario, 'paciente': paciente, 'message_view': show_message})
-
-@group_required('Proprietario')
 @login_required         
 def info_prontuario(request, id):
     proprietario = request.user.proprietario

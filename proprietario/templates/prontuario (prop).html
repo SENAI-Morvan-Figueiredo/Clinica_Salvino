@@ -10,7 +10,9 @@
 {% block content %}  
     <section class="dash bg-darkgray">
         <h1 class="dash_title">Prontuário: {{ paciente.name }}</h1>
-        
+        <div class="button-box">
+            <a href="{% url 'info_prontuario_prop' paciente.user.id %}" class="btn btn-purple center btn-dash">Info Prontuário</a>
+        </div>
         {% if prontuario %}
             {% if list_documents %}
                 {% for data, documents in list_documents %}
@@ -35,7 +37,6 @@
                 <h3 class="aviso">Não há documentos atribuídos a esse paciente</h3>
             {% endif %}
         {% else %} 
-            <a href="{% url 'init_prontuario_med' paciente.user.id %}" class="btn btn-purple center add btn-dash">Iniciar Prontuário</a>
             <h3 class="aviso">Este paciente não teve seu prontuário iniciado</h3>
         {% endif %}
         <div class="button-box">
