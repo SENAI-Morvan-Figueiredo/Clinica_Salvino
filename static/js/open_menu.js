@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
         button.addEventListener('click', function(event) {
             event.preventDefault(); // Previne comportamento padrão do link (caso tenha um href='#')
 
+            closeAllMenus();
             // Encontra o menu relacionado a este botão
             const menu = this.nextElementSibling.nextElementSibling;
 
