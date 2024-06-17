@@ -167,7 +167,7 @@
 
 @media (max-width:880px) {
     .dash{
-        min-height: 990px;
+        min-height: 440px;
     }
     .dash_menu_user{
         position: absolute;
