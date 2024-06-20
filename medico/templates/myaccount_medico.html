@@ -97,7 +97,7 @@
                 </div>
                 <div class="form-control">
                     <input type="text" maxlength="12" minlength="12" inputmode="numeric" id="CRM" name="crm"
-                        placeholder="CRM" class="input" value="{{ medico.rg }}">
+                        placeholder="CRM" class="input" value="{{ medico.crm }}">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
@@ -123,7 +123,7 @@
                     <small class="message"></small>
                 </div>
                 <div class="form-control">
-                    <input type="text" inputmode="numeric" id="CEP" class="input" name="cep" placeholder="CEP" value="{{ medico.cep }}">
+                    <input type="text" inputmode="numeric" id="CEP" maxlength="8" minlength="8" class="input" name="cep" placeholder="CEP" value="{{ medico.cep }}">
                     <i class="fa -solid fa-circle-exclamation icon-error" style="color: #b00c0c;"></i>
                     <i class="fa-solid fa-circle-check icon-success" style="color: #328146;"></i>
 
